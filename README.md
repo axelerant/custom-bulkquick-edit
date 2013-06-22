@@ -1,2 +1,2 @@
-Custom Bulk and Quick Edit plugin for WordPress
-===============================================
+Custom Bulk/Quick Edit plugin for WordPress
+===========================================
