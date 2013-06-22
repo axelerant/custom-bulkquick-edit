@@ -3,19 +3,19 @@ language:
 
 php:
     - 5.3
-#    - 5.4
+    - 5.4
 
 env:
     - WP_VERSION=master WP_MULTISITE=1
-#    - WP_VERSION=master WP_MULTISITE=0
-#    - WP_VERSION=3.5.2 WP_MULTISITE=1
-#    - WP_VERSION=3.5.2 WP_MULTISITE=0
+    - WP_VERSION=master WP_MULTISITE=0
+    - WP_VERSION=3.5.2 WP_MULTISITE=1
+    - WP_VERSION=3.5.2 WP_MULTISITE=0
 
 before_install:
     - git submodule update --init --recursive
 
 before_script:
-    - pear config-set auto_discover 1
+#    - pear config-set auto_discover 1
     - pear install PHP_CodeSniffer
     - pear install phpunit/phpcpd
     - pear channel-discover pear.phpmd.org
