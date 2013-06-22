@@ -62,14 +62,11 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 	public static function sections() {
 		self::$sections['general']   = esc_html__( 'General', 'custom-bulk-quick-edit' );
-		self::$sections['selection'] = esc_html__( 'Selection', 'custom-bulk-quick-edit' );
-		self::$sections['ordering']  = esc_html__( 'Ordering', 'custom-bulk-quick-edit' );
-		self::$sections['widget']    = esc_html__( 'Widget', 'custom-bulk-quick-edit' );
 		self::$sections['post_type'] = esc_html__( 'Post Type', 'custom-bulk-quick-edit' );
 		self::$sections['reset']     = esc_html__( 'Compatibility & Reset', 'custom-bulk-quick-edit' );
 		self::$sections['about']     = esc_html__( 'About Custom Bulk/Quick Edit', 'custom-bulk-quick-edit' );
 
-		self::$sections = apply_filters( 'testimonials_widget_sections', self::$sections );
+		self::$sections = apply_filters( 'custom_bulk_quick_edit_sections', self::$sections );
 	}
 
 
@@ -79,92 +76,10 @@ class Custom_Bulk_Quick_Edit_Settings {
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
 	public static function settings() {
-		// Widget
-		self::$settings['title'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Widget Title', 'custom-bulk-quick-edit' ),
-			'std' => esc_html__( 'Testimonials', 'custom-bulk-quick-edit' ),
-			'validate' => 'wp_kses_post',
-		);
-
-		self::$settings['title_link'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Title Link', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'URL, path, or post ID to link widget title to. Ex: http://example.com/stuff, /testimonials, 123 or ', 'custom-bulk-quick-edit' ),
-			'validate' => 'wp_kses_data',
-		);
-
-		self::$settings['char_limit'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Character Limit', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Number of characters to limit non-single testimonial views to', 'custom-bulk-quick-edit' ),
-			'validate' => 'absint',
-		);
-
-		self::$settings['height'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Height', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Testimonials height, in pixels. Overrides minimum and maximum height', 'custom-bulk-quick-edit' ),
-			'validate' => 'min1',
-		);
-
-		self::$settings['refresh_interval'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Rotation Speed', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Number of seconds between testimonial rotations or 0 for no rotation at all refresh', 'custom-bulk-quick-edit' ),
-			'std' => 5,
-			'validate' => 'absint',
-		);
-
-		self::$settings['widget_expand_begin'] = array(
-			'section' => 'widget',
-			'desc' => esc_html__( 'Additional Widget Options', 'custom-bulk-quick-edit' ),
-			'type' => 'expand_begin',
-		);
-
-		self::$settings['keep_whitespace'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Keep Whitespace?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Keeps testimonials looking as entered than sans auto-formatting', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['min_height'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Minimum Height', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Set for minimum display height, in pixels', 'custom-bulk-quick-edit' ),
-			'validate' => 'min1',
-		);
-
-		self::$settings['max_height'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Maximum Height', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Set for maximum display height, in pixels', 'custom-bulk-quick-edit' ),
-			'validate' => 'min1',
-		);
-
-		self::$settings['bottom_text'] = array(
-			'section' => 'widget',
-			'title' => esc_html__( 'Testimonial Bottom Text', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Custom text or HTML for bottom of testimonials', 'custom-bulk-quick-edit' ),
-			'type' => 'textarea',
-			'validate' => 'wp_kses_post',
-		);
-
-		self::$settings['widget_expand_end'] = array(
-			'section' => 'widget',
-			'type' => 'expand_end',
-		);
-
 		// General
-		self::$settings['general_expand_begin'] = array(
-			'desc' => esc_html__( 'General Options', 'custom-bulk-quick-edit' ),
-			'type' => 'expand_begin',
-		);
-
 		self::$settings['disable_quotes'] = array(
 			'title' => esc_html__( 'Hide built-in quotes?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Remove open and close quote span tags surrounding testimonial content', 'custom-bulk-quick-edit' ),
+			'desc' => esc_html__( 'Remove open and close quote span tags surrounding asdf content', 'custom-bulk-quick-edit' ),
 			'type' => 'checkbox',
 		);
 
@@ -173,212 +88,22 @@ class Custom_Bulk_Quick_Edit_Settings {
 			'type' => 'checkbox',
 		);
 
-		self::$settings['hide_gravatar'] = array(
-			'title' => esc_html__( 'Hide Gravatar Image?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['hide_image'] = array(
-			'title' => esc_html__( 'Hide Image?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['hide_image_single'] = array(
-			'title' => esc_html__( 'Hide Image in Single View?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-			'widget' => 0,
-		);
-
-		self::$settings['hide_content'] = array(
-			'title' => esc_html__( 'Hide Testimonial Content?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['hide_source'] = array(
-			'title' => esc_html__( 'Hide Author/Source?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-			'desc' => esc_html__( 'Don\'t display "Post Title" in cite', 'custom-bulk-quick-edit' ),
-		);
-
-		self::$settings['hide_email'] = array(
-			'title' => esc_html__( 'Hide Email?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-			'std' => 1,
-		);
-
-		self::$settings['hide_title'] = array(
-			'title' => esc_html__( 'Hide Title?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['hide_location'] = array(
-			'title' => esc_html__( 'Hide Location?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['hide_company'] = array(
-			'title' => esc_html__( 'Hide Company?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['hide_url'] = array(
-			'title' => esc_html__( 'Hide URL?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['target'] = array(
-			'title' => esc_html__( 'URL Target', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Add target to all URLs; leave blank if none', 'custom-bulk-quick-edit' ),
-			'validate' => 'term',
-		);
-
 		self::$settings['paging'] = array(
 			'title' => esc_html__( 'Enable Paging?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'For `[testimonialswidget_list]`', 'custom-bulk-quick-edit' ),
+			'desc' => esc_html__( 'For `[asdfswidget_list]`', 'custom-bulk-quick-edit' ),
 			'type' => 'select',
 			'choices' => array(
 				'' => esc_html__( 'Disable', 'custom-bulk-quick-edit' ),
 				1 => esc_html__( 'Enable', 'custom-bulk-quick-edit' ),
-				'before' => esc_html__( 'Before testimonials', 'custom-bulk-quick-edit' ),
-				'after' => esc_html__( 'After testimonials', 'custom-bulk-quick-edit' ),
+				'before' => esc_html__( 'Before asdfs', 'custom-bulk-quick-edit' ),
+				'after' => esc_html__( 'After asdfs', 'custom-bulk-quick-edit' ),
 			),
 			'std' => 1,
 			'widget' => 0,
 		);
 
-		self::$settings['general_expand_end'] = array(
-			'type' => 'expand_end',
-		);
-
-		// Selection
-		self::$settings['selection_expand_begin'] = array(
-			'section' => 'selection',
-			'desc' => esc_html__( 'Selection Options', 'custom-bulk-quick-edit' ),
-			'type' => 'expand_begin',
-		);
-
-		self::$settings['category'] = array(
-			'section' => 'selection',
-			'title' => esc_html__( 'Category Filter', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Comma separated category slug-names. Ex: category-a, another-category', 'custom-bulk-quick-edit' ),
-			'validate' => 'slugs',
-		);
-
-		self::$settings['tags'] = array(
-			'section' => 'selection',
-			'title' => esc_html__( 'Tags Filter', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Comma separated tag slug-names. Ex: tag-a, another-tag', 'custom-bulk-quick-edit' ),
-			'validate' => 'slugs',
-		);
-
-		self::$settings['tags_all'] = array(
-			'section' => 'selection',
-			'title' => esc_html__( 'Require All Tags?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Select only testimonials with all of the given tags', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['ids'] = array(
-			'section' => 'selection',
-			'title' => esc_html__( 'Include IDs Filter', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Comma separated testimonial IDs. Ex: 3,1,2', 'custom-bulk-quick-edit' ),
-			'validate' => 'ids',
-		);
-
-		self::$settings['exclude'] = array(
-			'section' => 'selection',
-			'title' => esc_html__( 'Exclude IDs Filter', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Comma separated testimonial IDs. Ex: 3,1,2', 'custom-bulk-quick-edit' ),
-			'validate' => 'ids',
-		);
-
-		self::$settings['limit'] = array(
-			'section' => 'selection',
-			'title' => esc_html__( 'Limit', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Number of testimonials to select per instance', 'custom-bulk-quick-edit' ),
-			'std' => 10,
-			'validate' => 'nozero',
-		);
-
-		self::$settings['selection_expand_end'] = array(
-			'section' => 'selection',
-			'type' => 'expand_end',
-		);
-
-		// Ordering
-		self::$settings['ordering_expand_begin'] = array(
-			'section' => 'ordering',
-			'desc' => esc_html__( 'Ordering Options', 'custom-bulk-quick-edit' ),
-			'type' => 'expand_begin',
-		);
-
-		self::$settings['random'] = array(
-			'section' => 'ordering',
-			'title' => esc_html__( 'Random Order?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'If checked, ignores ORDER BY, ORDER BY meta_key, and ORDER BY Order. Widgets are random by default automatically', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['orderby'] = array(
-			'section' => 'ordering',
-			'title' => esc_html__( 'ORDER BY', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Used when "Random Order" is disabled', 'custom-bulk-quick-edit' ),
-			'type' => 'select',
-			'choices' => array(
-				'ID' => esc_html__( 'Testimonial ID', 'custom-bulk-quick-edit' ),
-				'author' => esc_html__( 'Author', 'custom-bulk-quick-edit' ),
-				'date' => esc_html__( 'Date', 'custom-bulk-quick-edit' ),
-				'menu_order' => esc_html__( 'Menu Order', 'custom-bulk-quick-edit' ),
-				'title' => esc_html__( 'Source', 'custom-bulk-quick-edit' ),
-				'none' => esc_html__( 'No order', 'custom-bulk-quick-edit' ),
-			),
-			'std' => 'ID',
-			'validate' => 'term',
-		);
-
-		self::$settings['meta_key'] = array(
-			'section' => 'ordering',
-			'title' => esc_html__( 'ORDER BY meta_key', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Used when "Random Order" is disabled and sorting by a testimonials meta key is needed. Overrides ORDER BY', 'custom-bulk-quick-edit' ),
-			'type' => 'select',
-			'choices' => array(
-				'' => esc_html__( 'None', 'custom-bulk-quick-edit' ),
-				'custom-bulk-quick-edit-title' => esc_html__( 'Title', 'custom-bulk-quick-edit' ),
-				'custom-bulk-quick-edit-email' => esc_html__( 'Email', 'custom-bulk-quick-edit' ),
-				'custom-bulk-quick-edit-location' => esc_html__( 'Location', 'custom-bulk-quick-edit' ),
-				'custom-bulk-quick-edit-company' => esc_html__( 'Company', 'custom-bulk-quick-edit' ),
-				'custom-bulk-quick-edit-url' => esc_html__( 'URL', 'custom-bulk-quick-edit' ),
-			),
-			'validate' => 'slug',
-		);
-
-		self::$settings['order'] = array(
-			'section' => 'ordering',
-			'title' => esc_html__( 'ORDER BY Order', 'custom-bulk-quick-edit' ),
-			'type' => 'select',
-			'choices' => array(
-				'DESC' => esc_html__( 'Descending', 'custom-bulk-quick-edit' ),
-				'ASC' => esc_html__( 'Ascending', 'custom-bulk-quick-edit' ),
-			),
-			'std' => 'DESC',
-			'validate' => 'order',
-		);
-
-		self::$settings['ordering_expand_end'] = array(
-			'section' => 'ordering',
-			'type' => 'expand_end',
-		);
-
 		// Post Type
-		self::$settings['allow_comments'] = array(
-			'section' => 'post_type',
-			'title' => esc_html__( 'Allow Comments?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Only affects the Custom Bulk/Quick Edit post edit page. Your theme controls the front-end view.', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-			'widget' => 0,
-		);
-
-		$desc        = esc_html__( 'URL slug-name for <a href="%1s">testimonials archive</a> page.', 'custom-bulk-quick-edit' );
+		$desc        = __( 'URL slug-name for <a href="%1s">asdfs archive</a> page.', 'custom-bulk-quick-edit' );
 		$has_archive = cbqe_get_option( 'has_archive', '' );
 		$site_url    = site_url( '/' . $has_archive );
 
@@ -386,51 +111,12 @@ class Custom_Bulk_Quick_Edit_Settings {
 			'section' => 'post_type',
 			'title' => esc_html__( 'Archive Page URL', 'custom-bulk-quick-edit' ),
 			'desc' => sprintf( $desc, $site_url ),
-			'std' => 'testimonials-archive',
-			'validate' => 'sanitize_title',
-			'widget' => 0,
-		);
-
-		$desc = esc_html__( 'URL slug-name for testimonial view pages. Shouldn\'t be the same as Archive Page URL.', 'custom-bulk-quick-edit' );
-
-		self::$settings['rewrite_slug'] = array(
-			'section' => 'post_type',
-			'title' => esc_html__( 'Testimonial Page URL', 'custom-bulk-quick-edit' ),
-			'desc' => $desc,
-			'std' => 'testimonial',
+			'std' => 'asdfs-archive',
 			'validate' => 'sanitize_title',
 			'widget' => 0,
 		);
 
 		// Reset
-		self::$settings['reset_expand_begin'] = array(
-			'section' => 'reset',
-			'desc' => esc_html__( 'Compatiblity Options', 'custom-bulk-quick-edit' ),
-			'type' => 'expand_begin',
-		);
-
-		self::$settings['remove_hentry'] = array(
-			'section' => 'reset',
-			'title' => esc_html__( 'Remove `.hentry` CSS?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Pre 2.6.4. Some themes use class `.hentry` in a manner that breaks Custom Bulk/Quick Edits CSS', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-			'backwards' => array(
-				'version' => '2.6.4',
-				'std' => 1,
-			),
-		);
-
-		self::$settings['use_quote_tag'] = array(
-			'section' => 'reset',
-			'title' => esc_html__( 'Use `&lt;q&gt;` tag?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Pre 2.11.0. Not HTML5 compliant', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-			'backwards' => array(
-				'version' => '2.11.0',
-				'std' => 1,
-			),
-		);
-
 		self::$settings['use_cpt_taxonomy'] = array(
 			'section' => 'reset',
 			'title' => esc_html__( 'Don\'t Use Default Taxonomies?', 'custom-bulk-quick-edit' ),
@@ -480,12 +166,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 			'widget' => 0,
 		);
 
-		self::$settings['reset_expand_end'] = array(
-			'section' => 'reset',
-			'type' => 'expand_end',
-		);
-
-		self::$settings = apply_filters( 'testimonials_widget_settings', self::$settings );
+		self::$settings = apply_filters( 'custom_bulk_quick_edit_settings', self::$settings );
 
 		foreach ( self::$settings as $id => $parts ) {
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
@@ -532,7 +213,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 	public function admin_init() {
 		$version       = cbqe_get_option( 'version' );
 		self::$version = Custom_Bulk_Quick_Edit::VERSION;
-		self::$version = apply_filters( 'testimonials_widget_version', self::$version );
+		self::$version = apply_filters( 'custom_bulk_quick_edit_version', self::$version );
 
 		if ( $version != self::$version )
 			$this->initialize_settings();
@@ -542,7 +223,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public function admin_menu() {
-		$admin_page = add_submenu_page( 'edit.php?post_type=' . Custom_Bulk_Quick_Edit::ID, esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ), esc_html__( 'Settings', 'custom-bulk-quick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulk_Quick_Edit_Settings', 'display_page' ) );
+		$admin_page = add_options_page( esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ), esc_html__( 'Custom Bulk/Quick', 'custom-bulk-quick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulk_Quick_Edit_Settings', 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
 		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
@@ -580,8 +261,6 @@ class Custom_Bulk_Quick_Edit_Settings {
 		echo '<div class="wrap">
 			<div class="icon32" id="icon-options-general"></div>
 			<h2>' . esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ) . '</h2>';
-
-		echo '<div class="updated"><p>' . esc_html__( 'These Custom Bulk/Quick Edit Settings establish the default option values for shortcodes, theme functions, and widget instances. Widgets, once created no longer inherit these global settings. Therefore, you\'ll need to update each widget with the new settings. It might be easier to delete the widget and then recreate it.', 'custom-bulk-quick-edit' ) . '</p></div>';
 
 		echo '<form action="options.php" method="post">';
 
@@ -690,7 +369,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 			$field_class = ' ' . $class;
 
 		$choices      = array_map( 'esc_attr', $choices );
-		$desc         = esc_attr( $desc );
+		// desc isn't escaped because it's might contain allowed html
 		$field_class  = esc_attr( $field_class );
 		$id           = esc_attr( $id );
 		$options[$id] = esc_attr( $options[$id] );
@@ -917,7 +596,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 		$input['version']        = self::$version;
 		$input['donate_version'] = Custom_Bulk_Quick_Edit::VERSION;
-		$input                   = apply_filters( 'testimonials_widget_validate_settings', $input, $errors );
+		$input                   = apply_filters( 'custom_bulk_quick_edit_validate_settings', $input, $errors );
 
 		unset( $input['export'] );
 		unset( $input['import'] );

@@ -25,6 +25,6 @@
 	</rule>
 
 	<rule ref="WordPress">
-		<exclude name="WordPress.XSS.EscapeOutput" />
+		<xexclude name="WordPress.XSS.EscapeOutput" />
 	</rule>
 </ruleset>

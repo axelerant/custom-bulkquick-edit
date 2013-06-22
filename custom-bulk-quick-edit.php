@@ -55,11 +55,11 @@ class Custom_Bulk_Quick_Edit {
 
 
 	public function admin_init() {
-		self::$settings_link = '<a href="' . get_admin_url() . 'edit.php?post_type=' . self::ID . '&page=' . Custom_Bulk_Quick_Edit_Settings::ID . '">' . __( 'Settings', 'custom-bulk-quick-edit' ) . '</a>';
+		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulk_Quick_Edit_Settings::ID . '">' . __( 'Settings', 'custom-bulk-quick-edit' ) . '</a>';
 
 		$this->update();
-		add_action( 'manage_' . self::ID . '_posts_custom_column', array( &$this, 'manage_testimonialswidget_posts_custom_column' ), 10, 2 );
-		add_filter( 'manage_' . self::ID . '_posts_columns', array( &$this, 'manage_edit_testimonialswidget_columns' ) );
+		add_action( 'manage_' . self::ID . '_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
+		add_filter( 'manage_' . self::ID . '_posts_columns', array( &$this, 'manage_edit_columns' ) );
 		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
 	}
@@ -208,7 +208,7 @@ EOD;
 
 
 
-	public function manage_testimonialswidget_posts_custom_column( $column, $post_id ) {
+	public function manage_posts_custom_column( $column, $post_id ) {
 		$result = false;
 
 		switch ( $column ) {
@@ -253,14 +253,14 @@ EOD;
 			break;
 		}
 
-		$result = apply_filters( 'testimonials_widget_posts_custom_column', $result, $column, $post_id );
+		$result = apply_filters( 'custom_bulk_quick_edit_posts_custom_column', $result, $column, $post_id );
 
 		if ( $result )
 			echo $result;
 	}
 
 
-	public function manage_edit_testimonialswidget_columns( $columns ) {
+	public function manage_edit_columns( $columns ) {
 		// order of keys matches column ordering
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
@@ -285,14 +285,14 @@ EOD;
 			$columns[ self::$cpt_tags ]     = __( 'Tags', 'custom-bulk-quick-edit' );
 		}
 
-		$columns = apply_filters( 'testimonials_widget_columns', $columns );
+		$columns = apply_filters( 'custom_bulk_quick_edit_columns', $columns );
 
 		return $columns;
 	}
 
 
 	public static function get_defaults() {
-		return apply_filters( 'testimonials_widget_defaults', cbqe_get_options() );
+		return apply_filters( 'custom_bulk_quick_edit_defaults', cbqe_get_options() );
 	}
 
 
@@ -307,7 +307,7 @@ EOD;
 	}
 
 
-	public static function get_testimonials_html_css( $atts, $instance_number = null ) {
+	public static function get_html_css( $atts, $instance_number = null ) {
 		// display attributes
 		$height     = $atts['height'];
 		$max_height = $atts['max_height'];
@@ -341,13 +341,13 @@ EOF;
 EOF;
 		}
 
-		$css = apply_filters( 'testimonials_widget_testimonials_css', $css, $atts, $instance_number );
+		$css = apply_filters( 'custom_bulk_quick_edit_css', $css, $atts, $instance_number );
 
 		return $css;
 	}
 
 
-	public static function get_testimonials_html_js( $testimonials, $atts, $instance_number = null ) {
+	public static function get_html_js( $items, $atts, $instance_number = null ) {
 		// display attributes
 		$refresh_interval = $atts['refresh_interval'];
 
@@ -364,7 +364,7 @@ EOF;
 		if ( $height || $max_height || $min_height )
 			$enable_animation = 0;
 
-		if ( $refresh_interval && 1 < count( $testimonials ) ) {
+		if ( $refresh_interval && 1 < count( $items ) ) {
 			$javascript = <<<EOF
 <script type="text/javascript">
 if ( {$enable_animation} ) {
@@ -378,7 +378,7 @@ if ( {$enable_animation} ) {
 function nextTestimonial{$instance_number}() {
 	if ( ! jQuery('.{$id_base}').first().hasClass('hovered') ) {
 		var active = jQuery('.{$id_base} .active');
-		var next   = (jQuery('.{$id_base} .active').next().length > 0) ? jQuery('.{$id_base} .active').next() : jQuery('.{$id_base} .custom-bulk-quick-edit-testimonial:first-child');
+		var next   = (jQuery('.{$id_base} .active').next().length > 0) ? jQuery('.{$id_base} .active').next() : jQuery('.{$id_base} .custom-bulk-quick-edit:first-child');
 
 		active.fadeOut(1250, function(){
 			active.removeClass('active');
@@ -408,13 +408,13 @@ EOF;
 			$scripts[ $id_base ] = $javascript;
 		}
 
-		$scripts = apply_filters( 'testimonials_widget_testimonials_js', $scripts, $testimonials, $atts, $instance_number );
+		$scripts = apply_filters( 'custom_bulk_quick_edit_js', $scripts, $items, $atts, $instance_number );
 
 		return $scripts;
 	}
 
 
-	public static function get_testimonials_css() {
+	public static function get_css() {
 		if ( empty( self::$css_called ) ) {
 			foreach ( self::$css as $css )
 				echo $css;
@@ -424,7 +424,7 @@ EOF;
 	}
 
 
-	public static function get_testimonials_scripts() {
+	public static function get_scripts() {
 		if ( empty( self::$scripts_called ) ) {
 			foreach ( self::$scripts as $script )
 				echo $script;
