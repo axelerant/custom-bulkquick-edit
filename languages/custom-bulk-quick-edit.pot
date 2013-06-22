@@ -1,0 +1,227 @@
+# Copyright (C) 2013 Custom Bulk/Quick Edit
+# This file is distributed under the same license as the Custom Bulk/Quick Edit package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Bulk/Quick Edit 0.0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulk-quick-edit\n"
+"POT-Creation-Date: 2013-06-22 23:23:17+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: custom-bulk-quick-edit.php:58
+msgid "Settings"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:175
+msgid ""
+"If your Custom Bulk/Quick Edit display has gone to funky town, please <a "
+"href=\"%s\">read the FAQ</a> about possible CSS fixes."
+msgstr ""
+
+#: custom-bulk-quick-edit.php:184
+msgid ""
+"Please donate $2 towards keeping Custom Bulk/Quick Edit plugin supported and "
+"maintained %s"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:267
+msgid "Image"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:268
+msgid "Source"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:269
+msgid "Shortcodes"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:270
+msgid "Title"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:271
+msgid "Location"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:272
+msgid "Email"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:273
+msgid "Company"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:274
+msgid "URL"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:275
+msgid "Published by"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:276
+msgid "Date"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:281 custom-bulk-quick-edit.php:284
+msgid "Category"
+msgstr ""
+
+#: custom-bulk-quick-edit.php:282 custom-bulk-quick-edit.php:285
+msgid "Tags"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:64
+msgid "General"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:65
+msgid "Post Type"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:66
+msgid "Compatibility & Reset"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:67
+msgid "About Custom Bulk/Quick Edit"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:81
+msgid "Hide built-in quotes?"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:82
+msgid "Remove open and close quote span tags surrounding asdf content"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:87
+msgid "Hide \"Testimonials Not Found\"?"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:92
+msgid "Enable Paging?"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:93
+msgid "For `[asdfswidget_list]`"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:96
+msgid "Disable"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:97
+msgid "Enable"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:98
+msgid "Before asdfs"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:99
+msgid "After asdfs"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:106
+msgid "URL slug-name for <a href=\"%1s\">asdfs archive</a> page."
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:112
+msgid "Archive Page URL"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:122
+msgid "Don't Use Default Taxonomies?"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:124
+msgid ""
+"If checked, use Custom Bulk/Quick Edit's own category and tag taxonomies "
+"instead"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:135
+msgid "Export Settings"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:137
+msgid ""
+"These are your current settings in a serialized format. Copy the contents to "
+"make a backup of your settings."
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:145
+msgid "Import Settings"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:147
+msgid ""
+"Paste new serialized settings here to overwrite your current configuration."
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:153
+msgid "Remove Plugin Data on Deletion?"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:156
+msgid ""
+"Delete all Custom Bulk/Quick Edit data and options from database on plugin "
+"deletion"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:162
+msgid "Reset to Defaults?"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:165
+msgid "Check this box to reset options to their defaults"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:226
+#: lib/class-custom-bulk-quick-edit-settings.php:263
+msgid "Custom Bulk/Quick Edit Settings"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:226
+msgid "Custom Bulk/Quick"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:280
+msgid "Save Changes"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:289
+msgid "Copyright &copy;%1$s %2$s."
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:649
+msgid "Required"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Custom Bulk/Quick Edit"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/custom-bulk-quick-edit/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Custom Bulk/Quick Edit plugin allows you to add custom fields to the edit "
+"screen bulk and quick edit panels."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Michael Cannon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://aihr.us/about-aihrus/michael-cannon-resume/"
+msgstr ""
