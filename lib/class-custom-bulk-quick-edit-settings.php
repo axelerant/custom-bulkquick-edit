@@ -22,7 +22,7 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 class Custom_Bulk_Quick_Edit_Settings {
-	const ID = 'testimonialswidget_settings';
+	const ID = 'custom-bulk-quick-edit-settings';
 
 	public static $default  = array(
 		'backwards' => array(
@@ -379,7 +379,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 		);
 
 		$desc        = esc_html__( 'URL slug-name for <a href="%1s">testimonials archive</a> page.', 'custom-bulk-quick-edit' );
-		$has_archive = tw_get_option( 'has_archive', '' );
+		$has_archive = cbqe_get_option( 'has_archive', '' );
 		$site_url    = site_url( '/' . $has_archive );
 
 		self::$settings['has_archive'] = array(
@@ -499,7 +499,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 		$do_backwards = false;
 		if ( 'backwards' == $mode ) {
-			$old_version = tw_get_option( 'version' );
+			$old_version = cbqe_get_option( 'version' );
 			if ( ! empty( $old_version ) )
 				$do_backwards = true;
 		}
@@ -530,7 +530,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public function admin_init() {
-		$version       = tw_get_option( 'version' );
+		$version       = cbqe_get_option( 'version' );
 		self::$version = Custom_Bulk_Quick_Edit::VERSION;
 		self::$version = apply_filters( 'testimonials_widget_version', self::$version );
 
@@ -542,7 +542,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public function admin_menu() {
-		$admin_page = add_submenu_page( 'edit.php?post_type=' . Custom_Bulk_Quick_Edit::PT, esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ), esc_html__( 'Settings', 'custom-bulk-quick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulk_Quick_Edit_Settings', 'display_page' ) );
+		$admin_page = add_submenu_page( 'edit.php?post_type=' . Custom_Bulk_Quick_Edit::ID, esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ), esc_html__( 'Settings', 'custom-bulk-quick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulk_Quick_Edit_Settings', 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
 		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
@@ -604,9 +604,6 @@ class Custom_Bulk_Quick_Edit_Settings {
 		';
 
 		echo '
-			<p>When ready, <a href="'.get_admin_url().'edit.php?post_type=custom-bulk-quick-edit">view</a>
-			or <a href="'.get_admin_url().'post-new.php?post_type=custom-bulk-quick-edit">add</a> testimonials.</p>
-
 			<p>If you like this plugin, please <a href="http://aihr.us/about-aihrus/donate/" title="Donate for Good Karma"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="Donate for Good Karma" /></a> or <a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/" title="purchase Custom Bulk/Quick Edit Premium">purchase Custom Bulk/Quick Edit Premium</a> to help fund further development and <a href="http://wordpress.org/support/plugin/custom-bulk-quick-edit" title="Support forums">support</a>.</p>
 		';
 
@@ -802,7 +799,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 		$defaults                 = self::get_defaults( 'backwards' );
 		$current                  = get_option( self::ID );
 		$current                  = wp_parse_args( $current, $defaults );
-		$current['admin_notices'] = tw_get_option( 'version', self::$version );
+		$current['admin_notices'] = cbqe_get_option( 'version', self::$version );
 		$current['version']       = self::$version;
 
 		update_option( self::ID, $current );
@@ -913,8 +910,8 @@ class Custom_Bulk_Quick_Edit_Settings {
 			$input['rewrite_slug'] = $defaults['rewrite_slug'];
 
 		// did URL slugs change?
-		$has_archive  = tw_get_option( 'has_archive' );
-		$rewrite_slug = tw_get_option( 'rewrite_slug' );
+		$has_archive  = cbqe_get_option( 'has_archive' );
+		$rewrite_slug = cbqe_get_option( 'rewrite_slug' );
 		if ( $has_archive != $input['has_archive'] || $rewrite_slug != $input['rewrite_slug'] )
 			flush_rewrite_rules();
 
@@ -1056,7 +1053,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 }
 
 
-function tw_get_options() {
+function cbqe_get_options() {
 	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID );
 
 	if ( false === $options ) {
@@ -1068,7 +1065,7 @@ function tw_get_options() {
 }
 
 
-function tw_get_option( $option, $default = null ) {
+function cbqe_get_option( $option, $default = null ) {
 	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID, null );
 
 	if ( isset( $options[$option] ) )
@@ -1078,7 +1075,7 @@ function tw_get_option( $option, $default = null ) {
 }
 
 
-function tw_set_option( $option, $value = null ) {
+function cbqe_set_option( $option, $value = null ) {
 	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID );
 
 	if ( ! is_array( $options ) )

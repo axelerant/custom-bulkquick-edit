@@ -4,8 +4,7 @@
 		Custom phpcs rules to check for Aihrus' WordPress projects
 	</description>
 
-	<exclude-pattern>lib/class-redrokk-metabox-class.php</exclude-pattern>
-	<exclude-pattern>lib/Akismet.class.php</exclude-pattern>
+	<exclude-pattern>zzz/video-quick-edit.php</exclude-pattern>
 
 	<rule ref="Generic">
 		<exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />

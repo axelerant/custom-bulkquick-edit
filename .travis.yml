@@ -32,7 +32,7 @@ script:
     - find . -name '*.php' -exec php -l {} \;
     - phpcs -s -n --standard=${DIR_CI}/phpcs.travis.ruleset.xml .
     - phpcpd .
-    - phpmd . --exclude class-redrokk-metabox-class.php text ${DIR_CI}/phpmd.ruleset.xml
+    - phpmd . --exclude class-redrokk-metabox-class.php,video-quick-edit.php text ${DIR_CI}/phpmd.ruleset.xml
 #    - phpunit
 
 notifications:
