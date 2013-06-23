@@ -368,8 +368,8 @@ class Custom_Bulk_Quick_Edit_Settings {
 		if ( ! empty( $class ) )
 			$field_class = ' ' . $class;
 
-		$choices      = array_map( 'esc_attr', $choices );
 		// desc isn't escaped because it's might contain allowed html
+		$choices      = array_map( 'esc_attr', $choices );
 		$field_class  = esc_attr( $field_class );
 		$id           = esc_attr( $id );
 		$options[$id] = esc_attr( $options[$id] );

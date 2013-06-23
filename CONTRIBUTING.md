@@ -1,7 +1,7 @@
 Contribute To Custom Bulk/Quick Edit
 ====================================
 
-Community made patches, localisations, bug reports and contributions are very welcome and help make Custom Bulk/Quick Edit the #1 bulk/quick edit plugin for WordPress.
+Community made patches, localisation, bug reports and contributions are very welcome and help make Custom Bulk/Quick Edit the #1 bulk/quick edit plugin for WordPress.
 
 When contributing please ensure you follow the guidelines below so that we can keep on top of things.
 
