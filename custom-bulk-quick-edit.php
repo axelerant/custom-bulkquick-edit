@@ -23,22 +23,24 @@
  */
 
 
-require_once 'lib/class-custom-bulk-quick-edit-settings.php';
-
-
 class Custom_Bulk_Quick_Edit {
 	const ID          = 'custom-bulk-quick-edit';
 	const PLUGIN_FILE = 'custom-bulk-quick-edit/custom-bulk-quick-edit.php';
 	const VERSION     = '0.0.1';
 
-	private static $base = null;
+	private static $base              = null;
+	private static $post_types_ignore = array(
+		'attachment',
+		'page',
+	);
+	private static $print_nonce       = true;
 
-	public static $cpt_category    = '';
-	public static $cpt_tags        = '';
 	public static $css             = array();
 	public static $css_called      = false;
 	public static $donate_button   = '';
 	public static $instance_number = 0;
+	public static $post_types      = array();
+	public static $post_types_keys = array();
 	public static $scripts         = array();
 	public static $scripts_called  = false;
 	public static $settings_link   = '';
@@ -59,15 +61,18 @@ class Custom_Bulk_Quick_Edit {
 
 		$this->update();
 		add_action( 'manage_' . self::ID . '_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
+		add_action( 'manage_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
+		add_action( 'quick_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
+		add_action( 'save_post', array( &$this, 'save_post' ), 25 );
 		add_filter( 'manage_' . self::ID . '_posts_columns', array( &$this, 'manage_edit_columns' ) );
+		add_filter( 'manage_post_posts_columns', array( &$this, 'manage_edit_columns' ) );
 		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
+		// self::styles();
 	}
 
 
 	public function init() {
-		self::$cpt_category  = self::ID . '-category';
-		self::$cpt_tags      = self::ID . '-post_tag';
 		self::$donate_button = <<<EOD
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -78,7 +83,6 @@ class Custom_Bulk_Quick_Edit {
 EOD;
 
 		self::$base = plugin_basename( __FILE__ );
-		self::styles();
 	}
 
 
@@ -206,12 +210,15 @@ EOD;
 	}
 
 
-
-
 	public function manage_posts_custom_column( $column, $post_id ) {
 		$result = false;
 
 		switch ( $column ) {
+		case 'post_excerpt':
+			$post   = get_post( $post_id );
+			$result = $post->post_excerpt;
+			break;
+
 		case 'custom-bulk-quick-edit-company':
 		case 'custom-bulk-quick-edit-location':
 		case 'custom-bulk-quick-edit-title':
@@ -238,19 +245,6 @@ EOD;
 				$result = false;
 			}
 			break;
-
-		case self::$cpt_category:
-		case self::$cpt_tags:
-			$terms  = get_the_terms( $post_id, $column );
-			$result = '';
-			if ( ! empty( $terms ) ) {
-				$out = array();
-				foreach ( $terms as $term )
-					$out[] = '<a href="' . admin_url( 'edit-tags.php?action=edit&taxonomy=' . $column . '&tag_ID=' . $term->term_id . '&post_type=' . self::ID ) . '">' . $term->name . '</a>';
-
-				$result = join( ', ', $out );
-			}
-			break;
 		}
 
 		$result = apply_filters( 'custom_bulk_quick_edit_posts_custom_column', $result, $column, $post_id );
@@ -262,28 +256,7 @@ EOD;
 
 	public function manage_edit_columns( $columns ) {
 		// order of keys matches column ordering
-		$columns = array(
-			'cb' => '<input type="checkbox" />',
-			'thumbnail' => __( 'Image', 'custom-bulk-quick-edit' ),
-			'title' => __( 'Source', 'custom-bulk-quick-edit' ),
-			'shortcode' => __( 'Shortcodes', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-title' => __( 'Title', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-location' => __( 'Location', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-email' => __( 'Email', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-company' => __( 'Company', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-url' => __( 'URL', 'custom-bulk-quick-edit' ),
-			'author' => __( 'Published by', 'custom-bulk-quick-edit' ),
-			'date' => __( 'Date', 'custom-bulk-quick-edit' ),
-		);
-
-		$use_cpt_taxonomy = cbqe_get_option( 'use_cpt_taxonomy', false );
-		if ( ! $use_cpt_taxonomy ) {
-			$columns[ 'categories' ] = __( 'Category', 'custom-bulk-quick-edit' );
-			$columns[ 'tags' ]       = __( 'Tags', 'custom-bulk-quick-edit' );
-		} else {
-			$columns[ self::$cpt_category ] = __( 'Category', 'custom-bulk-quick-edit' );
-			$columns[ self::$cpt_tags ]     = __( 'Tags', 'custom-bulk-quick-edit' );
-		}
+		$columns['post_excerpt'] = __( 'Excerpt', 'custom-bulk-quick-edit' );
 
 		$columns = apply_filters( 'custom_bulk_quick_edit_columns', $columns );
 
@@ -434,13 +407,102 @@ EOF;
 	}
 
 
+	public static function get_post_types() {
+		if ( ! empty( self::$post_types ) )
+			return self::$post_types;
+
+		$args = array(
+			'public' => true,
+			'_builtin' => true, // no custom post types
+		);
+
+		$post_types = get_post_types( $args, 'objects' );
+		foreach ( $post_types as $post_type ) {
+			if ( in_array( $post_type->name, self::$post_types_ignore ) )
+				continue;
+
+			self::$post_types[ $post_type->name ] = $post_type->label;
+			self::$post_types_keys[]              = $post_type->name;
+		}
+
+		self::$post_types = apply_filters( 'custom_bulk_quick_edit_post_types', self::$post_types );
+
+		return self::$post_types;
+	}
+
+
+	public function quick_edit_custom_box( $column_name, $post_type ) {
+		if ( ! in_array( $post_type, self::$post_types_keys ) )
+			return;
+
+		$key    = $post_type . '_enable_' . $column_name;
+		$enable = cbqe_get_option( $key );
+		if ( ! $enable )
+			return;
+
+		if ( self::$print_nonce ) {
+			self::$print_nonce = false;
+			wp_nonce_field( plugin_basename( __FILE__ ), self::ID );
+		}
+
+		// TODO dynamically generate this
+?>
+	<fieldset class="inline-edit-col-right inline-edit-video">
+	  <div class="inline-edit-col inline-edit-<?php echo $column_name ?>">
+		<label class="inline-edit-group">
+			<span class="title"><?php echo $column_name ?></span>
+			<textarea cols="22" rows="1" name="post_excerpt" autocomplete="off"></textarea>
+		</label>
+	  </div>
+	</fieldset>
+<?php
+	}
+
+
+	public function save_post( $post_id ) {
+		$post_type = get_post_type( $post_id );
+
+		if ( ! in_array( $post_type, self::$post_types_keys ) )
+			return;
+
+		if ( ! current_user_can( 'edit_post', $post_id ) )
+			return;
+
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+			return;
+
+		if ( 'revision' == $post_type )
+			return;
+
+		if ( ! wp_verify_nonce( $_POST[ self::ID ], plugin_basename( __FILE__ ) ) )
+			return;
+
+		remove_action( 'save_post', array( &$this, 'save_post' ), 25 );
+
+		if ( ! empty( $_POST['post_excerpt'] ) ) {
+			$data = array(
+				'ID' => $post_id,
+				'post_excerpt' => wp_kses_post( $_POST['post_excerpt'] ),
+			);
+			print_r( $data ); echo "\n<br />"; echo '' . __LINE__ . ':' . basename( __FILE__ )  . "\n<br />";
+			wp_update_post( $data );
+			// update_post_meta( $post_id, 'post_excerpt', $post_excerpt );
+		}
+	}
+
+
 }
 
 
-include_once ABSPATH . 'wp-admin/includes/plugin.php';
-if ( is_plugin_active( Custom_Bulk_Quick_Edit::PLUGIN_FILE ) ) {
-	$Custom_Bulk_Quick_Edit          = new Custom_Bulk_Quick_Edit();
-	$Custom_Bulk_Quick_Edit_Settings = new Custom_Bulk_Quick_Edit_Settings();
+add_action( 'plugins_loaded', 'custom_bulk_quick_edit_init', 199 );
+function custom_bulk_quick_edit_init() {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	if ( is_plugin_active( Custom_Bulk_Quick_Edit::PLUGIN_FILE ) ) {
+		require_once 'lib/class-custom-bulk-quick-edit-settings.php';
+
+		$Custom_Bulk_Quick_Edit          = new Custom_Bulk_Quick_Edit();
+		$Custom_Bulk_Quick_Edit_Settings = new Custom_Bulk_Quick_Edit_Settings();
+	}
 }
 
 

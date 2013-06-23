@@ -24,6 +24,8 @@
 class Custom_Bulk_Quick_Edit_Settings {
 	const ID = 'custom-bulk-quick-edit-settings';
 
+	private static $post_types = array();
+
 	public static $default  = array(
 		'backwards' => array(
 			'version' => '', // below this version number, use std
@@ -61,10 +63,14 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public static function sections() {
-		self::$sections['general']   = esc_html__( 'General', 'custom-bulk-quick-edit' );
-		self::$sections['post_type'] = esc_html__( 'Post Type', 'custom-bulk-quick-edit' );
-		self::$sections['reset']     = esc_html__( 'Compatibility & Reset', 'custom-bulk-quick-edit' );
-		self::$sections['about']     = esc_html__( 'About Custom Bulk/Quick Edit', 'custom-bulk-quick-edit' );
+		self::$sections['general'] = esc_html__( 'General', 'custom-bulk-quick-edit' );
+		$post_types                = Custom_Bulk_Quick_Edit::get_post_types();
+		foreach ( $post_types as $post_type => $label ) {
+			self::$sections[ $post_type ] = $label;
+		}
+
+		self::$sections['reset'] = esc_html__( 'Compatibility & Reset', 'custom-bulk-quick-edit' );
+		self::$sections['about'] = esc_html__( 'About Custom Bulk/Quick Edit', 'custom-bulk-quick-edit' );
 
 		self::$sections = apply_filters( 'custom_bulk_quick_edit_sections', self::$sections );
 	}
@@ -77,54 +83,20 @@ class Custom_Bulk_Quick_Edit_Settings {
 	 */
 	public static function settings() {
 		// General
-		self::$settings['disable_quotes'] = array(
-			'title' => esc_html__( 'Hide built-in quotes?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Remove open and close quote span tags surrounding asdf content', 'custom-bulk-quick-edit' ),
+		self::$settings['general'] = array(
+			'desc' => esc_html__( 'TBD' ),
+			'type' => 'heading',
+		);
+
+		// post type processing
+		self::$settings['post_enable_post_excerpt'] = array(
+			'section' => 'post',
+			'title' => esc_html__( 'Enable Excerpt?', 'custom-bulk-quick-edit' ),
 			'type' => 'checkbox',
 		);
 
-		self::$settings['hide_not_found'] = array(
-			'title' => esc_html__( 'Hide "Testimonials Not Found"?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['paging'] = array(
-			'title' => esc_html__( 'Enable Paging?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'For `[asdfswidget_list]`', 'custom-bulk-quick-edit' ),
-			'type' => 'select',
-			'choices' => array(
-				'' => esc_html__( 'Disable', 'custom-bulk-quick-edit' ),
-				1 => esc_html__( 'Enable', 'custom-bulk-quick-edit' ),
-				'before' => esc_html__( 'Before asdfs', 'custom-bulk-quick-edit' ),
-				'after' => esc_html__( 'After asdfs', 'custom-bulk-quick-edit' ),
-			),
-			'std' => 1,
-			'widget' => 0,
-		);
-
-		// Post Type
-		$desc        = __( 'URL slug-name for <a href="%1s">asdfs archive</a> page.', 'custom-bulk-quick-edit' );
-		$has_archive = cbqe_get_option( 'has_archive', '' );
-		$site_url    = site_url( '/' . $has_archive );
-
-		self::$settings['has_archive'] = array(
-			'section' => 'post_type',
-			'title' => esc_html__( 'Archive Page URL', 'custom-bulk-quick-edit' ),
-			'desc' => sprintf( $desc, $site_url ),
-			'std' => 'asdfs-archive',
-			'validate' => 'sanitize_title',
-			'widget' => 0,
-		);
 
 		// Reset
-		self::$settings['use_cpt_taxonomy'] = array(
-			'section' => 'reset',
-			'title' => esc_html__( 'Don\'t Use Default Taxonomies?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-			'desc' => esc_html__( 'If checked, use Custom Bulk/Quick Edit\'s own category and tag taxonomies instead', 'custom-bulk-quick-edit' ),
-			'widget' => 0,
-		);
-
 		$options = get_option( self::ID );
 		if ( ! empty( $options ) ) {
 			$serialized_options = serialize( $options );
@@ -223,7 +195,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public function admin_menu() {
-		$admin_page = add_options_page( esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ), esc_html__( 'Custom Bulk/Quick', 'custom-bulk-quick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulk_Quick_Edit_Settings', 'display_page' ) );
+		$admin_page = add_options_page( '', esc_html__( 'Custom Bulk/Quick', 'custom-bulk-quick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulk_Quick_Edit_Settings', 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
 		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
@@ -745,7 +717,7 @@ function cbqe_get_options() {
 
 
 function cbqe_get_option( $option, $default = null ) {
-	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID, null );
+	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID );
 
 	if ( isset( $options[$option] ) )
 		return $options[$option];

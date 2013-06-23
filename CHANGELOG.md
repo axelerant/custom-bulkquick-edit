@@ -1,4 +1,8 @@
 ### TBD
+* Move plugin load to plugins_loaded
+* Test grabbing post types
+* Remove class from settings page link
+*
 * Initialize localization
 * Add media
 *
