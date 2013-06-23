@@ -3,13 +3,12 @@
 ## Changelog
 
 ### TBD
+* Get Quick Edit working
 * Move plugin load to plugins_loaded
 * Test grabbing post types
 * Remove class from settings page link
-*
 * Initialize localization
 * Add media
-*
 * PHP 5.3 WordPress master testing
 * Enable XSS EscapeOutput checking
 * Correct settings page URL
