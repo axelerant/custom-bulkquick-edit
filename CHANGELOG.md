@@ -1,3 +1,7 @@
+# Custom Bulk/Quick Edit plugin for WordPress
+
+## Changelog
+
 ### TBD
 * Move plugin load to plugins_loaded
 * Test grabbing post types

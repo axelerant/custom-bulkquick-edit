@@ -29,11 +29,12 @@ class Custom_Bulk_Quick_Edit {
 	const VERSION     = '0.0.1';
 
 	private static $base              = null;
+	private static $field_key         = 'cbqe_';
 	private static $post_types_ignore = array(
 		'attachment',
 		'page',
 	);
-	private static $print_nonce       = true;
+	private static $no_instance       = true;
 
 	public static $css             = array();
 	public static $css_called      = false;
@@ -41,7 +42,8 @@ class Custom_Bulk_Quick_Edit {
 	public static $instance_number = 0;
 	public static $post_types      = array();
 	public static $post_types_keys = array();
-	public static $scripts         = array();
+	public static $scripts_bulk    = array();
+	public static $scripts_quick   = array();
 	public static $scripts_called  = false;
 	public static $settings_link   = '';
 
@@ -60,15 +62,19 @@ class Custom_Bulk_Quick_Edit {
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulk_Quick_Edit_Settings::ID . '">' . __( 'Settings', 'custom-bulk-quick-edit' ) . '</a>';
 
 		$this->update();
+		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
+		add_action( 'bulk_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
 		add_action( 'manage_' . self::ID . '_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
 		add_action( 'manage_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
 		add_action( 'quick_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
 		add_action( 'save_post', array( &$this, 'save_post' ), 25 );
+		add_action( 'wp_ajax_save_post_bulk_edit', array( &$this, 'save_post_bulk_edit' ) );
 		add_filter( 'manage_' . self::ID . '_posts_columns', array( &$this, 'manage_edit_columns' ) );
 		add_filter( 'manage_post_posts_columns', array( &$this, 'manage_edit_columns' ) );
 		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
-		// self::styles();
+		self::styles();
+		self::scripts();
 	}
 
 
@@ -94,14 +100,8 @@ EOD;
 	}
 
 
-	public static function get_instance() {
-		return self::$instance_number;
-	}
 
 
-	public static function add_instance() {
-		self::$instance_number++;
-	}
 
 
 	/**
@@ -165,7 +165,7 @@ EOD;
 
 		$links = array(
 			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
-			'<a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
+			// '<a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
 		);
 
 		$input = array_merge( $input, $links );
@@ -219,31 +219,8 @@ EOD;
 			$result = $post->post_excerpt;
 			break;
 
-		case 'custom-bulk-quick-edit-company':
-		case 'custom-bulk-quick-edit-location':
 		case 'custom-bulk-quick-edit-title':
 			$result = get_post_meta( $post_id, $column, true );
-			break;
-
-		case 'custom-bulk-quick-edit-email':
-		case 'custom-bulk-quick-edit-url':
-			$url = get_post_meta( $post_id, $column, true );
-			if ( ! empty( $url ) && ! is_email( $url ) && 0 === preg_match( '#https?://#', $url ) )
-				$url = 'http://' . $url;
-
-			$result = make_clickable( $url );
-			break;
-
-		case 'thumbnail':
-			$email = get_post_meta( $post_id, 'custom-bulk-quick-edit-email', true );
-
-			if ( has_post_thumbnail( $post_id ) ) {
-				$result = get_the_post_thumbnail( $post_id, 'thumbnail' );
-			} elseif ( is_email( $email ) ) {
-				$result = get_avatar( $email );
-			} else {
-				$result = false;
-			}
 			break;
 		}
 
@@ -264,11 +241,6 @@ EOD;
 	}
 
 
-	public static function get_defaults() {
-		return apply_filters( 'custom_bulk_quick_edit_defaults', cbqe_get_options() );
-	}
-
-
 	public static function scripts() {
 		wp_enqueue_script( 'jquery' );
 	}
@@ -280,129 +252,101 @@ EOD;
 	}
 
 
-	public static function get_html_css( $atts, $instance_number = null ) {
-		// display attributes
-		$height     = $atts['height'];
-		$max_height = $atts['max_height'];
-		$min_height = $atts['min_height'];
-
-		if ( $height ) {
-			$max_height = $height;
-			$min_height = $height;
-		}
-
-		$css     = array();
-		$id_base = self::ID . $instance_number;
-
-		if ( $min_height ) {
-			$css[] = <<<EOF
-<style>
-.$id_base {
-min-height: {$min_height}px;
-}
-</style>
-EOF;
-		}
-
-		if ( $max_height ) {
-			$css[] = <<<EOF
-<style>
-.$id_base {
-	max-height: {$max_height}px;
-}
-</style>
-EOF;
-		}
-
-		$css = apply_filters( 'custom_bulk_quick_edit_css', $css, $atts, $instance_number );
-
-		return $css;
-	}
-
-
-	public static function get_html_js( $items, $atts, $instance_number = null ) {
-		// display attributes
-		$refresh_interval = $atts['refresh_interval'];
-
-		$id_base    = self::ID . $instance_number;
-		$scripts    = array();
-		$tw_padding = 'tw_padding' . $instance_number;
-		$tw_wrapper = 'tw_wrapper' . $instance_number;
-
-		$height     = $atts['height'];
-		$max_height = $atts['max_height'];
-		$min_height = $atts['min_height'];
-
-		$enable_animation = 1;
-		if ( $height || $max_height || $min_height )
-			$enable_animation = 0;
-
-		if ( $refresh_interval && 1 < count( $items ) ) {
-			$javascript = <<<EOF
-<script type="text/javascript">
-if ( {$enable_animation} ) {
-	var {$tw_wrapper} = jQuery('.{$id_base}');
-	// tw_padding is the difference in height to take into account all styling options
-	var {$tw_padding} = {$tw_wrapper}.height() - jQuery('.{$id_base} .custom-bulk-quick-edit').height();
-	// fixes first animation by defining height to adjust to
-	{$tw_wrapper}.height( {$tw_wrapper}.height() );
-}
-
-function nextTestimonial{$instance_number}() {
-	if ( ! jQuery('.{$id_base}').first().hasClass('hovered') ) {
-		var active = jQuery('.{$id_base} .active');
-		var next   = (jQuery('.{$id_base} .active').next().length > 0) ? jQuery('.{$id_base} .active').next() : jQuery('.{$id_base} .custom-bulk-quick-edit:first-child');
-
-		active.fadeOut(1250, function(){
-			active.removeClass('active');
-			next.fadeIn(500);
-			next.removeClass('display-none');
-			next.addClass('active');
-
-			if ( {$enable_animation} ) {
-				// added padding
-				{$tw_wrapper}.animate({ height: next.height() + {$tw_padding} });
-			}
-		});
-	}
-}
-
-jQuery(document).ready(function(){
-	jQuery('.{$id_base}').hover(function() {
-		jQuery(this).addClass('hovered')
-	}, function() {
-		jQuery(this).removeClass('hovered')
-	});
-	nextTestimonial{$instance_number}interval = setInterval('nextTestimonial{$instance_number}()', {$refresh_interval} * 1000);
-});
-</script>
-EOF;
-
-			$scripts[ $id_base ] = $javascript;
-		}
-
-		$scripts = apply_filters( 'custom_bulk_quick_edit_js', $scripts, $items, $atts, $instance_number );
-
-		return $scripts;
-	}
-
-
-	public static function get_css() {
-		if ( empty( self::$css_called ) ) {
-			foreach ( self::$css as $css )
-				echo $css;
-
-			self::$css_called = true;
-		}
-	}
-
-
 	public static function get_scripts() {
 		if ( empty( self::$scripts_called ) ) {
-			foreach ( self::$scripts as $script )
-				echo $script;
+			echo '
+				<script type="text/javascript">
+jQuery(document).ready(function($) {
+	var wp_inline_edit = inlineEditPost.edit;
+	inlineEditPost.edit = function( id ) {
+		wp_inline_edit.apply( this, arguments );
+		var post_id = 0;
+		if ( typeof( id ) == "object" )
+			post_id = parseInt( this.getId( id ) );
+
+		if ( post_id > 0 ) {
+			// define the edit row
+			var edit_row = $( "#edit-" + post_id );
+			var post_row = $( "#post-" + post_id );
+			';
+
+			foreach ( self::$scripts_quick as $script )
+				echo $script . "\n";
+
+			echo '
+		}
+	};
+
+	$( "#bulk_edit" ).live( "click", function() {
+		var bulk_row = $( "#bulk-edit" );
+
+		var post_ids = new Array();
+		bulk_row.find( "#bulk-titles" ).children().each( function() {
+			post_ids.push( $( this ).attr( "id" ).replace( /^(ttle)/i, "" ) );
+		});
+
+		$.ajax({
+			url: ajaxurl,
+				type: "POST",
+				async: false,
+				cache: false,
+				data: {
+					action: "save_post_bulk_edit",
+					';
+
+					foreach ( self::$scripts_bulk as $script )
+						echo $script . "\n";
+
+					echo '
+				}
+			});
+	});
+})
+</script>
+			';
 
 			self::$scripts_called = true;
+		}
+	}
+
+
+	public function save_post_bulk_edit() {
+		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
+		error_log( print_r($post_ids, true) );
+		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
+			foreach ( $post_ids as $post_id ) {
+				self::save_post_items( $post_id );
+			}
+		}
+
+		die();
+	}
+
+	public function save_post_items( $post_id ) {
+		error_log( $post_id );
+		if ( ! preg_match( "#^\d+$#", $post_id ) )
+			return;
+
+		foreach ( $_POST as $field => $value ) {
+		error_log( $field );
+		error_log( $value );
+			if ( false === strpos( $field, self::$field_key ) )
+				continue;
+
+			if ( empty( $value ) && 0 != $value )
+				continue;
+
+			$field_name = str_replace( self::$field_key, '', $field );
+		error_log( $field_name );
+			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
+				update_post_meta( $post_id, $field_name, wp_kses_post( $value ) );
+			} else {
+				$data = array(
+					'ID' => $post_id,
+					$field_name => wp_kses_post( $value ),
+				);
+				wp_update_post( $data );
+			}
 		}
 	}
 
@@ -440,22 +384,27 @@ EOF;
 		if ( ! $enable )
 			return;
 
-		if ( self::$print_nonce ) {
-			self::$print_nonce = false;
+		if ( self::$no_instance ) {
+			self::$no_instance = false;
 			wp_nonce_field( plugin_basename( __FILE__ ), self::ID );
 		}
 
 		// TODO dynamically generate this
+		$field_name = self::$field_key . $column_name;
 ?>
 	<fieldset class="inline-edit-col-right inline-edit-video">
 	  <div class="inline-edit-col inline-edit-<?php echo $column_name ?>">
 		<label class="inline-edit-group">
 			<span class="title"><?php echo $column_name ?></span>
-			<textarea cols="22" rows="1" name="post_excerpt" autocomplete="off"></textarea>
+			<textarea cols="22" rows="1" name="<?php echo $field_name ?>" autocomplete="off"></textarea>
 		</label>
 	  </div>
 	</fieldset>
 <?php
+
+		self::$scripts_bulk[ $column_name ]  = $field_name .': bulk_row.find( \'textarea[name="' . $field_name . '"]\' ).val(),';
+		self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name . ' = $( \'.column-' . $column_name . '\', post_row ).html();';
+		self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).val( ' . $field_name . ' );';
 	}
 
 
@@ -478,18 +427,21 @@ EOF;
 			return;
 
 		remove_action( 'save_post', array( &$this, 'save_post' ), 25 );
-
-		if ( ! empty( $_POST['post_excerpt'] ) ) {
-			$data = array(
-				'ID' => $post_id,
-				'post_excerpt' => wp_kses_post( $_POST['post_excerpt'] ),
-			);
-			print_r( $data ); echo "\n<br />"; echo '' . __LINE__ . ':' . basename( __FILE__ )  . "\n<br />";
-			wp_update_post( $data );
-			// update_post_meta( $post_id, 'post_excerpt', $post_excerpt );
-		}
+		self::save_post_items( $post_id );
 	}
 
+	public function admin_footer() {
+		if ( self::$no_instance )
+			return;
+
+		if ( empty( $_GET['post_type'] ) ) {
+			global $post;
+			$_GET['post_type'] = ! empty( $post->post_type ) ? $post->post_type : false;
+		}
+
+		if ( in_array( $_GET['post_type'], self::$post_types_keys ) )
+			self::get_scripts();
+	}
 
 }
 
@@ -503,6 +455,7 @@ function custom_bulk_quick_edit_init() {
 		$Custom_Bulk_Quick_Edit          = new Custom_Bulk_Quick_Edit();
 		$Custom_Bulk_Quick_Edit_Settings = new Custom_Bulk_Quick_Edit_Settings();
 	}
+
 }
 
 
