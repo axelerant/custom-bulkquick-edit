@@ -165,8 +165,8 @@ EOD;
 
 		$links = array(
 			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
-			// '<a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
 		);
+		// '<a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
 
 		$input = array_merge( $input, $links );
 
@@ -309,6 +309,12 @@ jQuery(document).ready(function($) {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 * @SuppressWarnings(PHPMD.ExitExpression)
+	 */
 	public function save_post_bulk_edit() {
 		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
 		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
@@ -320,8 +326,14 @@ jQuery(document).ready(function($) {
 		die();
 	}
 
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
 	public function save_post_items( $post_id ) {
-		if ( ! preg_match( "#^\d+$#", $post_id ) )
+		if ( ! preg_match( '#^\d+$#', $post_id ) )
 			return;
 
 		foreach ( $_POST as $field => $value ) {
@@ -396,12 +408,17 @@ jQuery(document).ready(function($) {
 	</fieldset>
 <?php
 
-		self::$scripts_bulk[ $column_name ]  = $field_name .': bulk_row.find( \'textarea[name="' . $field_name . '"]\' ).val()';
+		self::$scripts_bulk[ $column_name ]        = $field_name .': bulk_row.find( \'textarea[name="' . $field_name . '"]\' ).val()';
 		self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name . ' = $( \'.column-' . $column_name . '\', post_row ).html();';
 		self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).val( ' . $field_name . ' );';
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
 	public function save_post( $post_id ) {
 		$post_type = get_post_type( $post_id );
 
@@ -424,6 +441,12 @@ jQuery(document).ready(function($) {
 		self::save_post_items( $post_id );
 	}
 
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
 	public function admin_footer() {
 		if ( self::$no_instance )
 			return;
@@ -437,10 +460,17 @@ jQuery(document).ready(function($) {
 			self::get_scripts();
 	}
 
+
 }
 
 
 add_action( 'plugins_loaded', 'custom_bulk_quick_edit_init', 199 );
+/**
+ *
+ *
+ * @SuppressWarnings(PHPMD.LongVariable)
+ * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+ */
 function custom_bulk_quick_edit_init() {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	if ( is_plugin_active( Custom_Bulk_Quick_Edit::PLUGIN_FILE ) ) {

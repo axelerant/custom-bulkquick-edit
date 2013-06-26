@@ -64,8 +64,8 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 	public static function sections() {
 		self::$sections['general'] = esc_html__( 'General', 'custom-bulk-quick-edit' );
-		$post_types                = Custom_Bulk_Quick_Edit::get_post_types();
-		foreach ( $post_types as $post_type => $label ) {
+		self::$post_types          = Custom_Bulk_Quick_Edit::get_post_types();
+		foreach ( self::$post_types as $post_type => $label ) {
 			self::$sections[ $post_type ] = $label;
 		}
 
@@ -330,11 +330,10 @@ class Custom_Bulk_Quick_Edit_Settings {
 			$options[$id] = $input;
 		}
 
-		if ( ! isset( $options[$id] ) && $type != 'checkbox' ) {
+		if ( ! isset( $options[$id] ) && $type != 'checkbox' )
 			$options[$id] = $std;
-		} elseif ( ! isset( $options[$id] ) ) {
+		elseif ( ! isset( $options[$id] ) )
 			$options[$id] = 0;
-		}
 
 		$field_class = '';
 		if ( ! empty( $class ) )
