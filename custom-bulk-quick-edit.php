@@ -8,6 +8,8 @@
  * Author URI: http://aihr.us/about-aihrus/michael-cannon-resume/
  * License: GPLv2 or later
  */
+
+
 /**
  * Copyright 2013 Michael Cannon (email: mc@aihr.us)
  * This program is free software; you can redistribute it and/or modify
@@ -21,8 +23,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
-
 class Custom_Bulk_Quick_Edit {
 	const ID          = 'custom-bulk-quick-edit';
 	const PLUGIN_FILE = 'custom-bulk-quick-edit/custom-bulk-quick-edit.php';
@@ -179,12 +179,12 @@ EOD;
 		$result = false;
 
 		switch ( $column ) {
-		case 'post_excerpt':
+			case 'post_excerpt':
 			$post   = get_post( $post_id );
 			$result = $post->post_excerpt;
 			break;
 
-		case 'custom-bulk-quick-edit-title':
+			case 'custom-bulk-quick-edit-title':
 			$result = get_post_meta( $post_id, $column, true );
 			break;
 		}
@@ -439,6 +439,8 @@ register_uninstall_hook( __FILE__, array( 'Custom_Bulk_Quick_Edit', 'uninstall' 
 
 
 add_action( 'plugins_loaded', 'custom_bulk_quick_edit_init', 199 );
+
+
 /**
  *
  *

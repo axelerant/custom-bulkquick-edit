@@ -501,6 +501,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 	 */
 	public static function validate_settings( $input, $options = null, $do_errors = false ) {
 		$errors = array();
+
 		if ( is_null( $options ) ) {
 			$options  = self::get_settings();
 			$defaults = self::get_defaults();
