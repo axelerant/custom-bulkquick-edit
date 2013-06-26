@@ -14,6 +14,7 @@
 		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine" />
 		<exclude name="Generic.Metrics.CyclomaticComplexity.MaxExceeded" />
 		<exclude name="Generic.NamingConventions.CamelCapsFunctionName.ScopeNotCamelCaps" />
+		<exclude name="Generic.PHP.CharacterBeforePHPOpeningTag.Found" />
 		<exclude name="Generic.PHP.UpperCaseConstant.Found" />
 		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
