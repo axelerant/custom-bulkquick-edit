@@ -64,7 +64,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 	public static function sections() {
 		// self::$sections['general'] = esc_html__( 'General', 'custom-bulk-quick-edit' );
-		self::$post_types          = Custom_Bulk_Quick_Edit::get_post_types();
+		self::$post_types = Custom_Bulk_Quick_Edit::get_post_types();
 		foreach ( self::$post_types as $post_type => $label ) {
 			self::$sections[ $post_type ] = $label;
 		}
@@ -80,6 +80,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 	 *
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
+ 	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 */
 	public static function settings() {
 		// General
@@ -500,7 +501,6 @@ class Custom_Bulk_Quick_Edit_Settings {
 	 */
 	public static function validate_settings( $input, $options = null, $do_errors = false ) {
 		$errors = array();
-
 		if ( is_null( $options ) ) {
 			$options  = self::get_settings();
 			$defaults = self::get_defaults();
