@@ -68,7 +68,7 @@ class Custom_Bulk_Quick_Edit {
 		add_action( 'manage_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
 		add_action( 'quick_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
 		add_action( 'save_post', array( &$this, 'save_post' ), 25 );
-		add_action( 'wp_ajax_save_post_bulk_edit', array( &$this, 'save_post_bulk_edit' ) );
+		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulk_Quick_Edit', 'save_post_bulk_edit' ) );
 		add_filter( 'manage_' . self::ID . '_posts_columns', array( &$this, 'manage_edit_columns' ) );
 		add_filter( 'manage_post_posts_columns', array( &$this, 'manage_edit_columns' ) );
 		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
@@ -270,8 +270,7 @@ jQuery(document).ready(function($) {
 			var post_row = $( "#post-" + post_id );
 			';
 
-			foreach ( self::$scripts_quick as $script )
-				echo $script . "\n";
+			echo implode( "\n", self::$scripts_quick );
 
 			echo '
 		}
@@ -287,21 +286,21 @@ jQuery(document).ready(function($) {
 
 		$.ajax({
 			url: ajaxurl,
-				type: "POST",
-				async: false,
-				cache: false,
-				data: {
-					action: "save_post_bulk_edit",
-					';
+			type: "POST",
+			async: false,
+			cache: false,
+			data: {
+				action: "save_post_bulk_edit",
+				post_ids: post_ids,
+			';
 
-					foreach ( self::$scripts_bulk as $script )
-						echo $script . "\n";
+			echo implode( ",\n", self::$scripts_bulk );
 
-					echo '
-				}
-			});
+			echo '
+			}
+		});
 	});
-})
+});
 </script>
 			';
 
@@ -312,7 +311,6 @@ jQuery(document).ready(function($) {
 
 	public function save_post_bulk_edit() {
 		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
-		error_log( print_r($post_ids, true) );
 		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
 			foreach ( $post_ids as $post_id ) {
 				self::save_post_items( $post_id );
@@ -323,13 +321,10 @@ jQuery(document).ready(function($) {
 	}
 
 	public function save_post_items( $post_id ) {
-		error_log( $post_id );
 		if ( ! preg_match( "#^\d+$#", $post_id ) )
 			return;
 
 		foreach ( $_POST as $field => $value ) {
-		error_log( $field );
-		error_log( $value );
 			if ( false === strpos( $field, self::$field_key ) )
 				continue;
 
@@ -337,7 +332,6 @@ jQuery(document).ready(function($) {
 				continue;
 
 			$field_name = str_replace( self::$field_key, '', $field );
-		error_log( $field_name );
 			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
 				update_post_meta( $post_id, $field_name, wp_kses_post( $value ) );
 			} else {
@@ -402,7 +396,7 @@ jQuery(document).ready(function($) {
 	</fieldset>
 <?php
 
-		self::$scripts_bulk[ $column_name ]  = $field_name .': bulk_row.find( \'textarea[name="' . $field_name . '"]\' ).val(),';
+		self::$scripts_bulk[ $column_name ]  = $field_name .': bulk_row.find( \'textarea[name="' . $field_name . '"]\' ).val()';
 		self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name . ' = $( \'.column-' . $column_name . '\', post_row ).html();';
 		self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).val( ' . $field_name . ' );';
 	}
