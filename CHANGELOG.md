@@ -3,7 +3,10 @@
 ## TBD
 * Add media
 * Bulk Edit working
+* Correct (de)activate and uninstall routines
 * Correct settings page URL
+* Disable General section for now
+* Dynamically adapt for post_excerpt
 * Enable XSS EscapeOutput checking
 * Initialize localization
 * Move plugin load to plugins_loaded

@@ -52,9 +52,6 @@ class Custom_Bulk_Quick_Edit {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		add_action( 'init', array( &$this, 'init' ) );
 		load_plugin_textdomain( self::ID, false, 'custom-bulk-quick-edit/languages' );
-		register_activation_hook( __FILE__, array( &$this, 'activation' ) );
-		register_deactivation_hook( __FILE__, array( &$this, 'deactivation' ) );
-		register_uninstall_hook( __FILE__, array( 'Custom_Bulk_Quick_Edit', 'uninstall' ) );
 	}
 
 
@@ -100,43 +97,15 @@ EOD;
 	}
 
 
-
-
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
 	public function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : false;
-		if ( $plugin )
-			check_admin_referer( "activate-plugin_{$plugin}" );
-
-		self::init();
-
-		flush_rewrite_rules();
 	}
 
 
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
 	public function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : false;
-		if ( $plugin )
-			check_admin_referer( "deactivate-plugin_{$plugin}" );
-
-		flush_rewrite_rules();
 	}
 
 
@@ -144,13 +113,9 @@ EOD;
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
-		if ( __FILE__ != WP_UNINSTALL_PLUGIN )
-			return;
-
-		check_admin_referer( 'bulk-plugins' );
-
 		global $wpdb;
 
+		require_once 'lib/class-custom-bulk-quick-edit-settings.php';
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( Custom_Bulk_Quick_Edit_Settings::ID );
@@ -233,7 +198,11 @@ EOD;
 
 	public function manage_edit_columns( $columns ) {
 		// order of keys matches column ordering
-		$columns['post_excerpt'] = __( 'Excerpt', 'custom-bulk-quick-edit' );
+		global $post;
+		$post_type        = $post->post_type;
+		$supports_excerpt = cbqe_get_option( $post_type . '_enable_post_excerpt' );
+		if ( $supports_excerpt )
+			$columns['post_excerpt'] = __( 'Excerpt', 'custom-bulk-quick-edit' );
 
 		$columns = apply_filters( 'custom_bulk_quick_edit_columns', $columns );
 
@@ -462,6 +431,11 @@ jQuery(document).ready(function($) {
 
 
 }
+
+
+register_activation_hook( __FILE__, array( 'Custom_Bulk_Quick_Edit', 'activation' ) );
+register_deactivation_hook( __FILE__, array( 'Custom_Bulk_Quick_Edit', 'deactivation' ) );
+register_uninstall_hook( __FILE__, array( 'Custom_Bulk_Quick_Edit', 'uninstall' ) );
 
 
 add_action( 'plugins_loaded', 'custom_bulk_quick_edit_init', 199 );

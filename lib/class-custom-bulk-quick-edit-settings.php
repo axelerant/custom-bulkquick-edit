@@ -63,7 +63,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public static function sections() {
-		self::$sections['general'] = esc_html__( 'General', 'custom-bulk-quick-edit' );
+		// self::$sections['general'] = esc_html__( 'General', 'custom-bulk-quick-edit' );
 		self::$post_types          = Custom_Bulk_Quick_Edit::get_post_types();
 		foreach ( self::$post_types as $post_type => $label ) {
 			self::$sections[ $post_type ] = $label;
@@ -88,13 +88,23 @@ class Custom_Bulk_Quick_Edit_Settings {
 			'type' => 'heading',
 		);
 
-		// post type processing
-		self::$settings['post_enable_post_excerpt'] = array(
-			'section' => 'post',
-			'title' => esc_html__( 'Enable Excerpt?', 'custom-bulk-quick-edit' ),
-			'type' => 'checkbox',
-		);
-
+		foreach ( self::$post_types as $key => $label ) {
+			$post_type        = 'post' == $key ? $key . 's' : $key;
+			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
+			if ( $supports_excerpt ) {
+				self::$settings[ $key . '_enable_post_excerpt' ] = array(
+					'section' => $key,
+					'title' => esc_html__( 'Enable Excerpt?', 'custom-bulk-quick-edit' ),
+					'type' => 'checkbox',
+				);
+			} else {
+				self::$settings[ $key . '_no_options' ] = array(
+					'section' => $key,
+					'desc' => esc_html__( 'No custom fields found', 'custom-bulk-quick-edit' ),
+					'type' => 'heading',
+				);
+			}
+		}
 
 		// Reset
 		$options = get_option( self::ID );
