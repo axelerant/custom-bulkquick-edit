@@ -403,7 +403,7 @@ jQuery(document).ready(function($) {
 		if ( 'revision' == $post_type )
 			return;
 
-		if ( ! wp_verify_nonce( $_POST[ self::ID ], plugin_basename( __FILE__ ) ) )
+		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], plugin_basename( __FILE__ ) ) )
 			return;
 
 		remove_action( 'save_post', array( &$this, 'save_post' ), 25 );
