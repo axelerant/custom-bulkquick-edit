@@ -1,8 +1,6 @@
-# Custom Bulk/Quick Edit plugin for WordPress
+# Changelog Custom Bulk/Quick Edit plugin for WordPress
 
-## Changelog
-
-### TBD
+## TBD
 * Get Quick Edit working
 * Move plugin load to plugins_loaded
 * Test grabbing post types
@@ -15,5 +13,5 @@
 * Rename filters and methods to fit plugin naming
 * Reduce setting options to core
 
-### 0.0.1
+## 0.0.1
 * Initial code release 

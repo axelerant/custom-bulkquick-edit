@@ -1,15 +1,12 @@
-Custom Bulk/Quick Edit API Documentation
-========================================
+# API Custom Bulk/Quick Edit
 
 The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulk-quick-edit/) comes with its own set of actions and filters, as described below.
 
-Actions
--------
+## Actions
 
 None at this time.
 
-Filters
--------
+## Filters
 
 * `custom_bulk_quick_edit_cache_get`
 	
@@ -67,8 +64,6 @@ Filters
 
 	Version tracking for settings. [example](https://gist.github.com/michael-cannon/5833774)
 
-
-Need More?
-==========
+## Need More?
 
 Further examples and more can be found by reading and searching the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546-Custom-Bulk-Quick-Edit) and [source code](https://github.com/michael-cannon/custom-bulk-quick-edit).
