@@ -30,11 +30,12 @@ class Custom_Bulk_Quick_Edit {
 
 	private static $base              = null;
 	private static $field_key         = 'cbqe_';
+	private static $fields_enabled    = array();
+	private static $no_instance       = true;
 	private static $post_types_ignore = array(
 		'attachment',
 		'page',
 	);
-	private static $no_instance       = true;
 
 	public static $css             = array();
 	public static $css_called      = false;
@@ -61,13 +62,9 @@ class Custom_Bulk_Quick_Edit {
 		$this->update();
 		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
 		add_action( 'bulk_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
-		add_action( 'manage_' . self::ID . '_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
-		add_action( 'manage_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
 		add_action( 'quick_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
 		add_action( 'save_post', array( &$this, 'save_post' ), 25 );
 		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulk_Quick_Edit', 'save_post_bulk_edit' ) );
-		add_filter( 'manage_' . self::ID . '_posts_columns', array( &$this, 'manage_edit_columns' ) );
-		add_filter( 'manage_post_posts_columns', array( &$this, 'manage_edit_columns' ) );
 		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
 		self::styles();
@@ -130,8 +127,8 @@ EOD;
 
 		$links = array(
 			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
+			'<a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
 		);
-		// '<a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
 
 		$input = array_merge( $input, $links );
 
@@ -166,7 +163,7 @@ EOD;
 			cbqe_set_option( 'admin_notices' );
 		}
 
-		// display donate on major/minor version release or if it's been a month
+		// display donate on major/minor version release
 		$donate_version = cbqe_get_option( 'donate_version', false );
 		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
 			add_action( 'admin_notices', array( $this, 'admin_notices_donate' ) );
@@ -175,16 +172,20 @@ EOD;
 	}
 
 
-	public function manage_posts_custom_column( $column, $post_id ) {
+	public static function manage_custom_column( $column, $post_id ) {
+		global $post;
+
+		if ( ! self::is_field_enabled( $post->post_type, $column ) )
+			return;
+
 		$result = false;
 
 		switch ( $column ) {
 			case 'post_excerpt':
-			$post   = get_post( $post_id );
 			$result = $post->post_excerpt;
 			break;
 
-			case 'custom-bulk-quick-edit-title':
+			default:
 			$result = get_post_meta( $post_id, $column, true );
 			break;
 		}
@@ -196,13 +197,16 @@ EOD;
 	}
 
 
-	public function manage_edit_columns( $columns ) {
+	public static function manage_posts_columns( $columns ) {
 		// order of keys matches column ordering
 		global $post;
-		$post_type        = $post->post_type;
-		$supports_excerpt = cbqe_get_option( $post_type . '_enable_post_excerpt' );
-		if ( $supports_excerpt )
-			$columns['post_excerpt'] = __( 'Excerpt', 'custom-bulk-quick-edit' );
+
+		$field_name = 'post_excerpt';
+		if ( self::is_field_enabled( $post->post_type, $field_name ) ) {
+			$key   = self::get_field_key( $post->post_type, $field_name );
+			$title = Custom_Bulk_Quick_Edit_Settings::$settings[ $key ]['label'];
+			$columns[ $field_name ] = $title;
+		}
 
 		$columns = apply_filters( 'custom_bulk_quick_edit_columns', $columns );
 
@@ -332,8 +336,10 @@ jQuery(document).ready(function($) {
 
 		$args = array(
 			'public' => true,
-			'_builtin' => true, // no custom post types
+			'_builtin' => true,
 		);
+
+		$args = apply_filters( 'custom_bulk_quick_edit_get_post_types_args', $args );
 
 		$post_types = get_post_types( $args, 'objects' );
 		foreach ( $post_types as $post_type ) {
@@ -344,19 +350,48 @@ jQuery(document).ready(function($) {
 			self::$post_types_keys[]              = $post_type->name;
 		}
 
-		self::$post_types = apply_filters( 'custom_bulk_quick_edit_post_types', self::$post_types );
-
 		return self::$post_types;
 	}
 
+	public static function get_field_key( $post_type = null, $field_name = null ) {
+		if ( is_null( $post_type ) ) {
+			global $post;
+			$post_type = $post->post_type;
+		}
+
+		$key = $post_type . '_enable_' . $field_name;
+
+		return $key;
+	}
+
+	public static function is_field_enabled( $post_type = null, $field_name = null ) {
+		if ( is_null( $field_name ) )
+			return false;
+
+		if ( is_null( $post_type ) ) {
+			global $post;
+			$post_type = $post->post_type;
+		}
+
+		$key = self::get_field_key( $post_type, $field_name );
+		if ( isset( self::$fields_enabled[ $key ] ) )
+			return self::$fields_enabled[ $key ];
+
+		$enable = cbqe_get_option( $key );
+		if ( $enable ) {
+			self::$fields_enabled[ $key ] = true;
+			return true;
+		} else {
+			self::$fields_enabled[ $key ] = false;
+			return false;
+		}
+	}
 
 	public function quick_edit_custom_box( $column_name, $post_type ) {
 		if ( ! in_array( $post_type, self::$post_types_keys ) )
 			return;
 
-		$key    = $post_type . '_enable_' . $column_name;
-		$enable = cbqe_get_option( $key );
-		if ( ! $enable )
+		if ( ! self::is_field_enabled( $post_type, $column_name ) )
 			return;
 
 		if ( self::$no_instance ) {
@@ -364,22 +399,24 @@ jQuery(document).ready(function($) {
 			wp_nonce_field( plugin_basename( __FILE__ ), self::ID );
 		}
 
-		// TODO dynamically generate this
-		$field_name = self::$field_key . $column_name;
+		$key            = self::get_field_key( $post_type, $column_name );
+		$field_name     = self::$field_key . $column_name;
+		$field_name_var = str_replace( '-', '_', $field_name );
+		$title          = Custom_Bulk_Quick_Edit_Settings::$settings[ $key ]['label'];
 ?>
 	<fieldset class="inline-edit-col-right inline-edit-video">
 	  <div class="inline-edit-col inline-edit-<?php echo $column_name ?>">
 		<label class="inline-edit-group">
-			<span class="title"><?php echo $column_name ?></span>
+			<span class="title"><?php echo $title ?></span>
 			<textarea cols="22" rows="1" name="<?php echo $field_name ?>" autocomplete="off"></textarea>
 		</label>
 	  </div>
 	</fieldset>
 <?php
 
-		self::$scripts_bulk[ $column_name ]        = $field_name .': bulk_row.find( \'textarea[name="' . $field_name . '"]\' ).val()';
-		self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name . ' = $( \'.column-' . $column_name . '\', post_row ).html();';
-		self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).val( ' . $field_name . ' );';
+		self::$scripts_bulk[ $column_name ]        = $field_name_var .': bulk_row.find( \'textarea[name="' . $field_name . '"]\' ).val()';
+		self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).html();';
+		self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).val( ' . $field_name_var . ' );';
 	}
 
 
@@ -452,8 +489,13 @@ function custom_bulk_quick_edit_init() {
 	if ( is_plugin_active( Custom_Bulk_Quick_Edit::PLUGIN_FILE ) ) {
 		require_once 'lib/class-custom-bulk-quick-edit-settings.php';
 
-		$Custom_Bulk_Quick_Edit          = new Custom_Bulk_Quick_Edit();
-		$Custom_Bulk_Quick_Edit_Settings = new Custom_Bulk_Quick_Edit_Settings();
+		global $Custom_Bulk_Quick_Edit;
+		if ( is_null( $Custom_Bulk_Quick_Edit ) )
+			$Custom_Bulk_Quick_Edit = new Custom_Bulk_Quick_Edit();
+
+		global $Custom_Bulk_Quick_Edit_Settings;
+		if ( is_null( $Custom_Bulk_Quick_Edit_Settings ) )
+			$Custom_Bulk_Quick_Edit_Settings = new Custom_Bulk_Quick_Edit_Settings();
 	}
 
 }

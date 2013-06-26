@@ -2,9 +2,6 @@
 
 ## Free
 
-* Pull fields and labels from various custom field helpers
+* Prevent duplicate echo of content in manage_custom_column
 * Setup bulk/quick edit field as input, textarea, choice, etc.
-
-## Premium
-
-* Custom Post Types
+* Dynamic cache enabled fields

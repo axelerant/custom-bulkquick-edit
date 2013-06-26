@@ -52,13 +52,11 @@ class Custom_Bulk_Quick_Edit_Settings {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'init', array( &$this, 'init' ) );
-		load_plugin_textdomain( 'custom-bulk-quick-edit', false, '/custom-bulk-quick-edit/languages/' );
 	}
 
 
 	public function init() {
-		self::sections();
-		self::settings();
+		load_plugin_textdomain( 'custom-bulk-quick-edit', false, '/custom-bulk-quick-edit/languages/' );
 	}
 
 
@@ -85,22 +83,60 @@ class Custom_Bulk_Quick_Edit_Settings {
 	public static function settings() {
 		// General
 		self::$settings['general'] = array(
-			'desc' => esc_html__( 'TBD' ),
+			'desc' => esc_html__( 'TBD', 'custom-bulk-quick-edit' ),
 			'type' => 'heading',
 		);
 
-		foreach ( self::$post_types as $key => $label ) {
-			$post_type        = 'post' == $key ? $key . 's' : $key;
-			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
+		foreach ( self::$post_types as $post_type => $label ) {
+			$call_api         = false;
+			$post_type_s      = 'post' == $post_type ? $post_type . 's' : $post_type;
+			$supports_excerpt = post_type_supports( $post_type_s, 'excerpt' );
 			if ( $supports_excerpt ) {
-				self::$settings[ $key . '_enable_post_excerpt' ] = array(
-					'section' => $key,
+				self::$settings[ $post_type . '_enable_post_excerpt' ] = array(
+					'section' => $post_type,
 					'title' => esc_html__( 'Enable Excerpt?', 'custom-bulk-quick-edit' ),
+					'label' => esc_html__( 'Excerpt', 'custom-bulk-quick-edit' ),
 					'type' => 'checkbox',
 				);
+				
+				$call_api = true;
+			}
+
+			$filter = 'manage_' . $post_type . '_posts_columns';
+			$fields = array();
+			$fields = apply_filters( $filter, $fields );
+			if ( ! empty( $fields ) ) {
+				// remove built-in fields
+				unset( $fields[ $post_type . '-category' ] );
+				unset( $fields[ $post_type . '-post_tag' ] );
+				unset( $fields[ 'author' ] );
+				unset( $fields[ 'category' ] );
+				unset( $fields[ 'cb' ] );
+				unset( $fields[ 'date' ] );
+				unset( $fields[ 'post_excerpt' ] );
+				unset( $fields[ 'post_tag' ] );
+				unset( $fields[ 'thumbnail' ] );
+				unset( $fields[ 'title' ] );
+
+				foreach ( $fields as $field => $label ) {
+					$title = esc_html__( 'Enable %s?', 'custom-bulk-quick-edit' );
+					self::$settings[ $post_type . '_enable_' . $field ] = array(
+						'section' => $post_type,
+						'title' => sprintf( $title, $label ),
+						'label' => esc_html__( $label , 'custom-bulk-quick-edit'),
+						'type' => 'checkbox',
+					);
+				}
+				$call_api = true;
+			}
+
+			if ( $call_api ) {
+				$action = 'manage_' . $post_type_s . '_custom_column';
+				add_action( $action, array( 'Custom_Bulk_Quick_Edit', 'manage_custom_column' ), 10, 2 );
+				add_filter( $filter, array( 'Custom_Bulk_Quick_Edit', 'manage_posts_columns' ) );
 			} else {
-				self::$settings[ $key . '_no_options' ] = array(
-					'section' => $key,
+				self::$settings[ $post_type . '_no_options' ] = array(
+					'section' => $post_type,
 					'desc' => esc_html__( 'No custom fields found', 'custom-bulk-quick-edit' ),
 					'type' => 'heading',
 				);
@@ -194,6 +230,9 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public function admin_init() {
+		self::sections();
+		self::settings();
+
 		$version       = cbqe_get_option( 'version' );
 		self::$version = Custom_Bulk_Quick_Edit::VERSION;
 		self::$version = apply_filters( 'custom_bulk_quick_edit_version', self::$version );

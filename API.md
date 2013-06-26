@@ -8,45 +8,13 @@ None at this time.
 
 ## Filters
 
-* `custom_bulk_quick_edit_cache_get`
-	
-	Caching grabber. [example](https://gist.github.com/michael-cannon/5833685)
+* `custom_bulk_quick_edit_validate_settings`
 
-* `custom_bulk_quick_edit_cache_set`
-	
-	Caching setter. [example](https://gist.github.com/michael-cannon/5833685)
+	Validate settings helper. [example](https://gist.github.com/michael-cannon/5833768)
 
-* `custom_bulk_quick_edit_columns`
+* `custom_bulk_quick_edit_version`
 
-	Customize testimonial posts column headers. [example](https://gist.github.com/michael-cannon/5833693)
-
-* `custom_bulk_quick_edit_content`
-
-	Testimonial content parser helper. [example](https://gist.github.com/michael-cannon/5833700)
-
-* `custom_bulk_quick_edit_data`
-
-	Process testimonials data before display processing. [example](https://aihrus.zendesk.com/entries/23692056-How-do-I-filter-the-testimonials-data-before-display-processing-)
-
-* `custom_bulk_quick_edit_defaults_single`
-
-	Create a global or central Custom Bulk/Quick Edit configuration for single view. [example](https://aihrus.zendesk.com/entries/23679071-How-do-I-add-testimonial-excerpt-to-single-view-). [example](https://aihrus.zendesk.com/entries/23679111-How-do-I-show-the-expert-and-hide-the-image-in-the-testimonial-single-view-)
-
-* `custom_bulk_quick_edit_defaults`
-
-	Create a global or central Custom Bulk/Quick Edit configuration. [example](https://aihrus.zendesk.com/entries/23691607-How-do-I-use-filter-custom-bulk-quick-edit-defaults-)
-
-* `custom_bulk_quick_edit_meta_box`
-
-	Modify Testimonial Data fields. [example](https://gist.github.com/michael-cannon/5833704)
-
-* `custom_bulk_quick_edit_posts_custom_column`
-
-	Customize testimonial posts column contents. [example](https://gist.github.com/michael-cannon/5833716)
-
-* `custom_bulk_quick_edit_query_args`
-
-	Alter WP_Query arguments for testimonial selection. [example](https://gist.github.com/michael-cannon/5833740)
+	Version tracking for settings. [example](https://gist.github.com/michael-cannon/5833774)
 
 * `custom_bulk_quick_edit_sections`
 
@@ -56,13 +24,17 @@ None at this time.
 
 	Alter setting options. [example](https://gist.github.com/michael-cannon/5833757)
 
-* `custom_bulk_quick_edit_validate_settings`
+* `custom_bulk_quick_edit_columns`
 
-	Validate settings helper. [example](https://gist.github.com/michael-cannon/5833768)
+	Customize post type column headers. [example](https://gist.github.com/michael-cannon/5833693)
 
-* `custom_bulk_quick_edit_version`
+* `custom_bulk_quick_edit_posts_custom_column`
 
-	Version tracking for settings. [example](https://gist.github.com/michael-cannon/5833774)
+	Customize post type column contents. [example](https://gist.github.com/michael-cannon/5833716)
+	
+* `custom_bulk_quick_edit_get_post_types_args`
+	
+	Alter `get_post_types` arguments for loading post types. [example]()
 
 ## Need More?
 
