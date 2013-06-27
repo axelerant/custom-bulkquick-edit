@@ -129,10 +129,10 @@ class Custom_Bulk_Quick_Edit_Settings {
 						'label' => $label,
 						'type' => 'select',
 						'choices' => array(
-							'' => esc_html__( 'No' ),
+							'' => esc_html__( 'No', 'custom-bulk-quick-edit' ),
 							// 'checkbox' => esc_html__( 'As checkbox' ),
-							'input' => esc_html__( 'As field' ),
-							'textarea' => esc_html__( 'As textarea' ),
+							'input' => esc_html__( 'As field', 'custom-bulk-quick-edit' ),
+							'textarea' => esc_html__( 'As textarea', 'custom-bulk-quick-edit' ),
 						)
 					);
 				}

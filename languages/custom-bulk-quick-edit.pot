@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 0.0.1\n"
+"Project-Id-Version: Custom Bulk/Quick Edit 0.0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulk-quick-edit\n"
-"POT-Creation-Date: 2013-06-27 00:07:53+00:00\n"
+"POT-Creation-Date: 2013-06-27 05:22:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,104 +12,116 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: custom-bulk-quick-edit.php:60
+#: custom-bulk-quick-edit.php:57
 msgid "Settings"
 msgstr ""
 
-#: custom-bulk-quick-edit.php:141
+#: custom-bulk-quick-edit.php:138
 msgid ""
 "If your Custom Bulk/Quick Edit display has gone to funky town, please <a "
 "href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: custom-bulk-quick-edit.php:150
+#: custom-bulk-quick-edit.php:147
 msgid ""
 "Please donate $2 towards keeping Custom Bulk/Quick Edit plugin supported and "
 "maintained %s"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:70
+#: lib/class-custom-bulk-quick-edit-settings.php:72
 msgid "Compatibility & Reset"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:71
+#: lib/class-custom-bulk-quick-edit-settings.php:73
 msgid "About Custom Bulk/Quick Edit"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:86
+#: lib/class-custom-bulk-quick-edit-settings.php:88
 msgid "TBD"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:97
+#: lib/class-custom-bulk-quick-edit-settings.php:99
 msgid "Enable Excerpt?"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:98
+#: lib/class-custom-bulk-quick-edit-settings.php:100
 msgid "Excerpt"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:122
+#: lib/class-custom-bulk-quick-edit-settings.php:123
 msgid "Enable %s?"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:140
+#: lib/class-custom-bulk-quick-edit-settings.php:132
+msgid "No"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:134
+msgid "As field"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:135
+msgid "As textarea"
+msgstr ""
+
+#: lib/class-custom-bulk-quick-edit-settings.php:152
 msgid "No custom fields found"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:154
+#: lib/class-custom-bulk-quick-edit-settings.php:166
 msgid "Export Settings"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:156
+#: lib/class-custom-bulk-quick-edit-settings.php:168
 msgid ""
 "These are your current settings in a serialized format. Copy the contents to "
 "make a backup of your settings."
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:164
+#: lib/class-custom-bulk-quick-edit-settings.php:176
 msgid "Import Settings"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:166
+#: lib/class-custom-bulk-quick-edit-settings.php:178
 msgid ""
 "Paste new serialized settings here to overwrite your current configuration."
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:172
+#: lib/class-custom-bulk-quick-edit-settings.php:184
 msgid "Remove Plugin Data on Deletion?"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:175
+#: lib/class-custom-bulk-quick-edit-settings.php:187
 msgid ""
 "Delete all Custom Bulk/Quick Edit data and options from database on plugin "
 "deletion"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:181
+#: lib/class-custom-bulk-quick-edit-settings.php:193
 msgid "Reset to Defaults?"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:184
+#: lib/class-custom-bulk-quick-edit-settings.php:196
 msgid "Check this box to reset options to their defaults"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:248
+#: lib/class-custom-bulk-quick-edit-settings.php:260
 msgid "Custom Bulk/Quick"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:285
+#: lib/class-custom-bulk-quick-edit-settings.php:297
 msgid "Custom Bulk/Quick Edit Settings"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:302
+#: lib/class-custom-bulk-quick-edit-settings.php:314
 msgid "Save Changes"
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:311
+#: lib/class-custom-bulk-quick-edit-settings.php:323
 msgid "Copyright &copy;%1$s %2$s."
 msgstr ""
 
-#: lib/class-custom-bulk-quick-edit-settings.php:670
+#: lib/class-custom-bulk-quick-edit-settings.php:682
 msgid "Required"
 msgstr ""
 
