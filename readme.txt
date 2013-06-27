@@ -16,23 +16,27 @@ Custom Bulk/Quick Edit plugin allows you to add custom fields to the edit screen
 
 Custom Bulk/Quick Edit plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
 
+Automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter.
+
+To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/).
+
+= Limitations =
+
+Currently, only text input and textarea fields are supported.
+
 = Primary Features =
 
-* API
+* API of actions and filters
+* Auto detects most post custom fields
 * Settings export/import
 * Settings screen
 
 = Settings Options =
 
-**General**
+**Post**
 
-* Character Limit - Number of characters to limit testimonial views to
-	* `char_limit` - default none; char_limit=200
-	* Widget - default 500
-
-**Post Type**
-
-* Testimonial Page URL – URL slug-name for testimonial view pages. After changing, you must click "Save Changes" on Permalink Settings to update them.
+* Enable excerpts?
+* Enable "custom field"? - Configure as text input or textarea
 
 **Compatibility & Reset**
 
