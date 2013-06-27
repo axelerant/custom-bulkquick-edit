@@ -72,8 +72,10 @@ Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.
 
 == Screenshots ==
 
-1. TBD
-
+1. TwentyTwelve theme with Posts Post Excerpts enabled
+2. Posts Quick Edit with excerpts
+3. Posts Bulk Edit with excerpts
+4. Custom Bulk/Quick Edit Settings panel
 
 == Changelog ==
 

@@ -3,5 +3,5 @@
 ## Free
 
 * Prevent duplicate echo of content in manage_custom_column
-* Setup bulk/quick edit field as input, textarea, choice, etc.
+* Handle checkbox input, dropdown
 * Dynamic cache enabled fields

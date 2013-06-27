@@ -23,6 +23,7 @@
 	<rule ref="Squiz.PHP.CommentedOutCode"/>
 	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
 	</rule>
 
 	<rule ref="WordPress">

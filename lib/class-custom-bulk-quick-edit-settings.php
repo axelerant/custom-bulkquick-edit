@@ -21,6 +21,8 @@
  *
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
+
+
 class Custom_Bulk_Quick_Edit_Settings {
 	const ID = 'custom-bulk-quick-edit-settings';
 
@@ -78,7 +80,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 	 *
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
- 	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 */
 	public static function settings() {
 		// General
@@ -98,7 +100,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 					'label' => esc_html__( 'Excerpt', 'custom-bulk-quick-edit' ),
 					'type' => 'checkbox',
 				);
-				
+
 				$call_api = true;
 			}
 
@@ -118,22 +120,32 @@ class Custom_Bulk_Quick_Edit_Settings {
 				unset( $fields[ 'thumbnail' ] );
 				unset( $fields[ 'title' ] );
 
+				$title = esc_html__( 'Enable %s?', 'custom-bulk-quick-edit' );
+
 				foreach ( $fields as $field => $label ) {
-					$title = esc_html__( 'Enable %s?', 'custom-bulk-quick-edit' );
 					self::$settings[ $post_type . '_enable_' . $field ] = array(
 						'section' => $post_type,
 						'title' => sprintf( $title, $label ),
-						'label' => esc_html__( $label , 'custom-bulk-quick-edit'),
-						'type' => 'checkbox',
+						'label' => $label,
+						'type' => 'select',
+						'choices' => array(
+							'' => esc_html__( 'No' ),
+							// 'checkbox' => esc_html__( 'As checkbox' ),
+							'input' => esc_html__( 'As field' ),
+							'textarea' => esc_html__( 'As textarea' ),
+						)
 					);
 				}
 				$call_api = true;
 			}
 
 			if ( $call_api ) {
-				$action = 'manage_' . $post_type_s . '_custom_column';
-				add_action( $action, array( 'Custom_Bulk_Quick_Edit', 'manage_custom_column' ), 10, 2 );
-				add_filter( $filter, array( 'Custom_Bulk_Quick_Edit', 'manage_posts_columns' ) );
+				$action = 'manage_' . $post_type . '_posts_custom_column';
+				if ( ! has_action( $action ) )
+					add_action( $action, array( 'Custom_Bulk_Quick_Edit', 'manage_posts_custom_column' ), 199, 2 );
+
+				if ( ! has_filter( $filter ) )
+					add_filter( $filter, array( 'Custom_Bulk_Quick_Edit', 'manage_posts_columns' ), 199 );
 			} else {
 				self::$settings[ $post_type . '_no_options' ] = array(
 					'section' => $post_type,

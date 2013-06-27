@@ -11,6 +11,8 @@ class SampleTest extends WP_UnitTestCase {
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
+
+
 	function set_post( $key, $value ) {
 		$_POST[$key] = $_REQUEST[$key] = addslashes( $value );
 	}
