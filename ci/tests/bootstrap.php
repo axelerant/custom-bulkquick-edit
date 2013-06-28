@@ -3,7 +3,7 @@
 require_once getenv( 'WP_TESTS_DIR' ) . '/includes/functions.php';
 
 function _manually_load_plugin() {
-	require dirname( __FILE__ ) . '/../../custom-bulk-quick-edit.php';
+	require dirname( __FILE__ ) . '/../../custom-bulkquick-edit.php';
 }
 
 

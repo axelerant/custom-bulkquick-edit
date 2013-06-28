@@ -18,7 +18,7 @@ Custom Bulk/Quick Edit plugin allows you to add custom fields to the edit screen
 
 Automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter.
 
-To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/).
+To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/).
 
 = Limitations =
 
@@ -47,11 +47,11 @@ Currently, only text input and textarea fields are supported.
 
 = API =
 
-* Read the [Custom Bulk/Quick Edit API](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/master/API.md).
+* Read the [Custom Bulk/Quick Edit API](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/API.md).
 
 = Languages =
 
-You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulk-quick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
+You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
 
 See the FAQ for further localization tips.
 
@@ -59,13 +59,13 @@ See the FAQ for further localization tips.
 
 Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546-Custom-Bulk-Quick-Edit) for frequently asked questions, offering ideas, or getting support.
 
-If you want to contribute and I hope you do, visit the [Custom Bulk/Quick Edit Github repository](https://github.com/michael-cannon/custom-bulk-quick-edit).
+If you want to contribute and I hope you do, visit the [Custom Bulk/Quick Edit Github repository](https://github.com/michael-cannon/custom-bulkquick-edit).
 
 
 == Installation ==
 
-1. Via WordPress Admin > Plugins > Add New, Upload the `custom-bulk-quick-edit.zip` file
-1. Alternately, via FTP, upload `custom-bulk-quick-edit` directory to the `/wp-content/plugins/` directory
+1. Via WordPress Admin > Plugins > Add New, Upload the `custom-bulkquick-edit.zip` file
+1. Alternately, via FTP, upload `custom-bulkquick-edit` directory to the `/wp-content/plugins/` directory
 1. Activate the 'Custom Bulk/Quick Edit' plugin after uploading or through WordPress Admin > Plugins
 
 
@@ -83,7 +83,7 @@ Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.
 
 == Changelog ==
 
-See [Changelog](http://aihr.us/custom-bulk-quick-edit/changelog/)
+See [Changelog](http://aihr.us/custom-bulkquick-edit/changelog/)
 
 
 == Upgrade Notice ==
@@ -105,4 +105,4 @@ Beta testers benefit directly with latest versions, a free 1-site license for Cu
 
 == TODO ==
 
-Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/custom-bulk-quick-edit) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).
+Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/custom-bulkquick-edit) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).

@@ -4,14 +4,14 @@ Community made patches, localisation, bug reports and contributions are very wel
 
 When contributing please ensure you follow the guidelines below so that we can keep on top of things.
 
-__Please Note:__ GitHub is for bug reports and contributions only - if you have a support question or a request for a customisation don't post here, go to our [Support Forum](http://wordpress.org/support/plugin/custom-bulk-quick-edit) instead.
+__Please Note:__ GitHub is for bug reports and contributions only - if you have a support question or a request for a customisation don't post here, go to our [Support Forum](http://wordpress.org/support/plugin/custom-bulkquick-edit) instead.
 
 <strike>For localization, please refer to [How do I change Custom Bulk/Quick Edit text labels?](https://aihrus.zendesk.com/entries/23691557-How-do-I-change-Testimonials-Widget-text-labels-), though bugs with strings that can't be translated are welcome here.</strike>
 
 ## Getting Started
 
 * Submit a ticket for your issue, assuming one does not already exist.
-  * Raise it on our [Issue Tracker](https://github.com/michael-cannon/custom-bulk-quick-edit/issues)
+  * Raise it on our [Issue Tracker](https://github.com/michael-cannon/custom-bulkquick-edit/issues)
   * Clearly describe the issue including steps to reproduce the bug.
   * Make sure you fill in the earliest version that you know has the issue as well as the version of WordPress you're using.
 
@@ -33,6 +33,6 @@ __Please Note:__ GitHub is for bug reports and contributions only - if you have 
 At this point you're waiting on us to merge your pull request. We'll review all pull requests, and make suggestions and changes if necessary.
 
 ## Additional Resources
-* [Custom Bulk/Quick Edit API](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/master/API.md)
+* [Custom Bulk/Quick Edit API](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/API.md)
 * [General GitHub Documentation](http://help.github.com/)
 * [GitHub Pull Request documentation](http://help.github.com/send-pull-requests/)
