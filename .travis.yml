@@ -25,8 +25,9 @@ before_script:
     - git clone git://github.com/mrchrisadams/WordPress-Coding-Standards.git $(pear config-get php_dir)/PHP/CodeSniffer/Standards/WordPress
 #    - export WP_TESTS_DIR=/tmp/wordpress-tests/
 #    - bash ci/bin/install-wp-tests.sh wordpress_test root '' ${WP_VERSION} 
-    - sudo apt-get update -qq
-    - sudo apt-get install clamav clamav-freshclam clamav-unofficial-sigs -qq
+    - sudo apt-get install clamav -qq
+    - sudo apt-get install clamav-freshclam -qq
+    - sudo apt-get install clamav-unofficial-sigs -qq
     - sudo freshclam --quiet
     - export PWD=`pwd`
     - export DIR_CI="${PWD}/ci"
@@ -36,7 +37,7 @@ script:
     - clamscan --algorithmic-detection=yes --detect-pua=yes --detect-structured=yes --exclude='(pasteword|jquery)\.js' --infected --phishing-cloak=yes --phishing-sigs=yes --phishing-ssl=yes --recursive --scan-archive=yes --scan-elf=yes --scan-html=yes --scan-ole2=yes --scan-pdf=yes --scan-pe=yes .
     - phpcs -s -n --standard=${DIR_CI}/phpcs.travis.ruleset.xml .
     - phpcpd .
-    - phpmd . --exclude class-redrokk-metabox-class.php,video-quick-edit.php text ${DIR_CI}/phpmd.ruleset.xml
+    - phpmd . --exclude TBD text ${DIR_CI}/phpmd.ruleset.xml
 #    - phpunit
 
 notifications:
