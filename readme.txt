@@ -83,7 +83,7 @@ Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.
 
 == Changelog ==
 
-See [Changelog](http://aihr.us/custom-bulkquick-edit/changelog/)
+See [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/master/CHANGELOG.md)
 
 
 == Upgrade Notice ==
