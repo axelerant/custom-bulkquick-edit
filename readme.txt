@@ -22,7 +22,7 @@ To use this Custom Bulk/Quick Edit plugin with custom post types, please purchas
 
 = Help Me, Help You =
 
-Do let me know how well you're able to use this plugin or not. 
+Do [let me know](http://wordpress.org/support/plugin/custom-bulkquick-edit) how well you're able to use this plugin or not. 
 
 This plugin grew out of the frustration of having to custom write this code for every client. It works best when the custom post types have already added columns to the edit screen via the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter.
 
