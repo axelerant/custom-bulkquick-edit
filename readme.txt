@@ -9,12 +9,12 @@ Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Custom Bulk/Quick Edit plugin allows you to add previously defined custom fields to the edit screen bulk and quick edit panels.
+Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom fields to the edit screen bulk and quick edit panels.
 
 
 == Description ==
 
-Custom Bulk/Quick Edit plugin allows you to add previously defined custom fields to the edit screen bulk and quick edit panels.
+Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom fields to the edit screen bulk and quick edit panels.
 
 Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen.
 

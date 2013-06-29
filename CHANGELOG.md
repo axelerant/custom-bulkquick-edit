@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## TBD
+* Update description
 
 ## 0.0.2
 * Add media
