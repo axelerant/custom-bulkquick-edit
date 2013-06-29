@@ -111,4 +111,4 @@ Beta testers benefit directly with latest versions, a free 1-site license for Cu
 
 == TODO ==
 
-Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/custom-bulkquick-edit) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).
+See [TODO](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/TODO.md)
