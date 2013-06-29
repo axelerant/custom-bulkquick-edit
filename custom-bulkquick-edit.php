@@ -144,7 +144,7 @@ EOD;
 
 	public function admin_notices_donate() {
 		$content  = '<div class="updated"><p>';
-		$content .= sprintf( __( 'Please donate $2 towards keeping Custom Bulk/Quick Edit plugin supported and maintained %s', 'custom-bulkquick-edit' ), self::$donate_button );
+		$content .= sprintf( __( 'Please donate $2 towards development and support of this Custom Bulk/Quick Edit plugin. %s', 'custom-bulkquick-edit' ), self::$donate_button );
 		$content .= '</p></div>';
 
 		echo $content;
