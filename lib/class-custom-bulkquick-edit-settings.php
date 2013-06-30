@@ -91,6 +91,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		foreach ( self::$post_types as $post_type => $label ) {
 			$call_api         = false;
+			$filter           = 'manage_' . $post_type . '_posts_columns';
 			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
 			if ( $supports_excerpt ) {
 				self::$settings[ $post_type . '_enable_post_excerpt' ] = array(
@@ -100,10 +101,11 @@ class Custom_Bulkquick_Edit_Settings {
 					'type' => 'checkbox',
 				);
 
+				add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
+
 				$call_api = true;
 			}
 
-			$filter = 'manage_' . $post_type . '_posts_columns';
 			$fields = array();
 			$fields = apply_filters( $filter, $fields );
 			if ( ! empty( $fields ) ) {

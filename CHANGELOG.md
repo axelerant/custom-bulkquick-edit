@@ -7,6 +7,7 @@
 * Correct data grab for Quick Edit
 * Use after_setup_theme than plugins_loaded
 * BUGFIX post excerpt support detection
+* BUGFIX post excerpt column add
 
 ## 0.0.2
 * Add media
