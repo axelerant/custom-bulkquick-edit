@@ -328,12 +328,14 @@ jQuery(document).ready(function($) {
 			if ( ! $field_enabled )
 				continue;
 
+			$value = stripslashes_deep( $value );
+
 			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
-				update_post_meta( $post_id, $field_name, wp_kses_post( $value ) );
+				update_post_meta( $post_id, $field_name, $value );
 			} else {
 				$data = array(
 					'ID' => $post_id,
-					$field_name => wp_kses_post( $value ),
+					$field_name => $value,
 				);
 				wp_update_post( $data );
 			}
@@ -463,7 +465,7 @@ jQuery(document).ready(function($) {
 		case 'input':
 		case 'textarea':
 			self::$scripts_bulk[ $column_name ]        = "'" . $field_name . '\': bulk_row.find( \'' . $js_type . '[name="' . $field_name . '"]\' ).val()';
-			self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).html();';
+			self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).text();';
 			self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).val( ' . $field_name_var . ' );';
 			break;
 		}

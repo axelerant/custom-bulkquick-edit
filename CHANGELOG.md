@@ -3,6 +3,8 @@
 ## TBD
 * Revise donation text
 * Update description
+* Strip slashes incoming data
+* Correct data grab for Quick Edit
 
 ## 0.0.2
 * Add media
