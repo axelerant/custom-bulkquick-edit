@@ -91,8 +91,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		foreach ( self::$post_types as $post_type => $label ) {
 			$call_api         = false;
-			$post_type_s      = 'post' == $post_type ? $post_type . 's' : $post_type;
-			$supports_excerpt = post_type_supports( $post_type_s, 'excerpt' );
+			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
 			if ( $supports_excerpt ) {
 				self::$settings[ $post_type . '_enable_post_excerpt' ] = array(
 					'section' => $post_type,
