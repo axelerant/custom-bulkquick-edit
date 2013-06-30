@@ -5,6 +5,7 @@
 * Update description
 * Strip slashes incoming data
 * Correct data grab for Quick Edit
+* Use after_setup_theme than plugins_loaded
 
 ## 0.0.2
 * Add media

@@ -527,7 +527,7 @@ register_deactivation_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'deactivat
 register_uninstall_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'uninstall' ) );
 
 
-add_action( 'plugins_loaded', 'custom_bulkquick_edit_init', 199 );
+add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
 
 
 /**
