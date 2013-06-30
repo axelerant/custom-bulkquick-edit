@@ -1,6 +1,8 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## TBD
+
+## 0.0.3
 * Revise donation text
 * Update description
 * Strip slashes incoming data
