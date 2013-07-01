@@ -31,7 +31,7 @@ before_script:
     - sudo freshclam --quiet
 
 script:
-    - find . \( -name '*.php' -o -name '*.inc' \) -exec php -l {} \;
+    - find . \( -name '*.php' -o -name '*.inc' \) -exec php -lf {} \;
     - clamscan --algorithmic-detection=yes --detect-pua=yes --detect-structured=yes --exclude='(pasteword|jquery)\.js' --infected --phishing-cloak=yes --phishing-sigs=yes --phishing-ssl=yes --recursive --scan-archive=yes --scan-elf=yes --scan-html=yes --scan-ole2=yes --scan-pdf=yes --scan-pe=yes .
     - phpcs -s -n --standard=ci/phpcs.travis.ruleset.xml .
     - phpcpd .
