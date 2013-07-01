@@ -197,6 +197,9 @@ EOD;
 		// order of keys matches column ordering
 		global $post;
 
+		if ( is_null( $post ) )
+			return $columns;
+
 		$field_name = 'post_excerpt';
 		if ( self::is_field_enabled( $post->post_type, $field_name ) ) {
 			$key   = self::get_field_key( $post->post_type, $field_name );
@@ -370,6 +373,10 @@ jQuery(document).ready(function($) {
 	public static function get_field_key( $post_type = null, $field_name = null ) {
 		if ( is_null( $post_type ) ) {
 			global $post;
+
+			if ( is_null( $post ) )
+				return false;
+
 			$post_type = $post->post_type;
 		}
 
@@ -385,6 +392,10 @@ jQuery(document).ready(function($) {
 
 		if ( is_null( $post_type ) ) {
 			global $post;
+
+			if ( is_null( $post ) )
+				return false;
+
 			$post_type = $post->post_type;
 		}
 

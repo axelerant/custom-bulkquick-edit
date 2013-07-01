@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* BUGFIX Call to method on non-object
 * Highlight video introduction
 * Update travis
 
