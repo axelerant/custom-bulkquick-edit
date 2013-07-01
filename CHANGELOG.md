@@ -1,6 +1,8 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
-## TBD
+## master
+* Highlight video introduction
+* Update travis
 
 ## 0.0.3
 * Revise donation text
