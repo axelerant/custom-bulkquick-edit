@@ -243,7 +243,8 @@ jQuery(document).ready(function($) {
 			var post_row = $( "#post-" + post_id );
 			';
 
-			echo implode( "\n", self::$scripts_quick );
+			$scripts = implode( "\n", self::$scripts_quick );
+			echo $scripts;
 
 			echo '
 		}
@@ -267,7 +268,8 @@ jQuery(document).ready(function($) {
 				post_ids: post_ids,
 			';
 
-			echo implode( ",\n", self::$scripts_bulk );
+			$scripts = implode( ",\n", self::$scripts_bulk );
+			echo $scripts;
 
 			echo '
 			}

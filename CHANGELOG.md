@@ -3,6 +3,7 @@
 ## master
 * BUGFIX Call to method on non-object
 * Highlight video introduction
+* Update about image path
 * Update travis
 
 ## 0.0.3
