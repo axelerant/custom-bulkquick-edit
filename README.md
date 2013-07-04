@@ -1,6 +1,7 @@
 # README Custom Bulk/Quick Edit plugin for WordPress
 
 [![Build Status](https://travis-ci.org/michael-cannon/custom-bulkquick-edit.png?branch=master)](https://travis-ci.org/michael-cannon/custom-bulkquick-edit)
+[![ProjectStatus](http://stillmaintained.com/michael-cannon/custom-bulkquick-edit.png)](http://stillmaintained.com/michael-cannon/custom-bulkquick-edit)
 
 ## Welcome to the Custom Bulk/Quick Edit Github repository
 

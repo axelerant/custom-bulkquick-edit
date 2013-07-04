@@ -1,8 +1,11 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Add StillMaintained.com notice
 * BUGFIX Call to method on non-object
 * Highlight video introduction
+* Prevent duplicate echo of content in manage_custom_column (done in 0.0.3)
+* TEST checkbox implementation
 * Update about image path
 * Update travis
 

@@ -319,6 +319,7 @@ jQuery(document).ready(function($) {
 
 		$post      = get_post( $post_id );
 		$post_type = $post->post_type;
+		error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
 
 		foreach ( $_POST as $field => $value ) {
 			if ( false === strpos( $field, self::$field_key ) )
@@ -468,8 +469,7 @@ jQuery(document).ready(function($) {
 
 		switch ( $field_type ) {
 		case 'checkbox':
-			// not tested
-			self::$scripts_bulk[ $column_name ]        = "'" . $field_name . '\': bulk_row.find( \'' . $js_type . '[name="' . $field_name . '"]\' ).val()';
+			self::$scripts_bulk[ $column_name ]        = "'" . $field_name . '\': bulk_row.find( \'' . $js_type . '[name="' . $field_name . '"]\' ).attr(\'checked\')';
 			self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).attr(\'checked\');';
 			self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).attr(\'checked\', ' . $field_name_var . ' );';
 			break;

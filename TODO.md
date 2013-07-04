@@ -4,6 +4,5 @@ Is there something you want done? Write it up on the [support forums](http://wor
 
 ## Free
 
-* Prevent duplicate echo of content in manage_custom_column
 * Handle checkbox input, dropdown
 * Dynamic cache enabled fields
