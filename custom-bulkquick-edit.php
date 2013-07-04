@@ -172,7 +172,8 @@ EOD;
 	public static function manage_posts_custom_column( $column, $post_id ) {
 		global $post;
 
-		if ( ! self::is_field_enabled( $post->post_type, $column ) )
+		$field_type = self::is_field_enabled( $post->post_type, $column );
+		if ( ! $field_type )
 			return;
 
 		$result = false;
@@ -183,6 +184,13 @@ EOD;
 
 		default:
 			$result = get_post_meta( $post_id, $column, true );
+
+			// fixme
+			if ( 'checkbox' == $field_type ) {
+				$value   = $result;
+				$checked = ! empty( $value ) ? 'checked="checked"' : '';
+				$result  = '<input type="checkbox" name="' . $column . '" readonly="readonly" ' . $checked . '/>';
+			}
 			break;
 		}
 
@@ -319,13 +327,13 @@ jQuery(document).ready(function($) {
 
 		$post      = get_post( $post_id );
 		$post_type = $post->post_type;
-		error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+		// error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
 
 		foreach ( $_POST as $field => $value ) {
 			if ( false === strpos( $field, self::$field_key ) )
 				continue;
 
-			// what about checkboxes?
+			// fixme what about checkboxes?
 			if ( '' == $value && 'bulk_edit' == $mode )
 				continue;
 

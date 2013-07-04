@@ -5,7 +5,7 @@
 * BUGFIX Call to method on non-object
 * Highlight video introduction
 * Prevent duplicate echo of content in manage_custom_column (done in 0.0.3)
-* TEST checkbox implementation
+* TEST radio/checkbox implementation (need to add custom config to know key/values)
 * Update about image path
 * Update travis
 

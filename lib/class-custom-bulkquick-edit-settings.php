@@ -131,7 +131,7 @@ class Custom_Bulkquick_Edit_Settings {
 						'type' => 'select',
 						'choices' => array(
 							'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
-							'checkbox' => esc_html__( 'As checkbox' ),
+							// 'checkbox' => esc_html__( 'As checkbox' ),
 							'input' => esc_html__( 'As field', 'custom-bulkquick-edit' ),
 							'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
 						)
