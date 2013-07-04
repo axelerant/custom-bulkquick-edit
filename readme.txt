@@ -18,6 +18,7 @@ Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom
 
 Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen.
 
+[youtube http://youtu.be/UXvzdlvIPtk]
 **[Video introduction](http://youtu.be/UXvzdlvIPtk)**
 
 To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/).
