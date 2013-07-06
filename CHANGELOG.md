@@ -1,5 +1,11 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
+## checked
+* Restrict settings page to admins only
+* Remove unused styles/scripts methods
+* Display chosen checkbox, radio, or select values on edit page
+* Display chosen checkbox, radio, or select options on bulk and quick edit screens
+
 ## master
 * Add StillMaintained.com notice
 * BUGFIX Call to method on non-object

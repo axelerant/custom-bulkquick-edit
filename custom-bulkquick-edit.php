@@ -64,8 +64,6 @@ class Custom_Bulkquick_Edit {
 		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulkquick_Edit', 'save_post_bulk_edit' ) );
 		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
-		self::styles();
-		self::scripts();
 	}
 
 
@@ -176,22 +174,66 @@ EOD;
 		if ( ! $field_type )
 			return;
 
-		$result = false;
+		$details = self::get_field_details( $post->post_type, $column );
+		$options = explode( "\n", $details );
+		$options = array_map( 'trim', $options );
+
+		$result = '';
 		switch ( $column ) {
 		case 'post_excerpt':
 			$result = $post->post_excerpt;
 			break;
 
 		default:
-			$result = get_post_meta( $post_id, $column, true );
+			$current = get_post_meta( $post_id, $column, true );
 
-			// fixme
-			if ( 'checkbox' == $field_type ) {
-				$value   = $result;
-				$checked = ! empty( $value ) ? 'checked="checked"' : '';
-				$result  = '<input type="checkbox" name="' . $column . '" readonly="readonly" ' . $checked . '/>';
+			switch ( $field_type ) {
+			case 'checkbox':
+			case 'radio':
+				if ( ! is_array( $current ) )
+					$current = array( $current );
+
+				foreach ( $options as $option ) {
+					$parts = explode( '|', $option );
+					$value = array_shift( $parts );
+					if ( empty( $parts ) )
+						$name = $value;
+					else
+						$name = array_shift( $parts );
+
+					if ( in_array( $value, $current ) )
+						$result .= '<input type="' . $field_type . '" name="' . $column . '" value="' . $value . '" checked="checked" disabled="disabled" /> ' . $name . '<br />';
+				}
+				break;
+
+			case 'select':
+				if ( ! is_array( $current ) )
+					$current = array( $current );
+
+				$select_options = '';
+				foreach ( $options as $option ) {
+					$parts = explode( '|', $option );
+					$value = array_shift( $parts );
+					if ( empty( $parts ) )
+						$name = $value;
+					else
+						$name = array_shift( $parts );
+
+					if ( in_array( $value, $current  ) )
+						$select_options .= '<option value="' . $value . '" selected="selected">' . $name . '</option>';
+				}
+
+				if ( $select_options ) {
+					$result  = '<select name="' . $column . '" disabled="disabled">';
+					$result .= $select_options;
+					$result .= '</select>';
+				}
+				break;
+
+			default:
+				$result = $current;
+				break;
 			}
-			break;
 		}
 
 		$result = apply_filters( 'custom_bulkquick_edit_posts_custom_column', $result, $column, $post_id );
@@ -219,17 +261,6 @@ EOD;
 		$columns = apply_filters( 'custom_bulkquick_edit_columns', $columns );
 
 		return $columns;
-	}
-
-
-	public static function scripts() {
-		wp_enqueue_script( 'jquery' );
-	}
-
-
-	public static function styles() {
-		wp_register_style( 'custom-bulkquick-edit', plugins_url( 'custom-bulkquick-edit.css', __FILE__ ) );
-		wp_enqueue_style( 'custom-bulkquick-edit' );
 	}
 
 
@@ -327,23 +358,21 @@ jQuery(document).ready(function($) {
 
 		$post      = get_post( $post_id );
 		$post_type = $post->post_type;
-		// error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+		error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
 
 		foreach ( $_POST as $field => $value ) {
 			if ( false === strpos( $field, self::$field_key ) )
 				continue;
 
-			// fixme what about checkboxes?
 			if ( '' == $value && 'bulk_edit' == $mode )
 				continue;
 
-			$field_name    = str_replace( self::$field_key, '', $field );
-			$field_enabled = self::is_field_enabled( $post_type, $field_name );
-			if ( ! $field_enabled )
+			$field_name = str_replace( self::$field_key, '', $field );
+			$field_type = self::is_field_enabled( $post_type, $field_name );
+			if ( ! $field_type )
 				continue;
 
 			$value = stripslashes_deep( $value );
-
 			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
 				update_post_meta( $post_id, $field_name, $value );
 			} else {
@@ -378,6 +407,19 @@ jQuery(document).ready(function($) {
 		}
 
 		return self::$post_types;
+	}
+
+
+	public static function get_field_details( $post_type = null, $field_name = null ) {
+		$key = self::get_field_key( $post_type, $field_name );
+
+		if ( empty( $key ) )
+			return false;
+
+		$key    .= '_details';
+		$details = cbqe_get_option( $key );
+
+		return $details;
 	}
 
 
@@ -446,20 +488,67 @@ jQuery(document).ready(function($) {
 		echo '
 			<fieldset class="inline-edit-col-right inline-edit-video">
 	  			<div class="inline-edit-col inline-edit-' . $column_name . '">
-					<label class="inline-edit-group">
-						<span class="title">' . $title . '</span>
 		';
 
+		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
+			echo '
+					<label class="inline-edit-group">
+						<span class="title">' . $title . '</span>
+			';
+		}
+
+		$details = self::get_field_details( $post_type, $column_name );
+		$options = explode( "\n", $details );
+		$options = array_map( 'trim', $options );
 		$js_type = '';
+		$result  = '';
+
 		switch ( $field_type ) {
 		case 'checkbox':
-			echo '<input type="checkbox" value="1" name="' . $field_name . '" />';
+		case 'radio':
+			$result  .= '<label class="alignleft"><span class="title">' . $title . '</span></label>';
+			$multiple = '';
+			if ( 'checkbox' == $field_type && 1 < count( $options ) )
+				$multiple = '[]';
+
+			foreach ( $options as $option ) {
+				$result .= '<label class="inline-edit-group">';
+				$parts   = explode( '|', $option );
+				$value   = array_shift( $parts );
+				if ( empty( $parts ) )
+					$name = $value;
+				else
+					$name = array_shift( $parts );
+
+				$result .= '<input type="' . $field_type . '" name="' . $field_name . $multiple . '" value="' . $value . '" />';
+				$result .= ' ' . $name;
+				$result .= '</label>';
+			}
+			echo $result;
 			$js_type = 'input';
 			break;
 
 		case 'input':
 			echo '<input type="text" name="' . $field_name . '" autocomplete="off" />';
 			$js_type = 'input';
+			break;
+
+		case 'select':
+			$result .= '<select name="' . $field_name . '">';
+			$result .= '<option></option>';
+			foreach ( $options as $option ) {
+				$parts = explode( '|', $option );
+				$value = array_shift( $parts );
+				if ( empty( $parts ) )
+					$name = $value;
+				else
+					$name = array_shift( $parts );
+
+				$result .= '<option value="' . $value . '">' . $name . '</option>';
+			}
+			$result .= '</select>';
+			echo $result;
+			$js_type = 'select';
 			break;
 
 		default:
@@ -469,14 +558,21 @@ jQuery(document).ready(function($) {
 			break;
 		}
 
-		echo '
+
+		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
+			echo '
 					</label>
+			';
+		}
+
+		echo '
 				  </div>
 				</fieldset>
 		';
 
 		switch ( $field_type ) {
 		case 'checkbox':
+		case 'radio':
 			self::$scripts_bulk[ $column_name ]        = "'" . $field_name . '\': bulk_row.find( \'' . $js_type . '[name="' . $field_name . '"]\' ).attr(\'checked\')';
 			self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).attr(\'checked\');';
 			self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).attr(\'checked\', ' . $field_name_var . ' );';
@@ -484,6 +580,7 @@ jQuery(document).ready(function($) {
 
 		default:
 		case 'input':
+		case 'select':
 		case 'textarea':
 			self::$scripts_bulk[ $column_name ]        = "'" . $field_name . '\': bulk_row.find( \'' . $js_type . '[name="' . $field_name . '"]\' ).val()';
 			self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).text();';

@@ -4,5 +4,5 @@ Is there something you want done? Write it up on the [support forums](http://wor
 
 ## Free
 
-* Handle checkbox input, dropdown
+* Handle checkbox and radio input and select box dropdown
 * Dynamic cache enabled fields

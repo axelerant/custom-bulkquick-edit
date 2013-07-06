@@ -52,8 +52,11 @@ class Custom_Bulkquick_Edit_Settings {
 
 	public function __construct() {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
-		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'init', array( &$this, 'init' ) );
+
+		// restrict settings page to admins only
+		if ( current_user_can( 'activate_plugins' ) )
+			add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 	}
 
 
@@ -121,7 +124,8 @@ class Custom_Bulkquick_Edit_Settings {
 				unset( $fields[ 'thumbnail' ] );
 				unset( $fields[ 'title' ] );
 
-				$title = esc_html__( 'Enable %s?', 'custom-bulkquick-edit' );
+				$title   = esc_html__( 'Enable %s?', 'custom-bulkquick-edit' );
+				$details = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 
 				foreach ( $fields as $field => $label ) {
 					self::$settings[ $post_type . '_enable_' . $field ] = array(
@@ -131,10 +135,20 @@ class Custom_Bulkquick_Edit_Settings {
 						'type' => 'select',
 						'choices' => array(
 							'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
-							// 'checkbox' => esc_html__( 'As checkbox' ),
+							'checkbox' => esc_html__( 'As checkbox' ),
 							'input' => esc_html__( 'As field', 'custom-bulkquick-edit' ),
+							'radio' => esc_html__( 'As radio' ),
+							'select' => esc_html__( 'As select' ),
 							'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
 						)
+					);
+
+					self::$settings[ $post_type . '_enable_' . $field . '_details' ] = array(
+						'section' => $post_type,
+						'title' => sprintf( $details, $label ),
+						'desc' => esc_html__( 'For use with checkbox, radio, and select modes. Seperate field options with newlines. You can create options as "key|value" pairs.', 'custom-bulkquick-edit' ),
+						'label' => $label,
+						'type' => 'textarea',
 					);
 				}
 				$call_api = true;
@@ -142,11 +156,16 @@ class Custom_Bulkquick_Edit_Settings {
 
 			if ( $call_api ) {
 				$action = 'manage_' . $post_type . '_posts_custom_column';
-				if ( ! has_action( $action ) )
-					add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column' ), 199, 2 );
+				// fixme remove old action/filter
+				if ( has_action( $action ) )
+					echo 'remove old action';
+			
+				add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column' ), 199, 2 );
 
-				if ( ! has_filter( $filter ) )
-					add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
+				if ( has_filter( $filter ) )
+					echo 'remove old filter';
+				
+				add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
 			} else {
 				self::$settings[ $post_type . '_no_options' ] = array(
 					'section' => $post_type,
