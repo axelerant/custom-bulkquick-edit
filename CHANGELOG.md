@@ -5,6 +5,7 @@
 * Remove unused styles/scripts methods
 * Display chosen checkbox, radio, or select values on edit page
 * Display chosen checkbox, radio, or select options on bulk and quick edit screens
+* Remove usused CSS file
 
 ## master
 * Add StillMaintained.com notice
