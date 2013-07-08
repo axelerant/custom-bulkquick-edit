@@ -167,12 +167,26 @@ EOD;
 	}
 
 
-	public static function manage_posts_custom_column( $column, $post_id ) {
+	public static function manage_posts_custom_column_precapture( $column, $post_id ) {
+		ob_start();
+	}
+
+
+	public static function manage_posts_custom_column_capture( $column, $post_id ) {
+		$buffer = ob_get_contents();
+		ob_end_clean();
+		self::manage_posts_custom_column( $column, $post_id, $buffer );
+	}
+
+
+	public static function manage_posts_custom_column( $column, $post_id, $buffer = null ) {
 		global $post;
 
 		$field_type = self::is_field_enabled( $post->post_type, $column );
-		if ( ! $field_type )
+		if ( ! $field_type ) {
+			echo $buffer;
 			return;
+		}
 
 		$details = self::get_field_details( $post->post_type, $column );
 		$options = explode( "\n", $details );
@@ -244,23 +258,40 @@ EOD;
 
 
 	public static function manage_posts_columns( $columns ) {
-		// order of keys matches column ordering
 		global $post;
 
 		if ( is_null( $post ) )
 			return $columns;
 
-		$field_name = 'post_excerpt';
-		if ( self::is_field_enabled( $post->post_type, $field_name ) ) {
-			$key   = self::get_field_key( $post->post_type, $field_name );
-			$title = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
-
+		$fields = self::get_enabled_fields( $post->post_type );
+		foreach ( $fields as $key => $field_name ) {
+			$title                  = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 			$columns[ $field_name ] = $title;
 		}
 
 		$columns = apply_filters( 'custom_bulkquick_edit_columns', $columns );
 
 		return $columns;
+	}
+
+
+	public static function get_enabled_fields( $post_type ) {
+		$fields   = array();
+		$settings = Custom_Bulkquick_Edit_Settings::$settings;
+		foreach ( $settings as $key => $value ) {
+			if ( $post_type != $value['section'] )
+				continue;
+
+			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) )
+				continue;
+
+			$field_name = str_replace( $post_type . Custom_Bulkquick_Edit_Settings::ENABLE, '', $key );
+			$field_type = self::is_field_enabled( $post_type, $field_name );
+			if ( $field_type )
+				$fields[ $key ] = $field_name;
+		}
+
+		return $fields;
 	}
 
 
@@ -358,7 +389,7 @@ jQuery(document).ready(function($) {
 
 		$post      = get_post( $post_id );
 		$post_type = $post->post_type;
-		error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+		// error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
 
 		foreach ( $_POST as $field => $value ) {
 			if ( false === strpos( $field, self::$field_key ) )
@@ -390,23 +421,31 @@ jQuery(document).ready(function($) {
 		if ( ! empty( self::$post_types ) )
 			return self::$post_types;
 
-		$args = array(
-			'public' => true,
-			'_builtin' => true,
-		);
+		if ( isset( $_GET['post_type'] ) ) {
+			$post_type = esc_attr( $_GET['post_type'] );
+			self::$post_types[ $post_type ] = $post_type;
+			self::$post_types_keys[]        = $post_type;
 
-		$args = apply_filters( 'custom_bulkquick_edit_get_post_types_args', $args );
+			return self::$post_types;
+		} else {
+			$args = array(
+				'public' => true,
+				'_builtin' => true,
+			);
 
-		$post_types = get_post_types( $args, 'objects' );
-		foreach ( $post_types as $post_type ) {
-			if ( in_array( $post_type->name, self::$post_types_ignore ) )
-				continue;
+			$args = apply_filters( 'custom_bulkquick_edit_get_post_types_args', $args );
 
-			self::$post_types[ $post_type->name ] = $post_type->label;
-			self::$post_types_keys[]              = $post_type->name;
+			$post_types = get_post_types( $args, 'objects' );
+			foreach ( $post_types as $post_type ) {
+				if ( in_array( $post_type->name, self::$post_types_ignore ) )
+					continue;
+
+				self::$post_types[ $post_type->name ] = $post_type->label;
+				self::$post_types_keys[]              = $post_type->name;
+			}
+
+			return self::$post_types;
 		}
-
-		return self::$post_types;
 	}
 
 
@@ -416,7 +455,7 @@ jQuery(document).ready(function($) {
 		if ( empty( $key ) )
 			return false;
 
-		$key    .= '_details';
+		$key    .= Custom_Bulkquick_Edit_Settings::CONFIG;
 		$details = cbqe_get_option( $key );
 
 		return $details;
@@ -433,7 +472,7 @@ jQuery(document).ready(function($) {
 			$post_type = $post->post_type;
 		}
 
-		$key = $post_type . '_enable_' . $field_name;
+		$key = $post_type . Custom_Bulkquick_Edit_Settings::ENABLE . $field_name;
 
 		return $key;
 	}

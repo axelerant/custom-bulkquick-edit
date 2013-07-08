@@ -24,7 +24,9 @@
 
 
 class Custom_Bulkquick_Edit_Settings {
-	const ID = 'custom-bulkquick-edit-settings';
+	const CONFIG = '__config__';
+	const ENABLE = '__enable__';
+	const ID     = 'custom-bulkquick-edit-settings';
 
 	private static $post_types = array();
 
@@ -97,14 +99,12 @@ class Custom_Bulkquick_Edit_Settings {
 			$filter           = 'manage_' . $post_type . '_posts_columns';
 			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
 			if ( $supports_excerpt ) {
-				self::$settings[ $post_type . '_enable_post_excerpt' ] = array(
+				self::$settings[ $post_type . self::ENABLE . 'post_excerpt' ] = array(
 					'section' => $post_type,
 					'title' => esc_html__( 'Enable Excerpt?', 'custom-bulkquick-edit' ),
 					'label' => esc_html__( 'Excerpt', 'custom-bulkquick-edit' ),
 					'type' => 'checkbox',
 				);
-
-				add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
 
 				$call_api = true;
 			}
@@ -128,7 +128,7 @@ class Custom_Bulkquick_Edit_Settings {
 				$details = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 
 				foreach ( $fields as $field => $label ) {
-					self::$settings[ $post_type . '_enable_' . $field ] = array(
+					self::$settings[ $post_type . self::ENABLE . $field ] = array(
 						'section' => $post_type,
 						'title' => sprintf( $title, $label ),
 						'label' => $label,
@@ -143,10 +143,10 @@ class Custom_Bulkquick_Edit_Settings {
 						)
 					);
 
-					self::$settings[ $post_type . '_enable_' . $field . '_details' ] = array(
+					self::$settings[ $post_type . self::ENABLE . $field . self::CONFIG ] = array(
 						'section' => $post_type,
 						'title' => sprintf( $details, $label ),
-						'desc' => esc_html__( 'For use with checkbox, radio, and select modes. Seperate field options with newlines. You can create options as "key|value" pairs.', 'custom-bulkquick-edit' ),
+						'desc' => esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.', 'custom-bulkquick-edit' ),
 						'label' => $label,
 						'type' => 'textarea',
 					);
@@ -156,15 +156,13 @@ class Custom_Bulkquick_Edit_Settings {
 
 			if ( $call_api ) {
 				$action = 'manage_' . $post_type . '_posts_custom_column';
-				// fixme remove old action/filter
-				if ( has_action( $action ) )
-					echo 'remove old action';
-			
-				add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column' ), 199, 2 );
+				if ( ! has_action( $action ) ) {
+					add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column' ), 199, 2 );
+				} else {
+					add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column_precapture' ), 1, 2 );
+					add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column_capture' ), 199, 2 );
+				}
 
-				if ( has_filter( $filter ) )
-					echo 'remove old filter';
-				
 				add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
 			} else {
 				self::$settings[ $post_type . '_no_options' ] = array(
