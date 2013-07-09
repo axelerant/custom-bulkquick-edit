@@ -4,9 +4,12 @@
 * Capture non-CBQE `manage_ . $post_type . _posts_custom_column` content
 * Display chosen checkbox, radio, or select options on bulk and quick edit screens
 * Display chosen checkbox, radio, or select values on edit page
+* Enable radio and select pre-setting for Quick Edit
+* Enable radio and select setting for Bulk Edit
 * Remove unused styles/scripts methods
 * Remove usused CSS file
 * Restrict settings page to admins only
+* Simplify JavaScript script bulk/quick
 
 ## master
 * Add StillMaintained.com notice

@@ -320,7 +320,7 @@ jQuery(document).ready(function($) {
 		}
 	};
 
-	$( "#bulk_edit" ).live( "click", function() {
+	$( "#bulk_edit" ).on( "click", function() {
 		var bulk_row = $( "#bulk-edit" );
 
 		var post_ids = new Array();
@@ -389,7 +389,7 @@ jQuery(document).ready(function($) {
 
 		$post      = get_post( $post_id );
 		$post_type = $post->post_type;
-		// error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+		error_log( print_r( $_POST, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
 
 		foreach ( $_POST as $field => $value ) {
 			if ( false === strpos( $field, self::$field_key ) )
@@ -539,7 +539,6 @@ jQuery(document).ready(function($) {
 		$details = self::get_field_details( $post_type, $column_name );
 		$options = explode( "\n", $details );
 		$options = array_map( 'trim', $options );
-		$js_type = '';
 		$result  = '';
 
 		switch ( $field_type ) {
@@ -564,12 +563,10 @@ jQuery(document).ready(function($) {
 				$result .= '</label>';
 			}
 			echo $result;
-			$js_type = 'input';
 			break;
 
 		case 'input':
 			echo '<input type="text" name="' . $field_name . '" autocomplete="off" />';
-			$js_type = 'input';
 			break;
 
 		case 'select':
@@ -587,13 +584,11 @@ jQuery(document).ready(function($) {
 			}
 			$result .= '</select>';
 			echo $result;
-			$js_type = 'select';
 			break;
 
 		default:
 		case 'textarea':
 			echo '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
-			$js_type = 'textarea';
 			break;
 		}
 
@@ -611,19 +606,30 @@ jQuery(document).ready(function($) {
 
 		switch ( $field_type ) {
 		case 'checkbox':
+			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]:checkbox:checked' ).val()";
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} input[type=checkbox]:checked', post_row ).val();";
+			self::$scripts_quick[ $column_name . '2' ] = "alert({$field_name_var});";
+			self::$scripts_quick[ $column_name . '3' ] = "$( ':input[name={$field_name}]', edit_row ).filter('[value=' + {$field_name_var} + ']').prop('checked', true);";
+			break;
+
 		case 'radio':
-			self::$scripts_bulk[ $column_name ]        = "'" . $field_name . '\': bulk_row.find( \'' . $js_type . '[name="' . $field_name . '"]\' ).attr(\'checked\')';
-			self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).attr(\'checked\');';
-			self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).attr(\'checked\', ' . $field_name_var . ' );';
+			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]:radio:checked' ).val()";
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} input[type=radio]:checked', post_row ).val();";
+			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).filter('[value=' + {$field_name_var} + ']').prop('checked', true);";
+			break;
+
+		case 'select':
+			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( '{$field_type}[name={$field_name}]' ).val()";
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} option', post_row ).filter(':selected').val();";
+			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
 			break;
 
 		default:
 		case 'input':
-		case 'select':
 		case 'textarea':
-			self::$scripts_bulk[ $column_name ]        = "'" . $field_name . '\': bulk_row.find( \'' . $js_type . '[name="' . $field_name . '"]\' ).val()';
-			self::$scripts_quick[ $column_name . '1' ] = 'var ' . $field_name_var . ' = $( \'.column-' . $column_name . '\', post_row ).text();';
-			self::$scripts_quick[ $column_name . '2' ] = '$( \':input[name="' . $field_name . '"]\', edit_row ).val( ' . $field_name_var . ' );';
+			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( '{$field_type}[name={$field_name}]' ).val()";
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
+			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 			break;
 		}
 	}

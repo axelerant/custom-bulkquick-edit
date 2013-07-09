@@ -4,5 +4,6 @@ Is there something you want done? Write it up on the [support forums](http://wor
 
 ## Free
 
-* Handle checkbox and radio input and select box dropdown
+* Handle checkbox saving for bulk edit
+* Handle checkbox presetting for quick edit
 * Dynamic cache enabled fields
