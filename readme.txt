@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types
 Requires at least: 3.4
 Tested up to: 3.6.0
-Stable tag: 0.0.3
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,12 @@ Currently, only text input and textarea fields are supported.
 * Enable excerpts?
 * Enable "Custom Field"? - As checkbox, radio, select, text input,r textarea
 * "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
+	* Example configuration
+`1
+Two
+3|Three
+four|Four
+five-five|55`
 
 **Compatibility & Reset**
 
