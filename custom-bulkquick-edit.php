@@ -54,7 +54,7 @@ class Custom_Bulkquick_Edit {
 
 
 	public function admin_init() {
-		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulkquick_Edit_Settings::ID . '">' . __( 'Settings', 'custom-bulkquick-edit' ) . '</a>';
+		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulkquick_Edit_Settings::ID . '">' . esc_html__( 'Settings', 'custom-bulkquick-edit' ) . '</a>';
 
 		$this->update();
 		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
@@ -141,7 +141,7 @@ EOD;
 
 	public function admin_notices_donate() {
 		$content  = '<div class="updated"><p>';
-		$content .= sprintf( __( 'Please donate $2 towards development and support of this Custom Bulk/Quick Edit plugin. %s', 'custom-bulkquick-edit' ), self::$donate_button );
+		$content .= sprintf( esc_html__( 'Please donate $2 towards development and support of this Custom Bulk/Quick Edit plugin. %s', 'custom-bulkquick-edit' ), self::$donate_button );
 		$content .= '</p></div>';
 
 		echo $content;
@@ -166,6 +166,11 @@ EOD;
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
 	public static function manage_posts_custom_column_precapture( $column, $post_id ) {
 		ob_start();
 	}
@@ -415,12 +420,17 @@ jQuery(document).ready(function($) {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
 	public static function get_post_types() {
 		if ( ! empty( self::$post_types ) )
 			return self::$post_types;
 
 		if ( isset( $_GET['post_type'] ) ) {
-			$post_type = esc_attr( $_GET['post_type'] );
+			$post_type                      = esc_attr( $_GET['post_type'] );
 			self::$post_types[ $post_type ] = $post_type;
 			self::$post_types_keys[]        = $post_type;
 
