@@ -1,11 +1,14 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## checked
+* Account for deprecated manage_edit-${post_type}_columns
 * Capture non-CBQE `manage_ . $post_type . _posts_custom_column` content
 * Display chosen checkbox, radio, or select options on bulk and quick edit screens
 * Display chosen checkbox, radio, or select values on edit page
 * Enable radio and select pre-setting for Quick Edit
 * Enable radio and select setting for Bulk Edit
+* Initialize loading later
+* Link to example
 * Remove unused styles/scripts methods
 * Remove usused CSS file
 * Restrict settings page to admins only

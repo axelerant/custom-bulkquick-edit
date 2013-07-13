@@ -109,8 +109,10 @@ class Custom_Bulkquick_Edit_Settings {
 				$call_api = true;
 			}
 
-			$fields = array();
-			$fields = apply_filters( $filter, $fields );
+			$fields      = array();
+			$fields      = apply_filters( $filter, $fields );
+			$filter_edit = 'manage_edit-' . $post_type . '_columns';
+			$fields      = apply_filters( $filter_edit, $fields );
 			if ( ! empty( $fields ) ) {
 				// remove built-in fields
 				unset( $fields[ $post_type . '-category' ] );
