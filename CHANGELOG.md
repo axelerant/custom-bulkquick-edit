@@ -7,6 +7,8 @@
 * Display chosen checkbox, radio, or select values on edit page
 * Enable radio and select pre-setting for Quick Edit
 * Enable radio and select setting for Bulk Edit
+* Handle checkbox presetting for quick edit
+* Handle checkbox saving for bulk edit
 * Initialize loading later
 * Link to example
 * Remove unused styles/scripts methods
