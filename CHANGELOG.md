@@ -13,6 +13,7 @@
 * Link to example
 * Remove unused styles/scripts methods
 * Remove usused CSS file
+* Redo screenshots
 * Restrict settings page to admins only
 * Simplify JavaScript script bulk/quick
 

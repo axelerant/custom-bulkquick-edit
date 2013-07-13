@@ -49,7 +49,8 @@ Currently, only text input and textarea fields are supported.
 **Post**
 
 * Enable excerpts?
-* Enable "custom field"? - Configure as text input or textarea
+* Enable "Custom Field"? - As checkbox, radio, select, text input,r textarea
+* "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
 
 **Compatibility & Reset**
 
@@ -89,10 +90,10 @@ Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.
 
 == Screenshots ==
 
-1. TwentyTwelve theme with Posts Post Excerpts enabled
-2. Posts Quick Edit with excerpts
-3. Posts Bulk Edit with excerpts
-4. Custom Bulk/Quick Edit Settings panel
+1. Custom Bulk/Quick Edit Settings panel
+2. TwentyTwelve theme with Posts Post Excerpts enabled
+3. Posts Quick Edit with excerpts
+4. Posts Bulk Edit with excerpts
 
 == Changelog ==
 
