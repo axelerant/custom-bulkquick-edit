@@ -68,6 +68,7 @@ class Custom_Bulkquick_Edit {
 
 
 	public function init() {
+		self::$base          = plugin_basename( __FILE__ );
 		self::$donate_button = <<<EOD
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -76,8 +77,6 @@ class Custom_Bulkquick_Edit {
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 EOD;
-
-		self::$base = plugin_basename( __FILE__ );
 	}
 
 
@@ -688,7 +687,7 @@ register_deactivation_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'deactivat
 register_uninstall_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'uninstall' ) );
 
 
-add_action( 'wp_loaded', 'custom_bulkquick_edit_init', 999 );
+add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
 
 
 /**

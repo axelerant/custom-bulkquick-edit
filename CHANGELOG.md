@@ -3,6 +3,7 @@
 ## checked
 * Account for deprecated manage_edit-${post_type}_columns
 * Capture non-CBQE `manage_ . $post_type . _posts_custom_column` content
+* Correct links
 * Display chosen checkbox, radio, or select options on bulk and quick edit screens
 * Display chosen checkbox, radio, or select values on edit page
 * Enable radio and select pre-setting for Quick Edit
