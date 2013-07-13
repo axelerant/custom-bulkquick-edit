@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 0.0.3\n"
+"Project-Id-Version: Custom Bulk/Quick Edit 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2013-06-30 02:21:55+00:00\n"
+"POT-Creation-Date: 2013-07-13 23:13:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,112 +16,135 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: custom-bulkquick-edit.php:138
+#: custom-bulkquick-edit.php:135
 msgid ""
 "If your Custom Bulk/Quick Edit display has gone to funky town, please <a "
 "href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: custom-bulkquick-edit.php:147
+#: custom-bulkquick-edit.php:144
 msgid ""
 "Please donate $2 towards development and support of this Custom Bulk/Quick "
 "Edit plugin. %s"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:72
+#: lib/class-custom-bulkquick-edit-settings.php:77
 msgid "Compatibility & Reset"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:73
+#: lib/class-custom-bulkquick-edit-settings.php:78
 msgid "About Custom Bulk/Quick Edit"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:88
+#: lib/class-custom-bulkquick-edit-settings.php:93
 msgid "TBD"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:99
+#: lib/class-custom-bulkquick-edit-settings.php:104
 msgid "Enable Excerpt?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:100
+#: lib/class-custom-bulkquick-edit-settings.php:105
 msgid "Excerpt"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:124
+#: lib/class-custom-bulkquick-edit-settings.php:129
 msgid "Enable %s?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:133
+#: lib/class-custom-bulkquick-edit-settings.php:130
+msgid "%s Configuration"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:139
 msgid "No"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:135
+#: lib/class-custom-bulkquick-edit-settings.php:140
+msgid "As checkbox"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:141
 msgid "As field"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:136
+#: lib/class-custom-bulkquick-edit-settings.php:142
+msgid "As radio"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:143
+msgid "As select"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:144
 msgid "As textarea"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:153
+#: lib/class-custom-bulkquick-edit-settings.php:151
+msgid ""
+"This configuration section is only for use with checkbox, radio, and select "
+"modes. Please seperate options using newlines. Further, you may create "
+"options as \"the-key|Pretty Value\" pairs."
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:172
 msgid "No custom fields found"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:167
+#: lib/class-custom-bulkquick-edit-settings.php:186
 msgid "Export Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:169
+#: lib/class-custom-bulkquick-edit-settings.php:188
 msgid ""
 "These are your current settings in a serialized format. Copy the contents to "
 "make a backup of your settings."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:177
+#: lib/class-custom-bulkquick-edit-settings.php:196
 msgid "Import Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:179
+#: lib/class-custom-bulkquick-edit-settings.php:198
 msgid ""
 "Paste new serialized settings here to overwrite your current configuration."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:185
+#: lib/class-custom-bulkquick-edit-settings.php:204
 msgid "Remove Plugin Data on Deletion?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:188
+#: lib/class-custom-bulkquick-edit-settings.php:207
 msgid ""
 "Delete all Custom Bulk/Quick Edit data and options from database on plugin "
 "deletion"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:194
+#: lib/class-custom-bulkquick-edit-settings.php:213
 msgid "Reset to Defaults?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:197
+#: lib/class-custom-bulkquick-edit-settings.php:216
 msgid "Check this box to reset options to their defaults"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:261
+#: lib/class-custom-bulkquick-edit-settings.php:280
 msgid "Custom Bulk/Quick"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:298
+#: lib/class-custom-bulkquick-edit-settings.php:317
 msgid "Custom Bulk/Quick Edit Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:315
+#: lib/class-custom-bulkquick-edit-settings.php:334
 msgid "Save Changes"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:324
+#: lib/class-custom-bulkquick-edit-settings.php:343
 msgid "Copyright &copy;%1$s %2$s."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:683
+#: lib/class-custom-bulkquick-edit-settings.php:702
 msgid "Required"
 msgstr ""
 

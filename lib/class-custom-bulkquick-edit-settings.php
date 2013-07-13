@@ -137,10 +137,10 @@ class Custom_Bulkquick_Edit_Settings {
 						'type' => 'select',
 						'choices' => array(
 							'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
-							'checkbox' => esc_html__( 'As checkbox' ),
+							'checkbox' => esc_html__( 'As checkbox', 'custom-bulkquick-edit' ),
 							'input' => esc_html__( 'As field', 'custom-bulkquick-edit' ),
-							'radio' => esc_html__( 'As radio' ),
-							'select' => esc_html__( 'As select' ),
+							'radio' => esc_html__( 'As radio', 'custom-bulkquick-edit' ),
+							'select' => esc_html__( 'As select', 'custom-bulkquick-edit' ),
 							'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
 						)
 					);
