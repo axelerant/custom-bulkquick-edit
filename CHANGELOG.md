@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Correct media image path
 
 ## 1.0.0
 * Account for deprecated manage_edit-${post_type}_columns
