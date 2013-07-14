@@ -169,7 +169,7 @@ EOD;
 	/**
 	 *
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public static function manage_posts_custom_column_precapture( $column, $post_id ) {
 		ob_start();
