@@ -81,6 +81,9 @@ Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.
 
 If you want to contribute and I hope you do, visit the [Custom Bulk/Quick Edit Github repository](https://github.com/michael-cannon/custom-bulkquick-edit).
 
+= Thank You =
+A big, special thank you to [Joe Weber](https://plus.google.com/100063271269277312276/posts) of [12 Star Creative](http://www.12starcreative.com/) for creating the Custom Bulk/Quick Edit banner.
+
 
 == Installation ==
 
