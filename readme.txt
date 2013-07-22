@@ -49,7 +49,7 @@ Currently, only text input and textarea fields are supported.
 **Post**
 
 * Enable excerpts?
-* Enable "Custom Field"? - As checkbox, radio, select, text input,r textarea
+* Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
 * "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please separate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
 	* Example configuration
 `1
