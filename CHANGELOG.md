@@ -3,6 +3,7 @@
 ## master
 * Correct media image path
 * Suppress warning PHPMD.UnusedFormalParameter
+* Update readme for usability
 
 ## 1.0.0
 * Account for deprecated manage_edit-${post_type}_columns
