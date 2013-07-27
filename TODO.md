@@ -5,3 +5,4 @@ Is there something you want done? Write it up on the [support forums](http://wor
 ## Free
 
 * Dynamic cache enabled fields
+* [Hook into Easy Custom Post Types to auto-create columns](https://aihrus.zendesk.com/agent/#/tickets/250)
