@@ -94,6 +94,16 @@ class Custom_Bulkquick_Edit_Settings {
 			'type' => 'heading',
 		);
 
+		$as_types = array(
+			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
+			'checkbox' => esc_html__( 'As checkbox', 'custom-bulkquick-edit' ),
+			'input' => esc_html__( 'As field', 'custom-bulkquick-edit' ),
+			'radio' => esc_html__( 'As radio', 'custom-bulkquick-edit' ),
+			'select' => esc_html__( 'As select', 'custom-bulkquick-edit' ),
+			'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
+		);
+		$as_types = apply_filters( 'custom_bulkquick_edit_settings_as_types', $as_types );
+
 		foreach ( self::$post_types as $post_type => $label ) {
 			$call_api         = false;
 			$filter           = 'manage_' . $post_type . '_posts_columns';
@@ -128,21 +138,14 @@ class Custom_Bulkquick_Edit_Settings {
 
 				$title   = esc_html__( 'Enable %s?', 'custom-bulkquick-edit' );
 				$details = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
-
+				
 				foreach ( $fields as $field => $label ) {
 					self::$settings[ $post_type . self::ENABLE . $field ] = array(
 						'section' => $post_type,
 						'title' => sprintf( $title, $label ),
 						'label' => $label,
 						'type' => 'select',
-						'choices' => array(
-							'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
-							'checkbox' => esc_html__( 'As checkbox', 'custom-bulkquick-edit' ),
-							'input' => esc_html__( 'As field', 'custom-bulkquick-edit' ),
-							'radio' => esc_html__( 'As radio', 'custom-bulkquick-edit' ),
-							'select' => esc_html__( 'As select', 'custom-bulkquick-edit' ),
-							'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
-						)
+						'choices' => $as_types,
 					);
 
 					self::$settings[ $post_type . self::ENABLE . $field . self::CONFIG ] = array(
@@ -156,6 +159,9 @@ class Custom_Bulkquick_Edit_Settings {
 				$call_api = true;
 			}
 
+			self::$settings = apply_filters( 'custom_bulkquick_edit_settings_post_type', self::$settings, $post_type, $label );
+
+			// todo call_api for above filter if needed
 			if ( $call_api ) {
 				$action = 'manage_' . $post_type . '_posts_custom_column';
 				if ( ! has_action( $action ) ) {
@@ -517,6 +523,7 @@ class Custom_Bulkquick_Edit_Settings {
 			break;
 
 		default:
+			$content .= apply_filters( 'custom_bulkquick_edit_settings_display_setting', $args, $input );
 			break;
 		}
 

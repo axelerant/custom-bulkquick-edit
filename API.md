@@ -8,6 +8,14 @@ None at this time.
 
 ## Filters
 
+* `custom_bulkquick_edit_settings_as_types`
+
+	Modify the field input types offered. [example](https://gist.github.com/michael-cannon/6333075)
+
+* `custom_bulkquick_edit_settings_display_setting`
+
+	Display the additional field input types offered. [example](https://gist.github.com/michael-cannon/6333132)
+
 * `custom_bulkquick_edit_validate_settings`
 
 	Validate settings helper. [example](https://gist.github.com/michael-cannon/5833768)
@@ -32,6 +40,18 @@ None at this time.
 
 	Customize post type column contents. [example](https://gist.github.com/michael-cannon/5833716)
 	
+* `custom_bulkquick_edit_manage_posts_custom_column_field_type`
+
+	Customize post type column contents by `field_type`. [example](https://gist.github.com/michael-cannon/6333181)
+	
+* `custom_bulkquick_edit_settings_post_type`
+
+	Customize settings variable based upon `post_type`.
+	
+* `custom_bulkquick_edit_quick_edit_custom_box_field`
+
+	Edit field contents by `field_type`.
+
 * `custom_bulkquick_edit_get_post_types_args`
 	
 	Alter `get_post_types` arguments for loading post types. [example]()

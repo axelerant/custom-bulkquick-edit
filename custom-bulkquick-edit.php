@@ -249,7 +249,7 @@ EOD;
 				break;
 
 			default:
-				$result = $current;
+				$result = apply_filters( 'custom_bulkquick_edit_manage_posts_custom_column_field_type', $current, $field_type, $column, $post_id );
 				break;
 			}
 		}
@@ -594,9 +594,14 @@ jQuery(document).ready(function($) {
 			echo $result;
 			break;
 
-		default:
+		case '1':
 		case 'textarea':
 			echo '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
+			break;
+
+		default:
+			$result = apply_filters( 'custom_bulkquick_edit_quick_edit_custom_box_field', '', $field_type, $field_name, $options );
+			echo $result;
 			break;
 		}
 
@@ -631,12 +636,15 @@ jQuery(document).ready(function($) {
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
 			break;
 
-		default:
+		case '1':
 		case 'input':
 		case 'textarea':
 			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( '{$field_type}[name={$field_name}]' ).val()";
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+			break;
+
+		default:
 			break;
 		}
 	}
