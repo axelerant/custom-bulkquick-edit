@@ -12,6 +12,7 @@ env:
 #    - WP_VERSION=3.5.2 WP_MULTISITE=0
 
 before_install:
+    - sudo apt-get update
     - git submodule update --init --recursive
 
 before_script:
