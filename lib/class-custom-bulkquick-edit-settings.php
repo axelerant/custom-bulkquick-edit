@@ -27,6 +27,7 @@ class Custom_Bulkquick_Edit_Settings {
 	const CONFIG = '__config__';
 	const ENABLE = '__enable__';
 	const ID     = 'custom-bulkquick-edit-settings';
+	const RESET  = '__reset__';
 
 	private static $post_types = array();
 
@@ -105,13 +106,13 @@ class Custom_Bulkquick_Edit_Settings {
 		$as_types = apply_filters( 'custom_bulkquick_edit_settings_as_types', $as_types );
 
 		foreach ( self::$post_types as $post_type => $label ) {
-			$call_api         = false;
-			$filter           = 'manage_' . $post_type . '_posts_columns';
+			$call_api = false;
+
 			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
 			if ( $supports_excerpt ) {
 				self::$settings[ $post_type . self::ENABLE . 'post_excerpt' ] = array(
 					'section' => $post_type,
-					'title' => esc_html__( 'Enable Excerpt?', 'custom-bulkquick-edit' ),
+					'title' => esc_html__( 'Enable "Excerpt"?', 'custom-bulkquick-edit' ),
 					'label' => esc_html__( 'Excerpt', 'custom-bulkquick-edit' ),
 					'type' => 'checkbox',
 				);
@@ -119,25 +120,39 @@ class Custom_Bulkquick_Edit_Settings {
 				$call_api = true;
 			}
 
+			$title = esc_html__( 'Reset "%s"?', 'custom-bulkquick-edit' );
+			$desc  = esc_html__( 'Remove current "%1$s" selections. You\'ll need to edit the "%2$s" again to set new "%3$s" entries.', 'custom-bulkquick-edit' );
+
+			$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+			foreach ( $taxonomies as $taxonomy ) {
+				$tax_label = $taxonomy->label;
+				$name      = $taxonomy->name;
+
+				if ( 'post_format' == $name )
+					continue;
+
+				self::$settings[ $post_type . self::ENABLE . self::RESET . $name ] = array(
+					'section' => $post_type,
+					'title' => sprintf( $title, $tax_label ),
+					'desc' => sprintf( $desc, $tax_label, $label, $tax_label ),
+					'label' => sprintf( $title, $tax_label ),
+					'type' => 'checkbox',
+					// fixme enable bulk_edit_only option to keep this out of 
+					// quick edits
+					'bulk_edit_only' => 1,
+				);
+
+				$call_api = true;
+			}
+
+			$filter      = 'manage_' . $post_type . '_posts_columns';
 			$fields      = array();
 			$fields      = apply_filters( $filter, $fields );
 			$filter_edit = 'manage_edit-' . $post_type . '_columns';
 			$fields      = apply_filters( $filter_edit, $fields );
 			if ( ! empty( $fields ) ) {
-				// remove built-in fields
-				unset( $fields[ $post_type . '-category' ] );
-				unset( $fields[ $post_type . '-post_tag' ] );
-				unset( $fields[ 'author' ] );
-				unset( $fields[ 'category' ] );
-				unset( $fields[ 'cb' ] );
-				unset( $fields[ 'date' ] );
-				unset( $fields[ 'post_excerpt' ] );
-				unset( $fields[ 'post_tag' ] );
-				unset( $fields[ 'thumbnail' ] );
-				unset( $fields[ 'title' ] );
-
-				$title   = esc_html__( 'Enable %s?', 'custom-bulkquick-edit' );
-				$details = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
+				$title   = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
+				$details = esc_html__( '"%s" Configuration', 'custom-bulkquick-edit' );
 				
 				foreach ( $fields as $field => $label ) {
 					self::$settings[ $post_type . self::ENABLE . $field ] = array(

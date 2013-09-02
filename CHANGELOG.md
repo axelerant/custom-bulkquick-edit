@@ -6,7 +6,10 @@
 * Add filter custom_bulkquick_edit_settings_as_types
 * Add filter custom_bulkquick_edit_settings_display_setting
 * Add filter custom_bulkquick_edit_settings_post_type
+* Add option to remove current taxonomy entries
+* BUGFIX Built-in fields don't have correct field type
 * Correct media image path
+* Quote fields in settings
 * Suppress warning PHPMD.UnusedFormalParameter
 * Update readme for usability
 

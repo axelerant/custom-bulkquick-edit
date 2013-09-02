@@ -406,6 +406,12 @@ jQuery(document).ready(function($) {
 			if ( ! $field_type )
 				continue;
 
+			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
+				$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
+				wp_delete_object_term_relationships( $post_id, $taxonomy );
+				continue;
+			}
+
 			$value = stripslashes_deep( $value );
 			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
 				update_post_meta( $post_id, $field_name, $value );
@@ -522,6 +528,11 @@ jQuery(document).ready(function($) {
 		if ( empty( $field_type ) )
 			return;
 
+		if ( 'post_excerpt' == $column_name )
+			$field_type = 'textarea';
+		elseif ( false !== strstr( $column_name, Custom_Bulkquick_Edit_Settings::RESET ) )
+			$field_type = 'checkbox';
+
 		if ( self::$no_instance ) {
 			self::$no_instance = false;
 			wp_nonce_field( plugin_basename( __FILE__ ), self::ID );
@@ -594,7 +605,6 @@ jQuery(document).ready(function($) {
 			echo $result;
 			break;
 
-		case '1':
 		case 'textarea':
 			echo '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
 			break;
@@ -636,7 +646,6 @@ jQuery(document).ready(function($) {
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
 			break;
 
-		case '1':
 		case 'input':
 		case 'textarea':
 			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( '{$field_type}[name={$field_name}]' ).val()";
