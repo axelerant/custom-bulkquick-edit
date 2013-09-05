@@ -8,7 +8,9 @@
 * Add filter custom_bulkquick_edit_settings_post_type
 * Add option to remove current taxonomy entries
 * BUGFIX Built-in fields don't have correct field type
+* Convert &$this to $this
 * Correct media image path
+* Keep Remove taxonomy out of post columns
 * Quote fields in settings
 * Suppress warning PHPMD.UnusedFormalParameter
 * Update readme for usability

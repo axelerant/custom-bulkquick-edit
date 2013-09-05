@@ -47,8 +47,8 @@ class Custom_Bulkquick_Edit {
 
 
 	public function __construct() {
-		add_action( 'admin_init', array( &$this, 'admin_init' ) );
-		add_action( 'init', array( &$this, 'init' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 		load_plugin_textdomain( self::ID, false, 'custom-bulkquick-edit/languages' );
 	}
 
@@ -57,13 +57,13 @@ class Custom_Bulkquick_Edit {
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulkquick_Edit_Settings::ID . '">' . esc_html__( 'Settings', 'custom-bulkquick-edit' ) . '</a>';
 
 		$this->update();
-		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
-		add_action( 'bulk_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
-		add_action( 'quick_edit_custom_box', array( &$this, 'quick_edit_custom_box' ), 10, 2 );
-		add_action( 'save_post', array( &$this, 'save_post' ), 25 );
+		add_action( 'admin_footer', array( $this, 'admin_footer' ) );
+		add_action( 'bulk_edit_custom_box', array( $this, 'quick_edit_custom_box' ), 10, 2 );
+		add_action( 'quick_edit_custom_box', array( $this, 'quick_edit_custom_box' ), 10, 2 );
+		add_action( 'save_post', array( $this, 'save_post' ), 25 );
 		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulkquick_Edit', 'save_post_bulk_edit' ) );
-		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
-		add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
+		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 	}
 
 
@@ -269,6 +269,9 @@ EOD;
 
 		$fields = self::get_enabled_fields( $post->post_type );
 		foreach ( $fields as $key => $field_name ) {
+			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) )
+				continue;
+
 			$title                  = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 			$columns[ $field_name ] = $title;
 		}
@@ -682,7 +685,7 @@ jQuery(document).ready(function($) {
 		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], plugin_basename( __FILE__ ) ) )
 			return;
 
-		remove_action( 'save_post', array( &$this, 'save_post' ), 25 );
+		remove_action( 'save_post', array( $this, 'save_post' ), 25 );
 		self::save_post_items( $post_id );
 	}
 

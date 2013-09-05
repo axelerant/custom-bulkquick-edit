@@ -54,12 +54,12 @@ class Custom_Bulkquick_Edit_Settings {
 
 
 	public function __construct() {
-		add_action( 'admin_init', array( &$this, 'admin_init' ) );
-		add_action( 'init', array( &$this, 'init' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 
 		// restrict settings page to admins only
 		if ( current_user_can( 'activate_plugins' ) )
-			add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
+			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 	}
 
 
@@ -105,6 +105,7 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_types = apply_filters( 'custom_bulkquick_edit_settings_as_types', $as_types );
 
+		$desc = esc_html__( 'Enable editing %1$s "Excerpt".', 'custom-bulkquick-edit' );
 		foreach ( self::$post_types as $post_type => $label ) {
 			$call_api = false;
 
@@ -114,14 +115,15 @@ class Custom_Bulkquick_Edit_Settings {
 					'section' => $post_type,
 					'title' => esc_html__( 'Enable "Excerpt"?', 'custom-bulkquick-edit' ),
 					'label' => esc_html__( 'Excerpt', 'custom-bulkquick-edit' ),
+					'desc' => sprintf( $desc, $label ),
 					'type' => 'checkbox',
 				);
 
 				$call_api = true;
 			}
 
-			$title = esc_html__( 'Reset "%s"?', 'custom-bulkquick-edit' );
-			$desc  = esc_html__( 'Remove current "%1$s" selections. You\'ll need to edit the "%2$s" again to set new "%3$s" entries.', 'custom-bulkquick-edit' );
+			$title = esc_html__( 'Remove "%s" Relations?', 'custom-bulkquick-edit' );
+			$desc  = esc_html__( 'Remove current "%1$s" relationships. You\'ll need to edit the "%2$s" again to set new "%3$s" entries.', 'custom-bulkquick-edit' );
 
 			$taxonomies = get_object_taxonomies( $post_type, 'objects' );
 			foreach ( $taxonomies as $taxonomy ) {
@@ -137,9 +139,6 @@ class Custom_Bulkquick_Edit_Settings {
 					'desc' => sprintf( $desc, $tax_label, $label, $tax_label ),
 					'label' => sprintf( $title, $tax_label ),
 					'type' => 'checkbox',
-					// fixme enable bulk_edit_only option to keep this out of 
-					// quick edits
-					'bulk_edit_only' => 1,
 				);
 
 				$call_api = true;
@@ -166,11 +165,12 @@ class Custom_Bulkquick_Edit_Settings {
 					self::$settings[ $post_type . self::ENABLE . $field . self::CONFIG ] = array(
 						'section' => $post_type,
 						'title' => sprintf( $details, $label ),
-						'desc' => esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.', 'custom-bulkquick-edit' ),
+						'desc' => esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. You may create options as "the-key|Supremely, Pretty Values" pairs.', 'custom-bulkquick-edit' ),
 						'label' => $label,
 						'type' => 'textarea',
 					);
 				}
+
 				$call_api = true;
 			}
 
@@ -300,8 +300,8 @@ class Custom_Bulkquick_Edit_Settings {
 	public function admin_menu() {
 		$admin_page = add_options_page( '', esc_html__( 'Custom Bulk/Quick', 'custom-bulkquick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulkquick_Edit_Settings', 'display_page' ) );
 
-		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
-		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
+		add_action( 'admin_print_scripts-' . $admin_page, array( $this, 'scripts' ) );
+		add_action( 'admin_print_styles-' . $admin_page, array( $this, 'styles' ) );
 	}
 
 
@@ -328,7 +328,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		self::$defaults[$id] = $std;
 
-		add_settings_field( $id, $title, array( &$this, 'display_setting' ), self::ID, $section, $field_args );
+		add_settings_field( $id, $title, array( $this, 'display_setting' ), self::ID, $section, $field_args );
 	}
 
 
@@ -561,13 +561,13 @@ class Custom_Bulkquick_Edit_Settings {
 
 
 	public function register_settings() {
-		register_setting( self::ID, self::ID, array( &$this, 'validate_settings' ) );
+		register_setting( self::ID, self::ID, array( $this, 'validate_settings' ) );
 
 		foreach ( self::$sections as $slug => $title ) {
 			if ( $slug == 'about' )
-				add_settings_section( $slug, $title, array( &$this, 'display_about_section' ), self::ID );
+				add_settings_section( $slug, $title, array( $this, 'display_about_section' ), self::ID );
 			else
-				add_settings_section( $slug, $title, array( &$this, 'display_section' ), self::ID );
+				add_settings_section( $slug, $title, array( $this, 'display_section' ), self::ID );
 		}
 
 		foreach ( self::$settings as $id => $setting ) {
