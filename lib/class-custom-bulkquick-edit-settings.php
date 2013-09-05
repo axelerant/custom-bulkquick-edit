@@ -105,7 +105,7 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_types = apply_filters( 'custom_bulkquick_edit_settings_as_types', $as_types );
 
-		$desc = esc_html__( 'Enable editing %1$s "Excerpt".', 'custom-bulkquick-edit' );
+		$desc_excerpt = esc_html__( 'Enable editing %1$s "Excerpt".', 'custom-bulkquick-edit' );
 		foreach ( self::$post_types as $post_type => $label ) {
 			$call_api = false;
 
@@ -115,7 +115,7 @@ class Custom_Bulkquick_Edit_Settings {
 					'section' => $post_type,
 					'title' => esc_html__( 'Enable "Excerpt"?', 'custom-bulkquick-edit' ),
 					'label' => esc_html__( 'Excerpt', 'custom-bulkquick-edit' ),
-					'desc' => sprintf( $desc, $label ),
+					'desc' => sprintf( $desc_excerpt, $label ),
 					'type' => 'checkbox',
 				);
 
