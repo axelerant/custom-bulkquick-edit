@@ -727,6 +727,9 @@ add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
 function custom_bulkquick_edit_init() {
+	if ( ! is_admin() )
+		return;
+
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	if ( is_plugin_active( Custom_Bulkquick_Edit::PLUGIN_FILE ) ) {
 		require_once 'lib/class-custom-bulkquick-edit-settings.php';
@@ -739,7 +742,6 @@ function custom_bulkquick_edit_init() {
 		if ( is_null( $Custom_Bulkquick_Edit_Settings ) )
 			$Custom_Bulkquick_Edit_Settings = new Custom_Bulkquick_Edit_Settings();
 	}
-
 }
 
 

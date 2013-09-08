@@ -11,6 +11,8 @@
 * Convert &$this to $this
 * Correct media image path
 * Keep Remove taxonomy out of post columns
+* Only load plugin if admin
+* Only load settings class admin_init if on edit, plugin, or settings page
 * Quote fields in settings
 * Suppress warning PHPMD.UnusedFormalParameter
 * Update readme for usability

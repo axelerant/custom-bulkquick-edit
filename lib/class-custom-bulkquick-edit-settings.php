@@ -54,7 +54,16 @@ class Custom_Bulkquick_Edit_Settings {
 
 
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		$load_admin_init = false;
+		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'plugins.php' ) ) ) {
+			$load_admin_init = true;
+		} elseif ( ! empty( $_REQUEST['page'] ) && self::ID == $_REQUEST['page'] ) {
+			$load_admin_init = true;
+		}
+
+		if ( $load_admin_init )
+			add_action( 'admin_init', array( $this, 'admin_init' ) );
+
 		add_action( 'init', array( $this, 'init' ) );
 
 		// restrict settings page to admins only
