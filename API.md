@@ -8,6 +8,14 @@ None at this time.
 
 ## Filters
 
+* `custom_bulkquick_edit_quick_scripts_bulk`
+
+	Add bulk edit related JavaScript. Provides parameters `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+
+* `custom_bulkquick_edit_quick_scripts_quick`
+
+	Add quick edit related JavaScript. Provides parameters `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+
 * `custom_bulkquick_edit_settings_as_types`
 
 	Modify the field input types offered. [example](https://gist.github.com/michael-cannon/6333075)

@@ -657,6 +657,8 @@ jQuery(document).ready(function($) {
 			break;
 
 		default:
+			self::$scripts_bulk  = apply_filters( 'custom_bulkquick_edit_quick_scripts_bulk', self::$scripts_bulk, $column_name, $field_name, $field_type, $field_name_var );
+			self::$scripts_quick = apply_filters( 'custom_bulkquick_edit_quick_scripts_quick', self::$scripts_quick, $column_name, $field_name, $field_type, $field_name_var );
 			break;
 		}
 	}

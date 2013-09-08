@@ -3,6 +3,8 @@
 ## master
 * Add filter custom_bulkquick_edit_manage_posts_custom_column_field_type
 * Add filter custom_bulkquick_edit_quick_edit_custom_box_field
+* Add filter custom_bulkquick_edit_quick_scripts_bulk
+* Add filter custom_bulkquick_edit_quick_scripts_quick
 * Add filter custom_bulkquick_edit_settings_as_types
 * Add filter custom_bulkquick_edit_settings_display_setting
 * Add filter custom_bulkquick_edit_settings_post_type

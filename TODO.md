@@ -2,7 +2,6 @@
 
 Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/custom-bulkquick-edit) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).
 
-* Date selector
 * Set featured image
 * Show/hide configuration boxes in settings as needed per as type selected
 * [Hook into Easy Custom Post Types to auto-create columns](https://aihrus.zendesk.com/agent/#/tickets/250)

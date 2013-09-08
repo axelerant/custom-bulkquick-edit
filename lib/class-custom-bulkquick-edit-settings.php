@@ -55,7 +55,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 	public function __construct() {
 		$load_admin_init = false;
-		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'plugins.php' ) ) ) {
+		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
 			$load_admin_init = true;
 		} elseif ( ! empty( $_REQUEST['page'] ) && self::ID == $_REQUEST['page'] ) {
 			$load_admin_init = true;
@@ -107,7 +107,7 @@ class Custom_Bulkquick_Edit_Settings {
 		$as_types = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
 			'checkbox' => esc_html__( 'As checkbox', 'custom-bulkquick-edit' ),
-			'input' => esc_html__( 'As field', 'custom-bulkquick-edit' ),
+			'input' => esc_html__( 'As input field', 'custom-bulkquick-edit' ),
 			'radio' => esc_html__( 'As radio', 'custom-bulkquick-edit' ),
 			'select' => esc_html__( 'As select', 'custom-bulkquick-edit' ),
 			'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
