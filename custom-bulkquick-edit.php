@@ -316,10 +316,10 @@ jQuery(document).ready(function($) {
 
 	';
 
-	$scripts = implode( "\n", self::$scripts_extra );
-	echo $scripts;
+			$scripts = implode( "\n", self::$scripts_extra );
+			echo $scripts;
 
-	echo '
+			echo '
 
 	var wp_inline_edit = inlineEditPost.edit;
 	inlineEditPost.edit = function( id ) {
@@ -359,10 +359,10 @@ jQuery(document).ready(function($) {
 						post_ids: post_ids,
 						';
 
-					$scripts = implode( ",\n", self::$scripts_bulk );
-					echo $scripts;
+			$scripts = implode( ",\n", self::$scripts_bulk );
+			echo $scripts;
 
-					echo '
+			echo '
 				}
 		});
 	});

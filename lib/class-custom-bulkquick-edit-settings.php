@@ -70,6 +70,11 @@ class Custom_Bulkquick_Edit_Settings {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
 	public static function do_load() {
 		$do_load = false;
 		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
@@ -168,7 +173,7 @@ class Custom_Bulkquick_Edit_Settings {
 			if ( ! empty( $fields ) ) {
 				$title   = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
 				$details = esc_html__( '"%s" Configuration', 'custom-bulkquick-edit' );
-				
+
 				foreach ( $fields as $field => $label ) {
 					self::$settings[ $post_type . self::ENABLE . $field ] = array(
 						'section' => $post_type,
@@ -192,7 +197,6 @@ class Custom_Bulkquick_Edit_Settings {
 
 			self::$settings = apply_filters( 'custom_bulkquick_edit_settings_post_type', self::$settings, $post_type, $label );
 
-			// todo call_api for above filter if needed
 			if ( $call_api ) {
 				$action = 'manage_' . $post_type . '_posts_custom_column';
 				if ( ! has_action( $action ) ) {
