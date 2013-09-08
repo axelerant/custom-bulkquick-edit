@@ -206,6 +206,11 @@ EOD;
 			$current = get_post_meta( $post_id, $column, true );
 
 			switch ( $field_type ) {
+			case 'input':
+			case 'textarea':
+				$result = $current;
+				break;
+
 			case 'checkbox':
 			case 'radio':
 				if ( ! is_array( $current ) )
@@ -538,7 +543,7 @@ jQuery(document).ready(function($) {
 
 		if ( self::$no_instance ) {
 			self::$no_instance = false;
-			wp_nonce_field( plugin_basename( __FILE__ ), self::ID );
+			wp_nonce_field( self::$base, self::ID );
 		}
 
 		$key            = self::get_field_key( $post_type, $column_name );
@@ -547,7 +552,7 @@ jQuery(document).ready(function($) {
 		$title          = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 
 		echo '
-			<fieldset class="inline-edit-col-right inline-edit-video">
+			<fieldset class="inline-edit-col-right inline-edit-video ' . $field_type . '">
 	  			<div class="inline-edit-col inline-edit-' . $column_name . '">
 		';
 
@@ -684,7 +689,7 @@ jQuery(document).ready(function($) {
 		if ( 'revision' == $post_type )
 			return;
 
-		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], plugin_basename( __FILE__ ) ) )
+		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::$base ) )
 			return;
 
 		remove_action( 'save_post', array( $this, 'save_post' ), 25 );

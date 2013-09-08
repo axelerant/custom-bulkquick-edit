@@ -1,6 +1,8 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* API updates
+* Add field_type identifier to edit screen fieldset
 * Add filter custom_bulkquick_edit_manage_posts_custom_column_field_type
 * Add filter custom_bulkquick_edit_quick_edit_custom_box_field
 * Add filter custom_bulkquick_edit_quick_scripts_bulk
@@ -10,7 +12,8 @@
 * Add filter custom_bulkquick_edit_settings_post_type
 * Add option to remove current taxonomy entries
 * BUGFIX Built-in fields don't have correct field type
-* BUGFIX save during Ajax calls
+* BUGFIX Display column data when premium is activated
+* BUGFIX Save during Ajax calls
 * Convert &$this to $this
 * Correct media image path
 * Keep Remove taxonomy out of post columns

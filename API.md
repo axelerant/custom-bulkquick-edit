@@ -58,7 +58,7 @@ None at this time.
 	
 * `custom_bulkquick_edit_quick_edit_custom_box_field`
 
-	Edit field contents by `field_type`.
+	Edit field contents by `field_type`. Has parameters `$field_type`, `$field_name`, and `$options`.
 
 * `custom_bulkquick_edit_get_post_types_args`
 	
