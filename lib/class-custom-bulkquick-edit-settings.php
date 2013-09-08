@@ -59,6 +59,8 @@ class Custom_Bulkquick_Edit_Settings {
 			$load_admin_init = true;
 		} elseif ( ! empty( $_REQUEST['page'] ) && self::ID == $_REQUEST['page'] ) {
 			$load_admin_init = true;
+		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			$load_admin_init = true;
 		}
 
 		if ( $load_admin_init )
