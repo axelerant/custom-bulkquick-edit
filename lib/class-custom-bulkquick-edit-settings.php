@@ -54,16 +54,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 
 	public function __construct() {
-		$load_admin_init = false;
-		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
-			$load_admin_init = true;
-		} elseif ( ! empty( $_REQUEST['page'] ) && self::ID == $_REQUEST['page'] ) {
-			$load_admin_init = true;
-		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			$load_admin_init = true;
-		}
-
-		if ( $load_admin_init )
+		if ( self::do_load() )
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 
 		add_action( 'init', array( $this, 'init' ) );
@@ -76,6 +67,20 @@ class Custom_Bulkquick_Edit_Settings {
 
 	public function init() {
 		load_plugin_textdomain( 'custom-bulkquick-edit', false, '/custom-bulkquick-edit/languages/' );
+	}
+
+
+	public static function do_load() {
+		$do_load = false;
+		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
+			$do_load = true;
+		} elseif ( ! empty( $_REQUEST['page'] ) && self::ID == $_REQUEST['page'] ) {
+			$do_load = true;
+		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			$do_load = true;
+		}
+
+		return $do_load;
 	}
 
 

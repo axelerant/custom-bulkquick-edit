@@ -10,11 +10,15 @@ None at this time.
 
 * `custom_bulkquick_edit_quick_scripts_bulk`
 
-	Add bulk edit related JavaScript. Provides parameters `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+	Add bulk edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+
+* `custom_bulkquick_edit_quick_scripts_extra`
+
+	Add extra edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
 
 * `custom_bulkquick_edit_quick_scripts_quick`
 
-	Add quick edit related JavaScript. Provides parameters `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+	Add quick edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
 
 * `custom_bulkquick_edit_settings_as_types`
 

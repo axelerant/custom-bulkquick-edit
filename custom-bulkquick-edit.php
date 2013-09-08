@@ -41,6 +41,7 @@ class Custom_Bulkquick_Edit {
 	public static $post_types      = array();
 	public static $post_types_keys = array();
 	public static $scripts_bulk    = array();
+	public static $scripts_extra   = array();
 	public static $scripts_quick   = array();
 	public static $scripts_called  = false;
 	public static $settings_link   = '';
@@ -310,8 +311,16 @@ EOD;
 	public static function get_scripts() {
 		if ( empty( self::$scripts_called ) ) {
 			echo '
-				<script type="text/javascript">
+<script type="text/javascript">
 jQuery(document).ready(function($) {
+
+	';
+
+	$scripts = implode( "\n", self::$scripts_extra );
+	echo $scripts;
+
+	echo '
+
 	var wp_inline_edit = inlineEditPost.edit;
 	inlineEditPost.edit = function( id ) {
 		wp_inline_edit.apply( this, arguments );
@@ -342,19 +351,19 @@ jQuery(document).ready(function($) {
 
 		$.ajax({
 			url: ajaxurl,
-			type: "POST",
-			async: false,
-			cache: false,
-			data: {
-				action: "save_post_bulk_edit",
-				post_ids: post_ids,
-			';
+				type: "POST",
+				async: false,
+				cache: false,
+				data: {
+					action: "save_post_bulk_edit",
+						post_ids: post_ids,
+						';
 
-			$scripts = implode( ",\n", self::$scripts_bulk );
-			echo $scripts;
+					$scripts = implode( ",\n", self::$scripts_bulk );
+					echo $scripts;
 
-			echo '
-			}
+					echo '
+				}
 		});
 	});
 });
@@ -662,8 +671,9 @@ jQuery(document).ready(function($) {
 			break;
 
 		default:
-			self::$scripts_bulk  = apply_filters( 'custom_bulkquick_edit_quick_scripts_bulk', self::$scripts_bulk, $column_name, $field_name, $field_type, $field_name_var );
-			self::$scripts_quick = apply_filters( 'custom_bulkquick_edit_quick_scripts_quick', self::$scripts_quick, $column_name, $field_name, $field_type, $field_name_var );
+			self::$scripts_bulk  = apply_filters( 'custom_bulkquick_edit_quick_scripts_bulk', self::$scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+			self::$scripts_quick = apply_filters( 'custom_bulkquick_edit_quick_scripts_quick', self::$scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+			self::$scripts_extra = apply_filters( 'custom_bulkquick_edit_quick_scripts_extra', self::$scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var );
 			break;
 		}
 	}
