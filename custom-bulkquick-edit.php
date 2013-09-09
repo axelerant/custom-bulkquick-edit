@@ -255,12 +255,12 @@ EOD;
 				break;
 
 			default:
-				$result = apply_filters( 'custom_bulkquick_edit_manage_posts_custom_column_field_type', $current, $field_type, $column, $post_id );
+				$result = apply_filters( 'cbqe_manage_posts_custom_column_field_type', $current, $field_type, $column, $post_id );
 				break;
 			}
 		}
 
-		$result = apply_filters( 'custom_bulkquick_edit_posts_custom_column', $result, $column, $post_id );
+		$result = apply_filters( 'cbqe_posts_custom_column', $result, $column, $post_id );
 
 		if ( $result )
 			echo $result;
@@ -282,7 +282,7 @@ EOD;
 			$columns[ $field_name ] = $title;
 		}
 
-		$columns = apply_filters( 'custom_bulkquick_edit_columns', $columns );
+		$columns = apply_filters( 'cbqe_columns', $columns );
 
 		return $columns;
 	}
@@ -464,7 +464,7 @@ jQuery(document).ready(function($) {
 				'_builtin' => true,
 			);
 
-			$args = apply_filters( 'custom_bulkquick_edit_get_post_types_args', $args );
+			$args = apply_filters( 'cbqe_get_post_types_args', $args );
 
 			$post_types = get_post_types( $args, 'objects' );
 			foreach ( $post_types as $post_type ) {
@@ -627,7 +627,7 @@ jQuery(document).ready(function($) {
 			break;
 
 		default:
-			$result = apply_filters( 'custom_bulkquick_edit_quick_edit_custom_box_field', '', $field_type, $field_name, $options );
+			$result = apply_filters( 'cbqe_quick_edit_custom_box_field', '', $field_type, $field_name, $options );
 			echo $result;
 			break;
 		}
@@ -671,9 +671,9 @@ jQuery(document).ready(function($) {
 			break;
 
 		default:
-			self::$scripts_bulk  = apply_filters( 'custom_bulkquick_edit_quick_scripts_bulk', self::$scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var );
-			self::$scripts_quick = apply_filters( 'custom_bulkquick_edit_quick_scripts_quick', self::$scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var );
-			self::$scripts_extra = apply_filters( 'custom_bulkquick_edit_quick_scripts_extra', self::$scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+			self::$scripts_bulk  = apply_filters( 'cbqe_quick_scripts_bulk', self::$scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+			self::$scripts_quick = apply_filters( 'cbqe_quick_scripts_quick', self::$scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+			self::$scripts_extra = apply_filters( 'cbqe_quick_scripts_extra', self::$scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var );
 			break;
 		}
 	}

@@ -99,7 +99,7 @@ class Custom_Bulkquick_Edit_Settings {
 		self::$sections['reset'] = esc_html__( 'Compatibility & Reset', 'custom-bulkquick-edit' );
 		self::$sections['about'] = esc_html__( 'About Custom Bulk/Quick Edit', 'custom-bulkquick-edit' );
 
-		self::$sections = apply_filters( 'custom_bulkquick_edit_sections', self::$sections );
+		self::$sections = apply_filters( 'cbqe_sections', self::$sections );
 	}
 
 
@@ -124,7 +124,7 @@ class Custom_Bulkquick_Edit_Settings {
 			'select' => esc_html__( 'As select', 'custom-bulkquick-edit' ),
 			'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
 		);
-		$as_types = apply_filters( 'custom_bulkquick_edit_settings_as_types', $as_types );
+		$as_types = apply_filters( 'cbqe_settings_as_types', $as_types );
 
 		$desc_excerpt = esc_html__( 'Enable editing %1$s "Excerpt".', 'custom-bulkquick-edit' );
 		foreach ( self::$post_types as $post_type => $label ) {
@@ -195,7 +195,7 @@ class Custom_Bulkquick_Edit_Settings {
 				$call_api = true;
 			}
 
-			self::$settings = apply_filters( 'custom_bulkquick_edit_settings_post_type', self::$settings, $post_type, $label );
+			self::$settings = apply_filters( 'cbqe_settings_post_type', self::$settings, $post_type, $label );
 
 			if ( $call_api ) {
 				$action = 'manage_' . $post_type . '_posts_custom_column';
@@ -258,7 +258,7 @@ class Custom_Bulkquick_Edit_Settings {
 			'widget' => 0,
 		);
 
-		self::$settings = apply_filters( 'custom_bulkquick_edit_settings', self::$settings );
+		self::$settings = apply_filters( 'cbqe_settings', self::$settings );
 
 		foreach ( self::$settings as $id => $parts ) {
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
@@ -308,7 +308,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		$version       = cbqe_get_option( 'version' );
 		self::$version = Custom_Bulkquick_Edit::VERSION;
-		self::$version = apply_filters( 'custom_bulkquick_edit_version', self::$version );
+		self::$version = apply_filters( 'cbqe_version', self::$version );
 
 		if ( $version != self::$version )
 			$this->initialize_settings();
@@ -558,7 +558,7 @@ class Custom_Bulkquick_Edit_Settings {
 			break;
 
 		default:
-			$content .= apply_filters( 'custom_bulkquick_edit_settings_display_setting', $args, $input );
+			$content .= apply_filters( 'cbqe_settings_display_setting', $args, $input );
 			break;
 		}
 
@@ -691,7 +691,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		$input['version']        = self::$version;
 		$input['donate_version'] = Custom_Bulkquick_Edit::VERSION;
-		$input                   = apply_filters( 'custom_bulkquick_edit_validate_settings', $input, $errors );
+		$input                   = apply_filters( 'cbqe_validate_settings', $input, $errors );
 
 		unset( $input['export'] );
 		unset( $input['import'] );

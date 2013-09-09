@@ -3,14 +3,14 @@
 ## master
 * API updates
 * Add field_type identifier to edit screen fieldset
-* Add filter custom_bulkquick_edit_manage_posts_custom_column_field_type
-* Add filter custom_bulkquick_edit_quick_edit_custom_box_field
-* Add filter custom_bulkquick_edit_quick_scripts_bulk
-* Add filter custom_bulkquick_edit_quick_scripts_extra
-* Add filter custom_bulkquick_edit_quick_scripts_quick
-* Add filter custom_bulkquick_edit_settings_as_types
-* Add filter custom_bulkquick_edit_settings_display_setting
-* Add filter custom_bulkquick_edit_settings_post_type
+* Add filter cbqe_manage_posts_custom_column_field_type
+* Add filter cbqe_quick_edit_custom_box_field
+* Add filter cbqe_quick_scripts_bulk
+* Add filter cbqe_quick_scripts_extra
+* Add filter cbqe_quick_scripts_quick
+* Add filter cbqe_settings_as_types
+* Add filter cbqe_settings_display_setting
+* Add filter cbqe_settings_post_type
 * Add option to remove current taxonomy entries
 * BUGFIX Built-in fields don't have correct field type
 * BUGFIX Bulk edit not saving
@@ -22,6 +22,7 @@
 * Only load plugin if admin
 * Only load settings class admin_init if on edit, plugin, or settings page
 * Quote fields in settings
+* Shorten filter names
 * Suppress warning PHPMD.UnusedFormalParameter
 * Update readme for usability
 
