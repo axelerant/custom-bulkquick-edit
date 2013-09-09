@@ -41,6 +41,9 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 
 * API of actions and filters
 * Auto detects most post custom fields
+* Edit excerpts
+* Performance minded – Plugin automatically loads when needed
+* Remove "`taxonomy`" Relations
 * Settings export/import
 * Settings screen
 
@@ -48,7 +51,8 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 
 **Post**
 
-* Enable excerpts?
+* Enable excerpts? – Enable editing `post_type` "Excerpt".
+* Remove "`taxonomy`" Relations? – Remove current "`taxonomy`" relationships. You'll need to edit the "`post_type`" again to set new "`taxonomy`" entries.
 * Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
 * "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please separate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
 	* Example configuration
