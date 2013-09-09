@@ -356,8 +356,8 @@ jQuery(document).ready(function($) {
 				cache: false,
 				data: {
 					action: "save_post_bulk_edit",
-						post_ids: post_ids,
-						';
+					post_ids: post_ids,
+					';
 
 			$scripts = implode( ",\n", self::$scripts_bulk );
 			echo $scripts;
@@ -744,8 +744,9 @@ add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
 function custom_bulkquick_edit_init() {
-	if ( ! is_admin() )
-		return;
+	if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX )
+		if ( ! is_admin() )
+			return;
 
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	if ( is_plugin_active( Custom_Bulkquick_Edit::PLUGIN_FILE ) ) {

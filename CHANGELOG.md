@@ -13,6 +13,7 @@
 * Add filter custom_bulkquick_edit_settings_post_type
 * Add option to remove current taxonomy entries
 * BUGFIX Built-in fields don't have correct field type
+* BUGFIX Bulk edit not saving
 * BUGFIX Display column data when premium is activated
 * BUGFIX Save during Ajax calls
 * Convert &$this to $this
