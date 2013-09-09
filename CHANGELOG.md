@@ -1,6 +1,8 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+
+## 1.0.1
 * API updates
 * Add field_type identifier to edit screen fieldset
 * Add filter cbqe_manage_posts_custom_column_field_type
