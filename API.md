@@ -10,15 +10,15 @@ None at this time.
 
 * `cbqe_quick_scripts_bulk`
 
-	Add bulk edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+	Add bulk edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`. [example](https://gist.github.com/michael-cannon/6490317)
 
 * `cbqe_quick_scripts_extra`
 
-	Add extra edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+	Add extra edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`. [example](https://gist.github.com/michael-cannon/6490325)
 
 * `cbqe_quick_scripts_quick`
 
-	Add quick edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`.
+	Add quick edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`. [example](https://gist.github.com/michael-cannon/6490331)
 
 * `cbqe_settings_as_types`
 
@@ -58,15 +58,15 @@ None at this time.
 	
 * `cbqe_settings_post_type`
 
-	Customize settings variable based upon `post_type`.
+	Customize settings variable based upon `post_type`. [example]()
 	
 * `cbqe_quick_edit_custom_box_field`
 
-	Edit field contents by `field_type`. Has parameters `$field_type`, `$field_name`, and `$options`.
+	Edit field contents by `field_type`. Has parameters `$field_type`, `$field_name`, and `$options`. [example](https://gist.github.com/michael-cannon/6490341)
 
 * `cbqe_get_post_types_args`
 	
-	Alter `get_post_types` arguments for loading post types. [example]()
+	Alter `get_post_types` arguments for loading post types. [example](https://gist.github.com/michael-cannon/6490357)
 
 ## Need More?
 

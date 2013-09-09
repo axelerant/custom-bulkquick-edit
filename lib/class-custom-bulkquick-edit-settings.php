@@ -90,7 +90,6 @@ class Custom_Bulkquick_Edit_Settings {
 
 
 	public static function sections() {
-		// self::$sections['general'] = esc_html__( 'General', 'custom-bulkquick-edit' );
 		self::$post_types = Custom_Bulkquick_Edit::get_post_types();
 		foreach ( self::$post_types as $post_type => $label ) {
 			self::$sections[ $post_type ] = $label;
