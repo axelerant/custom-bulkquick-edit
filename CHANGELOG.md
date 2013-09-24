@@ -1,6 +1,9 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Correct settings page title
+* Ignore checkbox and ID fields
+* Rename field label with img tag to its alt or title attribute
 
 ## 1.0.1
 * API updates

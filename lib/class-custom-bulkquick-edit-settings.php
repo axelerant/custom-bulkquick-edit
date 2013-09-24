@@ -170,6 +170,42 @@ class Custom_Bulkquick_Edit_Settings {
 			$filter_edit = 'manage_edit-' . $post_type . '_columns';
 			$fields      = apply_filters( $filter_edit, $fields );
 			if ( ! empty( $fields ) ) {
+				// static fields - shouldn't be edited
+				unset( $fields['cb'] );
+				unset( $fields['id'] );
+
+				$doc = new DOMDocument();
+
+				foreach ( $fields as $field => $label ) {
+					$alt   = '';
+					$title = '';
+
+					// convert img to just alt/title tag
+					if ( false !== stristr( $label, '<img' ) ) {
+						$doc->loadHTML( $label );
+
+						$xpath   = new DOMXPath( $doc );
+						$results = $xpath->query('//*[@alt]');
+						foreach ( $results as $node )
+							$alt = $node->getAttribute('alt');
+
+						if ( empty( $alt ) ) {
+							$results = $xpath->query('//*[@title]');
+							foreach ( $results as $node )
+								$title = $node->getAttribute('title');
+
+							if ( empty( $title ) )
+								unset( $fields[ $field ] );
+							else
+								$fields[ $field ] = $title;
+						} else {
+							$fields[ $field ] = $alt;
+						}
+					}
+				}
+			}
+
+			if ( ! empty( $fields ) ) {
 				$title   = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
 				$details = esc_html__( '"%s" Configuration', 'custom-bulkquick-edit' );
 
@@ -317,7 +353,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 
 	public function admin_menu() {
-		$admin_page = add_options_page( '', esc_html__( 'Custom Bulk/Quick', 'custom-bulkquick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulkquick_Edit_Settings', 'display_page' ) );
+		$admin_page = add_options_page( esc_html__( 'Custom Bulk/Quick Settings', 'custom-bulkquick-edit' ), esc_html__( 'Custom Bulk/Quick', 'custom-bulkquick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulkquick_Edit_Settings', 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . $admin_page, array( $this, 'scripts' ) );
 		add_action( 'admin_print_styles-' . $admin_page, array( $this, 'styles' ) );
