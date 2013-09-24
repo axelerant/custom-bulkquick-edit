@@ -4,7 +4,7 @@
 		Custom phpcs rules to check for Aihrus' WordPress projects
 	</description>
 
-	<exclude-pattern>zzz/video-quick-edit.php</exclude-pattern>
+	<exclude-pattern>lib/screen-meta-links.php</exclude-pattern>
 
 	<rule ref="Generic">
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found" />
