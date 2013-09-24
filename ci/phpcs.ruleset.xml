@@ -7,13 +7,16 @@
 	<exclude-pattern>zzz/video-quick-edit.php</exclude-pattern>
 
 	<rule ref="Generic">
+		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found" />
 		<exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
 		<exclude name="Generic.Files.EndFileNoNewline.Found" />
 		<exclude name="Generic.Files.LineLength.MaxExceeded" />
+		<exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
 		<exclude name="Generic.Formatting.NoSpaceAfterCast.SpaceFound" />
 		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine" />
 		<exclude name="Generic.Metrics.CyclomaticComplexity.MaxExceeded" />
 		<exclude name="Generic.NamingConventions.CamelCapsFunctionName.ScopeNotCamelCaps" />
+		<exclude name="Generic.PHP.CharacterBeforePHPOpeningTag.Found" />
 		<exclude name="Generic.PHP.UpperCaseConstant.Found" />
 		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />

@@ -185,14 +185,14 @@ class Custom_Bulkquick_Edit_Settings {
 						$doc->loadHTML( $label );
 
 						$xpath   = new DOMXPath( $doc );
-						$results = $xpath->query('//*[@alt]');
+						$results = $xpath->query( '//*[@alt]' );
 						foreach ( $results as $node )
-							$alt = $node->getAttribute('alt');
+							$alt = $node->getAttribute( 'alt' );
 
 						if ( empty( $alt ) ) {
-							$results = $xpath->query('//*[@title]');
+							$results = $xpath->query( '//*[@title]' );
 							foreach ( $results as $node )
-								$title = $node->getAttribute('title');
+								$title = $node->getAttribute( 'title' );
 
 							if ( empty( $title ) )
 								unset( $fields[ $field ] );
