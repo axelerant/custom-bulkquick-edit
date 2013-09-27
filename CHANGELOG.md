@@ -7,6 +7,7 @@
 * Ignore checkbox and ID fields
 * Reduce echo calls
 * Rename field label with img tag to its alt or title attribute
+* Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 
 ## 1.0.1
 * API updates
