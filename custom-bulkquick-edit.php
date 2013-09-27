@@ -313,14 +313,6 @@ EOD;
 			echo '
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-
-	';
-
-			$scripts = implode( "\n", self::$scripts_extra );
-			echo $scripts;
-
-			echo '
-
 	var wp_inline_edit = inlineEditPost.edit;
 	inlineEditPost.edit = function( id ) {
 		wp_inline_edit.apply( this, arguments );
@@ -341,9 +333,15 @@ jQuery(document).ready(function($) {
 		}
 	};
 
+	';
+
+			$scripts = implode( "\n", self::$scripts_extra );
+			echo $scripts;
+
+			echo '
+
 	$( "#bulk_edit" ).on( "click", function() {
 		var bulk_row = $( "#bulk-edit" );
-
 		var post_ids = new Array();
 		bulk_row.find( "#bulk-titles" ).children().each( function() {
 			post_ids.push( $( this ).attr( "id" ).replace( /^(ttle)/i, "" ) );
@@ -503,6 +501,9 @@ jQuery(document).ready(function($) {
 			$post_type = $post->post_type;
 		}
 
+		if ( false !== strstr( $field_name, self::$field_key ) )
+			$field_name = preg_replace( '#^' . self::$field_key . '#', '', $field_name );
+
 		$key = $post_type . Custom_Bulkquick_Edit_Settings::ENABLE . $field_name;
 
 		return $key;
@@ -598,11 +599,10 @@ jQuery(document).ready(function($) {
 				$result .= ' ' . $name;
 				$result .= '</label>';
 			}
-			echo $result;
 			break;
 
 		case 'input':
-			echo '<input type="text" name="' . $field_name . '" autocomplete="off" />';
+			$result = '<input type="text" name="' . $field_name . '" autocomplete="off" />';
 			break;
 
 		case 'select':
@@ -619,19 +619,18 @@ jQuery(document).ready(function($) {
 				$result .= '<option value="' . $value . '">' . $name . '</option>';
 			}
 			$result .= '</select>';
-			echo $result;
 			break;
 
 		case 'textarea':
-			echo '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
+			$result = '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
 			break;
 
 		default:
 			$result = apply_filters( 'cbqe_quick_edit_custom_box_field', '', $field_type, $field_name, $options );
-			echo $result;
 			break;
 		}
 
+		echo $result;
 
 		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
 			echo '

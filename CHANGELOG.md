@@ -1,8 +1,11 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Alter scripts_extra location
+* BUGFIX field name has plugin prefix
 * Correct settings page title
 * Ignore checkbox and ID fields
+* Reduce echo calls
 * Rename field label with img tag to its alt or title attribute
 
 ## 1.0.1
