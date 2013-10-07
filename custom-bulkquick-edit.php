@@ -444,7 +444,9 @@ jQuery(document).ready(function($) {
 			}
 
 			if ( 'taxonomy' == $field_type ) {
-				wp_set_object_terms( $post_id, $value, $field_name );
+				$value  = stripslashes( $value );
+				$values = str_getcsv( $value );
+				wp_set_object_terms( $post_id, $values, $field_name );
 				continue;
 			}
 

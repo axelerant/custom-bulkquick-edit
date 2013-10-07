@@ -6,6 +6,7 @@
 * Allow remove taxonomy checkbox only in bulk edit
 * Alter scripts_extra location
 * BUGFIX field name has plugin prefix
+* BUGFIX taxonomy CSV entries not treated as individual terms
 * Begin `has_config` coding to hide configuration textareas for unset options
 * Correct settings page title
 * Don't edit common/static fields like cb, id, author, etc.
