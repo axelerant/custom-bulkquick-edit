@@ -48,6 +48,18 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 * Settings screen
 * Supports taxonomies like tags
 
+= Custom Bulk/Quick Edit Premium Plugin Features =
+
+Custom Bulk/Quick Edit Premium plugin extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) with custom post types handling and other helpful features.
+
+* Disable donate references
+* Flexible API
+* Works with Custom Post Types
+* Works with [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
+* `date` input type with date picker
+
+[Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
+
 = Settings Options =
 
 **Post**

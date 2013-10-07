@@ -14,6 +14,7 @@
 * Reduce echo calls
 * Refactor options labeling
 * Rename field label with img tag to its alt or title attribute
+* Revise premium features list
 * Save taxonomy data
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Update API
