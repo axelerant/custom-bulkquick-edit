@@ -45,7 +45,7 @@ class Custom_Bulkquick_Edit_Settings {
 		'title' => '',
 		'type' => 'text', // textarea, checkbox, radio, select, hidden, heading, password, expand_begin, expand_end
 		'validate' => '', // required, term, slug, slugs, ids, order, single paramater PHP functions
-		'widget' => 1, // show in widget options, 0 off
+		'has_config' => 0, // enable configuration hide for certain types
 	);
 	public static $defaults = array();
 	public static $sections = array();
@@ -216,6 +216,7 @@ class Custom_Bulkquick_Edit_Settings {
 						'label' => $label,
 						'type' => 'select',
 						'choices' => $as_types,
+						'has_config' => 1,
 					);
 
 					self::$settings[ $post_type . self::ENABLE . $field . self::CONFIG ] = array(
@@ -263,7 +264,6 @@ class Custom_Bulkquick_Edit_Settings {
 				'type' => 'readonly',
 				'desc' => esc_html__( 'These are your current settings in a serialized format. Copy the contents to make a backup of your settings.', 'custom-bulkquick-edit' ),
 				'std' => $serialized_options,
-				'widget' => 0,
 			);
 		}
 
@@ -272,7 +272,6 @@ class Custom_Bulkquick_Edit_Settings {
 			'title' => esc_html__( 'Import Settings', 'custom-bulkquick-edit' ),
 			'type' => 'textarea',
 			'desc' => esc_html__( 'Paste new serialized settings here to overwrite your current configuration.', 'custom-bulkquick-edit' ),
-			'widget' => 0,
 		);
 
 		self::$settings['delete_data'] = array(
@@ -281,7 +280,6 @@ class Custom_Bulkquick_Edit_Settings {
 			'type' => 'checkbox',
 			'class' => 'warning', // Custom class for CSS
 			'desc' => esc_html__( 'Delete all Custom Bulk/Quick Edit data and options from database on plugin deletion', 'custom-bulkquick-edit' ),
-			'widget' => 0,
 		);
 
 		self::$settings['reset_defaults'] = array(
@@ -290,14 +288,12 @@ class Custom_Bulkquick_Edit_Settings {
 			'type' => 'checkbox',
 			'class' => 'warning', // Custom class for CSS
 			'desc' => esc_html__( 'Check this box to reset options to their defaults', 'custom-bulkquick-edit' ),
-			'widget' => 0,
 		);
 
 		self::$settings = apply_filters( 'cbqe_settings', self::$settings );
 
-		foreach ( self::$settings as $id => $parts ) {
+		foreach ( self::$settings as $id => $parts )
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
-		}
 	}
 
 
@@ -379,6 +375,7 @@ class Custom_Bulkquick_Edit_Settings {
 			'choices' => $choices,
 			'label_for' => $id,
 			'class' => $class,
+			'has_config' => $has_config,
 		);
 
 		self::$defaults[$id] = $std;
@@ -607,6 +604,10 @@ class Custom_Bulkquick_Edit_Settings {
 			break;
 		}
 
+		// TODO has_config - attempt to hide configuration when main entry isn't set
+		if ( $has_config )
+			$content .= '';
+
 		if ( ! $do_echo )
 			return $content;
 
@@ -723,16 +724,6 @@ class Custom_Bulkquick_Edit_Settings {
 					self::validators( $validate, $id, $input, $default, $errors );
 			}
 		}
-
-		// same has_archive and rewrite_slug causes problems
-		if ( $input['has_archive'] == $input['rewrite_slug'] )
-			$input['rewrite_slug'] = $defaults['rewrite_slug'];
-
-		// did URL slugs change?
-		$has_archive  = cbqe_get_option( 'has_archive' );
-		$rewrite_slug = cbqe_get_option( 'rewrite_slug' );
-		if ( $has_archive != $input['has_archive'] || $rewrite_slug != $input['rewrite_slug'] )
-			flush_rewrite_rules();
 
 		$input['version']        = self::$version;
 		$input['donate_version'] = Custom_Bulkquick_Edit::VERSION;

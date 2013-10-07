@@ -3,6 +3,7 @@
 ## master
 * Add disable donation option
 * Alter scripts_extra location
+* Begin `has_config` coding to hide configuration textareas for unset options
 * BUGFIX field name has plugin prefix
 * Correct settings page title
 * Ignore checkbox and ID fields
