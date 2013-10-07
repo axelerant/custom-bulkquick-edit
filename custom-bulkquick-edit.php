@@ -443,14 +443,16 @@ jQuery(document).ready(function($) {
 				continue;
 			}
 
+			$value = stripslashes_deep( $value );
+
 			if ( 'taxonomy' == $field_type ) {
-				$value  = stripslashes( $value );
-				$values = str_getcsv( $value );
+				// WordPress doesn't keep " enclosed CSV terms together, so 
+				// don't worry about it here then in using `str_getcsv`
+				$values = explode( ',', $value );
 				wp_set_object_terms( $post_id, $values, $field_name );
 				continue;
 			}
 
-			$value = stripslashes_deep( $value );
 			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
 				update_post_meta( $post_id, $field_name, $value );
 			} else {
