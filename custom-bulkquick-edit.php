@@ -120,6 +120,10 @@ EOD;
 		if ( $file != self::$base )
 			return $input;
 
+		$disable_donate = cbqe_get_option( 'disable_donate' );
+		if ( $disable_donate )
+			return $input;
+
 		$links = array(
 			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
 			'<a href="http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',

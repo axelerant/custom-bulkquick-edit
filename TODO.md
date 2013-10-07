@@ -6,3 +6,4 @@ Is there something you want done? Write it up on the [support forums](http://wor
 	* http://api.jquery.com/parents/
 	* http://stackoverflow.com/a/2889088/597637
 * [Hook into Easy Custom Post Types to auto-create columns](https://aihrus.zendesk.com/agent/#/tickets/250)
+* Work with http://wordpress.org/plugins/cpt-onomies/

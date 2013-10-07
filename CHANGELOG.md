@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Add disable donation option
 * Alter scripts_extra location
 * BUGFIX field name has plugin prefix
 * Correct settings page title
