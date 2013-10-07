@@ -127,6 +127,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		$as_category = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
+			// fixme
 			// 'category' => esc_html__( 'Yes', 'custom-bulkquick-edit' ),
 			'taxonomy' => esc_html__( 'Yes', 'custom-bulkquick-edit' ),
 		);
@@ -446,7 +447,7 @@ class Custom_Bulkquick_Edit_Settings {
 		if ( ! $disable_donate ) {
 			echo '<p>' .
 				sprintf(
-				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase Custom Bulk/Quick Edit Premium">purchase Custom Bulk/Quick Edit Premium</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.' ),
+				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase Custom Bulk/Quick Edit Premium">purchase Custom Bulk/Quick Edit Premium</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.', 'custom-bulkquick-edit' ),
 				esc_url( 'http://aihr.us/about-aihrus/donate/' ),
 				esc_url( 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' ),
 				esc_url( 'http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/' ),
@@ -515,6 +516,9 @@ class Custom_Bulkquick_Edit_Settings {
 	}
 
 
+	/**
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
 	public static function display_setting( $args = array(), $do_echo = true, $input = null ) {
 		$content = '';
 
@@ -636,7 +640,7 @@ class Custom_Bulkquick_Edit_Settings {
 			break;
 		}
 
-		// TODO has_config - attempt to hide configuration when main entry isn't set
+		// fixme
 		if ( $has_config )
 			$content .= '';
 
