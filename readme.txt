@@ -2,7 +2,7 @@
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
-Tags: custom, bulk edit, quick edit, custom post types
+Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.4
 Tested up to: 3.6.0
 Stable tag: 1.0.1
@@ -46,13 +46,15 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 * Remove "`taxonomy`" Relations
 * Settings export/import
 * Settings screen
+* Supports taxonomies like tags
 
 = Settings Options =
 
 **Post**
 
-* Enable excerpts? – Enable editing `post_type` "Excerpt".
-* Remove "`taxonomy`" Relations? – Remove current "`taxonomy`" relationships. You'll need to edit the "`post_type`" again to set new "`taxonomy`" entries.
+* Enable "Excerpt"? – Enable editing of post_type' excerpt.
+* Force "taxonomy"?	– Force making taxonomy an editable taxonomy field.
+* Remove "taxonomy" Relations? – During bulk editing, remove current taxonomy' relationships. You'll need to edit the post_type again to set new taxonomy entries.
 * Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
 * "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please separate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
 	* Example configuration

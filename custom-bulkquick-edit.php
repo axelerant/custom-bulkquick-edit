@@ -59,7 +59,7 @@ class Custom_Bulkquick_Edit {
 
 		$this->update();
 		add_action( 'admin_footer', array( $this, 'admin_footer' ) );
-		add_action( 'bulk_edit_custom_box', array( $this, 'quick_edit_custom_box' ), 10, 2 );
+		add_action( 'bulk_edit_custom_box', array( $this, 'bulk_edit_custom_box' ), 10, 2 );
 		add_action( 'quick_edit_custom_box', array( $this, 'quick_edit_custom_box' ), 10, 2 );
 		add_action( 'save_post', array( $this, 'save_post' ), 25 );
 		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulkquick_Edit', 'save_post_bulk_edit' ) );
@@ -211,6 +211,21 @@ EOD;
 			$current = get_post_meta( $post_id, $column, true );
 
 			switch ( $field_type ) {
+			case 'taxonomy':
+				$taxonomy   = $column;
+				$post_type  = get_post_type( $post_id );
+				$post_terms = array();
+
+				$terms = get_the_terms( $post_id, $taxonomy );
+				if ( ! empty( $terms ) ) {
+					foreach ( $terms as $term ) {
+						$post_terms[] = '<a href="edit.php?post_type=' . $post_type . '&' . $taxonomy . '=' . $term->slug . '">' . esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, $taxonomy, 'edit' ) ) . '</a>';
+					}
+				}
+
+				$result = implode( ', ', $post_terms );
+				break;
+
 			case 'input':
 			case 'textarea':
 				$result = $current;
@@ -279,9 +294,6 @@ EOD;
 
 		$fields = self::get_enabled_fields( $post->post_type );
 		foreach ( $fields as $key => $field_name ) {
-			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) )
-				continue;
-
 			$title                  = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 			$columns[ $field_name ] = $title;
 		}
@@ -431,6 +443,11 @@ jQuery(document).ready(function($) {
 				continue;
 			}
 
+			if ( 'taxonomy' == $field_type ) {
+				wp_set_object_terms( $post_id, $value, $field_name );
+				continue;
+			}
+
 			$value = stripslashes_deep( $value );
 			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
 				update_post_meta( $post_id, $field_name, $value );
@@ -542,7 +559,12 @@ jQuery(document).ready(function($) {
 	}
 
 
-	public function quick_edit_custom_box( $column_name, $post_type ) {
+	public function bulk_edit_custom_box( $column_name, $post_type ) {
+		self::quick_edit_custom_box( $column_name, $post_type, true );
+	}
+
+
+	public static function quick_edit_custom_box( $column_name, $post_type, $bulk_mode = false ) {
 		if ( ! in_array( $post_type, self::$post_types_keys ) )
 			return;
 
@@ -550,10 +572,17 @@ jQuery(document).ready(function($) {
 		if ( empty( $field_type ) )
 			return;
 
+		if ( $bulk_mode && 'taxonomy' == $field_type )
+			return;
+
 		if ( 'post_excerpt' == $column_name )
 			$field_type = 'textarea';
-		elseif ( false !== strstr( $column_name, Custom_Bulkquick_Edit_Settings::RESET ) )
-			$field_type = 'checkbox';
+		elseif ( false !== strstr( $column_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
+			if ( ! $bulk_mode )
+				return;
+			else
+				$field_type = 'checkbox';
+		}
 
 		if ( self::$no_instance ) {
 			self::$no_instance = false;
@@ -566,15 +595,17 @@ jQuery(document).ready(function($) {
 		$title          = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 
 		echo '
-			<fieldset class="inline-edit-col-right inline-edit-video ' . $field_type . '">
+			<fieldset class="inline-edit-col-right inline-edit-' . $field_type . '">
 	  			<div class="inline-edit-col inline-edit-' . $column_name . '">
 		';
 
 		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
-			echo '
-					<label class="inline-edit-group">
-						<span class="title">' . $title . '</span>
-			';
+			if ( 'taxonomy' != $field_type )
+				echo '<label class="inline-edit-group">';
+			else
+				echo '<label class="inline-edit-tags">';
+
+			echo '<span class="title">' . $title . '</span>';
 		}
 
 		$details = self::get_field_details( $post_type, $column_name );
@@ -629,6 +660,12 @@ jQuery(document).ready(function($) {
 			$result = '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
 			break;
 
+		case 'taxonomy':
+			$taxonomy  = str_replace( self::$field_key, '', $field_name );
+			$tax_class = 'tax_input_' . $taxonomy;
+			$result    = '<textarea cols="22" rows="1" name="' . $field_name . '" class="' . $tax_class . '" autocomplete="off"></textarea>';
+			break;
+
 		default:
 			$result = apply_filters( 'cbqe_quick_edit_custom_box_field', '', $field_type, $field_name, $options );
 			break;
@@ -671,6 +708,16 @@ jQuery(document).ready(function($) {
 			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( '{$field_type}[name={$field_name}]' ).val()";
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+			break;
+
+		case 'taxonomy':
+			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
+			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+
+			$ajax_url = site_url() . '/wp-admin/admin-ajax.php';
+
+			self::$scripts_extra[ $column_name ] = "$( 'tr.inline-editor textarea[name=\"{$field_name}\"]' ).suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } );";
 			break;
 
 		default:

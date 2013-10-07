@@ -1,15 +1,23 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Add bulk_edit_custom_box to help with separating editable fields per edit view
 * Add disable donation option
+* Allow remove taxonomy checkbox only in bulk edit
 * Alter scripts_extra location
-* Begin `has_config` coding to hide configuration textareas for unset options
 * BUGFIX field name has plugin prefix
+* Begin `has_config` coding to hide configuration textareas for unset options
 * Correct settings page title
+* Don't edit common/static fields like cb, id, author, etc.
 * Ignore checkbox and ID fields
 * Reduce echo calls
+* Refactor options labeling
 * Rename field label with img tag to its alt or title attribute
+* Save taxonomy data
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
+* Update API
+* Update TODO
+* Update readme options
 
 ## 1.0.1
 * API updates
