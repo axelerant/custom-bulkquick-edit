@@ -445,7 +445,7 @@ jQuery(document).ready(function($) {
 
 			$value = stripslashes_deep( $value );
 			if ( 'taxonomy' == $field_type ) {
-				// WordPress doesn't keep " enclosed CSV terms together, so 
+				// WordPress doesn't keep " enclosed CSV terms together, so
 				// don't worry about it here then by using `str_getcsv`
 				$values = explode( ',', $value );
 				wp_set_object_terms( $post_id, $values, $field_name );
