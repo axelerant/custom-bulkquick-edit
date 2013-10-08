@@ -24,10 +24,6 @@ None at this time.
 
 	Modify the field input types offered. [example](https://gist.github.com/michael-cannon/6333075)
 
-* `cbqe_settings_as_category`
-
-	Modify the field category types offered.
-
 * `cbqe_settings_as_taxonomy`
 
 	Modify the field taxonomy types offered.

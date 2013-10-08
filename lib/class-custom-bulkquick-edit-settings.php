@@ -125,21 +125,14 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_types = apply_filters( 'cbqe_settings_as_types', $as_types );
 
-		$as_category = array(
-			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
-			// fixme
-			// 'category' => esc_html__( 'Yes', 'custom-bulkquick-edit' ),
-			'taxonomy' => esc_html__( 'Yes', 'custom-bulkquick-edit' ),
-		);
-		$as_category = apply_filters( 'cbqe_settings_as_category', $as_category );
-
 		$as_taxonomy = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
-			'taxonomy' => esc_html__( 'Yes', 'custom-bulkquick-edit' ),
+			'categery' => esc_html__( 'Like categories', 'custom-bulkquick-edit' ),
+			'taxonomy' => esc_html__( 'Like tags', 'custom-bulkquick-edit' ),
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
-		$desc_enable   = esc_html__( 'Force making %1$s an editable taxonomy field.', 'custom-bulkquick-edit' );
+		$desc_enable   = esc_html__( 'Force making %1$s an editable taxonomy field like selected categories or text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt  = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 		$desc_field    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 		$desc_remove   = esc_html__( 'During bulk editing, remove current %1$s\' relationships. You\'ll need to edit the %2$s again to set new %3$s entries.', 'custom-bulkquick-edit' );
@@ -180,7 +173,7 @@ class Custom_Bulkquick_Edit_Settings {
 					'label' => $tax_label,
 					'desc' => sprintf( $desc_enable, $tax_label ),
 					'type' => 'select',
-					'choices' => empty( $taxonomy->hierarchical ) ? $as_taxonomy : $as_category,
+					'choices' => $as_taxonomy,
 				);
 
 				self::$settings[ $post_type . self::ENABLE . self::RESET . $name ] = array(

@@ -10,9 +10,11 @@
 * Begin `has_config` coding to hide configuration textareas for unset options
 * Correct settings page title
 * Don't edit common/static fields like cb, id, author, etc.
+* Enable auto suggest for quick edit entries
 * Ignore checkbox and ID fields
 * Reduce echo calls
 * Refactor options labeling
+* Remove `cbqe_settings_as_category` filter
 * Rename field label with img tag to its alt or title attribute
 * Revise premium features list
 * Save taxonomy data

@@ -444,10 +444,9 @@ jQuery(document).ready(function($) {
 			}
 
 			$value = stripslashes_deep( $value );
-
 			if ( 'taxonomy' == $field_type ) {
 				// WordPress doesn't keep " enclosed CSV terms together, so 
-				// don't worry about it here then in using `str_getcsv`
+				// don't worry about it here then by using `str_getcsv`
 				$values = explode( ',', $value );
 				wp_set_object_terms( $post_id, $values, $field_name );
 				continue;
@@ -667,7 +666,7 @@ jQuery(document).ready(function($) {
 		case 'taxonomy':
 			$taxonomy  = str_replace( self::$field_key, '', $field_name );
 			$tax_class = 'tax_input_' . $taxonomy;
-			$result    = '<textarea cols="22" rows="1" name="' . $field_name . '" class="' . $tax_class . '" autocomplete="off"></textarea>';
+			$result    = '<textarea cols="22" rows="1" name="' . $field_name . '" class="' . $tax_class . ' ' . $field_name_var . '" autocomplete="off"></textarea>';
 			break;
 
 		default:
@@ -715,13 +714,15 @@ jQuery(document).ready(function($) {
 			break;
 
 		case 'taxonomy':
+			$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
+			$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
+
 			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
-
-			$ajax_url = site_url() . '/wp-admin/admin-ajax.php';
-
-			self::$scripts_extra[ $column_name ] = "$( 'tr.inline-editor textarea[name=\"{$field_name}\"]' ).suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } );";
+			self::$scripts_quick[ $column_name . '3' ] = "$( 'textarea[name={$field_name}]', edit_row ).{$suggest_js};";
+			// self::$scripts_extra[ $column_name . '1' ] = "$( '.{$tax_class}.{$field_name_var}' ).{$suggest_js};";
+			// self::$scripts_extra[ $column_name . '2' ] = "$( '.{$tax_class}.{$field_name_var}' ).css( 'font-size', '48pt' );";
 			break;
 
 		default:
