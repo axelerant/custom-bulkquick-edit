@@ -743,6 +743,9 @@ jQuery(document).ready(function($) {
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 			break;
 
+		case 'categories':
+			break;
+
 		case 'taxonomy':
 			$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
 			$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
@@ -751,6 +754,8 @@ jQuery(document).ready(function($) {
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 			self::$scripts_quick[ $column_name . '3' ] = "$( 'textarea[name={$field_name}]', edit_row ).{$suggest_js};";
+
+			// fixme bulk edit suggest
 			// self::$scripts_extra[ $column_name . '1' ] = "$( '.{$tax_class}.{$field_name_var}' ).{$suggest_js};";
 			// self::$scripts_extra[ $column_name . '2' ] = "$( '.{$tax_class}.{$field_name_var}' ).css( 'font-size', '48pt' );";
 			break;
