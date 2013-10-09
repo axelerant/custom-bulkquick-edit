@@ -3,7 +3,6 @@
 Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/custom-bulkquick-edit) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).
 
 * Add auto-suggest for taxonomy during bulk editing
-* Category bulk editing
 * Category quick editing
 * Show/hide configuration boxes in settings as needed per as type selected.
 	* http://api.jquery.com/parents/

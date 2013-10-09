@@ -211,6 +211,7 @@ EOD;
 			$current = get_post_meta( $post_id, $column, true );
 
 			switch ( $field_type ) {
+			case 'categories':
 			case 'taxonomy':
 				$taxonomy   = $column;
 				$post_type  = get_post_type( $post_id );
@@ -426,41 +427,53 @@ jQuery(document).ready(function($) {
 		$post_type = $post->post_type;
 
 		foreach ( $_POST as $field => $value ) {
-			if ( false === strpos( $field, self::$field_key ) )
+			if ( false === strpos( $field, self::$field_key ) && 'tax_input' != $field )
 				continue;
 
 			if ( '' == $value && 'bulk_edit' == $mode )
 				continue;
 
-			$field_name = str_replace( self::$field_key, '', $field );
-			$field_type = self::is_field_enabled( $post_type, $field_name );
-			if ( ! $field_type )
-				continue;
+			if ( 'tax_input' != $field )
+				self::save_post_item( $post_id, $post_type, $field, $value );
+			else
+				foreach ( $value as $key => $val )
+					self::save_post_item( $post_id, $post_type, $key, $val );
+		}
+	}
 
-			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
-				$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
-				wp_delete_object_term_relationships( $post_id, $taxonomy );
-				continue;
-			}
 
-			$value = stripslashes_deep( $value );
-			if ( 'taxonomy' == $field_type ) {
-				// WordPress doesn't keep " enclosed CSV terms together, so
-				// don't worry about it here then by using `str_getcsv`
-				$values = explode( ',', $value );
-				wp_set_object_terms( $post_id, $values, $field_name );
-				continue;
-			}
+	public static function save_post_item( $post_id, $post_type, $field, $value ) {
+		$field_name = str_replace( self::$field_key, '', $field );
+		$field_type = self::is_field_enabled( $post_type, $field_name );
+		if ( ! $field_type )
+			return;
 
-			if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
-				update_post_meta( $post_id, $field_name, $value );
-			} else {
-				$data = array(
-					'ID' => $post_id,
-					$field_name => $value,
-				);
-				wp_update_post( $data );
-			}
+		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
+			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
+			wp_delete_object_term_relationships( $post_id, $taxonomy );
+			return;
+		}
+
+		$value = stripslashes_deep( $value );
+		if ( 'taxonomy' == $field_type) {
+			// WordPress doesn't keep " enclosed CSV terms together, so
+			// don't worry about it here then by using `str_getcsv`
+			$values = explode( ',', $value );
+			wp_set_object_terms( $post_id, $values, $field_name );
+			return;
+		} elseif ( 'categories' == $field_type) {
+			wp_set_object_terms( $post_id, $value, $field_name );
+			return;
+		}
+
+		if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
+			update_post_meta( $post_id, $field_name, $value );
+		} else {
+			$data = array(
+				'ID' => $post_id,
+				$field_name => $value,
+			);
+			wp_update_post( $data );
 		}
 	}
 
@@ -575,7 +588,7 @@ jQuery(document).ready(function($) {
 		if ( empty( $field_type ) )
 			return;
 
-		if ( $bulk_mode && 'taxonomy' == $field_type )
+		if ( $bulk_mode && in_array( $field_type, array( 'categories', 'taxonomy' ) ) )
 			return;
 
 		if ( 'post_excerpt' == $column_name )
@@ -603,12 +616,15 @@ jQuery(document).ready(function($) {
 		';
 
 		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
-			if ( 'taxonomy' != $field_type )
+			$class = '';
+			if ( 'categories' == $field_type )
+				$class = 'inline-edit-categories-label';
+			elseif ( 'taxonomy' != $field_type )
 				echo '<label class="inline-edit-group">';
 			else
 				echo '<label class="inline-edit-tags">';
 
-			echo '<span class="title">' . $title . '</span>';
+			echo '<span class="title' . $class . '">' . $title . '</span>';
 		}
 
 		$details = self::get_field_details( $post_type, $column_name );
@@ -661,6 +677,20 @@ jQuery(document).ready(function($) {
 
 		case 'textarea':
 			$result = '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
+			break;
+
+		case 'categories':
+			$taxonomy = str_replace( self::$field_key, '', $field_name );
+
+			ob_start();
+			wp_terms_checklist( null, array( 'taxonomy' => $taxonomy ) );
+			$terms = ob_get_contents();
+			ob_end_clean();
+
+			$result  = '<input type="hidden" name="tax_input[' . $taxonomy . '][]" />';
+			$result .= '<ul class="cat-checklist ' . esc_attr( $taxonomy ) . '-checklist">';
+			$result .= $terms;
+			$result .= '</ul>';
 			break;
 
 		case 'taxonomy':

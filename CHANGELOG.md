@@ -8,6 +8,7 @@
 * BUGFIX field name has plugin prefix
 * BUGFIX taxonomy CSV entries not treated as individual terms
 * Begin `has_config` coding to hide configuration textareas for unset options
+* Category bulk editing
 * Correct settings page title
 * Don't edit common/static fields like cb, id, author, etc.
 * Enable auto suggest for quick edit entries

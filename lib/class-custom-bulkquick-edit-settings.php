@@ -127,7 +127,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		$as_taxonomy = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
-			'categery' => esc_html__( 'Like categories', 'custom-bulkquick-edit' ),
+			'categories' => esc_html__( 'Like categories', 'custom-bulkquick-edit' ),
 			'taxonomy' => esc_html__( 'Like tags', 'custom-bulkquick-edit' ),
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
