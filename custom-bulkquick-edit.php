@@ -295,6 +295,9 @@ EOD;
 
 		$fields = self::get_enabled_fields( $post->post_type );
 		foreach ( $fields as $key => $field_name ) {
+			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::AUTO ) || false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) )
+				continue;
+
 			$title                  = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 			$columns[ $field_name ] = $title;
 		}
