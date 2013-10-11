@@ -41,13 +41,13 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 
 * API of actions and filters
 * Auto detects most post custom fields
-* Uses auto suggest for quick edit taxonomy entries
 * Edit excerpts
 * Performance minded – Plugin automatically loads when needed
 * Remove "`taxonomy`" Relations
 * Settings export/import
 * Settings screen
 * Supports taxonomies like tags
+* Use auto suggest for quick edit taxonomy entries
 
 = Custom Bulk/Quick Edit Premium Plugin Features =
 

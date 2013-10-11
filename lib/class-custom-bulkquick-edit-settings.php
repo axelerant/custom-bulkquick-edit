@@ -24,6 +24,7 @@
 
 
 class Custom_Bulkquick_Edit_Settings {
+	const AUTO   = '__auto_suggest__';
 	const CONFIG = '__config__';
 	const ENABLE = '__enable__';
 	const ID     = 'custom-bulkquick-edit-settings';
@@ -132,13 +133,15 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
-		$desc_enable   = esc_html__( 'Force making %1$s an editable taxonomy field like selected categories or text tags.', 'custom-bulkquick-edit' );
+		$desc_auto     = esc_html__( 'Enable auto-suggest for %1$s tag-based taxonomies.', 'custom-bulkquick-edit' );
+		$desc_enable   = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt  = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 		$desc_field    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
-		$desc_remove   = esc_html__( 'During bulk editing, remove current %1$s\' relationships. You\'ll need to edit the %2$s again to set new %3$s entries.', 'custom-bulkquick-edit' );
+		$desc_remove   = esc_html__( 'During bulk editing, easily remove all of the current %1$s\' relationships. You\'ll need to edit the %2$s again to set new %3$s relations.', 'custom-bulkquick-edit' );
+		$label_auto    = esc_html__( 'Enable auto-suggest for "%s"?', 'custom-bulkquick-edit' );
 		$label_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
 		$title_enable  = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
-		$title_force   = esc_html__( 'Force "%s"?', 'custom-bulkquick-edit' );
+		$title_force   = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
 		$title_remove  = esc_html__( 'Remove "%s" Relations?', 'custom-bulkquick-edit' );
 
 		foreach ( self::$post_types as $post_type => $label ) {
@@ -176,7 +179,15 @@ class Custom_Bulkquick_Edit_Settings {
 					'choices' => $as_taxonomy,
 				);
 
-				self::$settings[ $post_type . self::ENABLE . self::RESET . $name ] = array(
+				self::$settings[ $post_type . self::ENABLE . $name . self::AUTO ] = array(
+					'section' => $post_type,
+					'title' => sprintf( $label_auto, $tax_label ),
+					'label' => sprintf( $label_auto, $tax_label ),
+					'desc' => sprintf( $desc_auto, $tax_label ),
+					'type' => 'checkbox',
+				);
+
+				self::$settings[ $post_type . self::ENABLE . $name . self::RESET ] = array(
 					'section' => $post_type,
 					'title' => sprintf( $title_remove, $tax_label ),
 					'label' => sprintf( $title_remove, $tax_label ),

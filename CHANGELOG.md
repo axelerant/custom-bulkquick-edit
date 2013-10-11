@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Add option to enable auto-suggest
 * Add bulk_edit_custom_box to help with separating editable fields per edit view
 * Add disable donation option
 * Allow remove taxonomy checkbox only in bulk edit

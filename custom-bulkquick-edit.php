@@ -744,20 +744,50 @@ jQuery(document).ready(function($) {
 			break;
 
 		case 'categories':
+			// fixme
+			// need to send the values to the inline editor
+			// self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
+			/*
+		// hierarchical taxonomies
+		$('.post_category', post_row).each(function(){
+			var term_ids = $(this).text();
+
+			if ( term_ids ) {
+				taxname = $(this).attr('id').replace('_'+id, '');
+				$('ul.'+taxname+'-checklist :checkbox', edit_row).val(term_ids.split(','));
+			}
+		});
+			 */
 			break;
 
 		case 'taxonomy':
-			$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
-			$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
-
 			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
 			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
-			self::$scripts_quick[ $column_name . '3' ] = "$( 'textarea[name={$field_name}]', edit_row ).{$suggest_js};";
 
-			// fixme bulk edit suggest
-			// self::$scripts_extra[ $column_name . '1' ] = "$( '.{$tax_class}.{$field_name_var}' ).{$suggest_js};";
-			// self::$scripts_extra[ $column_name . '2' ] = "$( '.{$tax_class}.{$field_name_var}' ).css( 'font-size', '48pt' );";
+			$key = self::get_field_key( $post_type, $field_name );
+			if ( empty( $key ) )
+				break;
+
+			$key       .= Custom_Bulkquick_Edit_Settings::AUTO;
+			$do_suggest = cbqe_get_option( $key );
+			if ( $do_suggest ) {
+				$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
+				$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
+				self::$scripts_quick[ $column_name . '3' ] = "$( 'textarea[name={$field_name}]', edit_row ).{$suggest_js};";
+
+				/**
+				 * fixme bulk editor suggest
+				 // self::$scripts_extra[ $column_name . '1' ] = "$( 'tr.inline-editor textarea[name={$field_name}]' ).{$suggest_js};";
+				 // from wp-admin/js/inline.js
+				 // enable autocomplete for tags
+				 if ( 'post' == type ) {
+					 // support multi taxonomies?
+					 tax = 'post_tag';
+					 $('tr.inline-editor textarea[name="tax_input['+tax+']"]').suggest( ajaxurl + '?action=ajax-tag-search&tax=' + tax, { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } );
+				 }
+				 */
+			}
 			break;
 
 		default:
