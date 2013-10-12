@@ -458,13 +458,13 @@ jQuery(document).ready(function($) {
 		}
 
 		$value = stripslashes_deep( $value );
-		if ( 'taxonomy' == $field_type) {
+		if ( 'taxonomy' == $field_type ) {
 			// WordPress doesn't keep " enclosed CSV terms together, so
 			// don't worry about it here then by using `str_getcsv`
 			$values = explode( ',', $value );
 			wp_set_object_terms( $post_id, $values, $field_name );
 			return;
-		} elseif ( 'categories' == $field_type) {
+		} elseif ( 'categories' == $field_type ) {
 			wp_set_object_terms( $post_id, $value, $field_name );
 			return;
 		}
@@ -691,8 +691,8 @@ jQuery(document).ready(function($) {
 				if ( $do_pre_title )
 					$result .= '<label class="inline-edit-group">';
 
-				$parts   = explode( '|', $option );
-				$value   = array_shift( $parts );
+				$parts = explode( '|', $option );
+				$value = array_shift( $parts );
 				if ( empty( $parts ) )
 					$name = $value;
 				else
@@ -794,19 +794,18 @@ jQuery(document).ready(function($) {
 			break;
 
 		case 'categories':
-			// fixme
-			// need to send the values to the inline editor
-			// self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
 			/*
-		// hierarchical taxonomies
-		$('.post_category', post_row).each(function(){
-			var term_ids = $(this).text();
+				// need to send the values to the inline editor
+				// self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
+				// hierarchical taxonomies
+				$('.post_category', post_row).each(function(){
+					var term_ids = $(this).text();
 
-			if ( term_ids ) {
-				taxname = $(this).attr('id').replace('_'+id, '');
-				$('ul.'+taxname+'-checklist :checkbox', edit_row).val(term_ids.split(','));
-			}
-		});
+					if ( term_ids ) {
+						taxname = $(this).attr('id').replace('_'+id, '');
+						$('ul.'+taxname+'-checklist :checkbox', edit_row).val(term_ids.split(','));
+					}
+				});
 			 */
 			break;
 
@@ -824,18 +823,18 @@ jQuery(document).ready(function($) {
 			if ( $do_suggest ) {
 				$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
 				$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
+
 				self::$scripts_quick[ $column_name . '3' ] = "$( 'textarea[name={$field_name}]', edit_row ).{$suggest_js};";
 
-				/**
-				 * fixme bulk editor suggest
-				 // self::$scripts_extra[ $column_name . '1' ] = "$( 'tr.inline-editor textarea[name={$field_name}]' ).{$suggest_js};";
-				 // from wp-admin/js/inline.js
-				 // enable autocomplete for tags
-				 if ( 'post' == type ) {
-					 // support multi taxonomies?
-					 tax = 'post_tag';
-					 $('tr.inline-editor textarea[name="tax_input['+tax+']"]').suggest( ajaxurl + '?action=ajax-tag-search&tax=' + tax, { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } );
-			}
+				/*
+					// self::$scripts_extra[ $column_name . '1' ] = "$( 'tr.inline-editor textarea[name={$field_name}]' ).{$suggest_js};";
+					// from wp-admin/js/inline.js
+					// enable autocomplete for tags
+					if ( 'post' == type ) {
+						// support multi taxonomies?
+						tax = 'post_tag';
+						$('tr.inline-editor textarea[name="tax_input['+tax+']"]').suggest( ajaxurl + '?action=ajax-tag-search&tax=' + tax, { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } );
+					}
 				 */
 			}
 			break;

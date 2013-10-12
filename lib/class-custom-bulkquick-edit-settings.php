@@ -646,7 +646,7 @@ class Custom_Bulkquick_Edit_Settings {
 			break;
 		}
 
-		// fixme
+		// stick config show/hide javascript here
 		if ( $has_config )
 			$content .= '';
 
