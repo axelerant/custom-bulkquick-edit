@@ -27,7 +27,6 @@ class Custom_Bulkquick_Edit_Settings {
 	const AUTO   = '__auto_suggest__';
 	const CONFIG = '__config__';
 	const ENABLE = '__enable__';
-	const FORCE  = '__force__';
 	const ID     = 'custom-bulkquick-edit-settings';
 	const RESET  = '__reset__';
 
@@ -267,14 +266,6 @@ class Custom_Bulkquick_Edit_Settings {
 						'label' => $label,
 						'desc' => $desc_conf,
 						'type' => 'textarea',
-					);
-
-					self::$settings[ $post_type . self::ENABLE . $field . self::FORCE ] = array(
-						'section' => $post_type,
-						'title' => sprintf( $title_force, $label ),
-						'label' => sprintf( $title_force, $label ),
-						'desc' => sprintf( $desc_force, $label ),
-						'type' => 'checkbox',
 					);
 				}
 

@@ -295,7 +295,7 @@ EOD;
 
 		$fields = self::get_enabled_fields( $post->post_type );
 		foreach ( $fields as $key => $field_name ) {
-			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::AUTO ) || false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::FORCE ) || false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) )
+			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::AUTO ) || false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) )
 				continue;
 
 			$title                  = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
@@ -454,12 +454,6 @@ jQuery(document).ready(function($) {
 		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
 			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
 			wp_delete_object_term_relationships( $post_id, $taxonomy );
-			return;
-		}
-
-		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::FORCE ) ) {
-			$field_name = str_replace( Custom_Bulkquick_Edit_Settings::FORCE, '', $field_name );
-			delete_post_meta( $post_id, $field_name );
 			return;
 		}
 
@@ -713,31 +707,6 @@ jQuery(document).ready(function($) {
 			if ( empty( $do_pre_title ) ) {
 				$result .= $check_title;
 				$result .= '</label>';
-			}
-			if ( $bulk_mode && 'checkbox' == $field_type ) {
-				$key_force = $key . Custom_Bulkquick_Edit_Settings::FORCE;
-				$enable    = cbqe_get_option( $key_force );
-
-				if ( $enable ) {
-					$field_force  = $field_name . Custom_Bulkquick_Edit_Settings::FORCE;
-					$title        = Custom_Bulkquick_Edit_Settings::$settings[ $key_force ]['label'];
-					$column_force = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
-
-					$result  = '';
-					$result .= '<label class="alignleft">';
-					$result .= '<input type="checkbox" name="' . $field_force . '" />';
-					$result .= ' ';
-					$result .= '<span class="checkbox-title">' . $title . '</span>';
-					$result .= '</label>';
-
-					echo $open_fieldset;
-					echo $result;
-					echo $close_fieldset;
-
-					self::$scripts_bulk[ $column_force ] = "'{$field_force}': bulk_row.find( 'input[name^={$field_force}]:checkbox:checked' ).map(function(){ return $(this).val(); }).get()";
-				}
-
-				return;
 			}
 			break;
 
