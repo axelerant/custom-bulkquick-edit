@@ -27,6 +27,7 @@
 * Update API
 * Update TODO
 * Update readme options
+* https jQuery transport
 
 ## 1.0.1
 * API updates
