@@ -44,6 +44,7 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 * Edit excerpts
 * Performance minded – Plugin automatically loads when needed
 * Remove "`taxonomy`" Relations
+* Reset checkbox values
 * Settings export/import
 * Settings screen
 * Supports taxonomies like tags
@@ -66,8 +67,8 @@ Custom Bulk/Quick Edit Premium plugin extends [Custom Bulk/Quick Edit](http://wo
 **Post**
 
 * Enable "Excerpt"? – Enable editing of post_type' excerpt.
-* Force "taxonomy"?	– Force making taxonomy an editable taxonomy field.
-* Remove "taxonomy" Relations? – During bulk editing, remove current taxonomy' relationships. You'll need to edit the post_type again to set new taxonomy entries.
+* Edit "TBD" taxonomy? – Force making TBD an editable taxonomy field like checked categories or free-text tags.
+* Remove "taxonomy" Relations? – During bulk editing, easily remove all of the current taxonomy' relationships. You'll need to edit the Testimonials again to set new taxonomy relations.
 * Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
 * "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please separate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
 	* Example configuration
@@ -76,6 +77,7 @@ Two
 3|Three
 four|Four
 five-five|55`
+* Unset "Custom Field" Checkbox? – Force unsetting checkbox option.
 
 **Compatibility & Reset**
 

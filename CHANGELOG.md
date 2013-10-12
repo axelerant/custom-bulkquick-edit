@@ -21,6 +21,7 @@
 * Refactor options labeling
 * Remove `cbqe_settings_as_category` filter
 * Rename field label with img tag to its alt or title attribute
+* Reset checkbox values
 * Revise premium features list
 * Save taxonomy data
 * Select category values during quick editing

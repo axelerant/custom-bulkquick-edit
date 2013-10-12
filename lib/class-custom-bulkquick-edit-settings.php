@@ -27,6 +27,7 @@ class Custom_Bulkquick_Edit_Settings {
 	const AUTO   = '__auto_suggest__';
 	const CONFIG = '__config__';
 	const ENABLE = '__enable__';
+	const FORCE  = '__force__';
 	const ID     = 'custom-bulkquick-edit-settings';
 	const RESET  = '__reset__';
 
@@ -133,15 +134,19 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
-		$desc_auto     = esc_html__( 'Enable auto-suggest for %1$s tag-based taxonomies.', 'custom-bulkquick-edit' );
-		$desc_enable   = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
-		$desc_excerpt  = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
-		$desc_field    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
-		$desc_remove   = esc_html__( 'During bulk editing, easily remove all of the current %1$s\' relationships. You\'ll need to edit the %2$s again to set new %3$s relations.', 'custom-bulkquick-edit' );
-		$label_auto    = esc_html__( 'Enable auto-suggest for "%s"?', 'custom-bulkquick-edit' );
-		$label_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
+		$desc_auto    = esc_html__( 'Enable auto-suggest for %1$s tag-based taxonomies.', 'custom-bulkquick-edit' );
+		$desc_conf    = esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. You may create options as "the-key|Supremely, Pretty Values" pairs.', 'custom-bulkquick-edit' );
+		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
+		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
+		$desc_force   = esc_html__( 'Force unsetting checkbox option.', 'custom-bulkquick-edit' );
+		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the current %1$s\' relationships. You\'ll need to edit the %2$s again to set new %3$s relations.', 'custom-bulkquick-edit' );
+
+		$title_auto    = esc_html__( 'Enable auto-suggest for "%s"?', 'custom-bulkquick-edit' );
+		$title_conf    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
+		$title_edit    = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
 		$title_enable  = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
-		$title_force   = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
+		$title_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
+		$title_force   = esc_html__( 'Unset "%s" Checkbox?', 'custom-bulkquick-edit' );
 		$title_remove  = esc_html__( 'Remove "%s" Relations?', 'custom-bulkquick-edit' );
 
 		foreach ( self::$post_types as $post_type => $label ) {
@@ -151,8 +156,8 @@ class Custom_Bulkquick_Edit_Settings {
 			if ( $supports_excerpt ) {
 				self::$settings[ $post_type . self::ENABLE . 'post_excerpt' ] = array(
 					'section' => $post_type,
-					'title' => sprintf( $title_enable, $label_excerpt ),
-					'label' => $label_excerpt,
+					'title' => sprintf( $title_enable, $title_excerpt ),
+					'label' => $title_excerpt,
 					'desc' => sprintf( $desc_excerpt, $label ),
 					'type' => 'checkbox',
 				);
@@ -172,17 +177,17 @@ class Custom_Bulkquick_Edit_Settings {
 
 				self::$settings[ $post_type . self::ENABLE . $name ] = array(
 					'section' => $post_type,
-					'title' => sprintf( $title_force, $tax_label ),
+					'title' => sprintf( $title_edit, $tax_label ),
 					'label' => $tax_label,
-					'desc' => sprintf( $desc_enable, $tax_label ),
+					'desc' => sprintf( $desc_edit, $tax_label ),
 					'type' => 'select',
 					'choices' => $as_taxonomy,
 				);
 
 				self::$settings[ $post_type . self::ENABLE . $name . self::AUTO ] = array(
 					'section' => $post_type,
-					'title' => sprintf( $label_auto, $tax_label ),
-					'label' => sprintf( $label_auto, $tax_label ),
+					'title' => sprintf( $title_auto, $tax_label ),
+					'label' => sprintf( $title_auto, $tax_label ),
 					'desc' => sprintf( $desc_auto, $tax_label ),
 					'type' => 'checkbox',
 				);
@@ -258,10 +263,18 @@ class Custom_Bulkquick_Edit_Settings {
 
 					self::$settings[ $post_type . self::ENABLE . $field . self::CONFIG ] = array(
 						'section' => $post_type,
-						'title' => sprintf( $desc_field, $label ),
+						'title' => sprintf( $title_conf, $label ),
 						'label' => $label,
-						'desc' => esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. You may create options as "the-key|Supremely, Pretty Values" pairs.', 'custom-bulkquick-edit' ),
+						'desc' => $desc_conf,
 						'type' => 'textarea',
+					);
+
+					self::$settings[ $post_type . self::ENABLE . $field . self::FORCE ] = array(
+						'section' => $post_type,
+						'title' => sprintf( $title_force, $label ),
+						'label' => sprintf( $title_force, $label ),
+						'desc' => sprintf( $desc_force, $label ),
+						'type' => 'checkbox',
 					);
 				}
 
