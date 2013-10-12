@@ -6,6 +6,7 @@
 * Add option to enable auto-suggest
 * Allow remove taxonomy checkbox only in bulk edit
 * Alter scripts_extra location
+* BUGFIX category taxonomy saving incorrect
 * BUGFIX field name has plugin prefix
 * BUGFIX taxonomy CSV entries not treated as individual terms
 * Begin `has_config` coding to hide configuration textareas for unset options
@@ -22,6 +23,7 @@
 * Rename field label with img tag to its alt or title attribute
 * Revise premium features list
 * Save taxonomy data
+* Select category values during quick editing
 * Show remove taxonomy relations in bulk edit
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Update API

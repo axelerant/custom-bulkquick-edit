@@ -465,6 +465,11 @@ jQuery(document).ready(function($) {
 			wp_set_object_terms( $post_id, $values, $field_name );
 			return;
 		} elseif ( 'categories' == $field_type ) {
+			$value = array_map( 'intval', $value );
+			$value = array_unique( $value );
+			if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] ) 
+				unset( $value[ 0 ] );
+
 			wp_set_object_terms( $post_id, $value, $field_name );
 			return;
 		}
@@ -794,19 +799,7 @@ jQuery(document).ready(function($) {
 			break;
 
 		case 'categories':
-			/*
-				// need to send the values to the inline editor
-				// self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
-				// hierarchical taxonomies
-				$('.post_category', post_row).each(function(){
-					var term_ids = $(this).text();
-
-					if ( term_ids ) {
-						taxname = $(this).attr('id').replace('_'+id, '');
-						$('ul.'+taxname+'-checklist :checkbox', edit_row).val(term_ids.split(','));
-					}
-				});
-			 */
+			// WordPress already handles it
 			break;
 
 		case 'taxonomy':
