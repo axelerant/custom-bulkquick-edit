@@ -295,9 +295,6 @@ EOD;
 
 		$fields = self::get_enabled_fields( $post->post_type );
 		foreach ( $fields as $key => $field_name ) {
-			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::AUTO ) || false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) )
-				continue;
-
 			$title                  = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 			$columns[ $field_name ] = $title;
 		}
@@ -315,7 +312,14 @@ EOD;
 			if ( $post_type != $value['section'] )
 				continue;
 
+			// the following are ignored potential columns
+			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::AUTO ) )
+				continue;
+
 			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) )
+				continue;
+
+			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) )
 				continue;
 
 			$field_name = str_replace( $post_type . Custom_Bulkquick_Edit_Settings::ENABLE, '', $key );
