@@ -591,12 +591,48 @@ jQuery(document).ready(function($) {
 		if ( empty( $field_type ) )
 			return;
 
-		if ( $bulk_mode && in_array( $field_type, array( 'categories', 'taxonomy' ) ) )
-			return;
+		$key        = self::get_field_key( $post_type, $column_name );
+		$field_name = self::$field_key . $column_name;
 
-		if ( 'post_excerpt' == $column_name )
+		$open_fieldset  = '
+			<fieldset class="inline-edit-col-right inline-edit-' . $field_type . '">
+			<div class="inline-edit-col inline-edit-' . $column_name . '">
+			';
+		$close_fieldset = '
+			</div>
+			</fieldset>
+			';
+
+		if ( $bulk_mode && in_array( $field_type, array( 'categories', 'taxonomy' ) ) ) {
+			$key_reset = $key . Custom_Bulkquick_Edit_Settings::RESET;
+			$enable    = cbqe_get_option( $key_reset );
+
+			if ( $enable ) {
+				$field_reset  = $field_name . Custom_Bulkquick_Edit_Settings::RESET;
+				$title        = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
+				$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
+
+				$result  = '';
+				$result .= '<label class="alignleft">';
+				$result .= '<input type="checkbox" name="' . $field_reset . '" />';
+				$result .= ' ';
+				$result .= '<span class="checkbox-title">' . $title . '</span>';
+				$result .= '</label>';
+
+				echo $open_fieldset;
+				echo $result;
+				echo $close_fieldset;
+
+				self::$scripts_bulk[ $column_reset ] = "'{$field_reset}': bulk_row.find( 'input[name^={$field_reset}]:checkbox:checked' ).map(function(){ return $(this).val(); }).get()";
+			}
+
+			// return now otherwise taxonomy entries are duplicated
+			return;
+		}
+
+		if ( 'post_excerpt' == $column_name ) {
 			$field_type = 'textarea';
-		elseif ( false !== strstr( $column_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
+		} elseif ( false !== strstr( $column_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
 			if ( ! $bulk_mode )
 				return;
 			else
@@ -613,10 +649,7 @@ jQuery(document).ready(function($) {
 		$field_name_var = str_replace( '-', '_', $field_name );
 		$title          = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 
-		echo '
-			<fieldset class="inline-edit-col-right inline-edit-' . $field_type . '">
-	  			<div class="inline-edit-col inline-edit-' . $column_name . '">
-		';
+		echo $open_fieldset;
 
 		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
 			$class = '';
@@ -638,13 +671,26 @@ jQuery(document).ready(function($) {
 		switch ( $field_type ) {
 		case 'checkbox':
 		case 'radio':
-			$result  .= '<label class="alignleft"><span class="title">' . $title . '</span></label>';
-			$multiple = '';
-			if ( 'checkbox' == $field_type && 1 < count( $options ) )
-				$multiple = '[]';
+			$result      .= '<label class="alignleft">';
+			$check_title  = '<span class="checkbox-title">' . $title . '</span>';
+			$multiple     = '';
+			$do_pre_title = true;
+			if ( 'checkbox' == $field_type ) {
+				if ( 1 < count( $options ) )
+					$multiple = '[]';
+				else
+					$do_pre_title = false;
+			}
+
+			if ( $do_pre_title ) {
+				$result .= $check_title;
+				$result .= '</label>';
+			}
 
 			foreach ( $options as $option ) {
-				$result .= '<label class="inline-edit-group">';
+				if ( $do_pre_title )
+					$result .= '<label class="inline-edit-group">';
+
 				$parts   = explode( '|', $option );
 				$value   = array_shift( $parts );
 				if ( empty( $parts ) )
@@ -654,6 +700,13 @@ jQuery(document).ready(function($) {
 
 				$result .= '<input type="' . $field_type . '" name="' . $field_name . $multiple . '" value="' . $value . '" />';
 				$result .= ' ' . $name;
+
+				if ( $do_pre_title )
+					$result .= '</label>';
+			}
+
+			if ( empty( $do_pre_title ) ) {
+				$result .= $check_title;
 				$result .= '</label>';
 			}
 			break;
@@ -709,16 +762,10 @@ jQuery(document).ready(function($) {
 
 		echo $result;
 
-		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
-			echo '
-					</label>
-			';
-		}
+		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) )
+			echo "\n</label>";
 
-		echo '
-				  </div>
-				</fieldset>
-		';
+		echo $close_fieldset;
 
 		switch ( $field_type ) {
 		case 'checkbox':
@@ -788,7 +835,7 @@ jQuery(document).ready(function($) {
 					 // support multi taxonomies?
 					 tax = 'post_tag';
 					 $('tr.inline-editor textarea[name="tax_input['+tax+']"]').suggest( ajaxurl + '?action=ajax-tag-search&tax=' + tax, { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } );
-				 }
+			}
 				 */
 			}
 			break;

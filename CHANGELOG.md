@@ -14,6 +14,7 @@
 * Don't edit common/static fields like cb, id, author, etc.
 * Enable auto suggest for quick edit entries
 * Ignore checkbox and ID fields
+* Improve UI labeling for radio/checkbox options
 * Prevent auto-suggest and remove options in columns
 * Reduce echo calls
 * Refactor options labeling
@@ -21,6 +22,7 @@
 * Rename field label with img tag to its alt or title attribute
 * Revise premium features list
 * Save taxonomy data
+* Show remove taxonomy relations in bulk edit
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Update API
 * Update TODO

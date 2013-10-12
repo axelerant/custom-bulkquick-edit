@@ -2,7 +2,7 @@
 
 Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/custom-bulkquick-edit) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).
 
-* Show remove taxonomy relations in bulk edit
+* Reset checkbox values
 * Select category values during quick editing
 * Show/hide configuration boxes in settings as needed per as type selected.
 	* http://api.jquery.com/parents/
