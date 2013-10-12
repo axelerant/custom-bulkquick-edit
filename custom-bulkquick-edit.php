@@ -660,7 +660,7 @@ jQuery(document).ready(function($) {
 			else
 				echo '<label class="inline-edit-tags">';
 
-			echo '<span class="title' . $class . '">' . $title . '</span>';
+			echo '<span class="title ' . $class . '">' . $title . '</span>';
 		}
 
 		$details = self::get_field_details( $post_type, $column_name );
