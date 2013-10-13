@@ -16,7 +16,7 @@
 * Correct settings page title
 * Don't edit common/static fields like cb, id, author, etc.
 * Ignore checkbox and ID fields
-* Prevent extraneoous options from showing in edit screen columns
+* Prevent extraneous options from showing in edit screen columns
 * Reduce echo calls
 * Refactor bulk/quick custom box operations
 * Refactor options labeling
