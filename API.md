@@ -36,6 +36,10 @@ None at this time.
 
 	Validate settings helper. [example](https://gist.github.com/michael-cannon/5833768)
 
+* `cbqe_validate_default`
+
+	Validate settings default helper. [example](https://gist.github.com/michael-cannon/)
+
 * `cbqe_version`
 
 	Version tracking for settings. [example](https://gist.github.com/michael-cannon/5833774)
@@ -66,7 +70,7 @@ None at this time.
 	
 * `cbqe_quick_edit_custom_box_field`
 
-	Edit field contents by `field_type`. Has parameters `$field_type`, `$field_name`, and `$options`. [example](https://gist.github.com/michael-cannon/6490341)
+	Edit field contents by `field_type`. Has parameters `$field_type`, `$field_name`, `$options`, and `$bulk_mode`. [example](https://gist.github.com/michael-cannon/6490341)
 
 * `cbqe_get_post_types_args`
 	

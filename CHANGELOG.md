@@ -1,11 +1,13 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Abstract bulk/quick input operations
+* Add API filter `cbqe_validate_default`
 * Add bulk_edit_custom_box to help with separating editable fields per edit view
 * Add disable donation option
-* Add option to enable auto-suggest
-* Allow remove taxonomy checkbox only in bulk edit
+* Add trim validator to settings
 * Alter scripts_extra location
+* Auto-suggest for tag-based taxonomy during bulk and quick editing
 * BUGFIX category taxonomy saving incorrect
 * BUGFIX field name has plugin prefix
 * BUGFIX taxonomy CSV entries not treated as individual terms
@@ -13,22 +15,28 @@
 * Category bulk editing
 * Correct settings page title
 * Don't edit common/static fields like cb, id, author, etc.
-* Enable auto suggest for quick edit entries
 * Ignore checkbox and ID fields
-* Improve UI labeling for radio/checkbox options
-* Prevent auto-suggest and remove options in columns
+* Prevent extraneoous options from showing in edit screen columns
 * Reduce echo calls
+* Refactor bulk/quick custom box operations
 * Refactor options labeling
 * Remove `cbqe_settings_as_category` filter
+* Remove auto-suggest and force reset options - now part of bulk operations by default
 * Rename field label with img tag to its alt or title attribute
 * Revise premium features list
+* Sample configurations provided on initial save
 * Save taxonomy data
 * Select category values during quick editing
-* Show remove taxonomy relations in bulk edit
+* Show unset category/taxonomy checkbox in bulk edit
+* Test checkbox, radio, and select with 0/1 options
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
+* Unset checkbox values
+* Unset radio values
+* Unset select values
 * Update API
 * Update TODO
 * Update readme options
+* Use WordPress's own taxonomy handlers for category and tag inputs
 * https jQuery transport
 
 ## 1.0.1

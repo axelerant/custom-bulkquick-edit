@@ -24,7 +24,6 @@
 
 
 class Custom_Bulkquick_Edit_Settings {
-	const AUTO   = '__auto_suggest__';
 	const CONFIG = '__config__';
 	const ENABLE = '__enable__';
 	const ID     = 'custom-bulkquick-edit-settings';
@@ -133,19 +132,15 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
-		$desc_auto    = esc_html__( 'Enable auto-suggest for %1$s tag-based taxonomies.', 'custom-bulkquick-edit' );
 		$desc_conf    = esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. You may create options as "the-key|Supremely, Pretty Values" pairs.', 'custom-bulkquick-edit' );
 		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
-		$desc_force   = esc_html__( 'Force unsetting checkbox option.', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the current %1$s\' relationships. You\'ll need to edit the %2$s again to set new %3$s relations.', 'custom-bulkquick-edit' );
 
-		$title_auto    = esc_html__( 'Enable auto-suggest for "%s"?', 'custom-bulkquick-edit' );
 		$title_conf    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 		$title_edit    = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
 		$title_enable  = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
 		$title_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
-		$title_force   = esc_html__( 'Unset "%s" Checkbox?', 'custom-bulkquick-edit' );
 		$title_remove  = esc_html__( 'Remove "%s" Relations?', 'custom-bulkquick-edit' );
 
 		foreach ( self::$post_types as $post_type => $label ) {
@@ -164,15 +159,15 @@ class Custom_Bulkquick_Edit_Settings {
 				$call_api = true;
 			}
 
-			$taxonomy_name = array( 'categories', 'tags' );
+			$taxonomy_name = array();
 			$taxonomies    = get_object_taxonomies( $post_type, 'objects' );
 			foreach ( $taxonomies as $taxonomy ) {
-				$tax_label       = $taxonomy->label;
-				$name            = $taxonomy->name;
-				$taxonomy_name[] = $name;
-
+				$name = $taxonomy->name;
 				if ( 'post_format' == $name )
 					continue;
+
+				$tax_label       = $taxonomy->label;
+				$taxonomy_name[] = $name;
 
 				self::$settings[ $post_type . self::ENABLE . $name ] = array(
 					'section' => $post_type,
@@ -181,14 +176,6 @@ class Custom_Bulkquick_Edit_Settings {
 					'desc' => sprintf( $desc_edit, $tax_label ),
 					'type' => 'select',
 					'choices' => $as_taxonomy,
-				);
-
-				self::$settings[ $post_type . self::ENABLE . $name . self::AUTO ] = array(
-					'section' => $post_type,
-					'title' => sprintf( $title_auto, $tax_label ),
-					'label' => sprintf( $title_auto, $tax_label ),
-					'desc' => sprintf( $desc_auto, $tax_label ),
-					'type' => 'checkbox',
 				);
 
 				self::$settings[ $post_type . self::ENABLE . $name . self::RESET ] = array(
@@ -266,6 +253,7 @@ class Custom_Bulkquick_Edit_Settings {
 						'label' => $label,
 						'desc' => $desc_conf,
 						'type' => 'textarea',
+						'validate' => 'trim',
 					);
 				}
 
@@ -735,7 +723,38 @@ class Custom_Bulkquick_Edit_Settings {
 		}
 
 		foreach ( $options as $id => $parts ) {
-			$default     = $parts['std'];
+			$default = $parts['std'];
+
+			// ensure default config
+			if ( strstr( $id, Custom_Bulkquick_Edit_Settings::CONFIG ) ) {
+				$config = $input[ $id ];
+				if ( empty( $config ) ) {
+					$field = str_replace( Custom_Bulkquick_Edit_Settings::CONFIG, '', $id );
+					$type  = $input[ $field ];
+					switch ( $type ) {
+					case 'checkbox';
+						$default = '1|' . esc_html__( 'Enable', 'custom-bulkquick-edit' );
+						break;
+
+					case 'radio';
+					case 'select';
+						$default  = '';
+						$default .= esc_html__( 'Yes', 'custom-bulkquick-edit' );
+						$default .= "\n";
+						$default .= 'no|' . esc_html__( 'No', 'custom-bulkquick-edit' );
+						$default .= "\n";
+						$default .= 'where-beef|' . esc_html__( 'Where\'s the beef?', 'custom-bulkquick-edit' );
+						break;
+
+					default:
+						$default = apply_filters( 'cbqe_validate_default', $default, $id, $type );
+						break;
+					}
+
+					$input[ $id ] = $default ;
+				}
+			}
+
 			$type        = $parts['type'];
 			$validations = ! empty( $parts['validate'] ) ? $parts['validate'] : array();
 			if ( ! empty( $validations ) )
@@ -842,6 +861,14 @@ class Custom_Bulkquick_Edit_Settings {
 		case 'term':
 			$input[ $id ] = self::validate_term( $input[ $id ], $default );
 			$input[ $id ] = strtolower( $input[ $id ] );
+			break;
+
+		case 'trim':
+			$options = explode( "\n", $input[ $id ] );
+			foreach ( $options as $key => $value )
+				$options[ $key ] = trim( $value );
+
+			$input[ $id ] = implode( "\n", $options );
 			break;
 
 		default:

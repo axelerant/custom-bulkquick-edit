@@ -29,7 +29,6 @@ class Custom_Bulkquick_Edit {
 	const VERSION     = '1.0.1';
 
 	private static $base              = null;
-	private static $field_key         = 'cbqe_';
 	private static $fields_enabled    = array();
 	private static $no_instance       = true;
 	private static $post_types_ignore = array(
@@ -37,13 +36,15 @@ class Custom_Bulkquick_Edit {
 		'page',
 	);
 
+	public static $bulk_only_done  = false;
 	public static $donate_button   = '';
+	public static $field_key       = 'cbqe_';
 	public static $post_types      = array();
 	public static $post_types_keys = array();
 	public static $scripts_bulk    = array();
+	public static $scripts_called  = false;
 	public static $scripts_extra   = array();
 	public static $scripts_quick   = array();
-	public static $scripts_called  = false;
 	public static $settings_link   = '';
 
 
@@ -197,7 +198,7 @@ EOD;
 			return;
 		}
 
-		$details = self::get_field_details( $post->post_type, $column );
+		$details = self::get_field_config( $post->post_type, $column );
 		$options = explode( "\n", $details );
 		$options = array_map( 'trim', $options );
 
@@ -313,9 +314,6 @@ EOD;
 				continue;
 
 			// the following are ignored potential columns
-			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::AUTO ) )
-				continue;
-
 			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) )
 				continue;
 
@@ -434,7 +432,7 @@ jQuery(document).ready(function($) {
 		$post_type = $post->post_type;
 
 		foreach ( $_POST as $field => $value ) {
-			if ( false === strpos( $field, self::$field_key ) && 'tax_input' != $field )
+			if ( false === strpos( $field, self::$field_key ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) )
 				continue;
 
 			if ( '' == $value && 'bulk_edit' == $mode )
@@ -451,7 +449,11 @@ jQuery(document).ready(function($) {
 
 	public static function save_post_item( $post_id, $post_type, $field, $value ) {
 		$field_name = str_replace( self::$field_key, '', $field );
-		$field_type = self::is_field_enabled( $post_type, $field_name );
+		if ( 'post_category' != $field_name )
+			$field_type = self::is_field_enabled( $post_type, $field_name );
+		else
+			$field_type = $field_name;
+
 		if ( ! $field_type )
 			return;
 
@@ -463,8 +465,7 @@ jQuery(document).ready(function($) {
 
 		$value = stripslashes_deep( $value );
 		if ( 'taxonomy' == $field_type ) {
-			// WordPress doesn't keep " enclosed CSV terms together, so
-			// don't worry about it here then by using `str_getcsv`
+			// WordPress doesn't keep " enclosed CSV terms together, so don't worry about it here then by using `str_getcsv`
 			$values = explode( ',', $value );
 			wp_set_object_terms( $post_id, $values, $field_name );
 			return;
@@ -478,9 +479,21 @@ jQuery(document).ready(function($) {
 			return;
 		}
 
-		if ( ! in_array( $field_name, array( 'post_excerpt' ) ) ) {
-			update_post_meta( $post_id, $field_name, $value );
+		if ( ! in_array( $field_name, array( 'post_category', 'post_excerpt' ) ) ) {
+			$reset_string = ! is_array( $value ) ? strstr( $value, Custom_Bulkquick_Edit_Settings::RESET ) : false;
+			$reset_array  = is_array( $value ) ? in_array( Custom_Bulkquick_Edit_Settings::RESET, $value ) : false;
+			if ( ! $reset_string && ! $reset_array )
+				update_post_meta( $post_id, $field_name, $value );
+			else
+				delete_post_meta( $post_id, $field_name );
 		} else {
+			if ( 'post_category' == $field_name ) {
+				$value = array_map( 'intval', $value );
+				$value = array_unique( $value );
+				if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] )
+					unset( $value[ 0 ] );
+			}
+
 			$data = array(
 				'ID' => $post_id,
 				$field_name => $value,
@@ -527,7 +540,7 @@ jQuery(document).ready(function($) {
 	}
 
 
-	public static function get_field_details( $post_type = null, $field_name = null ) {
+	public static function get_field_config( $post_type = null, $field_name = null ) {
 		$key = self::get_field_key( $post_type, $field_name );
 
 		if ( empty( $key ) )
@@ -592,6 +605,11 @@ jQuery(document).ready(function($) {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
 	public static function quick_edit_custom_box( $column_name, $post_type, $bulk_mode = false ) {
 		if ( ! in_array( $post_type, self::$post_types_keys ) )
 			return;
@@ -603,40 +621,47 @@ jQuery(document).ready(function($) {
 		$key        = self::get_field_key( $post_type, $column_name );
 		$field_name = self::$field_key . $column_name;
 
-		$open_fieldset  = '
-			<fieldset class="inline-edit-col-right inline-edit-' . $field_type . '">
-			<div class="inline-edit-col inline-edit-' . $column_name . '">
-			';
-		$close_fieldset = '
-			</div>
-			</fieldset>
-			';
+		$close_div      = '</div>';
+		$close_fieldset = '</fieldset>';
+		$open_div       = '<div class="inline-edit-col">';
+		$open_fieldset  = '<fieldset class="inline-edit-col-%1$s %2$s">';
 
-		if ( $bulk_mode && in_array( $field_type, array( 'categories', 'taxonomy' ) ) ) {
-			$key_reset = $key . Custom_Bulkquick_Edit_Settings::RESET;
-			$enable    = cbqe_get_option( $key_reset );
+		if ( $bulk_mode ) {
+			if ( empty( self::$bulk_only_done ) ) {
+				$result   = '';
+				$row      = 1;
+				$settings = cbqe_get_options();
+				foreach ( $settings as $setting => $value ) {
+					$valid_type  = preg_match( '#^' . $post_type . '#', $setting );
+					$valid_reset = strstr( $setting, Custom_Bulkquick_Edit_Settings::RESET );
+					if ( $valid_type && $valid_reset ) {
+						$enable = cbqe_get_option( $setting );
+						if ( $enable ) {
+							$field_name  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::RESET . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+							$column_name = self::$field_key . $field_name;
 
-			if ( $enable ) {
-				$field_reset  = $field_name . Custom_Bulkquick_Edit_Settings::RESET;
-				$title        = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
-				$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
+							$result .= self::custom_box_reset( $column_name, $field_name, $setting, $row );
+							$row++;
+						}
+					}
+				}
 
-				$result  = '';
-				$result .= '<label class="alignleft">';
-				$result .= '<input type="checkbox" name="' . $field_reset . '" />';
-				$result .= ' ';
-				$result .= '<span class="checkbox-title">' . $title . '</span>';
-				$result .= '</label>';
+				if ( ! empty( $result ) ) {
+					echo sprintf( $open_fieldset, 'right', '' );
+					echo $open_div;
+					echo '<div class="inline-edit-group">';
+					echo $result;
+					echo $close_div;
+					echo $close_div;
+					echo $close_fieldset;
+				}
 
-				echo $open_fieldset;
-				echo $result;
-				echo $close_fieldset;
-
-				self::$scripts_bulk[ $column_reset ] = "'{$field_reset}': bulk_row.find( 'input[name^={$field_reset}]:checkbox:checked' ).map(function(){ return $(this).val(); }).get()";
+				self::$bulk_only_done = true;
 			}
 
 			// return now otherwise taxonomy entries are duplicated
-			return;
+			if ( in_array( $field_type, array( 'categories', 'taxonomy' ) ) )
+				return;
 		}
 
 		if ( 'post_excerpt' == $column_name )
@@ -647,195 +672,256 @@ jQuery(document).ready(function($) {
 			wp_nonce_field( self::$base, self::ID );
 		}
 
-		$key            = self::get_field_key( $post_type, $column_name );
-		$field_name     = self::$field_key . $column_name;
 		$field_name_var = str_replace( '-', '_', $field_name );
 		$title          = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 
-		echo $open_fieldset;
+		echo sprintf( $open_fieldset, 'left', '' );
+		echo $open_div;
 
-		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) ) {
-			$class = '';
-			if ( 'categories' == $field_type )
-				$class = 'inline-edit-categories-label';
-			elseif ( 'taxonomy' != $field_type )
-				echo '<label class="inline-edit-group">';
-			else
-				echo '<label class="inline-edit-tags">';
+		$class = '';
+		if ( 'categories' == $field_type )
+			$class = 'inline-edit-categories-label';
+		elseif ( 'taxonomy' != $field_type )
+			echo '<label class="alignleft">';
+		else
+			echo '<label class="inline-edit-tags">';
 
-			echo '<span class="title ' . $class . '">' . $title . '</span>';
-		}
+		echo '<span class="title ' . $class . '">' . $title . '</span>';
 
-		$details = self::get_field_details( $post_type, $column_name );
+		$details = self::get_field_config( $post_type, $column_name );
 		$options = explode( "\n", $details );
-		$options = array_map( 'trim', $options );
-		$result  = '';
 
 		switch ( $field_type ) {
 		case 'checkbox':
-		case 'radio':
-			$result      .= '<label class="alignleft">';
-			$check_title  = '<span class="checkbox-title">' . $title . '</span>';
-			$multiple     = '';
-			$do_pre_title = true;
-			if ( 'checkbox' == $field_type ) {
-				if ( 1 < count( $options ) )
-					$multiple = '[]';
-				else
-					$do_pre_title = false;
-			}
-
-			if ( $do_pre_title ) {
-				$result .= $check_title;
-				$result .= '</label>';
-			}
-
-			foreach ( $options as $option ) {
-				if ( $do_pre_title )
-					$result .= '<label class="inline-edit-group">';
-
-				$parts = explode( '|', $option );
-				$value = array_shift( $parts );
-				if ( empty( $parts ) )
-					$name = $value;
-				else
-					$name = array_shift( $parts );
-
-				$result .= '<input type="' . $field_type . '" name="' . $field_name . $multiple . '" value="' . $value . '" />';
-				$result .= ' ' . $name;
-
-				if ( $do_pre_title )
-					$result .= '</label>';
-			}
-
-			if ( empty( $do_pre_title ) ) {
-				$result .= $check_title;
-				$result .= '</label>';
-			}
-			break;
-
-		case 'input':
-			$result = '<input type="text" name="' . $field_name . '" autocomplete="off" />';
-			break;
-
-		case 'select':
-			$result .= '<select name="' . $field_name . '">';
-			$result .= '<option></option>';
-			foreach ( $options as $option ) {
-				$parts = explode( '|', $option );
-				$value = array_shift( $parts );
-				if ( empty( $parts ) )
-					$name = $value;
-				else
-					$name = array_shift( $parts );
-
-				$result .= '<option value="' . $value . '">' . $name . '</option>';
-			}
-			$result .= '</select>';
-			break;
-
-		case 'textarea':
-			$result = '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
-			break;
-
-		case 'categories':
-			$taxonomy = str_replace( self::$field_key, '', $field_name );
-
-			ob_start();
-			wp_terms_checklist( null, array( 'taxonomy' => $taxonomy ) );
-			$terms = ob_get_contents();
-			ob_end_clean();
-
-			$result  = '<input type="hidden" name="tax_input[' . $taxonomy . '][]" />';
-			$result .= '<ul class="cat-checklist ' . esc_attr( $taxonomy ) . '-checklist">';
-			$result .= $terms;
-			$result .= '</ul>';
-			break;
-
-		case 'taxonomy':
-			$taxonomy  = str_replace( self::$field_key, '', $field_name );
-			$tax_class = 'tax_input_' . $taxonomy;
-			$result    = '<textarea cols="22" rows="1" name="' . $field_name . '" class="' . $tax_class . ' ' . $field_name_var . '" autocomplete="off"></textarea>';
-			break;
-
-		default:
-			$result = apply_filters( 'cbqe_quick_edit_custom_box_field', '', $field_type, $field_name, $options );
-			break;
-		}
-
-		echo $result;
-
-		if ( ! in_array( $field_type, array( 'checkbox', 'radio' ) ) )
-			echo "\n</label>";
-
-		echo $close_fieldset;
-
-		switch ( $field_type ) {
-		case 'checkbox':
-			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'input[name^={$field_name}]:checkbox:checked' ).map(function(){ return $(this).val(); }).get()";
-			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} input:checkbox:checked', post_row ).map(function(){ return $(this).val(); }).get();";
-			self::$scripts_quick[ $column_name . '2' ] = "$.each( {$field_name_var}, function( key, value ){ $( ':input[name^={$field_name}]', edit_row ).filter('[value=' + value + ']').prop('checked', true); } );";
+			if ( ! $bulk_mode )
+				$result = self::custom_box_checkbox( $column_name, $field_name, $field_name_var, $options );
+			else
+				$result = self::custom_box_select_multiple( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
 			break;
 
 		case 'radio':
-			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]:radio:checked' ).val()";
-			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} input:radio:checked', post_row ).val();";
-			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).filter('[value=' + {$field_name_var} + ']').prop('checked', true);";
-			break;
+			if ( ! $bulk_mode )
+				$result = self::custom_box_radio( $column_name, $field_name, $field_name_var, $options );
+			else
+				$result = self::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
 
-		case 'select':
-			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( '{$field_type}[name={$field_name}]' ).val()";
-			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} option', post_row ).filter(':selected').val();";
-			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
 			break;
 
 		case 'input':
+			$result = self::custom_box_input( $column_name, $field_name, $field_name_var );
+			break;
+
+		case 'select':
+			$result = self::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
+			break;
+
 		case 'textarea':
-			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( '{$field_type}[name={$field_name}]' ).val()";
-			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
-			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+			$result = self::custom_box_textarea( $column_name, $field_name, $field_name_var );
 			break;
 
 		case 'categories':
-			// WordPress already handles it
+			$result = self::custom_box_categories( $field_name );
 			break;
 
 		case 'taxonomy':
-			self::$scripts_bulk[ $column_name ]        = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
-			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
-			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
-
-			$key = self::get_field_key( $post_type, $field_name );
-			if ( empty( $key ) )
-				break;
-
-			$key       .= Custom_Bulkquick_Edit_Settings::AUTO;
-			$do_suggest = cbqe_get_option( $key );
-			if ( $do_suggest ) {
-				$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
-				$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
-
-				self::$scripts_quick[ $column_name . '3' ] = "$( 'textarea[name={$field_name}]', edit_row ).{$suggest_js};";
-
-				/*
-					// self::$scripts_extra[ $column_name . '1' ] = "$( 'tr.inline-editor textarea[name={$field_name}]' ).{$suggest_js};";
-					// from wp-admin/js/inline.js
-					// enable autocomplete for tags
-					if ( 'post' == type ) {
-						// support multi taxonomies?
-						tax = 'post_tag';
-						$('tr.inline-editor textarea[name="tax_input['+tax+']"]').suggest( ajaxurl + '?action=ajax-tag-search&tax=' + tax, { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } );
-					}
-				 */
-			}
+			$result = self::custom_box_taxonomy( $field_name );
 			break;
 
 		default:
+			$result = apply_filters( 'cbqe_quick_edit_custom_box_field', '', $field_type, $field_name, $options, $bulk_mode );
+
 			self::$scripts_bulk  = apply_filters( 'cbqe_quick_scripts_bulk', self::$scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var );
 			self::$scripts_quick = apply_filters( 'cbqe_quick_scripts_quick', self::$scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var );
 			self::$scripts_extra = apply_filters( 'cbqe_quick_scripts_extra', self::$scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var );
 			break;
 		}
+
+		echo $result;
+		echo '</label>';
+		echo $close_div;
+		echo $close_fieldset;
+	}
+
+
+	public static function custom_box_checkbox( $column_name, $field_name, $field_name_var, $options ) {
+		$result = '<div class="inline-edit-group">';
+
+		$multiple     = '';
+		$do_pre_title = true;
+		if ( 1 < count( $options ) )
+			$multiple = '[]';
+		else
+			$do_pre_title = false;
+
+		foreach ( $options as $option ) {
+			if ( $do_pre_title )
+				$result .= '<label class="alignleft">';
+
+			$parts = explode( '|', $option );
+			$value = array_shift( $parts );
+			if ( empty( $parts ) )
+				$name = $value;
+			else
+				$name = array_shift( $parts );
+
+			$result .= '<input type="checkbox" name="' . $field_name . $multiple . '" value="' . $value . '" />';
+			$result .= ' ' . $name;
+
+			if ( $do_pre_title )
+				$result .= '</label>';
+		}
+
+		$result .= '</div>';
+
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} input:checkbox:checked', post_row ).map(function(){ return $(this).val(); }).get();";
+		self::$scripts_quick[ $column_name . '2' ] = "$.each( {$field_name_var}, function( key, value ){ $( ':input[name^={$field_name}]', edit_row ).filter('[value=' + value + ']').prop('checked', true); } );";
+
+		return $result;
+	}
+
+
+	public static function custom_box_radio( $column_name, $field_name, $field_name_var, $options ) {
+		$result = '<div class="inline-edit-group">';
+
+		foreach ( $options as $option ) {
+			$result .= '<label class="alignleft">';
+
+			$parts = explode( '|', $option );
+			$value = array_shift( $parts );
+			if ( empty( $parts ) )
+				$name = $value;
+			else
+				$name = array_shift( $parts );
+
+			$result .= '<input type="radio" name="' . $field_name . '" value="' . $value . '" />';
+			$result .= ' ' . $name;
+			$result .= '</label>';
+		}
+
+		$result .= '</div>';
+
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} input:radio:checked', post_row ).val();";
+		self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).filter('[value=' + {$field_name_var} + ']').prop('checked', true);";
+
+		return $result;
+	}
+
+
+	public static function custom_box_select_multiple( $column_name, $field_name, $field_name_var, $options, $bulk_mode ) {
+		$result = self::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode, true );
+
+		return $result;
+	}
+
+
+	public static function custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode = false, $multiple = false ) {
+		$result = '<select name="' . $field_name . '"';
+		if ( $multiple )
+			$result .= ' multiple="multiple">';
+
+		$result .= '>';
+		if ( ! $bulk_mode )
+			$result .= '<option></option>';
+		else {
+			$result .= '<option value="">' . esc_html__( '&mdash; No Change &mdash;', 'custom-bulkquick-edit' ) . '</option>';
+			$result .= '<option value="' . Custom_Bulkquick_Edit_Settings::RESET . '">' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' ) . '</option>';
+		}
+
+		foreach ( $options as $option ) {
+			$parts = explode( '|', $option );
+			$value = array_shift( $parts );
+			if ( empty( $parts ) )
+				$name = $value;
+			else
+				$name = array_shift( $parts );
+
+			$result .= '<option value="' . $value . '">' . $name . '</option>';
+		}
+		$result .= '</select>';
+
+		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'select[name={$field_name}]' ).val()";
+
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} option', post_row ).filter(':selected').val();";
+		self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
+
+		return $result;
+	}
+
+
+	public static function custom_box_reset( $column_name, $field_name, $key_reset, $row ) {
+		$field_reset  = $field_name . Custom_Bulkquick_Edit_Settings::RESET;
+		$title_reset  = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
+		$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
+
+		$result = '';
+		if ( 0 != $row % 2 )
+			$result .= '<label class="alignleft">';
+		else
+			$result .= '<label class="alignright">';
+
+		$result .= '<input type="checkbox" name="' . $field_reset . '" />';
+		$result .= ' ';
+		$result .= '<span class="checkbox-title">' . $title_reset . '</span>';
+		$result .= '</label>';
+
+		self::$scripts_bulk[ $column_reset ] = "'{$field_reset}': bulk_row.find( 'input[name^={$field_reset}]:checkbox:checked' ).map(function(){ return $(this).val(); }).get()";
+
+		return $result;
+	}
+
+
+	public static function custom_box_taxonomy( $field_name ) {
+		$taxonomy  = str_replace( self::$field_key, '', $field_name );
+		$tax_class = 'tax_input_' . $taxonomy;
+		$result    = '<textarea cols="22" rows="1" name="tax_input[' . $taxonomy . ']" class="' . $tax_class . '" autocomplete="off"></textarea>';
+
+		return $result;
+	}
+
+
+	public static function custom_box_categories( $field_name ) {
+		$taxonomy = str_replace( self::$field_key, '', $field_name );
+
+		ob_start();
+		wp_terms_checklist( null, array( 'taxonomy' => $taxonomy ) );
+		$terms = ob_get_contents();
+		ob_end_clean();
+
+		$result = '';
+		if ( 'category' != $taxonomy )
+			$result .= '<input type="hidden" name="tax_input[' . $taxonomy . '][]" value="0" />';
+		else
+			$result .= '<input type="hidden" name="post_category[]" value="0" />';
+
+		$result .= '<ul class="cat-checklist ' . esc_attr( $taxonomy ) . '-checklist">';
+		$result .= $terms;
+		$result .= '</ul>';
+
+		return $result;
+	}
+
+
+	public static function custom_box_textarea( $column_name, $field_name, $field_name_var ) {
+		$result = '<textarea cols="22" rows="1" name="' . $field_name . '" autocomplete="off"></textarea>';
+
+		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
+
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
+		self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+
+		return $result;
+	}
+
+
+	public static function custom_box_input( $column_name, $field_name, $field_name_var ) {
+		$result = '<input type="text" name="' . $field_name . '" autocomplete="off" />';
+
+		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]' ).val()";
+
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
+		self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+
+		return $result;
 	}
 
 

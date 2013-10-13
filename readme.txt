@@ -41,14 +41,16 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 
 * API of actions and filters
 * Auto detects most post custom fields
+* Auto-suggest for bulk and quick edit taxonomy entries
+* Easily remove `category` and `taxonomy` relations
+* Easily unset checkbox, radio, and select values
 * Edit excerpts
 * Performance minded – Plugin automatically loads when needed
-* Remove "`taxonomy`" Relations
-* Reset checkbox values
-* Settings export/import
+* Sample configurations set if none given
+* Setting options export/import
 * Settings screen
-* Supports taxonomies like tags
-* Use auto suggest for quick edit taxonomy entries
+* Supports category and tag taxonomies
+* Use's WordPress's own taxonomy handlers for category and tag inputs
 
 = Custom Bulk/Quick Edit Premium Plugin Features =
 
@@ -77,7 +79,6 @@ Two
 3|Three
 four|Four
 five-five|55`
-* Unset "Custom Field" Checkbox? – Force unsetting checkbox option.
 
 **Compatibility & Reset**
 
@@ -134,9 +135,9 @@ See [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/ma
 
 == Upgrade Notice ==
 
-= 0.0.1 =
+= 1.1.0 =
 
-* Initial release
+* Please review your settings as some option keys have changed. There's no auto-upgradeat this time.
 
 
 == Beta Testers Needed ==
