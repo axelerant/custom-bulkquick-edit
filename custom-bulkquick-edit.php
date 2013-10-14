@@ -200,7 +200,6 @@ EOD;
 
 		$details = self::get_field_config( $post->post_type, $column );
 		$options = explode( "\n", $details );
-		$options = array_map( 'trim', $options );
 
 		$result = '';
 		switch ( $column ) {
@@ -834,12 +833,16 @@ jQuery(document).ready(function($) {
 	public static function custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode = false, $multiple = false ) {
 		$result = '<select name="' . $field_name . '"';
 		if ( $multiple )
-			$result .= ' multiple="multiple">';
+			$result .= ' multiple="multiple"';
 
 		$result .= '>';
-		if ( ! $bulk_mode )
-			$result .= '<option></option>';
-		else
+		if ( ! $bulk_mode ) {
+			if ( ! $multiple )
+				$result .= '<option></option>';
+		} else
+			if ( ! $multiple )
+				$result .= '<option value="">' . esc_html__( '&mdash; No Change &mdash;', 'custom-bulkquick-edit' ) . '</option>';
+
 			$result .= '<option value="' . Custom_Bulkquick_Edit_Settings::RESET . '">' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' ) . '</option>';
 
 		foreach ( $options as $option ) {
