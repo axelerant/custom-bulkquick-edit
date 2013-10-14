@@ -133,7 +133,7 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
-		$desc_conf    = esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. You may create options as "the-key|Supremely, Pretty Values" pairs.', 'custom-bulkquick-edit' );
+		$desc_conf    = esc_html__( 'This configuration section is for option-based inputs like checkbox. You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.', 'custom-bulkquick-edit' );
 		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );

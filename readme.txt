@@ -76,12 +76,12 @@ Custom Bulk/Quick Edit Premium plugin extends [Custom Bulk/Quick Edit](http://wo
 	* Like tags
 * Reset "taxonomy" Relations? – During bulk editing, easily remove all of the taxonomy's prior relationships and add new.
 * Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
-* "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please separate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
+* "Custom Field" Configuration - This configuration section is for option-based inputs like checkbox. You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.
 	* Example configuration
 `1
 Two
 3|Three
-four|Four
+four|Four, and forty five
 five-five|55`
 
 **Compatibility & Reset**
