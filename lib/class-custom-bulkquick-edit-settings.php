@@ -135,13 +135,13 @@ class Custom_Bulkquick_Edit_Settings {
 		$desc_conf    = esc_html__( 'This configuration section is only for use with checkbox, radio, and select modes. Please seperate options using newlines. You may create options as "the-key|Supremely, Pretty Values" pairs.', 'custom-bulkquick-edit' );
 		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
-		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the current %1$s\' relationships. You\'ll need to edit the %2$s again to set new %3$s relations.', 'custom-bulkquick-edit' );
+		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
 
 		$title_conf    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 		$title_edit    = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
 		$title_enable  = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
 		$title_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
-		$title_remove  = esc_html__( 'Remove "%s" Relations?', 'custom-bulkquick-edit' );
+		$title_remove  = esc_html__( 'Reset "%s" Relations?', 'custom-bulkquick-edit' );
 
 		foreach ( self::$post_types as $post_type => $label ) {
 			$call_api = false;
@@ -182,7 +182,7 @@ class Custom_Bulkquick_Edit_Settings {
 					'section' => $post_type,
 					'title' => sprintf( $title_remove, $tax_label ),
 					'label' => sprintf( $title_remove, $tax_label ),
-					'desc' => sprintf( $desc_remove, $tax_label, $label, $tax_label ),
+					'desc' => sprintf( $desc_remove, $tax_label ),
 					'type' => 'checkbox',
 				);
 

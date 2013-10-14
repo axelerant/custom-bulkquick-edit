@@ -8,6 +8,7 @@
 * Add trim validator to settings
 * Alter scripts_extra location
 * Auto-suggest for tag-based taxonomy during bulk and quick editing
+* BUGFIX Unset taxonomies during bulk edit
 * BUGFIX category taxonomy saving incorrect
 * BUGFIX field name has plugin prefix
 * BUGFIX taxonomy CSV entries not treated as individual terms
@@ -17,6 +18,8 @@
 * Don't edit common/static fields like cb, id, author, etc.
 * Ignore checkbox and ID fields
 * Prevent extraneous options from showing in edit screen columns
+* Populate quick edit checkbox fields
+* Populate quick edit radio fields
 * Reduce echo calls
 * Refactor bulk/quick custom box operations
 * Refactor options labeling

@@ -42,15 +42,14 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 * API of actions and filters
 * Auto detects most post custom fields
 * Auto-suggest for bulk and quick edit taxonomy entries
-* Easily remove `category` and `taxonomy` relations
-* Easily unset checkbox, radio, and select values
+* Easily remove or replace `category` and `taxonomy` relations
 * Edit excerpts
 * Performance minded – Plugin automatically loads when needed
-* Sample configurations set if none given
+* Sample configurations provided as needed
 * Setting options export/import
 * Settings screen
-* Supports category and tag taxonomies
-* Use's WordPress's own taxonomy handlers for category and tag inputs
+* Supports WordPress's own taxonomy handlers for category and tag relations
+* Unset checkbox, radio, and select values during bulk edit
 
 = Custom Bulk/Quick Edit Premium Plugin Features =
 
@@ -70,7 +69,7 @@ Custom Bulk/Quick Edit Premium plugin extends [Custom Bulk/Quick Edit](http://wo
 
 * Enable "Excerpt"? – Enable editing of post_type' excerpt.
 * Edit "TBD" taxonomy? – Force making TBD an editable taxonomy field like checked categories or free-text tags.
-* Remove "taxonomy" Relations? – During bulk editing, easily remove all of the current taxonomy' relationships. You'll need to edit the Testimonials again to set new taxonomy relations.
+* Reset "taxonomy" Relations? – During bulk editing, easily remove all of the taxonomy's prior relationships and add new.
 * Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
 * "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please separate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
 	* Example configuration

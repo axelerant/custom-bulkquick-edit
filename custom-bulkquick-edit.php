@@ -432,7 +432,7 @@ jQuery(document).ready(function($) {
 		$post_type = $post->post_type;
 
 		foreach ( $_POST as $field => $value ) {
-			if ( false === strpos( $field, self::$field_key ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) )
+			if ( false === strpos( $field, self::$field_key ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET ) )
 				continue;
 
 			if ( '' == $value && 'bulk_edit' == $mode )
@@ -637,10 +637,10 @@ jQuery(document).ready(function($) {
 					if ( $valid_type && $valid_reset ) {
 						$enable = cbqe_get_option( $setting );
 						if ( $enable ) {
-							$field_name  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::RESET . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
-							$column_name = self::$field_key . $field_name;
+							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::RESET . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+							$orig_column = self::$field_key . $orig_field;
 
-							$result .= self::custom_box_reset( $column_name, $field_name, $setting, $row );
+							$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row );
 							$row++;
 						}
 					}
@@ -765,7 +765,7 @@ jQuery(document).ready(function($) {
 				$name = array_shift( $parts );
 
 			$result .= '<input type="checkbox" name="' . $field_name . $multiple . '" value="' . $value . '" />';
-			$result .= ' ' . $name;
+			$result .= ' ' . $name . '&nbsp;';
 
 			if ( $do_pre_title )
 				$result .= '</label>';
@@ -794,7 +794,7 @@ jQuery(document).ready(function($) {
 				$name = array_shift( $parts );
 
 			$result .= '<input type="radio" name="' . $field_name . '" value="' . $value . '" />';
-			$result .= ' ' . $name;
+			$result .= ' ' . $name . '&nbsp;';
 			$result .= '</label>';
 		}
 
@@ -822,10 +822,8 @@ jQuery(document).ready(function($) {
 		$result .= '>';
 		if ( ! $bulk_mode )
 			$result .= '<option></option>';
-		else {
-			$result .= '<option value="">' . esc_html__( '&mdash; No Change &mdash;', 'custom-bulkquick-edit' ) . '</option>';
+		else
 			$result .= '<option value="' . Custom_Bulkquick_Edit_Settings::RESET . '">' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' ) . '</option>';
-		}
 
 		foreach ( $options as $option ) {
 			$parts = explode( '|', $option );
@@ -839,10 +837,11 @@ jQuery(document).ready(function($) {
 		}
 		$result .= '</select>';
 
-		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'select[name={$field_name}]' ).val()";
-
-		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} option', post_row ).filter(':selected').val();";
-		self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
+		if ( ! $bulk_mode ) {
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name} option', post_row ).filter(':selected').val();";
+			self::$scripts_quick[ $column_name . '2' ] = "$( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
+		} else
+			self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'select[name={$field_name}]' ).val()";
 
 		return $result;
 	}
