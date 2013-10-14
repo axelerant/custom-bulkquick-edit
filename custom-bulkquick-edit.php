@@ -314,10 +314,10 @@ EOD;
 				continue;
 
 			// the following are ignored potential columns
-			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) )
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) )
 				continue;
 
-			if ( strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) )
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) )
 				continue;
 
 			$field_name = str_replace( $post_type . Custom_Bulkquick_Edit_Settings::ENABLE, '', $key );
@@ -740,7 +740,7 @@ jQuery(document).ready(function($) {
 			break;
 
 		case 'taxonomy':
-			$result = self::custom_box_taxonomy( $field_name );
+			$result = self::custom_box_taxonomy( $column_name, $field_name, $field_name_var );
 			break;
 
 		default:
@@ -893,10 +893,22 @@ jQuery(document).ready(function($) {
 	}
 
 
-	public static function custom_box_taxonomy( $field_name ) {
+	public static function custom_box_taxonomy( $column_name, $field_name, $field_name_var ) {
 		$taxonomy  = str_replace( self::$field_key, '', $field_name );
 		$tax_class = 'tax_input_' . $taxonomy;
 		$result    = '<textarea cols="22" rows="1" name="tax_input[' . $taxonomy . ']" class="' . $tax_class . '" autocomplete="off"></textarea>';
+
+		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( '.{$tax_class}' ).val()";
+
+		if ( false !== strstr( $field_name, '-' ) ) {
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
+			self::$scripts_quick[ $column_name . '2' ] = "$( '.{$tax_class}', edit_row ).val( {$field_name_var} );";
+
+			$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
+			$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
+
+			self::$scripts_quick[ $column_name . '3' ] = "$( '.{$tax_class}', edit_row ).{$suggest_js};";
+		}
 
 		return $result;
 	}

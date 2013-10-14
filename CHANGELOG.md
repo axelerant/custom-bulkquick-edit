@@ -10,6 +10,7 @@
 * Alter scripts_extra location
 * Auto-suggest for tag-based taxonomy during bulk and quick editing
 * BUGFIX Select No Change option missing
+* BUGFIX attributes with hyphens no populate or save in bulk/quick edit
 * BUGFIX category taxonomy saving incorrect
 * BUGFIX field name has plugin prefix
 * BUGFIX incorrect multiple select HTML
