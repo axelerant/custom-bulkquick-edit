@@ -8,6 +8,7 @@
 * Add trim validator to settings
 * Alter scripts_extra location
 * Auto-suggest for tag-based taxonomy during bulk and quick editing
+* BUGFIX Unset checkboxes during quick edit
 * BUGFIX Unset taxonomies during bulk edit
 * BUGFIX category taxonomy saving incorrect
 * BUGFIX field name has plugin prefix

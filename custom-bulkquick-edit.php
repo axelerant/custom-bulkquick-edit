@@ -432,6 +432,19 @@ jQuery(document).ready(function($) {
 		$post      = get_post( $post_id );
 		$post_type = $post->post_type;
 
+		if ( empty( $mode ) ) {
+			// unset unchecked checkboxs from quick edit
+			$fields = self::get_enabled_fields( $post_type );
+			foreach ( $fields as $key => $field ) {
+				$field_type = self::is_field_enabled( $post_type, $field );
+				if ( 'checkbox' == $field_type ) {
+					$field_name = self::$field_key . $field;
+					if ( ! isset( $_POST[ $field_name ] ) )
+						$_POST[ $field_name ] = Custom_Bulkquick_Edit_Settings::RESET;
+				}
+			}
+		}
+
 		foreach ( $_POST as $field => $value ) {
 			if ( false === strpos( $field, self::$field_key ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET ) )
 				continue;
