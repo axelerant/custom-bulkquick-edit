@@ -750,7 +750,7 @@ class Custom_Bulkquick_Edit_Settings {
 						break;
 
 					default:
-						$default = apply_filters( 'cbqe_validate_default', $default, $id, $type );
+						$default = apply_filters( 'cbqe_configuration_default', $default, $id, $type );
 						break;
 					}
 

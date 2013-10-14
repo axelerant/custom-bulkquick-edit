@@ -36,7 +36,7 @@ None at this time.
 
 	Validate settings helper. [example](https://gist.github.com/michael-cannon/5833768)
 
-* `cbqe_validate_default`
+* `cbqe_configuration_default`
 
 	Validate settings default helper. [example](https://gist.github.com/michael-cannon/)
 

@@ -5,7 +5,7 @@
 ## 1.1.0-beta
 * Abstract bulk/quick input operations
 * Add API filter `cbqe_settings_config_desc`
-* Add API filter `cbqe_validate_default`
+* Add API filter `cbqe_configuration_default`
 * Add bulk_edit_custom_box to help with separating editable fields per edit view
 * Add disable donation option
 * Add trim validator to settings
