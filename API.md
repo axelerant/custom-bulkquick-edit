@@ -40,6 +40,10 @@ None at this time.
 
 	Validate settings default helper. [example](https://gist.github.com/michael-cannon/)
 
+* `cbqe_settings_config_desc`
+
+	Customize the configuration text. [example](https://gist.github.com/michael-cannon/)
+
 * `cbqe_version`
 
 	Version tracking for settings. [example](https://gist.github.com/michael-cannon/5833774)

@@ -248,11 +248,13 @@ class Custom_Bulkquick_Edit_Settings {
 						'has_config' => 1,
 					);
 
+					$desc_conf_tmp = apply_filters( 'cbqe_settings_config_desc', $desc_conf, $post_type, $field );
+
 					self::$settings[ $post_type . self::ENABLE . $field . self::CONFIG ] = array(
 						'section' => $post_type,
 						'title' => sprintf( $title_conf, $label ),
 						'label' => $label,
-						'desc' => $desc_conf,
+						'desc' => $desc_conf_tmp,
 						'type' => 'textarea',
 						'validate' => 'trim',
 					);
