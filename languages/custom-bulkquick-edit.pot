@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Custom Bulk/Quick Edit 1.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2013-10-14 07:30:10+00:00\n"
+"POT-Creation-Date: 2013-10-14 08:03:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,11 +28,11 @@ msgid ""
 "Edit plugin. %s"
 msgstr ""
 
-#: custom-bulkquick-edit.php:844
+#: custom-bulkquick-edit.php:848
 msgid "&mdash; No Change &mdash;"
 msgstr ""
 
-#: custom-bulkquick-edit.php:846
+#: custom-bulkquick-edit.php:850
 msgid "&mdash; Unset &mdash;"
 msgstr ""
 
@@ -88,9 +88,9 @@ msgstr ""
 
 #: lib/class-custom-bulkquick-edit-settings.php:136
 msgid ""
-"This configuration section is only for use with checkbox, radio, and select "
-"modes. Please seperate options using newlines. You may create options as "
-"\"the-key|Supremely, Pretty Values\" pairs."
+"This configuration section is for option-based inputs like checkbox. You may "
+"create options formatted like \"the-key|Supremely, Pretty Values\" seperated "
+"by newlines."
 msgstr ""
 
 #: lib/class-custom-bulkquick-edit-settings.php:137

@@ -10,11 +10,12 @@
 * Alter scripts_extra location
 * Auto-suggest for tag-based taxonomy during bulk and quick editing
 * BUGFIX Select No Change option missing
-* BUGFIX Unset checkboxes during quick edit
-* BUGFIX Unset taxonomies during bulk edit
 * BUGFIX category taxonomy saving incorrect
 * BUGFIX field name has plugin prefix
 * BUGFIX incorrect multiple select HTML
+* BUGFIX multiple select quick edit not saving
+* BUGFIX show unset checkboxes during quick edit
+* BUGFIX show unset taxonomies during bulk edit
 * BUGFIX taxonomy CSV entries not treated as individual terms
 * Begin `has_config` coding to hide configuration textareas for unset options
 * Category bulk editing
