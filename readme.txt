@@ -56,11 +56,12 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 
 Custom Bulk/Quick Edit Premium plugin extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) with custom post types handling and other helpful features.
 
+* Date input with date picker
 * Disable donate references
 * Flexible API
+* Multiple select selector
 * Works with Custom Post Types
 * Works with [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
-* `date` input type with date picker
 
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
 
