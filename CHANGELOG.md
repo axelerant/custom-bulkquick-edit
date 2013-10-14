@@ -17,9 +17,9 @@
 * Correct settings page title
 * Don't edit common/static fields like cb, id, author, etc.
 * Ignore checkbox and ID fields
-* Prevent extraneous options from showing in edit screen columns
 * Populate quick edit checkbox fields
 * Populate quick edit radio fields
+* Prevent extraneous options from showing in edit screen columns
 * Reduce echo calls
 * Refactor bulk/quick custom box operations
 * Refactor options labeling
@@ -40,6 +40,7 @@
 * Update TODO
 * Update readme options
 * Use WordPress's own taxonomy handlers for category and tag inputs
+* View category and tag relations on edit screen columns
 * https jQuery transport
 
 ## 1.0.1

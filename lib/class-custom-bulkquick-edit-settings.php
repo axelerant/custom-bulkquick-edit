@@ -127,6 +127,7 @@ class Custom_Bulkquick_Edit_Settings {
 
 		$as_taxonomy = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
+			'show_only' => esc_html__( 'No, but enable column view', 'custom-bulkquick-edit' ),
 			'categories' => esc_html__( 'Like categories', 'custom-bulkquick-edit' ),
 			'taxonomy' => esc_html__( 'Like tags', 'custom-bulkquick-edit' ),
 		);

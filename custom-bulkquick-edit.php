@@ -212,6 +212,7 @@ EOD;
 			$current = get_post_meta( $post_id, $column, true );
 
 			switch ( $field_type ) {
+			case 'show_only':
 			case 'categories':
 			case 'taxonomy':
 				$taxonomy   = $column;
@@ -616,6 +617,9 @@ jQuery(document).ready(function($) {
 
 		$field_type = self::is_field_enabled( $post_type, $column_name );
 		if ( empty( $field_type ) )
+			return;
+
+		if ( 'show_only' == $field_type )
 			return;
 
 		$key        = self::get_field_key( $post_type, $column_name );

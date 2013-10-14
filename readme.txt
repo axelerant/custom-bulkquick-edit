@@ -50,6 +50,7 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 * Settings screen
 * Supports WordPress's own taxonomy handlers for category and tag relations
 * Unset checkbox, radio, and select values during bulk edit
+* View category and tag relations on edit screen columns
 
 = Custom Bulk/Quick Edit Premium Plugin Features =
 
@@ -69,6 +70,10 @@ Custom Bulk/Quick Edit Premium plugin extends [Custom Bulk/Quick Edit](http://wo
 
 * Enable "Excerpt"? – Enable editing of post_type' excerpt.
 * Edit "TBD" taxonomy? – Force making TBD an editable taxonomy field like checked categories or free-text tags.
+	* No
+	* No, but enable column view (view the column on the admin edit screen)
+	* Like categories
+	* Like tags
 * Reset "taxonomy" Relations? – During bulk editing, easily remove all of the taxonomy's prior relationships and add new.
 * Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
 * "Custom Field" Configuration - This configuration section is only for use with checkbox, radio, and select modes. Please separate options using newlines. Further, you may create options as "the-key|Pretty Value" pairs.
