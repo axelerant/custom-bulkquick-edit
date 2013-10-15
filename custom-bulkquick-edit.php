@@ -532,6 +532,8 @@ jQuery(document).ready(function($) {
 
 			return self::$post_types;
 		} else {
+			self::$post_types_ignore = apply_filters( 'cbqe_post_types_ignore', self::$post_types_ignore );
+
 			$args = array(
 				'public' => true,
 				'_builtin' => true,
@@ -987,6 +989,8 @@ jQuery(document).ready(function($) {
 
 		remove_action( 'save_post', array( $this, 'save_post' ), 25 );
 		self::save_post_items( $post_id );
+
+		do_action( 'cbeq_save_post', $post_id );
 	}
 
 

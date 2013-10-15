@@ -23,19 +23,7 @@ Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_
 
 This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/bulk_edit_custom_box) and [quick_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/quick_edit_custom_box) actions.
 
-To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/).
-
-= Help Me, Help You =
-
-Do [let me know](http://wordpress.org/support/plugin/custom-bulkquick-edit) how well you're able to use this plugin or not. 
-
-This plugin grew out of the frustration of having to custom write this code for every client. It works best when the custom post types have already added columns to the edit screen via the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter.
-
-[Example](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-).
-
-= Limitations =
-
-Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) is already configured, your theme's `functions.php` file will have to modified to add custom field columns. See "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-to-my-edit-page-)" for help.
+To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
 
 = Primary Features =
 
@@ -46,6 +34,7 @@ Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin
 * Edit excerpts
 * Performance minded – Plugin automatically loads when needed
 * Sample configurations provided as needed
+* Save post handler can be customized for your needs.
 * Setting options export/import
 * Settings screen
 * Supports WordPress's own taxonomy handlers for category and tag relations
@@ -101,6 +90,18 @@ five-five|55`
 You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
 
 See the FAQ for further localization tips.
+
+= Help Me, Help You =
+
+Do [let me know](http://wordpress.org/support/plugin/custom-bulkquick-edit) how well you're able to use this plugin or not. 
+
+This plugin grew out of the frustration of having to custom write this code for every client. It works best when the custom post types have already added columns to the edit screen via the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter.
+
+[Example](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-).
+
+= Limitations =
+
+Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) is already configured, your theme's `functions.php` file will have to modified to add custom field columns. See "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-to-my-edit-page-)" for help.
 
 = Support =
 

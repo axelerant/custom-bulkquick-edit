@@ -4,9 +4,15 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 ## Actions
 
-None at this time.
+* `cbeq_save_post`
+
+	Custom save post handler. Called at end of `save_post`. Therefore, generally verified to do something if your `$_POST` parameters exist.
 
 ## Filters
+
+* `cbqe_post_types_ignore`
+
+	Customize the ignored post_types array. [Example](https://gist.github.com/michael-cannon/6987053)
 
 * `cbqe_quick_scripts_bulk`
 

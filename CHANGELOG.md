@@ -1,6 +1,9 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Add API action `cbeq_save_post`
+* Add API filter `cbqe_post_types_ignore`
+* Revise readme structure
 
 ## 1.1.0-beta
 * Abstract bulk/quick input operations
