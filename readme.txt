@@ -124,6 +124,14 @@ Kudos to [Alex Stone](http://eoionline.org) for documentation revisions.
 
 == Frequently Asked Questions ==
 
+= Most Common Resolutions =
+
+1. [How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-to-my-edit-page-)
+1. [Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723-Where-can-I-find-working-samples-)
+1. [How do you configure options?](https://aihrus.zendesk.com/entries/24911342-How-do-you-configure-options-)
+
+= Still Stuck? =
+
 Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546-Custom-Bulk-Quick-Edit) for frequently asked questions, offering ideas, or getting support.
 
 

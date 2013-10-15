@@ -5,6 +5,7 @@
 * Add API filter `cbqe_post_types_ignore`
 * BUGFIX cbeq_save_post bulk edits not saving
 * Revise readme structure
+* Update FAQ
 
 ## 1.1.0-beta
 * Abstract bulk/quick input operations
