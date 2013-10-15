@@ -457,6 +457,8 @@ jQuery(document).ready(function($) {
 				foreach ( $value as $key => $val )
 					self::save_post_item( $post_id, $post_type, $key, $val );
 		}
+
+		do_action( 'cbeq_save_post', $post_id );
 	}
 
 
@@ -989,8 +991,6 @@ jQuery(document).ready(function($) {
 
 		remove_action( 'save_post', array( $this, 'save_post' ), 25 );
 		self::save_post_items( $post_id );
-
-		do_action( 'cbeq_save_post', $post_id );
 	}
 
 
