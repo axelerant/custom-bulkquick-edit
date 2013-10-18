@@ -1,17 +1,14 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+
+## 1.1.0
+* Abstract bulk/quick input operations
 * Add API action `cbeq_save_post`
 * Add API action `custom_bulkquick_edit_update`
-* Add API filter `cbqe_post_types_ignore`
-* BUGFIX cbeq_save_post bulk edits not saving
-* Revise readme structure
-* Update FAQ
-
-## 1.1.0-beta
-* Abstract bulk/quick input operations
-* Add API filter `cbqe_settings_config_desc`
 * Add API filter `cbqe_configuration_default`
+* Add API filter `cbqe_post_types_ignore`
+* Add API filter `cbqe_settings_config_desc`
 * Add bulk_edit_custom_box to help with separating editable fields per edit view
 * Add disable donation option
 * Add trim validator to settings
@@ -20,6 +17,7 @@
 * BUGFIX Select No Change option missing
 * BUGFIX attributes with hyphens no populate or save in bulk/quick edit
 * BUGFIX category taxonomy saving incorrect
+* BUGFIX cbeq_save_post bulk edits not saving
 * BUGFIX field name has plugin prefix
 * BUGFIX incorrect multiple select HTML
 * BUGFIX multiple select quick edit not saving
@@ -41,6 +39,7 @@
 * Remove auto-suggest and force reset options - now part of bulk operations by default
 * Rename field label with img tag to its alt or title attribute
 * Revise premium features list
+* Revise readme structure
 * Sample configurations provided on initial save
 * Save taxonomy data
 * Select category values during quick editing
@@ -51,6 +50,7 @@
 * Unset radio values
 * Unset select values
 * Update API
+* Update FAQ
 * Update TODO
 * Update readme options
 * Use WordPress's own taxonomy handlers for category and tag inputs

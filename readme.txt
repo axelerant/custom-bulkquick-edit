@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.4
 Tested up to: 3.6.0
-Stable tag: 1.1.0-beta
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,7 @@ To use this Custom Bulk/Quick Edit plugin with custom post types, please purchas
 * Easily remove or replace `category` and `taxonomy` relations
 * Edit excerpts
 * Performance minded – Plugin automatically loads when needed
+* Prevents editing of common and static fields like cb, id, author, etc.
 * Sample configurations provided as needed
 * Save post handler can be customized for your needs.
 * Setting options export/import
@@ -43,7 +44,7 @@ To use this Custom Bulk/Quick Edit plugin with custom post types, please purchas
 
 = Custom Bulk/Quick Edit Premium Plugin Features =
 
-Custom Bulk/Quick Edit Premium plugin extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) with custom post types handling and other helpful features.
+Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin there is, [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/). Custom Bulk/Quick Edit Premium supports [custom post types and WooCommerce](https://aihr.us/custom-bulkquick-edit-premium/). Plus, it offers additional inputs options like date and multiple selects for use during bulk/quick edit operations.
 
 * Date input with date picker
 * Disable donate references
