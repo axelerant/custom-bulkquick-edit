@@ -5,5 +5,5 @@ Is there something you want done? Write it up on the [support forums](http://wor
 * Abstract bulk/quick layout operations
 * Abstract manage_posts_custom_column subroutines for easier reuse
 * BUG Autosuggest for some taxonomies doesn't go away after editing. Just hangs there on the screen
-* Populate categories in quick edit
+* BUG? Categories don't populate in quick edit
 * Show/hide configuration boxes in settings as needed per as type selected. - http://api.jquery.com/parents/ http://stackoverflow.com/a/2889088/597637

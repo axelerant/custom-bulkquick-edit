@@ -160,6 +160,9 @@ EOD;
 			if ( $prior_version < '0.0.1' )
 				add_action( 'admin_notices', array( $this, 'admin_notices_0_0_1' ) );
 
+			if ( $prior_version < self::VERSION )
+				do_action( 'custom_bulkquick_edit_update' );
+
 			cbqe_set_option( 'admin_notices' );
 		}
 
