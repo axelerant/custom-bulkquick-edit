@@ -14,7 +14,9 @@ Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom
 
 == Description ==
 
-Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom fields to the edit screen bulk and quick edit panels.
+Through Custom Bulk/Quick Edit, you can enable editing of category and tag taxonomies. Next, you have the option to edit post meta via text, checkbox, radio, select, and textares inputs. Further, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options in bulk mode. This is very helpful when you mass want to reset or remove information.
+
+To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
 
 [youtube http://www.youtube.com/watch?v=wd6munNz0gI]
 **[Video introduction](http://youtu.be/UXvzdlvIPtk)**
@@ -22,8 +24,6 @@ Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom
 Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. Therefore, unless it's already configured, your theme's `functions.php` file will have to modified to add custom field columns. See "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-to-my-edit-page-)" for help.
 
 This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/bulk_edit_custom_box) and [quick_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/quick_edit_custom_box) actions.
-
-To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
 
 = Primary Features =
 
