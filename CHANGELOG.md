@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Add API filter `cbqe_settings_fields`
 
 ## 1.1.0
 * Abstract bulk/quick input operations

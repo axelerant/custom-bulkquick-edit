@@ -195,6 +195,7 @@ class Custom_Bulkquick_Edit_Settings {
 			$fields      = apply_filters( $filter, $fields );
 			$filter_edit = 'manage_edit-' . $post_type . '_columns';
 			$fields      = apply_filters( $filter_edit, $fields );
+			$fields      = apply_filters( 'cbqe_settings_fields', $fields );
 			if ( ! empty( $fields ) ) {
 				// don't edit these common/static fields with this plugin
 				unset( $fields['author'] );
