@@ -41,6 +41,7 @@ This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plug
 * Supports WordPress's own taxonomy handlers for category and tag relations
 * Unset checkbox, radio, and select values during bulk edit
 * View category and tag relations on edit screen columns
+* Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
 
 = Custom Bulk/Quick Edit Premium Plugin Features =
 
@@ -66,7 +67,7 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 	* Like categories
 	* Like tags
 * Reset "taxonomy" Relations? – During bulk editing, easily remove all of the taxonomy's prior relationships and add new.
-* Enable "Custom Field"? - As checkbox, radio, select, text input, or textarea
+* Enable "Custom Field"? - As checkbox, radio, select, text, or textarea
 * "Custom Field" Configuration - This configuration section is for option-based inputs like checkbox. You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.
 	* Example configuration
 `1

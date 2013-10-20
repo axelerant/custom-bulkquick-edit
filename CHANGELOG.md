@@ -2,6 +2,7 @@
 
 ## master
 * Add API filter `cbqe_settings_fields`
+* Confirm works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
 
 ## 1.1.0
 * Abstract bulk/quick input operations
