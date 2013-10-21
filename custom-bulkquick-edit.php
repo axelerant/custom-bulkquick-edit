@@ -36,6 +36,7 @@ class Custom_Bulkquick_Edit {
 		'page',
 	);
 
+	public static $bulk_edit_save  = false;
 	public static $bulk_only_done  = false;
 	public static $donate_button   = '';
 	public static $field_key       = 'cbqe_';
@@ -405,6 +406,8 @@ jQuery(document).ready(function($) {
 	 * @SuppressWarnings(PHPMD.ExitExpression)
 	 */
 	public function save_post_bulk_edit() {
+		self::$bulk_edit_save = true;
+
 		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
 		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
 			foreach ( $post_ids as $post_id ) {
