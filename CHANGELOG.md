@@ -6,6 +6,7 @@
 * Change $2 donation request to $5
 * Confirm works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
 * Simplify `wp_enqueue_style` handling
+* Update .travis for phpmd exclusions
 
 ## 1.1.0
 * Abstract bulk/quick input operations
