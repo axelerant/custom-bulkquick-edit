@@ -809,6 +809,9 @@ jQuery(document).ready(function($) {
 	public static function custom_box_radio( $column_name, $field_name, $field_name_var, $options ) {
 		$result = '<div class="inline-edit-group">';
 
+		$unset_option = Custom_Bulkquick_Edit_Settings::RESET . '|' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' );
+		array_unshift( $options, $unset_option );
+
 		foreach ( $options as $option ) {
 			$result .= '<label class="alignleft">';
 
@@ -850,14 +853,14 @@ jQuery(document).ready(function($) {
 		}
 
 		$result .= '">';
-		if ( ! $bulk_mode ) {
-			if ( ! $multiple )
-				$result .= '<option></option>';
-		} else
-			if ( ! $multiple )
-				$result .= '<option value="">' . esc_html__( '&mdash; No Change &mdash;', 'custom-bulkquick-edit' ) . '</option>';
 
-			$result .= '<option value="' . Custom_Bulkquick_Edit_Settings::RESET . '">' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' ) . '</option>';
+		$unset_option = Custom_Bulkquick_Edit_Settings::RESET . '|' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' );
+		array_unshift( $options, $unset_option );
+
+		if ( $bulk_mode && ! $multiple ) {
+			$no_change_option = '|' . esc_html__( '&mdash; No Change &mdash;', 'custom-bulkquick-edit' );
+			array_unshift( $options, $no_change_option );
+		}
 
 		foreach ( $options as $option ) {
 			$parts = explode( '|', $option );
