@@ -14,7 +14,7 @@ Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom
 
 == Description ==
 
-Through Custom Bulk/Quick Edit, you have the option to edit post meta via text, checkbox, radio, select, and textares inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
+Through Custom Bulk/Quick Edit, you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
 
 To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
 
@@ -67,8 +67,8 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 	* Like categories
 	* Like tags
 * Reset "taxonomy" Relations? – During bulk editing, easily remove all of the taxonomy's prior relationships and add new.
-* Enable "Custom Field"? - As checkbox, radio, select, text, or textarea
-* "Custom Field" Configuration - This configuration section is for option-based inputs like checkbox. You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.
+* Enable "Custom Field"? - As checkbox, radio, select, input, or textarea
+* "Custom Field" Configuration - You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.
 	* Example configuration
 `1
 Two

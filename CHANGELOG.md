@@ -1,10 +1,13 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
-* Add var `bulk_edit_save`
 * Add API filter `cbqe_settings_fields`
+* Add API filter `cbqe_settings_config_script`
+* Add id to settings page selects
+* Add var `bulk_edit_save`
 * Change $2 donation request to $5
 * Confirm works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
+* Show/hide configuration boxes in settings as needed per as type selected
 * Simplify `wp_enqueue_style` handling
 * Update .travis for phpmd exclusions
 

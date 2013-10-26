@@ -913,13 +913,6 @@ jQuery(document).ready(function($) {
 		if ( false !== strstr( $field_name, '-' ) ) {
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = $( '.column-{$column_name}', post_row ).text();";
 			self::$scripts_quick[ $column_name . '2' ] = "$( '.{$tax_class}', edit_row ).val( {$field_name_var} );";
-
-			/* BUG see TODO
-			$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';
-			$suggest_js = "suggest( '{$ajax_url}?action=ajax-tag-search&tax={$taxonomy}', { delay: 500, minchars: 2, multiple: true, multipleSep: inlineEditL10n.comma + ' ' } )";
-
-			self::$scripts_quick[ $column_name . '3' ] = "$( '.{$tax_class}', edit_row ).{$suggest_js};";
-			*/
 		}
 
 		return $result;

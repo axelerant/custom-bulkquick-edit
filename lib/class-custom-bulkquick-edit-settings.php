@@ -31,6 +31,8 @@ class Custom_Bulkquick_Edit_Settings {
 
 	private static $post_types = array();
 
+	public static $config_counter = 0;
+
 	public static $default  = array(
 		'backwards' => array(
 			'version' => '', // below this version number, use std
@@ -48,6 +50,7 @@ class Custom_Bulkquick_Edit_Settings {
 		'has_config' => 0, // enable configuration hide for certain types
 	);
 	public static $defaults = array();
+	public static $scripts  = array();
 	public static $sections = array();
 	public static $settings = array();
 	public static $version  = null;
@@ -118,7 +121,7 @@ class Custom_Bulkquick_Edit_Settings {
 		$as_types = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
 			'checkbox' => esc_html__( 'As checkbox', 'custom-bulkquick-edit' ),
-			'input' => esc_html__( 'As text field', 'custom-bulkquick-edit' ),
+			'input' => esc_html__( 'As input field', 'custom-bulkquick-edit' ),
 			'radio' => esc_html__( 'As radio', 'custom-bulkquick-edit' ),
 			'select' => esc_html__( 'As select', 'custom-bulkquick-edit' ),
 			'textarea' => esc_html__( 'As textarea', 'custom-bulkquick-edit' ),
@@ -133,7 +136,7 @@ class Custom_Bulkquick_Edit_Settings {
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
-		$desc_conf    = esc_html__( 'This configuration section is for option-based inputs like checkbox. You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.', 'custom-bulkquick-edit' );
+		$desc_conf    = esc_html__( 'You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.', 'custom-bulkquick-edit' );
 		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
@@ -609,7 +612,7 @@ class Custom_Bulkquick_Edit_Settings {
 			break;
 
 		case 'select':
-			$content .= '<select class="select' . $field_class . '" name="' . self::ID . '[' . $id . ']">';
+			$content .= '<select class="select' . $field_class . '" id="' . $id . '" name="' . self::ID . '[' . $id . ']">';
 
 			foreach ( $choices as $value => $label )
 				$content .= '<option value="' . $value . '"' . selected( $options[$id], $value, false ) . '>' . $label . '</option>';
@@ -640,6 +643,38 @@ class Custom_Bulkquick_Edit_Settings {
 		default:
 			$content .= apply_filters( 'cbqe_settings_display_setting', $args, $input );
 			break;
+		}
+
+		if ( strstr( $id, Custom_Bulkquick_Edit_Settings::CONFIG ) ) {
+			$field = str_replace( Custom_Bulkquick_Edit_Settings::CONFIG, '', $id );
+			$f     = 'f' . ++self::$config_counter;
+			$c     = 'c' . self::$config_counter;
+			$hide  = "'' === val || 'input' == val || 'textarea' == val";
+
+			$script = <<<EOD
+<script type="text/javascript">
+	jQuery(document).ready( function() {
+		{$f} = jQuery( '#{$field}' );
+		{$c} = jQuery( '#{$id}' );
+
+		val = {$f}.val();
+		if ( {$hide} )
+			{$c}.parent().parent().hide();
+
+		{$f}.change( function() {
+			val = {$f}.val();
+			if ( {$hide} )
+				{$c}.parent().parent().hide();
+			else
+				{$c}.parent().parent().show();
+		});
+	});
+</script>
+EOD;
+
+			$script = apply_filters( 'cbqe_settings_config_script', $script, $args, $id, $field, $f, $c, $hide );
+
+			self::$scripts[] = $script;
 		}
 
 		// stick config show/hide javascript here
@@ -683,6 +718,8 @@ class Custom_Bulkquick_Edit_Settings {
 
 	public function scripts() {
 		wp_enqueue_script( 'jquery-ui-tabs' );
+		
+		add_action( 'admin_footer', array( 'Custom_Bulkquick_Edit_Settings', 'get_scripts' ), 20 );
 	}
 
 
@@ -934,6 +971,12 @@ class Custom_Bulkquick_Edit_Settings {
 			else
 				return 0;
 		}
+	}
+
+
+	public static function get_scripts() {
+		foreach ( self::$scripts as $script )
+			echo $script;
 	}
 
 

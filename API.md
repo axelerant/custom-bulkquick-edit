@@ -10,6 +10,10 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 ## Filters
 
+* `cbqe_settings_config_script`
+
+	Modify settings page JavaScript for hiding not needed configuration inputs.
+
 * `cbqe_post_types_ignore`
 
 	Customize the ignored post_types array. [Example](https://gist.github.com/michael-cannon/6987053)
