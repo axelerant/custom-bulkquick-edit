@@ -211,6 +211,10 @@ EOD;
 			$result = $post->post_excerpt;
 			break;
 
+		case 'post_title':
+			$result = $post->post_title;
+			break;
+
 		default:
 			$current = get_post_meta( $post_id, $column, true );
 
@@ -500,7 +504,7 @@ jQuery(document).ready(function($) {
 			return;
 		}
 
-		if ( ! in_array( $field_name, array( 'post_category', 'post_excerpt' ) ) ) {
+		if ( ! in_array( $field_name, array( 'post_category', 'post_excerpt', 'post_title' ) ) ) {
 			$reset_string = ! is_array( $value ) ? strstr( $value, Custom_Bulkquick_Edit_Settings::RESET ) : false;
 			$reset_array  = is_array( $value ) ? in_array( Custom_Bulkquick_Edit_Settings::RESET, $value ) : false;
 			if ( ! $reset_string && ! $reset_array )
@@ -688,9 +692,12 @@ jQuery(document).ready(function($) {
 			// return now otherwise taxonomy entries are duplicated
 			if ( in_array( $field_type, array( 'categories', 'taxonomy' ) ) )
 				return;
+		} else {
+			if ( in_array( $column_name, array( 'post_title' ) ) )
+				return;
 		}
 
-		if ( 'post_excerpt' == $column_name )
+		if ( in_array( $column_name, array( 'post_excerpt', 'post_title' ) ) )
 			$field_type = 'textarea';
 
 		if ( self::$no_instance ) {

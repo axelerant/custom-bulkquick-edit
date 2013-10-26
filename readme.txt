@@ -31,7 +31,7 @@ This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plug
 * Auto detects most post custom fields
 * Auto-suggest for bulk and quick edit taxonomy entries
 * Easily remove or replace `category` and `taxonomy` relations
-* Edit excerpts
+* Edit excerpts and titles
 * Performance minded – Plugin automatically loads when needed
 * Prevents editing of common and static fields like cb, id, author, etc.
 * Sample configurations provided as needed
@@ -60,6 +60,7 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 
 **Post**
 
+* Enable "Title"? – Enable editing of post_type' title.
 * Enable "Excerpt"? – Enable editing of post_type' excerpt.
 * Edit "TBD" taxonomy? – Force making TBD an editable taxonomy field like checked categories or free-text tags.
 	* No

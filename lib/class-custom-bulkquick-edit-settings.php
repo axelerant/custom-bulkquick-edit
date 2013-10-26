@@ -140,15 +140,23 @@ class Custom_Bulkquick_Edit_Settings {
 		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
+		$desc_title   = esc_html__( 'Enable editing of %1$s\' title.', 'custom-bulkquick-edit' );
 
 		$title_conf    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 		$title_edit    = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
 		$title_enable  = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
 		$title_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
+		$title_title   = esc_html__( 'Title', 'custom-bulkquick-edit' );
 		$title_remove  = esc_html__( 'Reset "%s" Relations?', 'custom-bulkquick-edit' );
 
 		foreach ( self::$post_types as $post_type => $label ) {
-			$call_api = false;
+			self::$settings[ $post_type . self::ENABLE . 'post_title' ] = array(
+				'section' => $post_type,
+				'title' => sprintf( $title_enable, $title_title ),
+				'label' => $title_title,
+				'desc' => sprintf( $desc_title, $label ),
+				'type' => 'checkbox',
+			);
 
 			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
 			if ( $supports_excerpt ) {
@@ -159,8 +167,6 @@ class Custom_Bulkquick_Edit_Settings {
 					'desc' => sprintf( $desc_excerpt, $label ),
 					'type' => 'checkbox',
 				);
-
-				$call_api = true;
 			}
 
 			$taxonomy_name = array();
@@ -189,8 +195,6 @@ class Custom_Bulkquick_Edit_Settings {
 					'desc' => sprintf( $desc_remove, $tax_label ),
 					'type' => 'checkbox',
 				);
-
-				$call_api = true;
 			}
 
 			$filter      = 'manage_' . $post_type . '_posts_columns';
@@ -263,29 +267,19 @@ class Custom_Bulkquick_Edit_Settings {
 						'validate' => 'trim',
 					);
 				}
-
-				$call_api = true;
 			}
 
 			self::$settings = apply_filters( 'cbqe_settings_post_type', self::$settings, $post_type, $label );
 
-			if ( $call_api ) {
-				$action = 'manage_' . $post_type . '_posts_custom_column';
-				if ( ! has_action( $action ) ) {
-					add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column' ), 199, 2 );
-				} else {
-					add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column_precapture' ), 1, 2 );
-					add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column_capture' ), 199, 2 );
-				}
-
-				add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
+			$action = 'manage_' . $post_type . '_posts_custom_column';
+			if ( ! has_action( $action ) ) {
+				add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column' ), 199, 2 );
 			} else {
-				self::$settings[ $post_type . '_no_options' ] = array(
-					'section' => $post_type,
-					'desc' => esc_html__( 'No custom fields found', 'custom-bulkquick-edit' ),
-					'type' => 'heading',
-				);
+				add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column_precapture' ), 1, 2 );
+				add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column_capture' ), 199, 2 );
 			}
+
+			add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
 		}
 
 		// Reset

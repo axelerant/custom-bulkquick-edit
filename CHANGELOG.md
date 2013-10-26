@@ -8,6 +8,7 @@
 * Add var `bulk_edit_save`
 * Change $2 donation request to $5
 * Confirm works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
+* Edit post title in bulk mode
 * Show/hide configuration boxes in settings as needed per as type selected
 * Simplify `wp_enqueue_style` handling
 * Update .travis for phpmd exclusions
