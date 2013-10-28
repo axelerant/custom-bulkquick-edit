@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Update premium listing
 
 ## 1.2.0
 * Add API filter `cbqe_settings_config_script`

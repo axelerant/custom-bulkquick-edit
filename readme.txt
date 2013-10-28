@@ -43,9 +43,11 @@ This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plug
 * View category and tag relations on edit screen columns
 * Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
 
-= Custom Bulk/Quick Edit Premium Plugin Features =
+= Custom Bulk/Quick Edit Premium =
 
 Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin there is, [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/). Custom Bulk/Quick Edit Premium supports [custom post types and WooCommerce](https://aihr.us/custom-bulkquick-edit-premium/). Plus, it offers additional inputs options like date and multiple selects for use during bulk/quick edit operations.
+
+= Primary Premium Features =
 
 * Adds float, integer, and user inputs
 * Date input with date picker
