@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 1.1.0\n"
+"Project-Id-Version: Custom Bulk/Quick Edit 1.2.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2013-10-18 05:06:17+00:00\n"
+"POT-Creation-Date: 2013-10-28 03:01:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,181 +12,184 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: custom-bulkquick-edit.php:59
+#: custom-bulkquick-edit.php:60
 msgid "Settings"
 msgstr ""
 
-#: custom-bulkquick-edit.php:141
+#: custom-bulkquick-edit.php:142
 msgid ""
 "If your Custom Bulk/Quick Edit display has gone to funky town, please <a "
 "href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: custom-bulkquick-edit.php:150
+#: custom-bulkquick-edit.php:151
 msgid ""
-"Please donate $2 towards development and support of this Custom Bulk/Quick "
+"Please donate $5 towards development and support of this Custom Bulk/Quick "
 "Edit plugin. %s"
 msgstr ""
 
-#: custom-bulkquick-edit.php:855
-msgid "&mdash; No Change &mdash;"
-msgstr ""
-
-#: custom-bulkquick-edit.php:857
+#: custom-bulkquick-edit.php:819 custom-bulkquick-edit.php:864
 msgid "&mdash; Unset &mdash;"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:98
+#: custom-bulkquick-edit.php:868
+msgid "&mdash; No Change &mdash;"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:101
 msgid "Compatibility & Reset"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:99
+#: lib/class-custom-bulkquick-edit-settings.php:102
 msgid "About Custom Bulk/Quick Edit"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:114
+#: lib/class-custom-bulkquick-edit-settings.php:117
 msgid "TBD"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:119
-#: lib/class-custom-bulkquick-edit-settings.php:129
-#: lib/class-custom-bulkquick-edit-settings.php:747
+#: lib/class-custom-bulkquick-edit-settings.php:122
+#: lib/class-custom-bulkquick-edit-settings.php:132
+#: lib/class-custom-bulkquick-edit-settings.php:776
 msgid "No"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:120
+#: lib/class-custom-bulkquick-edit-settings.php:123
 msgid "As checkbox"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:121
+#: lib/class-custom-bulkquick-edit-settings.php:124
 msgid "As input field"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:122
+#: lib/class-custom-bulkquick-edit-settings.php:125
 msgid "As radio"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:123
+#: lib/class-custom-bulkquick-edit-settings.php:126
 msgid "As select"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:124
+#: lib/class-custom-bulkquick-edit-settings.php:127
 msgid "As textarea"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:130
+#: lib/class-custom-bulkquick-edit-settings.php:133
 msgid "No, but enable column view"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:131
+#: lib/class-custom-bulkquick-edit-settings.php:134
 msgid "Like categories"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:132
+#: lib/class-custom-bulkquick-edit-settings.php:135
 msgid "Like tags"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:136
+#: lib/class-custom-bulkquick-edit-settings.php:139
 msgid ""
-"This configuration section is for option-based inputs like checkbox. You may "
-"create options formatted like \"the-key|Supremely, Pretty Values\" seperated "
-"by newlines."
+"You may create options formatted like \"the-key|Supremely, Pretty Values\" "
+"seperated by newlines."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:137
+#: lib/class-custom-bulkquick-edit-settings.php:140
 msgid ""
 "Force making %1$s an editable taxonomy field like checked categories or free-"
 "text tags."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:138
+#: lib/class-custom-bulkquick-edit-settings.php:141
 msgid "Enable editing of %1$s' excerpt."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:139
+#: lib/class-custom-bulkquick-edit-settings.php:142
 msgid ""
 "During bulk editing, easily remove all of the %1$s' prior relationships and "
 "add new."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:141
-msgid "%s Configuration"
-msgstr ""
-
-#: lib/class-custom-bulkquick-edit-settings.php:142
-msgid "Edit \"%s\" taxonomy?"
-msgstr ""
-
 #: lib/class-custom-bulkquick-edit-settings.php:143
-msgid "Enable \"%s\"?"
-msgstr ""
-
-#: lib/class-custom-bulkquick-edit-settings.php:144
-msgid "Excerpt"
+msgid "Enable editing of %1$s' title."
 msgstr ""
 
 #: lib/class-custom-bulkquick-edit-settings.php:145
+msgid "%s Configuration"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:146
+msgid "Edit \"%s\" taxonomy?"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:147
+msgid "Enable \"%s\"?"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:148
+msgid "Excerpt"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:149
+msgid "Title"
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:150
 msgid "Reset \"%s\" Relations?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:281
-msgid "No custom fields found"
-msgstr ""
-
-#: lib/class-custom-bulkquick-edit-settings.php:295
+#: lib/class-custom-bulkquick-edit-settings.php:293
 msgid "Export Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:297
+#: lib/class-custom-bulkquick-edit-settings.php:295
 msgid ""
 "These are your current settings in a serialized format. Copy the contents to "
 "make a backup of your settings."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:304
+#: lib/class-custom-bulkquick-edit-settings.php:302
 msgid "Import Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:306
+#: lib/class-custom-bulkquick-edit-settings.php:304
 msgid ""
 "Paste new serialized settings here to overwrite your current configuration."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:311
+#: lib/class-custom-bulkquick-edit-settings.php:309
 msgid "Remove Plugin Data on Deletion?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:314
+#: lib/class-custom-bulkquick-edit-settings.php:312
 msgid ""
 "Delete all Custom Bulk/Quick Edit data and options from database on plugin "
 "deletion"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:319
+#: lib/class-custom-bulkquick-edit-settings.php:317
 msgid "Reset to Defaults?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:322
+#: lib/class-custom-bulkquick-edit-settings.php:320
 msgid "Check this box to reset options to their defaults"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:384
+#: lib/class-custom-bulkquick-edit-settings.php:382
 msgid "Custom Bulk/Quick Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:384
+#: lib/class-custom-bulkquick-edit-settings.php:382
 msgid "Custom Bulk/Quick"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:422
+#: lib/class-custom-bulkquick-edit-settings.php:420
 msgid "Custom Bulk/Quick Edit Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:439
+#: lib/class-custom-bulkquick-edit-settings.php:437
 msgid "Save Changes"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:449
+#: lib/class-custom-bulkquick-edit-settings.php:447
 msgid ""
 "If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good "
 "Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> "
@@ -195,23 +198,23 @@ msgid ""
 "development and <a href=\"%4$s\" title=\"Support forums\">support</a>."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:458
+#: lib/class-custom-bulkquick-edit-settings.php:456
 msgid "Copyright &copy;%1$s %2$s."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:739
+#: lib/class-custom-bulkquick-edit-settings.php:768
 msgid "Enable"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:745
+#: lib/class-custom-bulkquick-edit-settings.php:774
 msgid "Yes"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:749
+#: lib/class-custom-bulkquick-edit-settings.php:778
 msgid "Where's the beef?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:851
+#: lib/class-custom-bulkquick-edit-settings.php:880
 msgid "Required"
 msgstr ""
 
