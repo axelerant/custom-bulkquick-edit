@@ -47,11 +47,13 @@ This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plug
 
 Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin there is, [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/). Custom Bulk/Quick Edit Premium supports [custom post types and WooCommerce](https://aihr.us/custom-bulkquick-edit-premium/). Plus, it offers additional inputs options like date and multiple selects for use during bulk/quick edit operations.
 
+* Adds float, integer, and user inputs
 * Date input with date picker
 * Disable donate references
 * Flexible API
 * Multiple select selector
 * Works with Custom Post Types
+* Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/) date, number, and user types
 * Works with [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
 
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
