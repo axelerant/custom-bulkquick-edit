@@ -1,6 +1,8 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+
+## 1.2.0
 * Add API filter `cbqe_settings_config_script`
 * Add API filter `cbqe_settings_fields`
 * Add id to settings page selects
