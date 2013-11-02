@@ -147,6 +147,10 @@ EOD;
 
 
 	public function admin_notices_donate() {
+		$disable_donate = cbqe_get_option( 'disable_donate' );
+		if ( $disable_donate )
+			return;
+
 		$content  = '<div class="updated fade"><p>';
 		$content .= sprintf( esc_html__( 'Please donate $5 towards development and support of this Custom Bulk/Quick Edit plugin. %s', 'custom-bulkquick-edit' ), self::$donate_button );
 		$content .= '</p></div>';

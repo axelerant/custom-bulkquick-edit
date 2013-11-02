@@ -2,6 +2,7 @@
 
 ## master
 * Add LICENSE
+* BUGFIX Donate notice shows despite `disable_donate` set
 * Update premium listing
 
 ## 1.2.0
