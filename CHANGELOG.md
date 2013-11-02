@@ -1,6 +1,7 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Add LICENSE
 * Update premium listing
 
 ## 1.2.0
