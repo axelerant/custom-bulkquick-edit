@@ -25,6 +25,7 @@
  */
 class Custom_Bulkquick_Edit {
 	const ID          = 'custom-bulkquick-edit';
+	const ITEM_NAME   = 'Custom Bulk/Quick Edit';
 	const PLUGIN_FILE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
 	const VERSION     = '1.2.0';
 
