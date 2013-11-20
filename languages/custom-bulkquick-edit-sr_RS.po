@@ -1,0 +1,262 @@
+# Copyright (C) 2013 Custom Bulk/Quick Edit
+# This file is distributed under the same license as the Custom Bulk/Quick Edit package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Bulk/Quick Edit 1.2.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
+"POT-Creation-Date: 2013-10-28 03:01:05+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-11-20 09:53+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: custom-bulkquick-edit.php:60
+msgid "Settings"
+msgstr "Postavke"
+
+#: custom-bulkquick-edit.php:142
+msgid ""
+"If your Custom Bulk/Quick Edit display has gone to funky town, please <a "
+"href=\"%s\">read the FAQ</a> about possible CSS fixes."
+msgstr ""
+"Ako je vaš Custom Bulk/Quick Edit prikaz poludeo,<a href=\"%s\"> pročitajte "
+"FAQ</a>  o mogućim CSS popravkama."
+
+#: custom-bulkquick-edit.php:151
+msgid ""
+"Please donate $5 towards development and support of this Custom Bulk/Quick "
+"Edit plugin. %s"
+msgstr ""
+"Donirajte $5 zarada podrške razvoja Custom Bulk/Quick Edit plugin-a. %s"
+
+#: custom-bulkquick-edit.php:819 custom-bulkquick-edit.php:864
+msgid "&mdash; Unset &mdash;"
+msgstr "&mdash; Unset &mdash;"
+
+#: custom-bulkquick-edit.php:868
+msgid "&mdash; No Change &mdash;"
+msgstr "&mdash; Nema promene&mdash;"
+
+#: lib/class-custom-bulkquick-edit-settings.php:101
+msgid "Compatibility & Reset"
+msgstr "Kompabitilnost & Resetovanje"
+
+#: lib/class-custom-bulkquick-edit-settings.php:102
+msgid "About Custom Bulk/Quick Edit"
+msgstr "O Custom Bulk/Quick Edit"
+
+#: lib/class-custom-bulkquick-edit-settings.php:117
+msgid "TBD"
+msgstr "TBD"
+
+#: lib/class-custom-bulkquick-edit-settings.php:122
+#: lib/class-custom-bulkquick-edit-settings.php:132
+#: lib/class-custom-bulkquick-edit-settings.php:776
+msgid "No"
+msgstr "Ne"
+
+#: lib/class-custom-bulkquick-edit-settings.php:123
+msgid "As checkbox"
+msgstr "Kao checkbox"
+
+#: lib/class-custom-bulkquick-edit-settings.php:124
+msgid "As input field"
+msgstr "Kao input polje"
+
+#: lib/class-custom-bulkquick-edit-settings.php:125
+msgid "As radio"
+msgstr "Kao radio"
+
+#: lib/class-custom-bulkquick-edit-settings.php:126
+msgid "As select"
+msgstr "Kao izabrano"
+
+#: lib/class-custom-bulkquick-edit-settings.php:127
+msgid "As textarea"
+msgstr "Kao područje teksta"
+
+#: lib/class-custom-bulkquick-edit-settings.php:133
+msgid "No, but enable column view"
+msgstr "Ne, ali omogući pregled kolone"
+
+#: lib/class-custom-bulkquick-edit-settings.php:134
+msgid "Like categories"
+msgstr "Kao kategorije"
+
+#: lib/class-custom-bulkquick-edit-settings.php:135
+msgid "Like tags"
+msgstr "Kao tagovi"
+
+#: lib/class-custom-bulkquick-edit-settings.php:139
+msgid ""
+"You may create options formatted like \"the-key|Supremely, Pretty Values\" "
+"seperated by newlines."
+msgstr ""
+"Možete kreirati opcije formatirane kao \"the-key|Supremely, Pretty Values\" "
+"odvojeno novim rečenicama."
+
+#: lib/class-custom-bulkquick-edit-settings.php:140
+msgid ""
+"Force making %1$s an editable taxonomy field like checked categories or free-"
+"text tags."
+msgstr ""
+"Prinudi stvaranje %1$s editujućeg taxonomy polja kao čekirane kategorije ili "
+"tagovi bez teksta."
+
+#: lib/class-custom-bulkquick-edit-settings.php:141
+msgid "Enable editing of %1$s' excerpt."
+msgstr "Omogući editovanje od %1$s' excerpt."
+
+#: lib/class-custom-bulkquick-edit-settings.php:142
+msgid ""
+"During bulk editing, easily remove all of the %1$s' prior relationships and "
+"add new."
+msgstr "Tokom bulk editovanja, lako ukloniti sve %1$s' veze i dodati nove."
+
+#: lib/class-custom-bulkquick-edit-settings.php:143
+msgid "Enable editing of %1$s' title."
+msgstr "Omogući editovanje %1$s' naslova."
+
+#: lib/class-custom-bulkquick-edit-settings.php:145
+msgid "%s Configuration"
+msgstr "%s Konfiguracija"
+
+#: lib/class-custom-bulkquick-edit-settings.php:146
+msgid "Edit \"%s\" taxonomy?"
+msgstr "Edituj \"%s\" taxonomy?"
+
+#: lib/class-custom-bulkquick-edit-settings.php:147
+msgid "Enable \"%s\"?"
+msgstr "Omogući \"%s\"?"
+
+#: lib/class-custom-bulkquick-edit-settings.php:148
+msgid "Excerpt"
+msgstr "Excerpt"
+
+#: lib/class-custom-bulkquick-edit-settings.php:149
+msgid "Title"
+msgstr "Naslov"
+
+#: lib/class-custom-bulkquick-edit-settings.php:150
+msgid "Reset \"%s\" Relations?"
+msgstr "Resetuj \"%s\" odnose?"
+
+#: lib/class-custom-bulkquick-edit-settings.php:293
+msgid "Export Settings"
+msgstr "Exportuj postavke"
+
+#: lib/class-custom-bulkquick-edit-settings.php:295
+msgid ""
+"These are your current settings in a serialized format. Copy the contents to "
+"make a backup of your settings."
+msgstr ""
+"Ovo su trenutne postavke u serijalnom formatu. Kopirajte sadržaj da biste "
+"napravili backup postavki."
+
+#: lib/class-custom-bulkquick-edit-settings.php:302
+msgid "Import Settings"
+msgstr "Importuj postavke"
+
+#: lib/class-custom-bulkquick-edit-settings.php:304
+msgid ""
+"Paste new serialized settings here to overwrite your current configuration."
+msgstr ""
+"Paste nove serijalizovane postavke ovde da biste pisali preko trenutne "
+"konfiguracije."
+
+#: lib/class-custom-bulkquick-edit-settings.php:309
+msgid "Remove Plugin Data on Deletion?"
+msgstr "Ukloniti Plugin podatke na  Deletion?"
+
+#: lib/class-custom-bulkquick-edit-settings.php:312
+msgid ""
+"Delete all Custom Bulk/Quick Edit data and options from database on plugin "
+"deletion"
+msgstr ""
+"Obrisati sve Custom Bulk/Quick Edit podatke i opcije sa baze podataka na "
+"brisanju plugina"
+
+#: lib/class-custom-bulkquick-edit-settings.php:317
+msgid "Reset to Defaults?"
+msgstr "Reseovati do Default-a?"
+
+#: lib/class-custom-bulkquick-edit-settings.php:320
+msgid "Check this box to reset options to their defaults"
+msgstr "Čekirati ovaj kvadrat da bi se resetovale opcije do defaulta"
+
+#: lib/class-custom-bulkquick-edit-settings.php:382
+msgid "Custom Bulk/Quick Settings"
+msgstr "Custom Bulk/Quick Settings"
+
+#: lib/class-custom-bulkquick-edit-settings.php:382
+msgid "Custom Bulk/Quick"
+msgstr "Custom Bulk/Quick"
+
+#: lib/class-custom-bulkquick-edit-settings.php:420
+msgid "Custom Bulk/Quick Edit Settings"
+msgstr "Custom Bulk/Quick Edit Settings"
+
+#: lib/class-custom-bulkquick-edit-settings.php:437
+msgid "Save Changes"
+msgstr "Sačuvati promene"
+
+#: lib/class-custom-bulkquick-edit-settings.php:447
+msgid ""
+"If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good "
+"Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> "
+"or <a href=\"%3$s\" title=\"purchase Custom Bulk/Quick Edit Premium"
+"\">purchase Custom Bulk/Quick Edit Premium</a> to help fund further "
+"development and <a href=\"%4$s\" title=\"Support forums\">support</a>."
+msgstr ""
+"Ako vam se dopada ovaj plugin, molim vas <a href=\"%1$s\" title=\"Donirajte "
+"Good Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Doirajte za Good Karma\" /"
+"></a> or <a href=\"%3$s\" naslov=\"kupite Custom Bulk/Quick Edit Premium"
+"\">kupite Custom Bulk/Quick Edit  Premium</a>da biste pomogli u daljem "
+"razvoju<a href=\"%4$s\" naslov=\"Forumi podrške\">podrška</a>."
+
+#: lib/class-custom-bulkquick-edit-settings.php:456
+msgid "Copyright &copy;%1$s %2$s."
+msgstr "Copyright &copy;%1$s %2$s."
+
+#: lib/class-custom-bulkquick-edit-settings.php:768
+msgid "Enable"
+msgstr "Omogući"
+
+#: lib/class-custom-bulkquick-edit-settings.php:774
+msgid "Yes"
+msgstr "Da"
+
+#: lib/class-custom-bulkquick-edit-settings.php:778
+msgid "Where's the beef?"
+msgstr "Gde se nalazi?"
+
+#: lib/class-custom-bulkquick-edit-settings.php:880
+msgid "Required"
+msgstr "Potrebno"
+
+#. Plugin Name of the plugin/theme
+msgid "Custom Bulk/Quick Edit"
+msgstr "Custom Bulk/Quick Edit"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/custom-bulkquick-edit/"
+msgstr "http://wordpress.org/extend/plugins/custom-bulkquick-edit/"
+
+#. Description of the plugin/theme
+msgid ""
+"Custom Bulk/Quick Edit plugin allows you to easily add previously defined "
+"custom fields to the edit screen bulk and quick edit panels."
+msgstr ""
+"Custom Bulk/Quick Edit  plugin vam dozvoljava da lako dodajete prethodno "
+"definisana custom polja za editovanje bulk ekrana i brzo editovanje panela."
+
+#. Author of the plugin/theme
+msgid "Michael Cannon"
+msgstr "Michael Cannon"
+
+#. Author URI of the plugin/theme
+msgid "http://aihr.us/about-aihrus/michael-cannon-resume/"
+msgstr "http://aihr.us/about-aihrus/michael-cannon-resume/"

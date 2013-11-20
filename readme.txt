@@ -94,6 +94,8 @@ five-five|55`
 
 = Languages =
 
+* Serbo-Croatian by [Borisa Djuraskovic](borisad@webhostinghub.com)
+
 You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
 
 See the FAQ for further localization tips.
