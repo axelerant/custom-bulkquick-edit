@@ -1,8 +1,10 @@
 # Changelog Custom Bulk/Quick Edit plugin for WordPress
 
 ## master
+* Abstract manage_posts_custom_column subroutines for easier reuse
 * Add LICENSE
 * BUGFIX Donate notice shows despite `disable_donate` set
+* Integrate aihrus framework
 * Update premium listing
 
 ## 1.2.0

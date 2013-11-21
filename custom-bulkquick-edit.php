@@ -23,13 +23,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-class Custom_Bulkquick_Edit {
+
+if ( ! defined( 'CBQE_PLUGIN_DIR' ) )
+	define( 'CBQE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
+if ( ! defined( 'CBQE_PLUGIN_DIR_LIB' ) )
+	define( 'CBQE_PLUGIN_DIR_LIB', CBQE_PLUGIN_DIR . '/lib' );
+
+require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
+
+
+class Custom_Bulkquick_Edit extends Aihrus_Common {
 	const ID          = 'custom-bulkquick-edit';
 	const ITEM_NAME   = 'Custom Bulk/Quick Edit';
-	const PLUGIN_FILE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
+	const PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
+	const SLUG        = 'cbqe_';
 	const VERSION     = '1.2.0';
 
-	private static $base              = null;
 	private static $fields_enabled    = array();
 	private static $no_instance       = true;
 	private static $post_types_ignore = array(
@@ -39,8 +49,6 @@ class Custom_Bulkquick_Edit {
 
 	public static $bulk_edit_save  = false;
 	public static $bulk_only_done  = false;
-	public static $donate_button   = '';
-	public static $field_key       = 'cbqe_';
 	public static $post_types      = array();
 	public static $post_types_keys = array();
 	public static $scripts_bulk    = array();
@@ -53,7 +61,6 @@ class Custom_Bulkquick_Edit {
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'init', array( $this, 'init' ) );
-		load_plugin_textdomain( self::ID, false, 'custom-bulkquick-edit/languages' );
 	}
 
 
@@ -61,6 +68,7 @@ class Custom_Bulkquick_Edit {
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulkquick_Edit_Settings::ID . '">' . esc_html__( 'Settings', 'custom-bulkquick-edit' ) . '</a>';
 
 		$this->update();
+
 		add_action( 'admin_footer', array( $this, 'admin_footer' ) );
 		add_action( 'bulk_edit_custom_box', array( $this, 'bulk_edit_custom_box' ), 10, 2 );
 		add_action( 'quick_edit_custom_box', array( $this, 'quick_edit_custom_box' ), 10, 2 );
@@ -72,20 +80,12 @@ class Custom_Bulkquick_Edit {
 
 
 	public function init() {
-		self::$base          = plugin_basename( __FILE__ );
-		self::$donate_button = <<<EOD
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="WM4F995W9LHXE">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-EOD;
+		load_plugin_textdomain( self::ID, false, 'custom-bulkquick-edit/languages' );
 	}
 
 
 	public function plugin_action_links( $links, $file ) {
-		if ( $file == self::$base )
+		if ( self::PLUGIN_BASE == $file )
 			array_unshift( $links, self::$settings_link );
 
 		return $links;
@@ -110,7 +110,7 @@ EOD;
 
 		global $wpdb;
 
-		require_once 'lib/class-custom-bulkquick-edit-settings.php';
+		require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( Custom_Bulkquick_Edit_Settings::ID );
@@ -120,7 +120,7 @@ EOD;
 
 
 	public static function plugin_row_meta( $input, $file ) {
-		if ( $file != self::$base )
+		if ( self::PLUGIN_BASE != $file )
 			return $input;
 
 		$disable_donate = cbqe_get_option( 'disable_donate' );
@@ -128,7 +128,7 @@ EOD;
 			return $input;
 
 		$links = array(
-			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
+			self::$donate_link,
 			'<a href="http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
 		);
 
@@ -138,25 +138,17 @@ EOD;
 	}
 
 
-	public function admin_notices_0_0_1() {
-		$content  = '<div class="updated fade"><p>';
-		$content .= sprintf( __( 'If your Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'custom-bulkquick-edit' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
-		$content .= '</p></div>';
+	public function notice_0_0_1() {
+		$text = sprintf( __( 'If your Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'custom-bulkquick-edit' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
-		echo $content;
+		parent::notice_updated( $text );
 	}
 
 
-	public function admin_notices_donate() {
-		$disable_donate = cbqe_get_option( 'disable_donate' );
-		if ( $disable_donate )
-			return;
+	public static function notice_donate( $disable_donate = null, $item_name = null ) {
+		$disable_donate = tw_get_option( 'disable_donate' );
 
-		$content  = '<div class="updated fade"><p>';
-		$content .= sprintf( esc_html__( 'Please donate $5 towards development and support of this Custom Bulk/Quick Edit plugin. %s', 'custom-bulkquick-edit' ), self::$donate_button );
-		$content .= '</p></div>';
-
-		echo $content;
+		parent::notice_donate( $disable_donate, self::ITEM_NAME );
 	}
 
 
@@ -164,7 +156,7 @@ EOD;
 		$prior_version = cbqe_get_option( 'admin_notices' );
 		if ( $prior_version ) {
 			if ( $prior_version < '0.0.1' )
-				add_action( 'admin_notices', array( $this, 'admin_notices_0_0_1' ) );
+				add_action( 'admin_notices', array( $this, 'notice_0_0_1' ) );
 
 			if ( $prior_version < self::VERSION )
 				do_action( 'custom_bulkquick_edit_update' );
@@ -175,7 +167,7 @@ EOD;
 		// display donate on major/minor version release
 		$donate_version = cbqe_get_option( 'donate_version', false );
 		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
-			add_action( 'admin_notices', array( $this, 'admin_notices_donate' ) );
+			add_action( 'admin_notices', array( $this, 'notice_donate' ) );
 			cbqe_set_option( 'donate_version', self::VERSION );
 		}
 	}
@@ -227,18 +219,7 @@ EOD;
 			case 'show_only':
 			case 'categories':
 			case 'taxonomy':
-				$taxonomy   = $column;
-				$post_type  = get_post_type( $post_id );
-				$post_terms = array();
-
-				$terms = get_the_terms( $post_id, $taxonomy );
-				if ( ! empty( $terms ) ) {
-					foreach ( $terms as $term ) {
-						$post_terms[] = '<a href="edit.php?post_type=' . $post_type . '&' . $taxonomy . '=' . $term->slug . '">' . esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, $taxonomy, 'edit' ) ) . '</a>';
-					}
-				}
-
-				$result = implode( ', ', $post_terms );
+				$result = self::column_taxonomies( $post_id, $column, $current, $options, $field_type );
 				break;
 
 			case 'input':
@@ -248,44 +229,11 @@ EOD;
 
 			case 'checkbox':
 			case 'radio':
-				if ( ! is_array( $current ) )
-					$current = array( $current );
-
-				foreach ( $options as $option ) {
-					$parts = explode( '|', $option );
-					$value = array_shift( $parts );
-					if ( empty( $parts ) )
-						$name = $value;
-					else
-						$name = array_shift( $parts );
-
-					if ( in_array( $value, $current ) )
-						$result .= '<input type="' . $field_type . '" name="' . $column . '" value="' . $value . '" checked="checked" disabled="disabled" /> ' . $name . '<br />';
-				}
+				$result = self::column_checkbox_radio( $column, $current, $options, $field_type );
 				break;
 
 			case 'select':
-				if ( ! is_array( $current ) )
-					$current = array( $current );
-
-				$select_options = '';
-				foreach ( $options as $option ) {
-					$parts = explode( '|', $option );
-					$value = array_shift( $parts );
-					if ( empty( $parts ) )
-						$name = $value;
-					else
-						$name = array_shift( $parts );
-
-					if ( in_array( $value, $current  ) )
-						$select_options .= '<option value="' . $value . '" selected="selected">' . $name . '</option>';
-				}
-
-				if ( $select_options ) {
-					$result  = '<select name="' . $column . '" disabled="disabled">';
-					$result .= $select_options;
-					$result .= '</select>';
-				}
+				$result = self::column_select( $column, $current, $options, $field_type );
 				break;
 
 			default:
@@ -452,7 +400,7 @@ jQuery(document).ready(function($) {
 			foreach ( $fields as $key => $field ) {
 				$field_type = self::is_field_enabled( $post_type, $field );
 				if ( 'checkbox' == $field_type ) {
-					$field_name = self::$field_key . $field;
+					$field_name = self::SLUG . $field;
 					if ( ! isset( $_POST[ $field_name ] ) )
 						$_POST[ $field_name ] = Custom_Bulkquick_Edit_Settings::RESET;
 				}
@@ -460,7 +408,7 @@ jQuery(document).ready(function($) {
 		}
 
 		foreach ( $_POST as $field => $value ) {
-			if ( false === strpos( $field, self::$field_key ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET ) )
+			if ( false === strpos( $field, self::SLUG ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET ) )
 				continue;
 
 			if ( '' == $value && 'bulk_edit' == $mode )
@@ -478,7 +426,7 @@ jQuery(document).ready(function($) {
 
 
 	public static function save_post_item( $post_id, $post_type, $field, $value ) {
-		$field_name = str_replace( self::$field_key, '', $field );
+		$field_name = str_replace( self::SLUG, '', $field );
 		if ( 'post_category' != $field_name )
 			$field_type = self::is_field_enabled( $post_type, $field_name );
 		else
@@ -595,8 +543,8 @@ jQuery(document).ready(function($) {
 			$post_type = $post->post_type;
 		}
 
-		if ( false !== strstr( $field_name, self::$field_key ) )
-			$field_name = preg_replace( '#^' . self::$field_key . '#', '', $field_name );
+		if ( false !== strstr( $field_name, self::SLUG ) )
+			$field_name = preg_replace( '#^' . self::SLUG . '#', '', $field_name );
 
 		$key = $post_type . Custom_Bulkquick_Edit_Settings::ENABLE . $field_name;
 
@@ -654,7 +602,7 @@ jQuery(document).ready(function($) {
 			return;
 
 		$key        = self::get_field_key( $post_type, $column_name );
-		$field_name = self::$field_key . $column_name;
+		$field_name = self::SLUG . $column_name;
 
 		$close_div      = '</div>';
 		$close_fieldset = '</fieldset>';
@@ -673,7 +621,7 @@ jQuery(document).ready(function($) {
 						$enable = cbqe_get_option( $setting );
 						if ( $enable ) {
 							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::RESET . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
-							$orig_column = self::$field_key . $orig_field;
+							$orig_column = self::SLUG . $orig_field;
 
 							$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row );
 							$row++;
@@ -707,7 +655,7 @@ jQuery(document).ready(function($) {
 
 		if ( self::$no_instance ) {
 			self::$no_instance = false;
-			wp_nonce_field( self::$base, self::ID );
+			wp_nonce_field( self::PLUGIN_BASE, self::ID );
 		}
 
 		$field_name_var = str_replace( '-', '_', $field_name );
@@ -919,7 +867,7 @@ jQuery(document).ready(function($) {
 
 
 	public static function custom_box_taxonomy( $column_name, $field_name, $field_name_var ) {
-		$taxonomy  = str_replace( self::$field_key, '', $field_name );
+		$taxonomy  = str_replace( self::SLUG, '', $field_name );
 		$tax_class = 'tax_input_' . $taxonomy;
 		$result    = '<textarea cols="22" rows="1" name="tax_input[' . $taxonomy . ']" class="' . $tax_class . '" autocomplete="off"></textarea>';
 
@@ -935,7 +883,7 @@ jQuery(document).ready(function($) {
 
 
 	public static function custom_box_categories( $field_name ) {
-		$taxonomy = str_replace( self::$field_key, '', $field_name );
+		$taxonomy = str_replace( self::SLUG, '', $field_name );
 
 		ob_start();
 		wp_terms_checklist( null, array( 'taxonomy' => $taxonomy ) );
@@ -1000,7 +948,7 @@ jQuery(document).ready(function($) {
 		if ( 'revision' == $post_type )
 			return;
 
-		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::$base ) )
+		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::PLUGIN_BASE ) )
 			return;
 
 		remove_action( 'save_post', array( $this, 'save_post' ), 25 );
@@ -1027,6 +975,77 @@ jQuery(document).ready(function($) {
 	}
 
 
+	public static function column_checkbox_radio( $column, $current, $options, $field_type ) {
+		$result = '';
+
+		if ( ! is_array( $current ) )
+			$current = array( $current );
+
+		foreach ( $options as $option ) {
+			$parts = explode( '|', $option );
+			$value = array_shift( $parts );
+			if ( empty( $parts ) )
+				$name = $value;
+			else
+				$name = array_shift( $parts );
+
+			if ( in_array( $value, $current ) )
+				$result .= '<input type="' . $field_type . '" name="' . $column . '" value="' . $value . '" checked="checked" disabled="disabled" /> ' . $name . '<br />';
+		}
+
+		return $result;
+	}
+
+
+	public static function column_select( $column, $current, $options, $field_type ) {
+		$result = '';
+
+		if ( ! is_array( $current ) )
+			$current = array( $current );
+
+		$select_options = '';
+		foreach ( $options as $option ) {
+			$parts = explode( '|', $option );
+			$value = array_shift( $parts );
+			if ( empty( $parts ) )
+				$name = $value;
+			else
+				$name = array_shift( $parts );
+
+			if ( in_array( $value, $current  ) )
+				$select_options .= '<option value="' . $value . '" selected="selected">' . $name . '</option>';
+		}
+
+		$multiple = '';
+		if ( 'multiple' == $field_type )
+			$multiple = '" multiple="multiple';
+
+		if ( $select_options ) {
+			$result  = '<select name="' . $column . $multiple . '" disabled="disabled">';
+			$result .= $select_options;
+			$result .= '</select>';
+		}
+
+		return $result;
+	}
+
+
+	public static function column_taxonomies( $post_id, $column, $current, $options, $field_type ) {
+		$taxonomy   = $column;
+		$post_type  = get_post_type( $post_id );
+		$post_terms = array();
+
+		$terms = get_the_terms( $post_id, $taxonomy );
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$post_terms[] = '<a href="edit.php?post_type=' . $post_type . '&' . $taxonomy . '=' . $term->slug . '">' . esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, $taxonomy, 'edit' ) ) . '</a>';
+			}
+		}
+
+		$result = implode( ', ', $post_terms );
+
+		return $result;
+	}
 }
 
 
@@ -1049,9 +1068,10 @@ function custom_bulkquick_edit_init() {
 		if ( ! is_admin() )
 			return;
 
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-	if ( is_plugin_active( Custom_Bulkquick_Edit::PLUGIN_FILE ) ) {
-		require_once 'lib/class-custom-bulkquick-edit-settings.php';
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+	if ( is_plugin_active( Custom_Bulkquick_Edit::PLUGIN_BASE ) ) {
+		require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
 		global $Custom_Bulkquick_Edit;
 		if ( is_null( $Custom_Bulkquick_Edit ) )
