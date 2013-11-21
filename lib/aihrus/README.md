@@ -1,6 +1,4 @@
-# Aihrus Framework
-
-Aihrus helper framework for WordPress plugins
+# Aihrus Framework helper for WordPress plugins
 
 ## Features
 
@@ -8,3 +6,5 @@ Aihrus helper framework for WordPress plugins
 * Helper methods
 * Licensing
 * Notifications
+
+
