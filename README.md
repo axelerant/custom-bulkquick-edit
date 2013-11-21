@@ -1,4 +1,10 @@
-aihrus-framework
-================
+# Aihrus Framework
 
-Aihrus framework for WordPress plugins
+Aihrus helper framework for WordPress plugins
+
+## Features
+
+* Donation links
+* Helper methods
+* Licensing
+* Notifications
