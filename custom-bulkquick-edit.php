@@ -5,7 +5,7 @@
  * Description: Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom fields to the edit screen bulk and quick edit panels.
  * Version: 1.2.0
  * Author: Michael Cannon
- * Author URI: http://aihr.us/about-aihrus/michael-cannon-resume/
+ * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
  */
 
