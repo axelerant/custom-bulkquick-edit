@@ -133,7 +133,11 @@ EOD;
 
 
 	public static function notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name ) {
-		$link = get_admin_url() . 'edit.php?post_type=' . $post_type . '&page=' . $settings_id;
+		if ( empty( $post_type ) )
+			$link = get_admin_url() . 'options-general.php?page=' . $settings_id;
+		else
+			$link = get_admin_url() . 'edit.php?post_type=' . $post_type . '&page=' . $settings_id;
+
 		$text = __( '<a href="%1$s">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry', 'testimonials-widget' );
 
 		$settings_link = sprintf( $text, $link, $free_name );
