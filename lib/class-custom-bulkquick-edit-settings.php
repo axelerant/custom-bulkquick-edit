@@ -285,7 +285,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 
 	public static function admin_menu() {
-		self::$admin_page = add_options_page( esc_html__( 'Custom Bulk/Quick Settings', 'custom-bulkquick-edit' ), esc_html__( 'Custom Bulk/Quick', 'custom-bulkquick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulkquick_Edit_Settings', 'display_page' ) );
+		self::$admin_page = add_options_page( esc_html__( 'Custom Bulk/Quick Settings', 'custom-bulkquick-edit' ), esc_html__( 'Custom Bulk/Quick', 'custom-bulkquick-edit' ), 'manage_options', self::ID, array( __CLASS__, 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . self::$admin_page, array( __CLASS__, 'scripts' ) );
 		add_action( 'admin_print_styles-' . self::$admin_page, array( __CLASS__, 'styles' ) );
@@ -359,7 +359,7 @@ EOD;
 	public static function scripts() {
 		parent::scripts();
 		
-		add_action( 'admin_footer', array( 'Custom_Bulkquick_Edit_Settings', 'get_scripts' ), 20 );
+		add_action( 'admin_footer', array( __CLASS__, 'get_scripts' ), 20 );
 	}
 
 

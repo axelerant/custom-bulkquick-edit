@@ -37,7 +37,7 @@ abstract class Aihrus_Settings {
 		'class' => null, // warning, etc.
 		'desc' => null,
 		'id' => null,
-		'no_code' => false,
+		'no_code' => true,
 		'section' => 'general',
 		'std' => null, // default key or value
 		'suggest' => false, // attempt for auto-suggest on inputs
@@ -171,13 +171,15 @@ abstract class Aihrus_Settings {
 			return;
 
 		$field_args = array(
-			'type' => $type,
-			'id' => $id,
-			'desc' => $desc,
-			'std' => $std,
 			'choices' => $choices,
-			'label_for' => $id,
 			'class' => $class,
+			'desc' => $desc,
+			'id' => $id,
+			'label_for' => $id,
+			'no_code' => $no_code,
+			'std' => $std,
+			'suggest' => $suggest,
+			'type' => $type,
 		);
 
 		static::$defaults[$id] = $std;
@@ -307,9 +309,6 @@ abstract class Aihrus_Settings {
 
 		extract( $args );
 
-		if ( ! isset( $no_code ) )
-			$no_code = false;
-
 		if ( is_null( $input ) )
 			$options = get_option( static::ID );
 		else {
@@ -397,7 +396,7 @@ abstract class Aihrus_Settings {
 			break;
 
 		case 'select':
-			$content .= '<select class="select' . $field_class . '" name="' . static::ID . '[' . $id . ']">';
+			$content .= '<select class="select' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']">';
 
 			foreach ( $choices as $value => $label )
 				$content .= '<option value="' . $value . '"' . selected( $options[$id], $value, false ) . '>' . $label . '</option>';
@@ -454,7 +453,7 @@ abstract class Aihrus_Settings {
 
 		foreach ( static::$settings as $id => $setting ) {
 			$setting['id'] = $id;
-			self::create_setting( $setting );
+			static::create_setting( $setting );
 		}
 	}
 
@@ -709,6 +708,16 @@ abstract class Aihrus_Settings {
 	}
 
 
+	public static function get_scripts() {
+		foreach ( static::$scripts as $script )
+			echo $script;
+	}
+
+
+	public static function get_styles() {
+		foreach ( static::$styles as $style )
+			echo $style;
+	}
 }
 
 

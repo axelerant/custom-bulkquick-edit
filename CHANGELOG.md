@@ -4,6 +4,7 @@
 * Abstract manage_posts_custom_column subroutines for easier reuse
 * Add LICENSE
 * Add version_check
+* Add default get_scripts & get_styles
 * BUGFIX Donate notice shows despite `disable_donate` set
 * Integrate aihrus framework
 * Revise headers
