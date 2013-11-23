@@ -37,8 +37,8 @@ abstract class Aihrus_Settings {
 		'class' => null, // warning, etc.
 		'desc' => null,
 		'id' => null,
-		'no_code' => true,
 		'section' => 'general',
+		'show_code' => false,
 		'std' => null, // default key or value
 		'suggest' => false, // attempt for auto-suggest on inputs
 		'title' => null,
@@ -176,7 +176,7 @@ abstract class Aihrus_Settings {
 			'desc' => $desc,
 			'id' => $id,
 			'label_for' => $id,
-			'no_code' => $no_code,
+			'show_code' => $show_code,
 			'std' => $std,
 			'suggest' => $suggest,
 			'type' => $type,
@@ -339,7 +339,7 @@ abstract class Aihrus_Settings {
 			if ( ! empty( $desc ) )
 				$content .= '<label for="' . $id . '"><span class="description">' . $desc . '</span></label>';
 
-			if ( ! $no_code )
+			if ( $show_code )
 				$content .= '<br /><code>' . $id . '</code>';
 			break;
 
@@ -383,7 +383,7 @@ abstract class Aihrus_Settings {
 			if ( ! empty( $desc ) )
 				$content .= '<br /><span class="description">' . $desc . '</span>';
 
-			if ( ! $no_code )
+			if ( $show_code )
 				$content .= '<br /><code>' . $id . '</code>';
 			break;
 
@@ -406,7 +406,7 @@ abstract class Aihrus_Settings {
 			if ( ! empty( $desc ) )
 				$content .= '<br /><span class="description">' . $desc . '</span>';
 
-			if ( ! $no_code )
+			if ( $show_code )
 				$content .= '<br /><code>' . $id . '</code>';
 			break;
 
@@ -416,7 +416,7 @@ abstract class Aihrus_Settings {
 			if ( ! empty( $desc ) )
 				$content .= '<br /><span class="description">' . $desc . '</span>';
 
-			if ( ! $no_code )
+			if ( $show_code )
 				$content .= '<br /><code>' . $id . '</code>';
 			break;
 
@@ -426,7 +426,7 @@ abstract class Aihrus_Settings {
 			if ( ! empty( $desc ) )
 				$content .= '<br /><span class="description">' . $desc . '</span>';
 
-			if ( ! $no_code )
+			if ( $show_code )
 				$content .= '<br /><code>' . $id . '</code>';
 			break;
 
