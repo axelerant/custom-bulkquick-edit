@@ -8,6 +8,7 @@
 * Integrate aihrus framework
 * Revise headers
 * Update premium listing
+* Use abstract Aihrus_Settings
 
 ## 1.2.0
 * Add API filter `cbqe_settings_config_script`

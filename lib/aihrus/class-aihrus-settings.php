@@ -37,9 +37,10 @@ abstract class Aihrus_Settings {
 		'class' => null, // warning, etc.
 		'desc' => null,
 		'id' => null,
-		'no_code' => true,
+		'no_code' => false,
 		'section' => 'general',
 		'std' => null, // default key or value
+		'suggest' => false, // attempt for auto-suggest on inputs
 		'title' => null,
 		'type' => 'text', // textarea, checkbox, radio, select, hidden, heading, password, expand_begin, expand_end
 		'validate' => null, // required, term, slug, slugs, ids, order, single paramater PHP functions
@@ -227,7 +228,7 @@ abstract class Aihrus_Settings {
 
 
 	public static function display_about() {
-		$name = rtrim( static::ITEM_NAME, ' Settings' );
+		$name = str_replace( ' Settings', '', static::ITEM_NAME );
 		$text = __( '<img class="alignright size-medium" src="%1$s/media/michael-cannon-red-square-300x2251.jpg" alt="Michael in Red Square, Moscow, Russia" width="300" height="225" /><a href="%2$s">%3$s</a> is by <a href="%4$s">Michael Cannon</a>. He\'s <a href="%5$s">Peichi’s</a> smiling man, an adventurous <a href="%6$s" target="_blank">water-rat</a>, <a href="%7$s">chief people officer</a>, <a href="%8$s">cyclist</a>, <a href="%9$s">full stack developer</a>, <a href="%10$s">poet</a>, <a href="%11$s">WWOOF’er</a> and <a href="%12$s">world traveler</a>.' );
 
 		echo '<div id="about" style="width: 70%; min-height: 225px;"><p>';
