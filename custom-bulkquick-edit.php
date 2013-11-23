@@ -49,7 +49,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 	public static $bulk_edit_save = false;
 	public static $bulk_only_done = false;
-	public static $class;
+	public static $class          = __CLASS__;
 	public static $notice_key;
 	public static $post_types      = array();
 	public static $post_types_keys = array();
