@@ -221,6 +221,28 @@ EOD;
 	}
 
 
+	public static function get_scripts() {
+		if ( static::$scripts_called )
+			return;
+
+		foreach ( static::$scripts as $script )
+			echo $script;
+
+		static::$scripts_called = true;
+	}
+
+
+	public static function get_styles() {
+		if ( static::$styles_called )
+			return;
+
+		foreach ( static::$styles as $style )
+			echo $style;
+
+		static::$styles_called = true;
+	}
+
+
 }
 
 

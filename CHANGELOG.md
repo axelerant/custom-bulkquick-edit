@@ -7,6 +7,7 @@
 * Add is_true, terms, url validate cases
 * Add shortcode id helpers
 * Allow reset_defaults in widget
+* Rename no_code to show_code
 * Settings link with null post_type
 
 ## 0.0.0
