@@ -3,3 +3,4 @@
 Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/custom-bulkquick-edit) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).
 
 * Abstract bulk/quick edit panel layout
+* BUG Multiple checkbox not saving values with apostrophes '

@@ -300,7 +300,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		echo '
 			<script type="text/javascript">
-jQuery(document).ready(function($) {
+jQuery( document ).ready( function() {
 	var wp_inline_edit = inlineEditPost.edit;
 	inlineEditPost.edit = function( id ) {
 		wp_inline_edit.apply( this, arguments );
@@ -763,8 +763,8 @@ jQuery(document).ready(function($) {
 
 		$result .= '</div>';
 
-		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name} input:checkbox:checked', post_row ).map(function(){ return jQuery(this).val(); }).get();";
-		self::$scripts_quick[ $column_name . '2' ] = "$.each( {$field_name_var}, function( key, value ){ jQuery( ':input[name^={$field_name}]', edit_row ).filter('[value=' + value + ']').prop('checked', true); } );";
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name} input:checkbox:checked', post_row ).map( function(){ return jQuery( this ).val(); } ).get();";
+		self::$scripts_quick[ $column_name . '2' ] = "jQuery.each( {$field_name_var}, function( key, value ){ jQuery( ':input[name^={$field_name}]', edit_row ).filter('[value=\"' + value + '\"]').prop('checked', true); } );";
 
 		return $result;
 	}
@@ -839,8 +839,8 @@ jQuery(document).ready(function($) {
 		$result .= '</select>';
 
 		if ( ! $bulk_mode ) {
-			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name} option', post_row ).filter(':selected').val();";
-			self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}] option[value=\"' + {$field_name_var} + '\"]', edit_row ).prop('selected', true);";
+			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name} option:selected', post_row ).map( function(){ return jQuery( this ).val(); } ).get();";
+			self::$scripts_quick[ $column_name . '2' ] = "jQuery.each( {$field_name_var}, function( key, value ){ jQuery( ':input[name^={$field_name}] option[value=\"' + value + '\"]', edit_row ).prop('selected', true); } );";
 		} else
 			self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'select[name={$field_name}]' ).val()";
 
@@ -864,7 +864,7 @@ jQuery(document).ready(function($) {
 		$result .= '<span class="checkbox-title">' . $title_reset . '</span>';
 		$result .= '</label>';
 
-		self::$scripts_bulk[ $column_reset ] = "'{$field_reset}': bulk_row.find( 'input[name^={$field_reset}]:checkbox:checked' ).map(function(){ return jQuery(this).val(); }).get()";
+		self::$scripts_bulk[ $column_reset ] = "'{$field_reset}': bulk_row.find( 'input[name^={$field_reset}]:checkbox:checked' ).map( function(){ return jQuery( this ).val(); } ).get()";
 
 		return $result;
 	}

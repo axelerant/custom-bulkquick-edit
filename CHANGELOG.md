@@ -8,6 +8,8 @@
 * Add version_check
 * BUGFIX Donate notice shows despite `disable_donate` set
 * BUGFIX Initial load of radio selection, not selected
+* BUGFIX Multiple checkbox selections not recalled
+* BUGFIX Multiple select with "space in value" entries aren't being selected
 * BUGFIX Select with "space in value" entries aren't being selected
 * BUGFIX Settings defaults not loading
 * Enable page bulk/quick editing by default
