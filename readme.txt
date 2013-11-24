@@ -59,6 +59,9 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 * Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/) date, number, and user types
 * Works with [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
 
+= Add Ons =
+* [WordPress SEO](https://aihr.us/products/wordpress-seo-custom-bulkquick-edit-premium/) - Modify WordPress SEO options via bulk and quick edit panels
+
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
 
 = Settings Options =
