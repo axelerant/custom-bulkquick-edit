@@ -1,12 +1,14 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+* $this to __CLASS__
 * Abstract manage_posts_custom_column subroutines for easier reuse
 * Add LICENSE
 * Add default get_scripts & get_styles
 * Add version_check
 * BUGFIX Donate notice shows despite `disable_donate` set
 * BUGFIX Initial load of radio selection, not selected
+* BUGFIX Select with "space in value" entries aren't being selected
 * BUGFIX Settings defaults not loading
 * Enable page bulk/quick editing by default
 * Integrate aihrus framework

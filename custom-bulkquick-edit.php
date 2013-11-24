@@ -60,32 +60,32 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+		add_action( 'init', array( __CLASS__, 'init' ) );
 	}
 
 
-	public function admin_init() {
+	public static function admin_init() {
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulkquick_Edit_Settings::ID . '">' . esc_html__( 'Settings', 'custom-bulkquick-edit' ) . '</a>';
 
-		$this->update();
+		self::update();
 
-		add_action( 'admin_footer', array( $this, 'admin_footer' ) );
-		add_action( 'bulk_edit_custom_box', array( $this, 'bulk_edit_custom_box' ), 10, 2 );
-		add_action( 'quick_edit_custom_box', array( $this, 'quick_edit_custom_box' ), 10, 2 );
-		add_action( 'save_post', array( $this, 'save_post' ), 25 );
+		add_action( 'admin_footer', array( __CLASS__, 'admin_footer' ) );
+		add_action( 'bulk_edit_custom_box', array( __CLASS__, 'bulk_edit_custom_box' ), 10, 2 );
+		add_action( 'quick_edit_custom_box', array( __CLASS__, 'quick_edit_custom_box' ), 10, 2 );
+		add_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
 		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulkquick_Edit', 'save_post_bulk_edit' ) );
-		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
-		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
+		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
 	}
 
 
-	public function init() {
+	public static function init() {
 		load_plugin_textdomain( self::ID, false, 'custom-bulkquick-edit/languages' );
 	}
 
 
-	public function plugin_action_links( $links, $file ) {
+	public static function plugin_action_links( $links, $file ) {
 		if ( self::PLUGIN_BASE == $file )
 			array_unshift( $links, self::$settings_link );
 
@@ -93,13 +93,13 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	}
 
 
-	public function activation() {
+	public static function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 	}
 
 
-	public function deactivation() {
+	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
@@ -107,7 +107,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	}
 
 
-	public function uninstall() {
+	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
@@ -141,7 +141,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	}
 
 
-	public function notice_0_0_1() {
+	public static function notice_0_0_1() {
 		$text = sprintf( __( 'If your Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'custom-bulkquick-edit' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
 		parent::notice_updated( $text );
@@ -155,11 +155,11 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	}
 
 
-	public function update() {
+	public static function update() {
 		$prior_version = cbqe_get_option( 'admin_notices' );
 		if ( $prior_version ) {
 			if ( $prior_version < '0.0.1' )
-				add_action( 'admin_notices', array( $this, 'notice_0_0_1' ) );
+				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
 
 			if ( $prior_version < self::VERSION )
 				do_action( 'custom_bulkquick_edit_update' );
@@ -170,7 +170,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		// display donate on major/minor version release
 		$donate_version = cbqe_get_option( 'donate_version', false );
 		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
-			add_action( 'admin_notices', array( $this, 'notice_donate' ) );
+			add_action( 'admin_notices', array( __CLASS__, 'notice_donate' ) );
 			cbqe_set_option( 'donate_version', self::VERSION );
 		}
 	}
@@ -295,9 +295,11 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function get_scripts() {
-		if ( empty( self::$scripts_called ) ) {
-			echo '
-<script type="text/javascript">
+		if ( self::$scripts_called || empty( self::$scripts_quick ) ) 
+			return;
+
+		echo '
+			<script type="text/javascript">
 jQuery(document).ready(function($) {
 	var wp_inline_edit = inlineEditPost.edit;
 	inlineEditPost.edit = function( id ) {
@@ -321,10 +323,10 @@ jQuery(document).ready(function($) {
 
 	';
 
-			$scripts = implode( "\n", self::$scripts_extra );
-			echo $scripts;
+	$scripts = implode( "\n", self::$scripts_extra );
+	echo $scripts;
 
-			echo '
+	echo '
 
 	jQuery( "#bulk_edit" ).on( "click", function() {
 		var bulk_row = jQuery( "#bulk-edit" );
@@ -335,19 +337,19 @@ jQuery(document).ready(function($) {
 
 		$.ajax({
 			url: ajaxurl,
-				type: "POST",
-				async: false,
-				cache: false,
-				data: {
-					action: "save_post_bulk_edit",
-					post_ids: post_ids,
-					';
+			type: "POST",
+			async: false,
+			cache: false,
+			data: {
+				action: "save_post_bulk_edit",
+				post_ids: post_ids,
+			';
 
 			$scripts = implode( ",\n", self::$scripts_bulk );
 			echo $scripts;
 
 			echo '
-				}
+			}
 		});
 	});
 });
@@ -355,7 +357,6 @@ jQuery(document).ready(function($) {
 			';
 
 			self::$scripts_called = true;
-		}
 	}
 
 
@@ -365,7 +366,7 @@ jQuery(document).ready(function($) {
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 * @SuppressWarnings(PHPMD.ExitExpression)
 	 */
-	public function save_post_bulk_edit() {
+	public static function save_post_bulk_edit() {
 		self::$bulk_edit_save = true;
 
 		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
@@ -384,7 +385,7 @@ jQuery(document).ready(function($) {
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public function save_post_items( $post_id, $mode = '' ) {
+	public static function save_post_items( $post_id, $mode = '' ) {
 		if ( ! preg_match( '#^\d+$#', $post_id ) )
 			return;
 
@@ -583,7 +584,7 @@ jQuery(document).ready(function($) {
 	}
 
 
-	public function bulk_edit_custom_box( $column_name, $post_type ) {
+	public static function bulk_edit_custom_box( $column_name, $post_type ) {
 		self::quick_edit_custom_box( $column_name, $post_type, true );
 	}
 
@@ -839,7 +840,7 @@ jQuery(document).ready(function($) {
 
 		if ( ! $bulk_mode ) {
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name} option', post_row ).filter(':selected').val();";
-			self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}] option[value=' + {$field_name_var} + ']', edit_row ).prop('selected', true);";
+			self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}] option[value=\"' + {$field_name_var} + '\"]', edit_row ).prop('selected', true);";
 		} else
 			self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'select[name={$field_name}]' ).val()";
 
@@ -936,7 +937,7 @@ jQuery(document).ready(function($) {
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public function save_post( $post_id ) {
+	public static function save_post( $post_id ) {
 		$post_type = get_post_type( $post_id );
 
 		if ( ! in_array( $post_type, self::$post_types_keys ) )
@@ -954,7 +955,7 @@ jQuery(document).ready(function($) {
 		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::PLUGIN_BASE ) )
 			return;
 
-		remove_action( 'save_post', array( $this, 'save_post' ), 25 );
+		remove_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
 		self::save_post_items( $post_id );
 	}
 
@@ -964,7 +965,7 @@ jQuery(document).ready(function($) {
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public function admin_footer() {
+	public static function admin_footer() {
 		if ( self::$no_instance )
 			return;
 
@@ -1069,7 +1070,7 @@ jQuery(document).ready(function($) {
 	 */
 	public static function do_load() {
 		$do_load = false;
-		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
+		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php' ) ) ) {
 			$do_load = true;
 		} elseif ( ! empty( $_REQUEST['page'] ) && Custom_Bulkquick_Edit_Settings::ID == $_REQUEST['page'] ) {
 			$do_load = true;
