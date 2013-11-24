@@ -369,6 +369,12 @@ EOD;
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
 	public static function validate_settings( $input, $options = null, $do_errors = false ) {
+		if ( is_null( $options ) ) {
+			$options      = self::get_settings();
+			$null_options = true;
+		} else
+			$null_options = false;
+
 		foreach ( $options as $id => $parts ) {
 			$default = $parts['std'];
 
@@ -402,6 +408,9 @@ EOD;
 				}
 			}
 		}
+
+		if ( $null_options )
+			$options = null;
 
 		$validated = parent::validate_settings( $input, $options, $do_errors );
 

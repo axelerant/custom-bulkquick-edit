@@ -4,7 +4,7 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 ## Actions
 
-* `cbeq_save_post`
+* `cbqe_save_post`
 
 	Custom save post handler. Called at end of `save_post`. Therefore, generally verified to do something if your `$_POST` parameters exist.
 

@@ -42,6 +42,7 @@ This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plug
 * Unset checkbox, radio, and select values during bulk edit
 * View category and tag relations on edit screen columns
 * Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
+* Works with posts and pages
 
 = Custom Bulk/Quick Edit Premium =
 

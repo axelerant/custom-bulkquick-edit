@@ -3,11 +3,16 @@
 ## master
 * Abstract manage_posts_custom_column subroutines for easier reuse
 * Add LICENSE
-* Add version_check
 * Add default get_scripts & get_styles
+* Add version_check
 * BUGFIX Donate notice shows despite `disable_donate` set
+* BUGFIX Initial load of radio selection, not selected
+* BUGFIX Settings defaults not loading
+* Enable page bulk/quick editing by default
 * Integrate aihrus framework
+* Rename action `cbeq_save_post` to `cbqe_save_post`
 * Revise headers
+* Update TODO
 * Update premium listing
 * Use abstract Aihrus_Settings
 
