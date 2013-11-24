@@ -675,7 +675,7 @@ abstract class Aihrus_Settings {
 
 
 	/**
-	 * Let values like "true, 'true', 1, and 'yes'" to be true. Else, false
+	 * Let values like true, 'true', 1, 'on', and 'yes' to be true. Else, false
 	 */
 	public static function is_true( $value = null, $return_boolean = true ) {
 		if ( true === $value || 'true' == strtolower( $value ) || 1 == $value || 'on' == strtolower( $value ) || 'yes' == strtolower( $value ) ) {
