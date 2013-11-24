@@ -335,7 +335,7 @@ jQuery( document ).ready( function() {
 			post_ids.push( jQuery( this ).attr( "id" ).replace( /^(ttle)/i, "" ) );
 		});
 
-		$.ajax({
+		jQuery.ajax({
 			url: ajaxurl,
 			type: "POST",
 			async: false,

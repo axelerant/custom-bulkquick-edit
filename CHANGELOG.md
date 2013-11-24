@@ -6,6 +6,7 @@
 * Add LICENSE
 * Add default get_scripts & get_styles
 * Add version_check
+* BUGFIX Bulk edit not saving
 * BUGFIX Donate notice shows despite `disable_donate` set
 * BUGFIX Initial load of radio selection, not selected
 * BUGFIX Multiple checkbox selections not recalled
