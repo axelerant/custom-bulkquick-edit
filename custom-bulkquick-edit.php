@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit
  * Plugin URI: http://wordpress.org/plugins/custom-bulkquick-edit/
  * Description: Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom fields to the edit screen bulk and quick edit panels.
- * Version: 1.2.0
+ * Version: 1.3.0-alpha
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
@@ -23,7 +23,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 if ( ! defined( 'CBQE_PLUGIN_DIR' ) )
 	define( 'CBQE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -38,7 +37,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	const ITEM_NAME   = 'Custom Bulk/Quick Edit';
 	const PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
 	const SLUG        = 'cbqe_';
-	const VERSION     = '1.2.0';
+	const VERSION     = '1.3.0-alpha';
 
 	private static $fields_enabled    = array();
 	private static $no_instance       = true;
@@ -298,7 +297,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function get_scripts() {
-		if ( self::$scripts_called ) 
+		if ( self::$scripts_called )
 			return;
 
 		echo '
@@ -317,19 +316,19 @@ jQuery( document ).ready( function() {
 			var post_row = jQuery( "#post-" + post_id );
 			';
 
-			$scripts = implode( "\n", self::$scripts_quick );
-			echo $scripts;
+		$scripts = implode( "\n", self::$scripts_quick );
+		echo $scripts;
 
-			echo '
+		echo '
 		}
 	};
 
 	';
 
-	$scripts = implode( "\n", self::$scripts_extra );
-	echo $scripts;
+		$scripts = implode( "\n", self::$scripts_extra );
+		echo $scripts;
 
-	echo '
+		echo '
 
 	jQuery( "#bulk_edit" ).on( "click", function() {
 		var bulk_row = jQuery( "#bulk-edit" );
@@ -348,10 +347,10 @@ jQuery( document ).ready( function() {
 				post_ids: post_ids,
 			';
 
-			$scripts = implode( ",\n", self::$scripts_bulk );
-			echo $scripts;
+		$scripts = implode( ",\n", self::$scripts_bulk );
+		echo $scripts;
 
-			echo '
+		echo '
 			}
 		});
 	});
@@ -359,7 +358,7 @@ jQuery( document ).ready( function() {
 </script>
 			';
 
-			self::$scripts_called = true;
+		self::$scripts_called = true;
 	}
 
 
@@ -479,7 +478,7 @@ jQuery( document ).ready( function() {
 				if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] )
 					unset( $value[ 0 ] );
 			}
-			
+
 			$value = apply_filters( 'cbqe_post_save_value', $value, $post_id, $field_name );
 			if ( is_null( $value ) )
 				return;
@@ -1043,6 +1042,11 @@ jQuery( document ).ready( function() {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public static function column_taxonomies( $post_id, $column, $current, $options, $field_type ) {
 		$taxonomy   = $column;
 		$post_type  = get_post_type( $post_id );
@@ -1099,6 +1103,8 @@ jQuery( document ).ready( function() {
 
 		return $field_type;
 	}
+
+
 }
 
 
@@ -1121,17 +1127,17 @@ function custom_bulkquick_edit_init() {
 		if ( ! is_admin() )
 			return;
 
-	if ( Custom_Bulkquick_Edit::version_check() ) {
-		require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+		if ( Custom_Bulkquick_Edit::version_check() ) {
+			require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
-		global $Custom_Bulkquick_Edit;
-		if ( is_null( $Custom_Bulkquick_Edit ) )
-			$Custom_Bulkquick_Edit = new Custom_Bulkquick_Edit();
+			global $Custom_Bulkquick_Edit;
+			if ( is_null( $Custom_Bulkquick_Edit ) )
+				$Custom_Bulkquick_Edit = new Custom_Bulkquick_Edit();
 
-		global $Custom_Bulkquick_Edit_Settings;
-		if ( is_null( $Custom_Bulkquick_Edit_Settings ) )
-			$Custom_Bulkquick_Edit_Settings = new Custom_Bulkquick_Edit_Settings();
-	}
+			global $Custom_Bulkquick_Edit_Settings;
+			if ( is_null( $Custom_Bulkquick_Edit_Settings ) )
+				$Custom_Bulkquick_Edit_Settings = new Custom_Bulkquick_Edit_Settings();
+		}
 }
 
 

@@ -22,6 +22,7 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
+
 require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-settings.php';
 
 
@@ -278,7 +279,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 		if ( ! Custom_Bulkquick_Edit::do_load() )
 			return;
-			
+
 		self::load_options();
 		self::register_settings();
 	}
@@ -358,7 +359,7 @@ EOD;
 
 	public static function scripts() {
 		parent::scripts();
-		
+
 		add_action( 'admin_footer', array( __CLASS__, 'get_scripts' ), 20 );
 	}
 

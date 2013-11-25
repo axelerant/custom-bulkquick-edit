@@ -718,6 +718,8 @@ abstract class Aihrus_Settings {
 		foreach ( static::$styles as $style )
 			echo $style;
 	}
+
+
 }
 
 
