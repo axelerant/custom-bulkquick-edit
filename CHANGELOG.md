@@ -3,6 +3,10 @@
 ## master
 * $this to __CLASS__
 * Abstract manage_posts_custom_column subroutines for easier reuse
+* Add API filter `cbqe_edit_field_type`
+* Add API filter `cbqe_ignore_quick_edit`
+* Add API filter `cbqe_post_save_fields`
+* Add API filter `cbqe_post_save_value`
 * Add LICENSE
 * Add default get_scripts & get_styles
 * Add version_check
@@ -13,6 +17,7 @@
 * BUGFIX Multiple select with "space in value" entries aren't being selected
 * BUGFIX Select with "space in value" entries aren't being selected
 * BUGFIX Settings defaults not loading
+* BUGFIX `field_type` is 1
 * Enable page bulk/quick editing by default
 * Integrate aihrus framework
 * Rename action `cbeq_save_post` to `cbqe_save_post`
