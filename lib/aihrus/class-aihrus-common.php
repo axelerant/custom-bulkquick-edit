@@ -157,7 +157,7 @@ EOD;
 	}
 
 
-	public function version( $version ) {
+	public static function version( $version ) {
 		$version .= '-' . static::ID . '-' . static::VERSION;
 
 		return $version;
@@ -175,7 +175,7 @@ EOD;
 	 */
 
 
-	public function array_values_recursive( $ary ) {
+	public static function array_values_recursive( $ary ) {
 		$lst = array();
 		foreach ( array_keys( $ary ) as $k ) {
 			$v = $ary[$k];
