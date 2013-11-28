@@ -113,19 +113,19 @@ EOD;
 	public static function notice_version( $free_base, $free_name, $free_slug, $free_version, $item_name ) {
 		$is_active = is_plugin_active( $free_base );
 		if ( $is_active )
-			$link = sprintf( __( '<a href="%1$s">update to</a>', 'testimonials-widget' ), self_admin_url( 'update-core.php' ) );
+			$link = sprintf( __( '<a href="%1$s">update to</a>' ), self_admin_url( 'update-core.php' ) );
 		else {
 			$plugins = get_plugins();
 			if ( empty( $plugins[ $free_base ] ) ) {
 				$install = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $free_slug ), 'install-plugin_' . $free_slug ) );
-				$link    = sprintf( __( '<a href="%1$s">install</a>', 'testimonials-widget' ), $install );
+				$link    = sprintf( __( '<a href="%1$s">install</a>' ), $install );
 			} else {
 				$activate = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $free_base ), 'activate-plugin_' . $free_base ) );
-				$link     = sprintf( __( '<a href="%1$s">activate</a>', 'testimonials-widget' ), $activate );
+				$link     = sprintf( __( '<a href="%1$s">activate</a>' ), $activate );
 			}
 		}
 
-		$text = sprintf( __( 'Plugin %3$s has been deactivated. Please %1$s %4$s version %2$s or newer before activating %3$s.', 'testimonials-widget' ), $link, $free_version, $item_name, $free_name );
+		$text = sprintf( __( 'Plugin %3$s has been deactivated. Please %1$s %4$s version %2$s or newer before activating %3$s.' ), $link, $free_version, $item_name, $free_name );
 
 		self::notice_error( $text );
 	}
@@ -137,21 +137,21 @@ EOD;
 		else
 			$link = get_admin_url() . 'edit.php?post_type=' . $post_type . '&page=' . $settings_id;
 
-		$text = __( '<a href="%1$s">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry', 'testimonials-widget' );
+		$text = __( '<a href="%1$s">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry' );
 
 		$settings_link = sprintf( $text, $link, $free_name );
 
 		$link = esc_url( 'https://aihrus.zendesk.com/entries/28745227-Where-s-my-license-key-' );
-		$text = __( '<a href="%s">Where\'s my license key?</a>', 'testimonials-widget' );
+		$text = __( '<a href="%s">Where\'s my license key?</a>' );
 
 		$faq_link = sprintf( $text, $link );
 
 		$link = esc_url( $purchase_url );
-		$text = __( '<a href="%1$s">%2$s</a>', 'testimonials-widget' );
+		$text = __( '<a href="%1$s">%2$s</a>' );
 
 		$buy_link = sprintf( $text, $link, $item_name );
 
-		$text = sprintf( __( 'Plugin %1$s requires license activation before updating will work. Please activate the license key via %2$s. No license key? See %3$s or purchase %4$s.', 'testimonials-widget' ), $item_name, $settings_link, $faq_link, $buy_link );
+		$text = sprintf( __( 'Plugin %1$s requires license activation before updating will work. Please activate the license key via %2$s. No license key? See %3$s or purchase %4$s.' ), $item_name, $settings_link, $faq_link, $buy_link );
 
 		self::notice_error( $text );
 	}
@@ -197,7 +197,7 @@ EOD;
 		if ( $disable_donate )
 			return;
 
-		$text = sprintf( esc_html__( 'Please donate $5 towards ongoing support and development of this %1$s plugin. %2$s', 'testimonials-widget' ), $item_name, self::$donate_button );
+		$text = sprintf( esc_html__( 'Please donate $5 towards ongoing support and development of the %1$s plugin. %2$s' ), $item_name, self::$donate_button );
 
 		self::notice_updated( $text );
 	}
@@ -240,6 +240,75 @@ EOD;
 			echo $style;
 
 		static::$styles_called = true;
+	}
+
+
+	public static function create_nonce( $action ) {
+		$nonce = uniqid();
+		$uid   = get_current_user_id();
+		$check = $uid . $action;
+		set_transient( $nonce, $check, HOUR_IN_SECONDS );
+
+		return $nonce;
+	}
+
+
+	public static function verify_nonce( $nonce, $action ) {
+		$active = get_transient( $nonce );
+		$uid    = get_current_user_id();
+		$check  = $uid . $action;
+		$valid  = false;
+
+		if ( $active == $check ) {
+			delete_transient( $nonce );
+			$valid = true;
+		}
+
+		return $valid;
+	}
+
+
+	/**
+	 * If incoming link is empty, then get_site_url() is used instead.
+	 */
+	public static function create_link( $link ) {
+		if ( empty( $link ) )
+			$link = get_site_url();
+
+		if ( preg_match( '#^\d+$#', $link ) ) {
+			$permalink = get_permalink( $link );
+			$title     = get_the_title( $link );
+
+			$tag  = '<a href="';
+			$tag .= $permalink;
+			$tag .= '" title="';
+			$tag .= $title;
+			$tag .= '">';
+			$tag .= $title;
+			$tag .= '</a>';
+		} else {
+			$orig_link = $link;
+			$do_http   = true;
+
+			if ( 0 === strpos( $link, '/' ) )
+				$do_http = false;
+
+			if ( $do_http && 0 === preg_match( '#https?://#', $link ) )
+				$link = 'http://' . $link;
+
+			$permalink = $link;
+
+			$tag  = '<a href="';
+			$tag .= $permalink;
+			$tag .= '">';
+			$tag .= $orig_link;
+			$tag .= '</a>';
+		}
+
+		return array(
+			'link' => $permalink,
+			'tag' => $tag,
+		);
 	}
 
 
