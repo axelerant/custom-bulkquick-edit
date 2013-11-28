@@ -25,6 +25,8 @@ Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_
 
 This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/bulk_edit_custom_box) and [quick_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/quick_edit_custom_box) actions.
 
+**Version 1.3.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006-Testimonials-2-16-0-Requires-PHP-5-3-)
+
 = Primary Features =
 
 * API of actions and filters
@@ -161,6 +163,10 @@ See [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/ma
 
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+
+* Requires PHP 5.3+ [notice](https://aihrus.zendesk.com/entries/30678006-Testimonials-2-16-0-Requires-PHP-5-3-)
 
 = 1.1.0 =
 
