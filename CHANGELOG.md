@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+
+## 1.3.1
 * BUGFIX tw_get_option function not found
 
 ## 1.3.0
