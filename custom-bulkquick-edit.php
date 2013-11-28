@@ -148,7 +148,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function notice_donate( $disable_donate = null, $item_name = null ) {
-		$disable_donate = tw_get_option( 'disable_donate' );
+		$disable_donate = cbqe_get_option( 'disable_donate' );
 
 		parent::notice_donate( $disable_donate, self::ITEM_NAME );
 	}

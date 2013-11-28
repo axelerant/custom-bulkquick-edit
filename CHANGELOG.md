@@ -1,6 +1,7 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+* BUGFIX tw_get_option function not found
 
 ## 1.3.0
 * $this to __CLASS__
