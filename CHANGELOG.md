@@ -1,6 +1,7 @@
 # CHANGELOG Aihrus Framework
 
 ## master
+* BUGFIX Method version not static
 * Add TODO
 * Add abstract class Aihrus_Settings
 * Add abstract class Aihrus_Widget
