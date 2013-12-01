@@ -143,9 +143,10 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 			$taxonomy_name = array();
 			$taxonomies    = get_object_taxonomies( $post_type, 'objects' );
+			$taxonomies    = apply_filters( 'cbqe_settings_taxonomies', $taxonomies );
 			foreach ( $taxonomies as $taxonomy ) {
 				$name = $taxonomy->name;
-				if ( 'post_format' == $name )
+				if ( 'post_format' == $name || empty( $taxonomy->label ) )
 					continue;
 
 				$tax_label       = $taxonomy->label;
@@ -174,7 +175,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 			$fields      = apply_filters( $filter, $fields );
 			$filter_edit = 'manage_edit-' . $post_type . '_columns';
 			$fields      = apply_filters( $filter_edit, $fields );
-			$fields      = apply_filters( 'cbqe_settings_fields', $fields );
+			$fields      = apply_filters( 'cbqe_settings_fields', $fields, $post_type );
 			if ( ! empty( $fields ) ) {
 				// don't edit these common/static fields with this plugin
 				unset( $fields['author'] );

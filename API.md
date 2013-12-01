@@ -30,9 +30,13 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 	Add quick edit related JavaScript. Provides parameters `$post_type`, `$column_name`, `$field_name`, `$field_type`, and `$field_name_var`. [example](https://gist.github.com/michael-cannon/6490331)
 
+* `cbqe_settings_taxonomies`
+
+	Modify the taxonomies. Useful in instances like Edit Flow's, where taxonomies control the fields.
+
 * `cbqe_settings_fields`
 
-	Modify the fields key names. Useful instances like Edit Flow's, one name for columns and another for meta data.
+	Modify the fields key names. Useful in instances like Edit Flow's, one name for columns and another for meta data.
 
 * `cbqe_settings_as_types`
 

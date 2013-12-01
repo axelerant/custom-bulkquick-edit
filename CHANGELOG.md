@@ -1,6 +1,11 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+* Release 1.3.2 once CBQE Edit Flow is released
+
+## 1.3.2
+* Add filter `cbqe_settings_taxonomies`
+* BUGFIX No label taxnomies included in settings
 
 ## 1.3.1
 * BUGFIX tw_get_option function not found
