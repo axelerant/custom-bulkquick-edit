@@ -4,3 +4,4 @@ Is there something you want done? Write it up on the [support forums](http://wor
 
 * Abstract bulk/quick edit panel layout
 * BUG Multiple checkbox values with [apostrophes](http://stackoverflow.com/questions/6474958/jquery-how-to-escape-quotes) ' not saving
+* Work with [Codepress Admin Columns](http://wordpress.org/plugins/codepress-admin-columns/)
