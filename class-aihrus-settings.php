@@ -17,7 +17,7 @@
  */
 
 /**
- * WordPress Starter settings class
+ * Aihrus Framework settings helper class
  *
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
@@ -93,12 +93,13 @@ abstract class Aihrus_Settings {
 			'widget' => 0,
 		);
 
+		$desc = esc_html__( 'Delete all %s data and options from database on plugin deletion' );
 		static::$settings['delete_data'] = array(
 			'section' => 'reset',
 			'title' => esc_html__( 'Remove Plugin Data on Deletion?' ),
 			'type' => 'checkbox',
 			'class' => 'warning',
-			'desc' => esc_html__( 'Delete all WordPress Starter data and options from database on plugin deletion' ),
+			'desc' => sprintf( $desc, static::ITEM_NAME ),
 			'widget' => 0,
 		);
 

@@ -4,10 +4,14 @@ A helper library for WordPress plugins by Aihrus.
 
 ## Features
 
+* Content truncation helper methods
 * Donation links
-* Helper methods
+* Image source and media attachment helper methods
 * Licensing
+* Link creation helper methods
+* Nonce helper methods
 * Notifications
+* Validation helper methods
 
 ## Usage
 
