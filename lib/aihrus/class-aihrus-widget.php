@@ -64,44 +64,8 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 		// Display the widget title if one was input (before and after defined by themes)
 		if ( ! empty( $title ) ) {
 			if ( ! empty( $instance['title_link'] ) ) {
-				// revise title with title_link link creation
-				$title_link = $instance['title_link'];
-
-				if ( preg_match( '#^\d+$#', $title_link ) ) {
-					$new_title  = '<a href="';
-					$new_title .= get_permalink( $title_link );
-					$new_title .= '" title="';
-					$new_title .= get_the_title( $title_link );
-					$new_title .= '">';
-					$new_title .= $title;
-					$new_title .= '</a>';
-
-					$title = $new_title;
-				} else {
-					$do_http = true;
-
-					if ( 0 === strpos( $title_link, '/' ) )
-						$do_http = false;
-
-					if ( $do_http && 0 === preg_match( '#https?://#', $title_link ) ) {
-						$title_link = 'http://' . $title_link;
-					}
-
-					$new_title  = '<a href="';
-					$new_title .= $title_link;
-					$new_title .= '" title="';
-					$new_title .= $title;
-					$new_title .= '"';
-
-					$new_title .= '>';
-					$new_title .= $title;
-					$new_title .= '</a>';
-
-					$title = $new_title;
-
-					if ( ! empty( $instance['target'] ) )
-						$title = links_add_target( $title, $instance['target'] );
-				}
+				$target = ! empty( $instance['target'] ) ? $instance['target'] : null;
+				$title  = Aihrus_Common::create_link( $instance['title_link'], $target );
 			}
 
 			echo $before_title . $title . $after_title;
