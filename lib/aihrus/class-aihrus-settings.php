@@ -58,8 +58,8 @@ abstract class Aihrus_Settings {
 
 
 	public static function sections() {
-		static::$sections['reset'] = esc_html__( 'Reset' );
-		static::$sections['about'] = esc_html__( 'About' );
+		static::$sections['reset'] = esc_html__( 'Reset', 'custom-bulkquick-edit' );
+		static::$sections['about'] = esc_html__( 'About', 'custom-bulkquick-edit' );
 	}
 
 
@@ -77,9 +77,9 @@ abstract class Aihrus_Settings {
 
 			static::$settings['export'] = array(
 				'section' => 'reset',
-				'title' => esc_html__( 'Export Settings' ),
+				'title' => esc_html__( 'Export Settings', 'custom-bulkquick-edit' ),
 				'type' => 'readonly',
-				'desc' => esc_html__( 'These are your current settings in a serialized format. Copy the contents to make a backup of your settings.' ),
+				'desc' => esc_html__( 'These are your current settings in a serialized format. Copy the contents to make a backup of your settings.', 'custom-bulkquick-edit' ),
 				'std' => $serialized_options,
 				'widget' => 0,
 			);
@@ -87,17 +87,17 @@ abstract class Aihrus_Settings {
 
 		static::$settings['import'] = array(
 			'section' => 'reset',
-			'title' => esc_html__( 'Import Settings' ),
+			'title' => esc_html__( 'Import Settings', 'custom-bulkquick-edit' ),
 			'type' => 'textarea',
-			'desc' => esc_html__( 'Paste new serialized settings here to overwrite your current configuration.' ),
+			'desc' => esc_html__( 'Paste new serialized settings here to overwrite your current configuration.', 'custom-bulkquick-edit' ),
 			'widget' => 0,
 		);
 
-		$desc = esc_html__( 'Delete all %s data and options from database on plugin deletion' );
+		$desc = esc_html__( 'Delete all %s data and options from database on plugin deletion', 'custom-bulkquick-edit' );
 
 		static::$settings['delete_data'] = array(
 			'section' => 'reset',
-			'title' => esc_html__( 'Remove Plugin Data on Deletion?' ),
+			'title' => esc_html__( 'Remove Plugin Data on Deletion?', 'custom-bulkquick-edit' ),
 			'type' => 'checkbox',
 			'class' => 'warning',
 			'desc' => sprintf( $desc, static::ITEM_NAME ),
@@ -106,10 +106,10 @@ abstract class Aihrus_Settings {
 
 		static::$settings['reset_defaults'] = array(
 			'section' => 'reset',
-			'title' => esc_html__( 'Reset to Defaults?' ),
+			'title' => esc_html__( 'Reset to Defaults?', 'custom-bulkquick-edit' ),
 			'type' => 'checkbox',
 			'class' => 'warning',
-			'desc' => esc_html__( 'Check this box to reset options to their defaults' ),
+			'desc' => esc_html__( 'Check this box to reset options to their defaults', 'custom-bulkquick-edit' ),
 		);
 	}
 
@@ -233,7 +233,7 @@ abstract class Aihrus_Settings {
 
 	public static function display_about() {
 		$name = str_replace( ' Settings', '', static::ITEM_NAME );
-		$text = __( '<img class="alignright size-medium" src="%1$s/media/michael-cannon-red-square-300x2251.jpg" alt="Michael in Red Square, Moscow, Russia" width="300" height="225" /><a href="%2$s">%3$s</a> is by <a href="%4$s">Michael Cannon</a>. He\'s <a href="%5$s">Peichi’s</a> smiling man, an adventurous <a href="%6$s" target="_blank">water-rat</a>, <a href="%7$s">chief people officer</a>, <a href="%8$s">cyclist</a>, <a href="%9$s">full stack developer</a>, <a href="%10$s">poet</a>, <a href="%11$s">WWOOF’er</a> and <a href="%12$s">world traveler</a>.' );
+		$text = __( '<img class="alignright size-medium" src="%1$s/media/michael-cannon-red-square-300x2251.jpg" alt="Michael in Red Square, Moscow, Russia" width="300" height="225" /><a href="%2$s">%3$s</a> is by <a href="%4$s">Michael Cannon</a>. He\'s <a href="%5$s">Peichi’s</a> smiling man, an adventurous <a href="%6$s" target="_blank">water-rat</a>, <a href="%7$s">chief people officer</a>, <a href="%8$s">cyclist</a>, <a href="%9$s">full stack developer</a>, <a href="%10$s">poet</a>, <a href="%11$s">WWOOF’er</a> and <a href="%12$s">world traveler</a>.', 'custom-bulkquick-edit' );
 
 		echo '<div id="about" style="width: 70%; min-height: 225px;"><p>';
 		echo sprintf(
@@ -275,7 +275,7 @@ abstract class Aihrus_Settings {
 		self::do_settings_sections( static::ID );
 
 		echo '
-			<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . esc_html__( 'Save Changes' ) . '" /></p>
+			<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . esc_html__( 'Save Changes', 'custom-bulkquick-edit' ) . '" /></p>
 			</form>
 		</div>
 		';
@@ -283,7 +283,7 @@ abstract class Aihrus_Settings {
 		if ( ! $disable_donate ) {
 			echo '<p>' .
 				sprintf(
-				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase premium WordPress plugins from Aihrus ">purchase the Premium version</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.' ),
+				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase premium WordPress plugins from Aihrus ">purchase the Premium version</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.', 'custom-bulkquick-edit' ),
 				esc_url( 'http://aihr.us/about-aihrus/donate/' ),
 				esc_url( 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' ),
 				esc_url( 'http://aihr.us/store/' ),
@@ -294,7 +294,7 @@ abstract class Aihrus_Settings {
 
 		echo '<p class="copyright">' .
 			sprintf(
-			__( 'Copyright &copy;%1$s <a href="%2$s">Aihrus</a>.' ),
+			__( 'Copyright &copy;%1$s <a href="%2$s">Aihrus</a>.', 'custom-bulkquick-edit' ),
 			date( 'Y' ),
 			esc_url( 'http://aihr.us' )
 		) .
@@ -595,7 +595,7 @@ abstract class Aihrus_Settings {
 
 			case 'required':
 				if ( empty( $input[ $id ] ) )
-					$errors[ $id ] = esc_html__( 'Required' );
+					$errors[ $id ] = esc_html__( 'Required', 'custom-bulkquick-edit' );
 				break;
 
 			case 'slug':
