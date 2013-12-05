@@ -1,6 +1,7 @@
 # CHANGELOG Aihrus Framework
 
 ## master
+* BUGFIX Widget title is same as link
 * Revise create_link parameters
 * Check for PHP 5.3
 * Add TODO

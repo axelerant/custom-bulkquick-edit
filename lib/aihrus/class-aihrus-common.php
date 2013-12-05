@@ -333,7 +333,7 @@ EOD;
 			$tag .= $title;
 			$tag .= '</a>';
 		} else {
-			$orig_link = $link;
+			$orig_link = empty( $title ) ? $link : $title;
 			$do_http   = true;
 
 			if ( 0 === strpos( $link, '/' ) )
