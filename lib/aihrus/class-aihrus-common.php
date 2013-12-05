@@ -18,7 +18,7 @@
 
 if ( ! function_exists( 'af_php_version_check' ) ) {
 	function af_php_version_check( $file = __FILE__, $php_min = '5.3.0' ) {
-		$check_okay = version_compare( PHP_VERSION, $php_min, '<' );
+		$check_okay = version_compare( PHP_VERSION, $php_min, '>' );
 
 		if ( ! $check_okay && __FILE__ != $file ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
