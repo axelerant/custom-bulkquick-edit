@@ -61,15 +61,14 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 		// Before widget (defined by themes)
 		echo $before_widget;
 
-		// Display the widget title if one was input (before and after defined by themes)
-		if ( ! empty( $title ) ) {
-			if ( ! empty( $instance['title_link'] ) ) {
-				$target = ! empty( $instance['target'] ) ? $instance['target'] : null;
-				$title  = Aihrus_Common::create_link( $instance['title_link'], $target );
-			}
-
-			echo $before_title . $title . $after_title;
+		if ( ! empty( $instance['title_link'] ) ) {
+			$target = ! empty( $instance['target'] ) ? $instance['target'] : null;
+			$title  = Aihrus_Common::create_link( $instance['title_link'], $title, $target );
 		}
+
+		// Display the widget title if one was input (before and after defined by themes)
+		if ( ! empty( $title ) )
+			echo $before_title . $title . $after_title;
 
 		// Display Widget
 		echo $content;
@@ -138,7 +137,7 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 				if ( ! empty( $desc ) )
 					echo '<h3>' . $desc . '</h3>';
 
-				echo '<a id="' . $this->get_field_id( $id ) . '" style="cursor:pointer;" onclick="jQuery( \'.tw-collapsible-control\' ) . slideToggle(); jQuery( \'.tw-collapsible\' ) . slideToggle();">' . esc_html__( 'Expand/Collapse All Options', 'custom-bulkquick-edit' ) . ' &raquo;</a>';
+				echo '<a id="' . $this->get_field_id( $id ) . '" style="cursor:pointer;" onclick="jQuery( \'.tw-collapsible-control\' ) . slideToggle(); jQuery( \'.tw-collapsible\' ) . slideToggle();">' . esc_html__( 'Expand/Collapse All Options' ) . ' &raquo;</a>';
 
 				$do_return = true;
 				break;
@@ -147,7 +146,7 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 				if ( ! empty( $desc ) )
 					echo '<h3>' . $desc . '</h3>';
 
-				echo '<a id="' . $this->get_field_id( $id ) . '" style="cursor:pointer;" onclick="jQuery( \'div#' . $this->get_field_id( $id ) . '\' ) . slideToggle();" class="tw-collapsible-control">' . esc_html__( 'Expand/Collapse', 'custom-bulkquick-edit' ) . ' &raquo;</a>';
+				echo '<a id="' . $this->get_field_id( $id ) . '" style="cursor:pointer;" onclick="jQuery( \'div#' . $this->get_field_id( $id ) . '\' ) . slideToggle();" class="tw-collapsible-control">' . esc_html__( 'Expand/Collapse' ) . ' &raquo;</a>';
 				echo '<div id="' . $this->get_field_id( $id ) . '" style="display:none" class="tw-collapsible">';
 
 				$do_return = true;

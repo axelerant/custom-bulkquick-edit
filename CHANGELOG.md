@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+* Add default gallery
+* Correct Add On links
 
 ## 1.3.3
 * Check for PHP 5.3
