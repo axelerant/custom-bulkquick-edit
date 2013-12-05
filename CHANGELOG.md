@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+
+## 1.3.3
 * Check for PHP 5.3
 
 ## 1.3.2
