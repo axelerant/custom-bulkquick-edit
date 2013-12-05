@@ -1,6 +1,7 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+* Check for PHP 5.3
 
 ## 1.3.2
 * Add filter `cbqe_settings_taxonomies`

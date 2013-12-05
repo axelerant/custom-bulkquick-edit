@@ -31,6 +31,11 @@ if ( ! defined( 'CBQE_PLUGIN_DIR_LIB' ) )
 
 require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
+if ( af_php_version_check( __FILE__ ) )
+	add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
+else
+	return;
+
 
 class Custom_Bulkquick_Edit extends Aihrus_Common {
 	const ID          = 'custom-bulkquick-edit';
@@ -1111,9 +1116,6 @@ jQuery( document ).ready( function() {
 register_activation_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'activation' ) );
 register_deactivation_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'deactivation' ) );
 register_uninstall_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'uninstall' ) );
-
-
-add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
 
 
 /**
