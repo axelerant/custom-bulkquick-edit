@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+
+## 1.3.4
 * Add default gallery
 * Correct Add On links
 
