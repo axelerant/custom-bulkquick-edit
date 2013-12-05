@@ -94,6 +94,7 @@ abstract class Aihrus_Settings {
 		);
 
 		$desc = esc_html__( 'Delete all %s data and options from database on plugin deletion' );
+
 		static::$settings['delete_data'] = array(
 			'section' => 'reset',
 			'title' => esc_html__( 'Remove Plugin Data on Deletion?' ),

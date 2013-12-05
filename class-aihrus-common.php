@@ -16,6 +16,50 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+if ( ! function_exists( 'af_php_version_check' ) ) {
+	function af_php_version_check( $file = __FILE__, $php_min = '5.3.0' ) {
+		$check_okay = version_compare( PHP_VERSION, $php_min, '<' );
+
+		if ( ! $check_okay && __FILE__ != $file ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+			deactivate_plugins( $file );
+
+			if ( ! defined( 'AF_PHP_VERSION_FILE' ) )
+				define( 'AF_PHP_VERSION_FILE', $file );
+
+			if ( ! defined( 'AF_PHP_VERSION_MIN' ) )
+				define( 'AF_PHP_VERSION_MIN', $php_min );
+
+			add_action( 'admin_notices', 'af_notice_php_version' );
+		}
+
+		return $check_okay;
+	}
+
+
+	function af_notice_php_version() {
+		$base = basename( dirname( AF_PHP_VERSION_FILE ) );
+		$base = str_replace( '-', ' ', $base );
+		$base = ucwords( $base );
+
+		$help_url = esc_url( 'https://aihrus.zendesk.com/entries/30678006-Most-Aihrus-Plugins-Require-PHP-5-3-' );
+
+		$php_min = basename( AF_PHP_VERSION_MIN );
+
+		$text = sprintf( __( 'Plugin "%1$s" requires at least PHP %2$s, you\'re running PHP %4$s. See <a href="%3$s">possible solutions</a>. Once fixed, "%1$s" can be activated again..' ), $base, $php_min, $help_url, PHP_VERSION );
+
+		$content  = '<div class="error"><p>';
+		$content .= $text;
+		$content .= '</p></div>';
+
+		echo $content;
+	}
+}
+
+if ( ! af_php_version_check( __FILE__ ) )
+	return;
+
 if ( class_exists( 'Aihrus_Common' ) )
 	return;
 
