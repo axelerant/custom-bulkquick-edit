@@ -1,6 +1,7 @@
 # CHANGELOG Aihrus Framework
 
 ## master
+* Revise create_link parameters
 * Check for PHP 5.3
 * Add TODO
 * Add `add_media` post attachment helper

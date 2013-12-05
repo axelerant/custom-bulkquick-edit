@@ -47,7 +47,7 @@ if ( ! function_exists( 'af_php_version_check' ) ) {
 
 		$php_min = basename( AF_PHP_VERSION_MIN );
 
-		$text = sprintf( __( 'Plugin "%1$s" requires at least PHP %2$s, you\'re running PHP %4$s. See <a href="%3$s">possible solutions</a>. Once fixed, "%1$s" can be activated again..' ), $base, $php_min, $help_url, PHP_VERSION );
+		$text = sprintf( __( 'Plugin "%1$s" requires at least PHP %2$s, you\'re running PHP %4$s. See <a href="%3$s">possible solutions</a>. Once fixed, "%1$s" can be activated again.' ), $base, $php_min, $help_url, PHP_VERSION );
 
 		$content  = '<div class="error"><p>';
 		$content .= $text;
@@ -315,18 +315,20 @@ EOD;
 	/**
 	 * If incoming link is empty, then get_site_url() is used instead.
 	 */
-	public static function create_link( $link, $target = null ) {
+	public static function create_link( $link, $title = null, $target = null, $return_as_tag = true ) {
 		if ( empty( $link ) )
 			$link = get_site_url();
 
 		if ( preg_match( '#^\d+$#', $link ) ) {
 			$permalink = get_permalink( $link );
-			$title     = get_the_title( $link );
+			$tag_title = get_the_title( $link );
+			if ( empty( $title ) )
+				$title = $tag_title;
 
 			$tag  = '<a href="';
 			$tag .= $permalink;
 			$tag .= '" title="';
-			$tag .= $title;
+			$tag .= $tag_title;
 			$tag .= '">';
 			$tag .= $title;
 			$tag .= '</a>';
@@ -352,10 +354,13 @@ EOD;
 		if ( ! empty( $target ) && is_string( $target ) )
 			$tag = links_add_target( $tag, $target );
 
-		return array(
-			'link' => $permalink,
-			'tag' => $tag,
-		);
+		if ( $return_as_tag )
+			return $tag;
+		else
+			return array(
+				'link' => $permalink,
+				'tag' => $tag,
+			);
 	}
 
 

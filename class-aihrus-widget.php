@@ -61,15 +61,14 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 		// Before widget (defined by themes)
 		echo $before_widget;
 
-		// Display the widget title if one was input (before and after defined by themes)
-		if ( ! empty( $title ) ) {
-			if ( ! empty( $instance['title_link'] ) ) {
-				$target = ! empty( $instance['target'] ) ? $instance['target'] : null;
-				$title  = Aihrus_Common::create_link( $instance['title_link'], $target );
-			}
-
-			echo $before_title . $title . $after_title;
+		if ( ! empty( $instance['title_link'] ) ) {
+			$target = ! empty( $instance['target'] ) ? $instance['target'] : null;
+			$title  = Aihrus_Common::create_link( $instance['title_link'], $title, $target );
 		}
+
+		// Display the widget title if one was input (before and after defined by themes)
+		if ( ! empty( $title ) )
+			echo $before_title . $title . $after_title;
 
 		// Display Widget
 		echo $content;
