@@ -47,7 +47,7 @@ This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plug
 * Works with posts and pages
 
 = Add Ons =
-* [Edit Flow](https://aihr.us/products/edit-flow-custom-bulkquick-edit/) - Date, number, and user types
+* [Edit Flow](http://wordpress.org/plugins/cbqe-edit-flow/) - Date (Premium required), number, and user types
 * [WordPress SEO](https://aihr.us/products/wordpress-seo-custom-bulkquick-edit-premium/) - Modify WordPress SEO options via bulk and quick edit panels
 
 = Custom Bulk/Quick Edit Premium =
@@ -62,7 +62,6 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 * Flexible API
 * Multiple select selector
 * Works with Custom Post Types
-* Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/) date, number, and user types
 * Works with [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
 
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
