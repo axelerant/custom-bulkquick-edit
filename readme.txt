@@ -124,6 +124,12 @@ five-five|55`
 1. Read "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)"
 1. Read "[How do you configure options?](https://aihrus.zendesk.com/entries/24911342)"
 1. Read "[Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)"
+1. Select the post and page attributes to enable through WordPress Admin > Settings > Custom Bulk/Quick
+1. Once you select 'Show' a configuration panel will open. Leave this blank as upon save, the proper configuration will be loaded.
+1. Click "Save Changes"
+1. Review and revise newly populated configuration options
+1. Click "Save Changes"
+1. Use edit page Bulk or Quick Edit panels as normal
 
 = Upgrading =
 
