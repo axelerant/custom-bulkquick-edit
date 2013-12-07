@@ -1,4 +1,4 @@
-=== Custom Bulk/Quick Edit ===
+=== Custom Bulk/Quick Edit by Aihrus ===
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
@@ -9,23 +9,24 @@ Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom fields to the edit screen bulk and quick edit panels.
+Custom Bulk/Quick Edit by Aihrus allows you to easily add custom fields to the edit screen bulk and quick edit panels.
 
 
 == Description ==
 
-Through Custom Bulk/Quick Edit, you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
+Through Custom Bulk/Quick Edit [by Aihrus](http://aihr.us/about-aihrus/), you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
 
 To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
 
 [youtube http://www.youtube.com/watch?v=wd6munNz0gI]
+
 **[Video introduction](http://youtu.be/UXvzdlvIPtk)**
 
-Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. Therefore, unless it's already configured, your theme's `functions.php` file will have to modified to add custom field columns. See "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-to-my-edit-page-)" for help.
+**Version 1.3.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
 
-This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/bulk_edit_custom_box) and [quick_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/quick_edit_custom_box) actions.
+Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. Therefore, unless it's already configured, your theme's `functions.php` file will have to modified to add custom field columns.
 
-**Version 1.3.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006-Testimonials-2-16-0-Requires-PHP-5-3-)
+Read [**Installation**](http://wordpress.org/plugins/custom-bulkquick-edit/installation/) and [**FAQ**](http://wordpress.org/plugins/custom-bulkquick-edit/faq/) to get started.
 
 = Primary Features =
 
@@ -54,9 +55,12 @@ This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plug
 
 Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin there is, [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/). Custom Bulk/Quick Edit Premium supports [custom post types and WooCommerce](https://aihr.us/custom-bulkquick-edit-premium/). Plus, it offers additional inputs options like date and multiple selects for use during bulk/quick edit operations.
 
+[Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
+
 = Primary Premium Features =
 
 * Adds float, integer, and user inputs
+* Bulk edit post dates
 * Date input with date picker
 * Disable donate references
 * Flexible API
@@ -94,60 +98,61 @@ five-five|55`
 * Remove Plugin Data on Deletion? - Delete all Custom Bulk/Quick Edit data and options from database on plugin deletion
 * Reset to Defaults? – Check this box to reset options to their defaults
 
-= API =
-
-* Read the [Custom Bulk/Quick Edit API](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/API.md).
-
-= Languages =
-
-* Serbo-Croatian by [Borisa Djuraskovic](borisad@webhostinghub.com)
-
-You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
-
-See the FAQ for further localization tips.
-
-= Help Me, Help You =
-
-Do [let me know](http://wordpress.org/support/plugin/custom-bulkquick-edit) how well you're able to use this plugin or not. 
-
-This plugin grew out of the frustration of having to custom write this code for every client. It works best when the custom post types have already added columns to the edit screen via the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter.
-
-[Example](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-).
-
-= Limitations =
-
-Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) is already configured, your theme's `functions.php` file will have to modified to add custom field columns. See "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-to-my-edit-page-)" for help.
-
-= Support =
-
-Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546-Custom-Bulk-Quick-Edit) for frequently asked questions, offering ideas, or getting support.
-
-If you want to contribute and I hope you do, visit the [Custom Bulk/Quick Edit Github repository](https://github.com/michael-cannon/custom-bulkquick-edit).
-
-= Thank You =
-A big, special thank you to [Joe Weber](https://plus.google.com/100063271269277312276/posts) of [12 Star Creative](http://www.12starcreative.com/) for creating the Custom Bulk/Quick Edit banner.
-
-Kudos to [Alex Stone](http://eoionline.org) for documentation revisions.
-
 
 == Installation ==
 
-1. Via WordPress Admin > Plugins > Add New, Upload the `custom-bulkquick-edit.zip` file
-1. Alternately, via FTP, upload `custom-bulkquick-edit` directory to the `/wp-content/plugins/` directory
-1. Activate the 'Custom Bulk/Quick Edit' plugin after uploading or through WordPress Admin > Plugins
+= Install Methods =
+
+* Through WordPress Admin > Plugins > Add New, Search for "Custom Bulk Quick Edit"
+	* Find "Custom Bulk/Quick Edit by Aihrus"
+	* Click "Install Now" of Custom Bulk/Quick Edit
+* Download `custom-bulkquick-edit.zip` locally
+	* Through WordPress Admin > Plugins > Add New
+	* Click Upload
+	* "Choose File" `custom-bulkquick-edit.zip`
+	* Click "Install Now"
+* Download and unzip `custom-bulkquick-edit.zip` locally
+	* Using FTP, upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
+
+= Activatation Options =
+
+* Activate the "Custom Bulk/Quick Edit" plugin after uploading
+* Activate the "Custom Bulk/Quick Edit" plugin through WordPress Admin > Plugins
+
+= Usage =
+
+1. Read "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)"
+1. Read "[How do you configure options?](https://aihrus.zendesk.com/entries/24911342)"
+1. Read "[Where can I find working samples?[(https://aihrus.zendesk.com/entries/27667723)"
+
+= Upgrading =
+
+* Through WordPress
+	* Via WordPress Admin > Dashboard > Updates, click "Check Again"
+	* Select plugins for update, click "Update Plugins"
+* Using FTP
+	* Download and unzip `custom-bulkquick-edit.zip` locally
+	* FTP, upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
+	* Be sure to overwrite your existing `custom-bulkquick-edit` folder contents
 
 
 == Frequently Asked Questions ==
 
-= Most Common Resolutions =
+= Most Common Issues =
 
-1. [How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411-How-do-I-add-custom-columns-to-my-edit-page-)
-1. [Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723-Where-can-I-find-working-samples-)
-1. [How do you configure options?](https://aihrus.zendesk.com/entries/24911342-How-do-you-configure-options-)
+* [How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)
+* [How do you configure options?](https://aihrus.zendesk.com/entries/24911342)
+* [Where can I find working samples?[(https://aihrus.zendesk.com/entries/27667723)
+* Got `Parse error: syntax error, unexpected T_STATIC, expecting ')'`? Read [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006) for the fixes.
+* [Debug common theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
 
-= Still Stuck? =
+= Still Stuck or Want Something Done? Get Support! =
 
-Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546-Custom-Bulk-Quick-Edit) for frequently asked questions, offering ideas, or getting support.
+1. [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/22221141) - read and comment upon frequently asked questions
+1. [Open Custom Bulk/Quick Edit Issues](https://github.com/michael-cannon/custom-bulkquick-edit/issues) - review and submit bug reports and enhancement requests
+1. [Custom Bulk/Quick Edit Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
+1. [Contribute Code to Custom Bulk/Quick Edit](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
+1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - get the latest Custom Bulk/Quick Edit version
 
 
 == Screenshots ==
@@ -169,23 +174,38 @@ See [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/ma
 
 = 1.3.0 =
 
-* Requires PHP 5.3+ [notice](https://aihrus.zendesk.com/entries/30678006-Testimonials-2-16-0-Requires-PHP-5-3-)
+* Requires PHP 5.3+ [notice](https://aihrus.zendesk.com/entries/30678006)
 
 = 1.1.0 =
 
 * Please review your settings as some option keys have changed. There's no auto-upgrade at this time.
 
+== Notes ==
 
-== Beta Testers Needed ==
+* This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/bulk_edit_custom_box) and [quick_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/quick_edit_custom_box) actions.
+* Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) is already configured, your theme's `functions.php` file will have to modified to add custom field columns.
 
-I really want Custom Bulk/Quick Edit and Custom Bulk/Quick Edit Premium to be the best WordPress plugins of their type. However, it's beyond me to do it alone.
 
-I need beta testers to help with ensuring pending releases of Custom Bulk/Quick Edit and Custom Bulk/Quick Edit Premium are solid. This would benefit us all by helping reduce the number of releases and raise code quality.
+== API ==
 
-[Please contact me directly](http://aihr.us/contact-aihrus/).
+* Read the [Custom Bulk/Quick Edit API](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/API.md).
 
-Beta testers benefit directly with latest versions, a free 1-site license for Custom Bulk/Quick Edit Premium, and personalized support assistance.
 
-== TODO ==
+== Background ==
 
-See [TODO](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/TODO.md)
+This plugin grew out of the frustration of having to custom write this code for every client. It works best when the custom post types have already added columns to the edit screen via the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter.
+
+
+== Localization ==
+
+* Serbo-Croatian by [Borisa Djuraskovic](borisad@webhostinghub.com)
+
+You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
+
+**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
+
+
+== Thank You ==
+A big, special thank you to [Joe Weber](https://plus.google.com/100063271269277312276/posts) of [12 Star Creative](http://www.12starcreative.com/) for creating the Custom Bulk/Quick Edit banner.
+
+Kudos to [Alex Stone](http://eoionline.org) for documentation revisions.

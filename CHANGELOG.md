@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## master
+* Convert TODO to https://github.com/michael-cannon/custom-bulkquick-edit/issues
+* Revise readme structure
 
 ## 1.3.4
 * Add default gallery
