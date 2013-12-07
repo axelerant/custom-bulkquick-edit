@@ -105,13 +105,13 @@ five-five|55`
 
 * Through WordPress Admin > Plugins > Add New, Search for "Custom Bulk Quick Edit"
 	* Find "Custom Bulk/Quick Edit by Aihrus"
-	* Click "Install Now" of Custom Bulk/Quick Edit
-* Download `custom-bulkquick-edit.zip` locally
+	* Click "Install Now" of "Custom Bulk/Quick Edit by Aihrus"
+* Download [`custom-bulkquick-edit.zip`](http://downloads.wordpress.org/plugin/custom-bulkquick-edit.zip) locally
 	* Through WordPress Admin > Plugins > Add New
 	* Click Upload
 	* "Choose File" `custom-bulkquick-edit.zip`
 	* Click "Install Now"
-* Download and unzip `custom-bulkquick-edit.zip` locally
+* Download and unzip [`custom-bulkquick-edit.zip`](http://downloads.wordpress.org/plugin/custom-bulkquick-edit.zip) locally
 	* Using FTP, upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
 
 = Activatation Options =
@@ -123,7 +123,7 @@ five-five|55`
 
 1. Read "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)"
 1. Read "[How do you configure options?](https://aihrus.zendesk.com/entries/24911342)"
-1. Read "[Where can I find working samples?[(https://aihrus.zendesk.com/entries/27667723)"
+1. Read "[Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)"
 
 = Upgrading =
 
@@ -131,7 +131,7 @@ five-five|55`
 	* Via WordPress Admin > Dashboard > Updates, click "Check Again"
 	* Select plugins for update, click "Update Plugins"
 * Using FTP
-	* Download and unzip `custom-bulkquick-edit.zip` locally
+	* Download and unzip [`custom-bulkquick-edit.zip`](http://downloads.wordpress.org/plugin/custom-bulkquick-edit.zip) locally
 	* FTP, upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
 	* Be sure to overwrite your existing `custom-bulkquick-edit` folder contents
 
@@ -142,13 +142,13 @@ five-five|55`
 
 * [How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)
 * [How do you configure options?](https://aihrus.zendesk.com/entries/24911342)
-* [Where can I find working samples?[(https://aihrus.zendesk.com/entries/27667723)
+* [Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)
 * Got `Parse error: syntax error, unexpected T_STATIC, expecting ')'`? Read [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006) for the fixes.
 * [Debug common theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/22221141) - read and comment upon frequently asked questions
+1. [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546) - read and comment upon frequently asked questions
 1. [Open Custom Bulk/Quick Edit Issues](https://github.com/michael-cannon/custom-bulkquick-edit/issues) - review and submit bug reports and enhancement requests
 1. [Custom Bulk/Quick Edit Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
 1. [Contribute Code to Custom Bulk/Quick Edit](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
