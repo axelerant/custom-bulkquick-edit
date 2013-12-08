@@ -22,8 +22,6 @@ To use this Custom Bulk/Quick Edit plugin with custom post types, please purchas
 
 **[Video introduction](http://youtu.be/UXvzdlvIPtk)**
 
-**Version 1.3.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
-
 Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. Therefore, unless it's already configured, your theme's `functions.php` file will have to modified to add custom field columns.
 
 Read [**Installation**](http://wordpress.org/plugins/custom-bulkquick-edit/installation/) and [**FAQ**](http://wordpress.org/plugins/custom-bulkquick-edit/faq/) to get started.
@@ -100,6 +98,8 @@ five-five|55`
 
 
 == Installation ==
+
+**Version 1.3.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
 
 = Install Methods =
 
