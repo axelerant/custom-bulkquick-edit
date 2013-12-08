@@ -39,7 +39,7 @@ else
 
 class Custom_Bulkquick_Edit extends Aihrus_Common {
 	const ID          = 'custom-bulkquick-edit';
-	const ITEM_NAME   = 'Custom Bulk/Quick Edit';
+	const ITEM_NAME   = 'Custom Bulk/Quick Edit by Aihrus';
 	const PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
 	const SLUG        = 'cbqe_';
 	const VERSION     = '1.3.4';
