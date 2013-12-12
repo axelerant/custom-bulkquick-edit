@@ -23,15 +23,15 @@
  */
 
 
-require_once CBQE_DIR_LIB . '/aihrus/class-aihrus-settings.php';
+require CBQE_DIR_LIB . '/aihrus/class-aihrus-settings.php';
 
 
 class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
-	const CONFIG    = '__config__';
-	const ENABLE    = '__enable__';
-	const ID        = 'custom-bulkquick-edit-settings';
-	const ITEM_NAME = 'Custom Bulk/Quick Edit Settings';
-	const RESET     = '__reset__';
+	const CONFIG = '__config__';
+	const ENABLE = '__enable__';
+	const ID     = 'custom-bulkquick-edit-settings';
+	const NAME   = 'Custom Bulk/Quick Edit Settings';
+	const RESET  = '__reset__';
 
 	private static $post_types = array();
 
