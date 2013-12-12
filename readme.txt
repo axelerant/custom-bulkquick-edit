@@ -99,7 +99,9 @@ five-five|55`
 
 == Installation ==
 
-**Version 1.3.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
+= Requirements =
+
+* PHP 5.3+ [Read notice](https://aihrus.zendesk.com/entries/30678006) – Since 1.3.0
 
 = Install Methods =
 
@@ -114,7 +116,7 @@ five-five|55`
 * Download and unzip [`custom-bulkquick-edit.zip`](http://downloads.wordpress.org/plugin/custom-bulkquick-edit.zip) locally
 	* Using FTP, upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
 
-= Activatation Options =
+= Activation Options =
 
 * Activate the "Custom Bulk/Quick Edit" plugin after uploading
 * Activate the "Custom Bulk/Quick Edit" plugin through WordPress Admin > Plugins

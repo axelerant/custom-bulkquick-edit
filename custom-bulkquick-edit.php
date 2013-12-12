@@ -23,15 +23,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-if ( ! defined( 'CBQE_PLUGIN_DIR' ) )
-	define( 'CBQE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
-if ( ! defined( 'CBQE_PLUGIN_DIR_LIB' ) )
-	define( 'CBQE_PLUGIN_DIR_LIB', CBQE_PLUGIN_DIR . '/lib' );
+define( 'CBQE_DIR', plugin_dir_path( __FILE__ ) );
+define( 'CBQE_DIR_LIB', CBQE_DIR . '/lib' );
+define( 'CBQE_VERSION', '1.4.0' );
 
-require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require CBQE_DIR_LIB . '/aihrus/requirements.php';
+require CBQE_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
-if ( af_php_version_check( __FILE__ ) )
+if ( aihr_check_php( __FILE__ ) )
 	add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
 else
 	return;
@@ -42,7 +42,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	const ITEM_NAME   = 'Custom Bulk/Quick Edit by Aihrus';
 	const PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
 	const SLUG        = 'cbqe_';
-	const VERSION     = '1.3.4';
+	const VERSION     = CBQE_VERSION;
 
 	private static $fields_enabled    = array();
 	private static $no_instance       = true;
@@ -64,6 +64,8 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public function __construct() {
+		parent::__construct();
+
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_action( 'init', array( __CLASS__, 'init' ) );
 	}
@@ -117,7 +119,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		global $wpdb;
 
-		require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+		require_once CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( Custom_Bulkquick_Edit_Settings::ID );
@@ -1130,7 +1132,7 @@ function custom_bulkquick_edit_init() {
 			return;
 
 		if ( Custom_Bulkquick_Edit::version_check() ) {
-			require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+			require_once CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
 			global $Custom_Bulkquick_Edit;
 			if ( is_null( $Custom_Bulkquick_Edit ) )

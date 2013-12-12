@@ -23,7 +23,7 @@
  */
 
 
-require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-settings.php';
+require_once CBQE_DIR_LIB . '/aihrus/class-aihrus-settings.php';
 
 
 class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {

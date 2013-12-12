@@ -1,5 +1,10 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
+## onefour
+* BUGFIX #6
+* Revise readme installation
+* Work with CBQE_EF 1.1
+
 ## master
 * Convert TODO to https://github.com/michael-cannon/custom-bulkquick-edit/issues
 * Revise readme structure
