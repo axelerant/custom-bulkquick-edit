@@ -1,7 +1,9 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## onefour
+* BUGFIX #1
 * BUGFIX #6
+* Implement PHP version checking
 * Revise readme installation
 * Work with CBQE_EF 1.1
 

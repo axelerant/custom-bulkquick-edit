@@ -24,25 +24,26 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
 define( 'CBQE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CBQE_DIR_LIB', CBQE_DIR . '/lib' );
+define( 'CBQE_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_VERSION', '1.4.0' );
 
-require CBQE_DIR_LIB . '/aihrus/requirements.php';
-require CBQE_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require CBQE_DIR_LIB . '/requirements.php';
 
-if ( aihr_check_php( __FILE__ ) )
-	add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
-else
-	return;
+if ( ! cbqe_requirements_check() ) {
+	return false;
+}
+
+require CBQE_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
 
 class Custom_Bulkquick_Edit extends Aihrus_Common {
-	const ID          = 'custom-bulkquick-edit';
-	const ITEM_NAME   = 'Custom Bulk/Quick Edit by Aihrus';
-	const PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
-	const SLUG        = 'cbqe_';
-	const VERSION     = CBQE_VERSION;
+	const BASE    = CBQE_BASE;
+	const ID      = 'custom-bulkquick-edit';
+	const SLUG    = 'cbqe_';
+	const VERSION = CBQE_VERSION;
 
 	private static $fields_enabled    = array();
 	private static $no_instance       = true;
@@ -92,7 +93,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function plugin_action_links( $links, $file ) {
-		if ( self::PLUGIN_BASE == $file )
+		if ( self::BASE == $file )
 			array_unshift( $links, self::$settings_link );
 
 		return $links;
@@ -119,7 +120,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		global $wpdb;
 
-		require_once CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+		require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( Custom_Bulkquick_Edit_Settings::ID );
@@ -129,7 +130,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function plugin_row_meta( $input, $file ) {
-		if ( self::PLUGIN_BASE != $file )
+		if ( self::BASE != $file )
 			return $input;
 
 		$disable_donate = cbqe_get_option( 'disable_donate' );
@@ -157,7 +158,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	public static function notice_donate( $disable_donate = null, $item_name = null ) {
 		$disable_donate = cbqe_get_option( 'disable_donate' );
 
-		parent::notice_donate( $disable_donate, self::ITEM_NAME );
+		parent::notice_donate( $disable_donate, CBQE_NAME );
 	}
 
 
@@ -176,7 +177,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		// display donate on major/minor version release
 		$donate_version = cbqe_get_option( 'donate_version', false );
 		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
-			add_action( 'admin_notices', array( __CLASS__, 'notice_donate' ) );
+			self::set_notice( 'notice_donate' );
 			cbqe_set_option( 'donate_version', self::VERSION );
 		}
 	}
@@ -674,7 +675,7 @@ jQuery( document ).ready( function() {
 
 		if ( self::$no_instance ) {
 			self::$no_instance = false;
-			wp_nonce_field( self::PLUGIN_BASE, self::ID );
+			wp_nonce_field( self::BASE, self::ID );
 		}
 
 		$field_name_var = str_replace( '-', '_', $field_name );
@@ -967,7 +968,7 @@ jQuery( document ).ready( function() {
 		if ( 'revision' == $post_type )
 			return;
 
-		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::PLUGIN_BASE ) )
+		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::BASE ) )
 			return;
 
 		remove_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
@@ -1073,10 +1074,8 @@ jQuery( document ).ready( function() {
 
 
 	public static function version_check() {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-
 		$good_version = true;
-		if ( ! is_plugin_active( self::PLUGIN_BASE ) )
+		if ( ! is_plugin_active( self::BASE ) )
 			$good_version = false;
 
 		return $good_version;
@@ -1120,6 +1119,9 @@ register_deactivation_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'deactivat
 register_uninstall_hook( __FILE__, array( 'Custom_Bulkquick_Edit', 'uninstall' ) );
 
 
+add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
+
+
 /**
  *
  *
@@ -1132,7 +1134,7 @@ function custom_bulkquick_edit_init() {
 			return;
 
 		if ( Custom_Bulkquick_Edit::version_check() ) {
-			require_once CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+			require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
 			global $Custom_Bulkquick_Edit;
 			if ( is_null( $Custom_Bulkquick_Edit ) )
