@@ -37,6 +37,7 @@ if ( ! cbqe_requirements_check() ) {
 }
 
 require CBQE_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
 
 class Custom_Bulkquick_Edit extends Aihrus_Common {
@@ -120,13 +121,13 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		global $wpdb;
 
-		require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
-
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( Custom_Bulkquick_Edit_Settings::ID );
 			$wpdb->query( 'OPTIMIZE TABLE `' . $wpdb->options . '`' );
 		}
+		
+		cbqe_set_option( 'donate_version' );
 	}
 
 
@@ -1135,8 +1136,6 @@ function custom_bulkquick_edit_init() {
 			return;
 
 		if ( Custom_Bulkquick_Edit::version_check() ) {
-			require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
-
 			global $Custom_Bulkquick_Edit;
 			if ( is_null( $Custom_Bulkquick_Edit ) )
 				$Custom_Bulkquick_Edit = new Custom_Bulkquick_Edit();

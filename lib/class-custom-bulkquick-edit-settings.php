@@ -22,7 +22,6 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
-
 require CBQE_DIR_LIB . '/aihrus/class-aihrus-settings.php';
 
 

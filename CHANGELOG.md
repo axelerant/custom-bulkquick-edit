@@ -1,6 +1,7 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
 ## onefour
+* Always include settings class
 * BUGFIX #1
 * BUGFIX #6
 * Implement PHP version checking
