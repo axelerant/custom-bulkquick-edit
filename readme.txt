@@ -140,7 +140,7 @@ five-five|55`
 	* Select plugins for update, click "Update Plugins"
 * Using FTP
 	* Download and unzip [`custom-bulkquick-edit.zip`](http://downloads.wordpress.org/plugin/custom-bulkquick-edit.zip) locally
-	* FTP, upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
+	* Upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
 	* Be sure to overwrite your existing `custom-bulkquick-edit` folder contents
 
 
