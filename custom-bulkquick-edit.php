@@ -121,6 +121,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		global $wpdb;
 
 		require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( Custom_Bulkquick_Edit_Settings::ID );
@@ -151,7 +152,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	public static function notice_0_0_1() {
 		$text = sprintf( __( 'If your Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'custom-bulkquick-edit' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
-		self::notice_updated( $text );
+		aihr_notice_updated( $text );
 	}
 
 
