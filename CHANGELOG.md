@@ -4,6 +4,7 @@
 * Always include settings class
 * BUGFIX #1
 * BUGFIX #6
+* BUGFIX No notices on deactivation
 * Convert TODO to https://github.com/michael-cannon/custom-bulkquick-edit/issues
 * Implement PHP version checking
 * Implement WordPress version checking

@@ -110,8 +110,6 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		Custom_Bulkquick_Edit::delete_notices();
 	}
 
 
@@ -1077,8 +1075,6 @@ jQuery( document ).ready( function() {
 
 	public static function version_check() {
 		$good_version = true;
-		if ( ! is_plugin_active( self::BASE ) )
-			$good_version = false;
 
 		return $good_version;
 	}

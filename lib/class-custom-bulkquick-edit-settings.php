@@ -22,6 +22,9 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
+if ( class_exists( 'Custom_Bulkquick_Edit_Settings' ) )
+	return;
+
 require CBQE_DIR_LIB . '/aihrus/class-aihrus-settings.php';
 
 
