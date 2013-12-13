@@ -1,17 +1,16 @@
 # CHANGELOG Custom Bulk/Quick Edit
 
-## onefour
+## master
 * Always include settings class
 * BUGFIX #1
 * BUGFIX #6
+* Convert TODO to https://github.com/michael-cannon/custom-bulkquick-edit/issues
 * Implement PHP version checking
 * Implement WordPress version checking
 * Revise readme installation
-* Work with CBQE_EF 1.1
-
-## master
-* Convert TODO to https://github.com/michael-cannon/custom-bulkquick-edit/issues
 * Revise readme structure
+* Tested up to 3.9.0
+* Work with CBQE_EF 1.1
 
 ## 1.3.4
 * Add default gallery
