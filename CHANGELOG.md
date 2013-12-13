@@ -5,6 +5,7 @@
 * BUGFIX #1
 * BUGFIX #6
 * Implement PHP version checking
+* Implement WordPress version checking
 * Revise readme installation
 * Work with CBQE_EF 1.1
 

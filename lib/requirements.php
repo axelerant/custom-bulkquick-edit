@@ -25,6 +25,10 @@ function cbqe_requirements_check() {
 		$valid_requirements = false;
 	}
 
+	if ( ! aihr_check_wp( CBQE_BASE, CBQE_NAME ) ) {
+		$valid_requirements = false;
+	}
+
 	if ( ! $valid_requirements ) {
 		deactivate_plugins( CBQE_BASE );
 	}
