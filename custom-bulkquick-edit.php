@@ -30,14 +30,14 @@ define( 'CBQE_DIR_LIB', CBQE_DIR . '/lib' );
 define( 'CBQE_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_VERSION', '1.4.0' );
 
-require CBQE_DIR_LIB . '/requirements.php';
+require_once CBQE_DIR_LIB . '/requirements.php';
 
 if ( ! cbqe_requirements_check() ) {
 	return false;
 }
 
-require CBQE_DIR_LIB . '/aihrus/class-aihrus-common.php';
-require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+require_once CBQE_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require_once CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
 
 class Custom_Bulkquick_Edit extends Aihrus_Common {
@@ -119,7 +119,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		global $wpdb;
 
-		require CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
+		require_once CBQE_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
