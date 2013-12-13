@@ -28,7 +28,7 @@ git push origin master
 * Link plugin to libary
 
 ```
-require WPSP_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require WPSP_DIR_LIB . '/aihrus/class-aihrus-common.php';
 ```
 
 * Extend plugin class to library
