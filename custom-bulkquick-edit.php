@@ -28,6 +28,7 @@ define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
 define( 'CBQE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CBQE_DIR_LIB', CBQE_DIR . '/lib' );
 define( 'CBQE_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
+define( 'CBQE_PREMIUM_LINK', '<a href="https://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>' );
 define( 'CBQE_VERSION', '1.4.0' );
 
 require_once CBQE_DIR_LIB . '/requirements.php';
@@ -139,7 +140,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		$links = array(
 			self::$donate_link,
-			'<a href="http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
+			CBQE_PREMIUM_LINK,
 		);
 
 		$input = array_merge( $input, $links );
