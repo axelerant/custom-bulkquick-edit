@@ -140,8 +140,11 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		$links = array(
 			self::$donate_link,
-			CBQE_PREMIUM_LINK,
 		);
+
+		global $Custom_Bulkquick_Edit_Premium;
+		if ( ! isset( $Custom_Bulkquick_Edit_Premium ) )
+			$links[] = CBQE_PREMIUM_LINK;
 
 		$input = array_merge( $input, $links );
 

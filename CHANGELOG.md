@@ -7,6 +7,7 @@
 * BUGFIX No notices on deactivation
 * Convert TODO to https://github.com/michael-cannon/custom-bulkquick-edit/issues
 * FEATURE #7 Move buy premium bits to constant
+* FEATURE #8 Disable purchase premium links if premium is active
 * Implement PHP version checking
 * Implement WordPress version checking
 * Revise readme installation
