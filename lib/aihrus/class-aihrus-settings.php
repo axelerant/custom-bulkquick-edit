@@ -328,15 +328,15 @@ abstract class Aihrus_Settings {
 			$field_class = ' ' . $class;
 
 		// desc isn't escaped because it's might contain allowed html
-		$choices      = array_map( 'esc_attr', $choices );
-		$field_class  = esc_attr( $field_class );
-		$id           = esc_attr( $id );
-		$options[$id] = esc_attr( $options[$id] );
-		$std          = esc_attr( $std );
+		$choices     = array_map( 'esc_attr', $choices );
+		$field_class = esc_attr( $field_class );
+		$id          = esc_attr( $id );
+		$field_value = esc_attr( $options[$id] );
+		$std         = esc_attr( $std );
 
 		switch ( $type ) {
 			case 'checkbox':
-				$content .= '<input class="checkbox' . $field_class . '" type="checkbox" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="1" ' . checked( $options[$id], 1, false ) . ' /> ';
+				$content .= '<input class="checkbox' . $field_class . '" type="checkbox" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="1" ' . checked( $field_value, 1, false ) . ' /> ';
 
 				if ( ! empty( $desc ) )
 					$content .= '<label for="' . $id . '"><span class="description">' . $desc . '</span></label>';
@@ -358,12 +358,12 @@ abstract class Aihrus_Settings {
 				break;
 
 			case 'hidden':
-				$content .= '<input type="hidden" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $options[$id] . '" />';
+				$content .= '<input type="hidden" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" />';
 
 				break;
 
 			case 'password':
-				$content .= '<input class="regular-text' . $field_class . '" type="password" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $options[$id] . '" />';
+				$content .= '<input class="regular-text' . $field_class . '" type="password" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" />';
 
 				if ( ! empty( $desc ) )
 					$content .= '<br /><span class="description">' . $desc . '</span>';
@@ -374,7 +374,7 @@ abstract class Aihrus_Settings {
 				$i             = 1;
 				$count_choices = count( $choices );
 				foreach ( $choices as $value => $label ) {
-					$content .= '<input class="radio' . $field_class . '" type="radio" name="' . static::ID . '[' . $id . ']" id="' . $id . $i . '" value="' . $value . '" ' . checked( $options[$id], $value, false ) . '> <label for="' . $id . $i . '">' . $label . '</label>';
+					$content .= '<input class="radio' . $field_class . '" type="radio" name="' . static::ID . '[' . $id . ']" id="' . $id . $i . '" value="' . $value . '" ' . checked( $field_value, $value, false ) . '> <label for="' . $id . $i . '">' . $label . '</label>';
 
 					if ( $i < $count_choices )
 						$content .= '<br />';
@@ -390,7 +390,7 @@ abstract class Aihrus_Settings {
 				break;
 
 			case 'readonly':
-				$content .= '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $options[$id] . '" readonly="readonly" />';
+				$content .= '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" readonly="readonly" />';
 
 				if ( ! empty( $desc ) )
 					$content .= '<br /><span class="description">' . $desc . '</span>';
@@ -401,7 +401,7 @@ abstract class Aihrus_Settings {
 				$content .= '<select class="select' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']">';
 
 				foreach ( $choices as $value => $label )
-					$content .= '<option value="' . $value . '"' . selected( $options[$id], $value, false ) . '>' . $label . '</option>';
+					$content .= '<option value="' . $value . '"' . selected( $field_value, $value, false ) . '>' . $label . '</option>';
 
 				$content .= '</select>';
 
@@ -413,7 +413,7 @@ abstract class Aihrus_Settings {
 				break;
 
 			case 'text':
-				$content .= '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $std . '" value="' . $options[$id] . '" />';
+				$content .= '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $std . '" value="' . $field_value . '" />';
 
 				if ( ! empty( $desc ) )
 					$content .= '<br /><span class="description">' . $desc . '</span>';
@@ -423,7 +423,7 @@ abstract class Aihrus_Settings {
 				break;
 
 			case 'textarea':
-				$content .= '<textarea class="' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $std . '" rows="5" cols="30">' . $options[$id] . '</textarea>';
+				$content .= '<textarea class="' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $std . '" rows="5" cols="30">' . $field_value . '</textarea>';
 
 				if ( ! empty( $desc ) )
 					$content .= '<br /><span class="description">' . $desc . '</span>';
