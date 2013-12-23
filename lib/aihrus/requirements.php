@@ -16,7 +16,83 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+if ( ! defined( 'AIHR_BASE' ) )
+	define( 'AIHR_BASE', __FILE__ );
+
+if ( ! defined( 'AIHR_VERSION' ) )
+	define( 'AIHR_VERSION', '1.0.0' );
+
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+if ( ! function_exists( 'aihr_check_aihrus_framework' ) ) {
+	function aihr_check_aihrus_framework( $file = null, $name = null, $aihr_min = '1.0.0' ) {
+		if ( is_null( $file ) ) {
+			aihr_notice_error( __( '`aihr_check_aihrus_framework` requires $file argument' ) );
+
+			return false;
+		}
+
+		if ( ! defined( 'AIHR_VERSION' ) ) {
+			$check_okay = false;
+		} else {
+			$check_okay = version_compare( AIHR_VERSION, $aihr_min, '>=' );
+		}
+
+		$file = plugin_basename( $file );
+		if ( ! $check_okay && __FILE__ != $file ) {
+			deactivate_plugins( $file );
+
+			if ( ! defined( 'AIHR_VERSION_FILE' ) ) {
+				define( 'AIHR_VERSION_FILE', $file );
+			}
+
+			if ( ! is_null( $name ) && ! defined( 'AIHR_VERSION_NAME' ) ) {
+				define( 'AIHR_VERSION_NAME', $name );
+			}
+
+			if ( ! defined( 'AIHR_VERSION_MIN' ) ) {
+				define( 'AIHR_VERSION_MIN', $aihr_min );
+			}
+
+			add_action( 'admin_notices', 'aihr_notice_aihrus_framework' );
+		}
+
+		return $check_okay;
+	}
+}
+
+if ( ! function_exists( 'aihr_notice_aihrus_framework' ) ) {
+	function aihr_notice_aihrus_framework() {
+		if ( defined( 'AIHR_VERSION_NAME' ) ) {
+			$name = AIHR_VERSION_NAME;
+		} else {
+			$name = basename( dirname( AIHR_VERSION_FILE ) );
+			$name = str_replace( '-', ' ', $name );
+			$name = ucwords( $name );
+		}
+
+		$help_url  = esc_url( 'https://aihrus.zendesk.com/entries/35689458' );
+		$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.' ), self_admin_url( 'update-core.php' ), $help_url );
+
+		$note = '';
+		if ( defined( 'AIHR_BASE' ) ) {
+			$plugin = plugin_basename( AIHR_BASE );
+			$plugin = explode( '/', $plugin );
+
+			$plugin_name = $plugin[0];
+			$plugin_name = str_replace( '-', ' ', $plugin_name );
+			$plugin_name = ucwords( $plugin_name );
+
+			$note = sprintf( esc_html__( 'Plugin "%1$s" is causing the out of date issue.' ), $plugin_name );
+		}
+
+		$aihr_version = defined( 'AIHR_VERSION' ) ? AIHR_VERSION : '0.0.0';
+
+		$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires Aihrus Framework %2$s or newer. You\'re running Aihrus Framework %4$s. Once corrected, "%1$s" can be activated. %5$s %3$s' ), $name, AIHR_VERSION_MIN, $help_link, $aihr_version, $note );
+
+		aihr_notice_error( $text );
+	}
+}
 
 if ( ! function_exists( 'aihr_check_php' ) ) {
 	function aihr_check_php( $file = null, $name = null, $php_min = '5.3.0' ) {
@@ -50,7 +126,6 @@ if ( ! function_exists( 'aihr_check_php' ) ) {
 	}
 }
 
-
 if ( ! function_exists( 'aihr_notice_php' ) ) {
 	function aihr_notice_php() {
 		if ( defined( 'AIHR_PHP_VERSION_NAME' ) ) {
@@ -68,7 +143,6 @@ if ( ! function_exists( 'aihr_notice_php' ) ) {
 		aihr_notice_error( $text );
 	}
 }
-
 
 if ( ! function_exists( 'aihr_check_wp' ) ) {
 	function aihr_check_wp( $file = null, $name = null, $wp_min = '3.6.0' ) {
@@ -104,7 +178,6 @@ if ( ! function_exists( 'aihr_check_wp' ) ) {
 	}
 }
 
-
 if ( ! function_exists( 'aihr_notice_wp' ) ) {
 	function aihr_notice_wp() {
 		global $wp_version;
@@ -125,13 +198,11 @@ if ( ! function_exists( 'aihr_notice_wp' ) ) {
 	}
 }
 
-
 if ( ! function_exists( 'aihr_notice_error' ) ) {
 	function aihr_notice_error( $text ) {
 		aihr_notice_updated( $text, 'error' );
 	}
 }
-
 
 if ( ! function_exists( 'aihr_notice_updated' ) ) {
 	function aihr_notice_updated( $text, $class = 'updated' ) {
