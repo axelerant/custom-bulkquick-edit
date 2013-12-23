@@ -2,20 +2,21 @@
 
 ## master
 * Always include settings class
-* BUGFIX #1
-* BUGFIX #6
 * BUGFIX No notices on deactivation
 * Convert TODO to https://github.com/michael-cannon/custom-bulkquick-edit/issues
 * FEATURE #7 Move buy premium bits to constant
 * FEATURE #8 Disable purchase premium links if premium is active
 * Implement PHP version checking
 * Implement WordPress version checking
+* Rename manage_posts_columns as manage_columns
+* RESOLVE #1 Plugin could not be activated because it triggered a fatal error.
 * RESOLVE #4 Support filter manage_pages_columns
 * RESOLVE #5 Support filter manage_posts_columns
-* Rename manage_posts_columns as manage_columns
+* RESOLVE #6 Plugin meta donate link is missing
 * Revise readme installation
 * Revise readme structure
 * Tested up to 3.9.0
+* Use aihr_check_aihrus_framework
 * Work with CBQE_EF 1.1
 
 ## 1.3.4
