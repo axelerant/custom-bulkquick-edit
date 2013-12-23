@@ -266,7 +266,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	}
 
 
-	public static function manage_posts_columns( $columns ) {
+	public static function manage_columns( $columns ) {
 		global $post;
 
 		if ( is_null( $post ) )

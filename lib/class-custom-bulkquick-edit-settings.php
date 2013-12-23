@@ -172,8 +172,14 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 				);
 			}
 
+			$fields = array();
+			if ( 'page' != $post_type )
+				$filter = 'manage_posts_columns';
+			else
+				$filter = 'manage_pages_columns';
+
+			$fields      = apply_filters( $filter, $fields );
 			$filter      = 'manage_' . $post_type . '_posts_columns';
-			$fields      = array();
 			$fields      = apply_filters( $filter, $fields );
 			$filter_edit = 'manage_edit-' . $post_type . '_columns';
 			$fields      = apply_filters( $filter_edit, $fields );
@@ -254,7 +260,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 				add_action( $action, array( 'Custom_Bulkquick_Edit', 'manage_posts_custom_column_capture' ), 199, 2 );
 			}
 
-			add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_posts_columns' ), 199 );
+			add_filter( $filter, array( 'Custom_Bulkquick_Edit', 'manage_columns' ), 199 );
 		}
 
 		parent::settings();

@@ -10,6 +10,9 @@
 * FEATURE #8 Disable purchase premium links if premium is active
 * Implement PHP version checking
 * Implement WordPress version checking
+* RESOLVE #4 Support filter manage_pages_columns
+* RESOLVE #5 Support filter manage_posts_columns
+* Rename manage_posts_columns as manage_columns
 * Revise readme installation
 * Revise readme structure
 * Tested up to 3.9.0
