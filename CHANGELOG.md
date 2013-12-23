@@ -1,5 +1,8 @@
 # CHANGELOG Aihrus Framework
 
+## 1.0.0
+* Enable aihr_check_aihrus_framework
+
 ## master
 * Abstract notice helper methods as functions
 * Add TODO
