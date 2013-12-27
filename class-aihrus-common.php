@@ -313,6 +313,7 @@ EOD;
 		$doc->loadHTML( $image );
 		$xpath = new DOMXPath( $doc );
 		$src   = $xpath->evaluate( 'string(//img/@src)' );
+		$src   = self::strip_protocol( $src );
 
 		return $src;
 	}
@@ -441,6 +442,15 @@ EOD;
 			$output .= '</'.array_pop( $tag_stack ).'>';
 
 		return $output;
+	}
+
+
+	public static function strip_protocol( $link ) {
+			if ( ! empty( $link ) ) {
+				$link = preg_replace( '#https?:#', '', $link );
+			}
+
+			return $link;
 	}
 
 
