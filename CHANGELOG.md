@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+
+## 1.4.0
 * Add filter cbqe_ignore_bulk_edit
 * Always include settings class
 * BUGFIX No notices on deactivation
