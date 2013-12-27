@@ -1,10 +1,10 @@
-# Copyright (C) 2013 Custom Bulk/Quick Edit
-# This file is distributed under the same license as the Custom Bulk/Quick Edit package.
+# Copyright (C) 2013 Custom Bulk/Quick Edit by Aihrus
+# This file is distributed under the same license as the Custom Bulk/Quick Edit by Aihrus package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 1.3.4\n"
+"Project-Id-Version: Custom Bulk/Quick Edit by Aihrus 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2013-12-05 19:05:12+00:00\n"
+"POT-Creation-Date: 2013-12-27 09:51:00+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,60 +12,24 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: custom-bulkquick-edit.php:73
+#: custom-bulkquick-edit.php:79
 msgid "Settings"
 msgstr ""
 
-#: custom-bulkquick-edit.php:149
+#: custom-bulkquick-edit.php:157
 msgid "If your Custom Bulk/Quick Edit display has gone to funky town, please <a href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: custom-bulkquick-edit.php:789 custom-bulkquick-edit.php:834
+#: custom-bulkquick-edit.php:801 custom-bulkquick-edit.php:846
 msgid "&mdash; Unset &mdash;"
 msgstr ""
 
-#: custom-bulkquick-edit.php:838
+#: custom-bulkquick-edit.php:850
 msgid "&mdash; No Change &mdash;"
 msgstr ""
 
-#: lib/aihrus/class-aihrus-common.php:50
-msgid "Plugin \"%1$s\" requires at least PHP %2$s, you're running PHP %4$s. See <a href=\"%3$s\">possible solutions</a>. Once fixed, \"%1$s\" can be activated again."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:160
-msgid "<a href=\"%1$s\">update to</a>"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:165
-msgid "<a href=\"%1$s\">install</a>"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:168
-msgid "<a href=\"%1$s\">activate</a>"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:172
-msgid "Plugin %3$s has been deactivated. Please %1$s %4$s version %2$s or newer before activating %3$s."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:184
-msgid "<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:189
-msgid "<a href=\"%s\">Where's my license key?</a>"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:194
-msgid "<a href=\"%1$s\">%2$s</a>"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:198
-msgid "Plugin %1$s requires license activation before updating will work. Please activate the license key via %2$s. No license key? See %3$s or purchase %4$s."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:244
-msgid "Please donate $5 towards ongoing free support and development of the %1$s plugin. %2$s"
+#: lib/aihrus/class-aihrus-common.php:156
+msgid "Please donate $5 towards ongoing free support and development of the \"%1$s\" plugin. %2$s"
 msgstr ""
 
 #: lib/aihrus/class-aihrus-settings.php:61
@@ -136,113 +100,181 @@ msgstr ""
 msgid "Expand/Collapse"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:89
+#: lib/aihrus/requirements.php:30
+msgid "`aihr_check_aihrus_framework` requires $file argument"
+msgstr ""
+
+#: lib/aihrus/requirements.php:75 lib/requirements.php:49
+msgid "<a href=\"%1$s\">Update plugins</a>. <a href=\"%2$s\">More information</a>."
+msgstr ""
+
+#: lib/aihrus/requirements.php:86
+msgid "Plugin \"%1$s\" is causing the out of date issue."
+msgstr ""
+
+#: lib/aihrus/requirements.php:91
+msgid "Plugin \"%1$s\" has been deactivated as it requires Aihrus Framework %2$s or newer. You're running Aihrus Framework %4$s. Once corrected, \"%1$s\" can be activated. %5$s %3$s"
+msgstr ""
+
+#: lib/aihrus/requirements.php:100
+msgid "`aihr_check_php` requires $file argument"
+msgstr ""
+
+#: lib/aihrus/requirements.php:141
+msgid "Plugin \"%1$s\" has been deactivated as it requires PHP %2$s or newer. You're running PHP %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">More information</a>."
+msgstr ""
+
+#: lib/aihrus/requirements.php:150
+msgid "`aihr_check_wp` requires $file argument"
+msgstr ""
+
+#: lib/aihrus/requirements.php:195
+msgid "Plugin \"%1$s\" has been deactivated as it requires WordPress %2$s or newer. You're running WordPress %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">Update WordPress</a>."
+msgstr ""
+
+#: lib/aihrus/requirements.php:225
+msgid "<a href=\"%1$s\">update to</a>"
+msgstr ""
+
+#: lib/aihrus/requirements.php:230
+msgid "<a href=\"%1$s\">install</a>"
+msgstr ""
+
+#: lib/aihrus/requirements.php:233
+msgid "<a href=\"%1$s\">activate</a>"
+msgstr ""
+
+#: lib/aihrus/requirements.php:237
+msgid "Plugin \"%3$s\" has been deactivated. Please %1$s \"%4$s\" version %2$s or newer before activating \"%3$s\"."
+msgstr ""
+
+#: lib/aihrus/requirements.php:250
+msgid "<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry"
+msgstr ""
+
+#: lib/aihrus/requirements.php:255
+msgid "<a href=\"%s\">Where's my license key?</a>"
+msgstr ""
+
+#: lib/aihrus/requirements.php:260
+msgid "<a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: lib/aihrus/requirements.php:264
+msgid "Plugin \"%1$s\" requires license activation before updating will work. Please activate the license key through %2$s. No license key? See \"%3$s\" or purchase \"%4$s\"."
+msgstr ""
+
+#: lib/class-custom-bulkquick-edit-settings.php:91
 msgid "TBD"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:94
-#: lib/class-custom-bulkquick-edit-settings.php:104
-#: lib/class-custom-bulkquick-edit-settings.php:399
+#: lib/class-custom-bulkquick-edit-settings.php:96
+#: lib/class-custom-bulkquick-edit-settings.php:106
+#: lib/class-custom-bulkquick-edit-settings.php:407
 msgid "No"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:95
+#: lib/class-custom-bulkquick-edit-settings.php:97
 msgid "As checkbox"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:96
+#: lib/class-custom-bulkquick-edit-settings.php:98
 msgid "As input field"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:97
+#: lib/class-custom-bulkquick-edit-settings.php:99
 msgid "As radio"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:98
+#: lib/class-custom-bulkquick-edit-settings.php:100
 msgid "As select"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:99
+#: lib/class-custom-bulkquick-edit-settings.php:101
 msgid "As textarea"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:105
+#: lib/class-custom-bulkquick-edit-settings.php:107
 msgid "No, but enable column view"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:106
+#: lib/class-custom-bulkquick-edit-settings.php:108
 msgid "Like categories"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:107
+#: lib/class-custom-bulkquick-edit-settings.php:109
 msgid "Like tags"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:111
+#: lib/class-custom-bulkquick-edit-settings.php:113
 msgid "You may create options formatted like \"the-key|Supremely, Pretty Values\" seperated by newlines."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:112
+#: lib/class-custom-bulkquick-edit-settings.php:114
 msgid "Force making %1$s an editable taxonomy field like checked categories or free-text tags."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:113
+#: lib/class-custom-bulkquick-edit-settings.php:115
 msgid "Enable editing of %1$s' excerpt."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:114
+#: lib/class-custom-bulkquick-edit-settings.php:116
 msgid "During bulk editing, easily remove all of the %1$s' prior relationships and add new."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:115
+#: lib/class-custom-bulkquick-edit-settings.php:117
 msgid "Enable editing of %1$s' title."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:117
+#: lib/class-custom-bulkquick-edit-settings.php:119
 msgid "%s Configuration"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:118
+#: lib/class-custom-bulkquick-edit-settings.php:120
 msgid "Edit \"%s\" taxonomy?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:119
+#: lib/class-custom-bulkquick-edit-settings.php:121
 msgid "Enable \"%s\"?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:120
+#: lib/class-custom-bulkquick-edit-settings.php:122
 msgid "Excerpt"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:121
+#: lib/class-custom-bulkquick-edit-settings.php:123
 msgid "Title"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:122
+#: lib/class-custom-bulkquick-edit-settings.php:124
 msgid "Reset \"%s\" Relations?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:290
+#: lib/class-custom-bulkquick-edit-settings.php:298
 msgid "Custom Bulk/Quick Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:290
+#: lib/class-custom-bulkquick-edit-settings.php:298
 msgid "Custom Bulk/Quick"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:391
+#: lib/class-custom-bulkquick-edit-settings.php:399
 msgid "Enable"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:397
+#: lib/class-custom-bulkquick-edit-settings.php:405
 msgid "Yes"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:401
+#: lib/class-custom-bulkquick-edit-settings.php:409
 msgid "Where's the beef?"
 msgstr ""
+
+#: lib/requirements.php:51
+msgid "Plugin \"%1$s\" has been deactivated as it requires a current Aihrus Framework. Once corrected, \"%1$s\" can be activated. %2$s"
+msgstr ""
 #. Plugin Name of the plugin/theme
-msgid "Custom Bulk/Quick Edit"
+msgid "Custom Bulk/Quick Edit by Aihrus"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -250,7 +282,7 @@ msgid "http://wordpress.org/plugins/custom-bulkquick-edit/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Custom Bulk/Quick Edit plugin allows you to easily add previously defined custom fields to the edit screen bulk and quick edit panels."
+msgid "Custom Bulk/Quick Edit by Aihrus allows you to easily add custom fields to the edit screen bulk and quick edit panels."
 msgstr ""
 
 #. Author of the plugin/theme
