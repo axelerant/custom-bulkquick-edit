@@ -1132,19 +1132,18 @@ add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
 function custom_bulkquick_edit_init() {
-	if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX )
-		if ( ! is_admin() )
-			return;
+	if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) )
+		return;
 
-		if ( Custom_Bulkquick_Edit::version_check() ) {
-			global $Custom_Bulkquick_Edit;
-			if ( is_null( $Custom_Bulkquick_Edit ) )
-				$Custom_Bulkquick_Edit = new Custom_Bulkquick_Edit();
+	if ( Custom_Bulkquick_Edit::version_check() ) {
+		global $Custom_Bulkquick_Edit;
+		if ( is_null( $Custom_Bulkquick_Edit ) )
+			$Custom_Bulkquick_Edit = new Custom_Bulkquick_Edit();
 
-			global $Custom_Bulkquick_Edit_Settings;
-			if ( is_null( $Custom_Bulkquick_Edit_Settings ) )
-				$Custom_Bulkquick_Edit_Settings = new Custom_Bulkquick_Edit_Settings();
-		}
+		global $Custom_Bulkquick_Edit_Settings;
+		if ( is_null( $Custom_Bulkquick_Edit_Settings ) )
+			$Custom_Bulkquick_Edit_Settings = new Custom_Bulkquick_Edit_Settings();
+	}
 }
 
 
