@@ -27,7 +27,7 @@ require_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( ! function_exists( 'aihr_check_aihrus_framework' ) ) {
 	function aihr_check_aihrus_framework( $file = null, $name = null, $aihr_min = '1.0.0' ) {
 		if ( is_null( $file ) ) {
-			aihr_notice_error( __( '`aihr_check_aihrus_framework` requires $file argument', 'custom-bulkquick-edit' ) );
+			aihr_notice_error( __( '`aihr_check_aihrus_framework` requires $file argument' ) );
 
 			return false;
 		}
@@ -72,7 +72,7 @@ if ( ! function_exists( 'aihr_notice_aihrus_framework' ) ) {
 		}
 
 		$help_url  = esc_url( 'https://aihrus.zendesk.com/entries/35689458' );
-		$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.', 'custom-bulkquick-edit' ), self_admin_url( 'update-core.php' ), $help_url );
+		$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.' ), self_admin_url( 'update-core.php' ), $help_url );
 
 		$note = '';
 		if ( defined( 'AIHR_BASE' ) ) {
@@ -83,12 +83,12 @@ if ( ! function_exists( 'aihr_notice_aihrus_framework' ) ) {
 			$plugin_name = str_replace( '-', ' ', $plugin_name );
 			$plugin_name = ucwords( $plugin_name );
 
-			$note = sprintf( esc_html__( 'Plugin "%1$s" is causing the out of date issue.', 'custom-bulkquick-edit' ), $plugin_name );
+			$note = sprintf( esc_html__( 'Plugin "%1$s" is causing the out of date issue.' ), $plugin_name );
 		}
 
 		$aihr_version = defined( 'AIHR_VERSION' ) ? AIHR_VERSION : '0.0.0';
 
-		$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires Aihrus Framework %2$s or newer. You\'re running Aihrus Framework %4$s. Once corrected, "%1$s" can be activated. %5$s %3$s', 'custom-bulkquick-edit' ), $name, AIHR_VERSION_MIN, $help_link, $aihr_version, $note );
+		$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires Aihrus Framework %2$s or newer. You\'re running Aihrus Framework %4$s. Once corrected, "%1$s" can be activated. %5$s %3$s' ), $name, AIHR_VERSION_MIN, $help_link, $aihr_version, $note );
 
 		aihr_notice_error( $text );
 	}
@@ -97,7 +97,7 @@ if ( ! function_exists( 'aihr_notice_aihrus_framework' ) ) {
 if ( ! function_exists( 'aihr_check_php' ) ) {
 	function aihr_check_php( $file = null, $name = null, $php_min = '5.3.0' ) {
 		if ( is_null( $file ) ) {
-			aihr_notice_error( __( '`aihr_check_php` requires $file argument', 'custom-bulkquick-edit' ) );
+			aihr_notice_error( __( '`aihr_check_php` requires $file argument' ) );
 
 			return false;
 		}
@@ -138,7 +138,7 @@ if ( ! function_exists( 'aihr_notice_php' ) ) {
 
 		$help_url = esc_url( 'https://aihrus.zendesk.com/entries/30678006' );
 
-		$text = sprintf( __( 'Plugin "%1$s" has been deactivated as it requires PHP %2$s or newer. You\'re running PHP %4$s. Once corrected, "%1$s" can be activated. <a href="%3$s">More information</a>.', 'custom-bulkquick-edit' ), $name, AIHR_PHP_VERSION_MIN, $help_url, PHP_VERSION );
+		$text = sprintf( __( 'Plugin "%1$s" has been deactivated as it requires PHP %2$s or newer. You\'re running PHP %4$s. Once corrected, "%1$s" can be activated. <a href="%3$s">More information</a>.' ), $name, AIHR_PHP_VERSION_MIN, $help_url, PHP_VERSION );
 
 		aihr_notice_error( $text );
 	}
@@ -147,7 +147,7 @@ if ( ! function_exists( 'aihr_notice_php' ) ) {
 if ( ! function_exists( 'aihr_check_wp' ) ) {
 	function aihr_check_wp( $file = null, $name = null, $wp_min = '3.6.0' ) {
 		if ( is_null( $file ) ) {
-			aihr_notice_error( __( '`aihr_check_wp` requires $file argument', 'custom-bulkquick-edit' ) );
+			aihr_notice_error( __( '`aihr_check_wp` requires $file argument' ) );
 
 			return false;
 		}
@@ -192,7 +192,7 @@ if ( ! function_exists( 'aihr_notice_wp' ) ) {
 
 		$help_url = network_admin_url( 'update-core.php' );
 
-		$text = sprintf( __( 'Plugin "%1$s" has been deactivated as it requires WordPress %2$s or newer. You\'re running WordPress %4$s. Once corrected, "%1$s" can be activated. <a href="%3$s">Update WordPress</a>.', 'custom-bulkquick-edit' ), $name, AIHR_WP_VERSION_MIN, $help_url, $wp_version );
+		$text = sprintf( __( 'Plugin "%1$s" has been deactivated as it requires WordPress %2$s or newer. You\'re running WordPress %4$s. Once corrected, "%1$s" can be activated. <a href="%3$s">Update WordPress</a>.' ), $name, AIHR_WP_VERSION_MIN, $help_url, $wp_version );
 
 		aihr_notice_error( $text );
 	}
@@ -222,19 +222,19 @@ if ( ! function_exists( 'aihr_notice_version' ) ) {
 	function aihr_notice_version( $required_base, $required_name, $required_slug, $required_version, $item_name ) {
 		$is_active = is_plugin_active( $required_base );
 		if ( $is_active )
-			$link = sprintf( __( '<a href="%1$s">update to</a>', 'custom-bulkquick-edit' ), self_admin_url( 'update-core.php' ) );
+			$link = sprintf( __( '<a href="%1$s">update to</a>' ), self_admin_url( 'update-core.php' ) );
 		else {
 			$plugins = get_plugins();
 			if ( empty( $plugins[ $required_base ] ) ) {
 				$install = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $required_slug ), 'install-plugin_' . $required_slug ) );
-				$link    = sprintf( __( '<a href="%1$s">install</a>', 'custom-bulkquick-edit' ), $install );
+				$link    = sprintf( __( '<a href="%1$s">install</a>' ), $install );
 			} else {
 				$activate = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_base ), 'activate-plugin_' . $required_base ) );
-				$link     = sprintf( __( '<a href="%1$s">activate</a>', 'custom-bulkquick-edit' ), $activate );
+				$link     = sprintf( __( '<a href="%1$s">activate</a>' ), $activate );
 			}
 		}
 
-		$text = sprintf( __( 'Plugin "%3$s" has been deactivated. Please %1$s "%4$s" version %2$s or newer before activating "%3$s".', 'custom-bulkquick-edit' ), $link, $required_version, $item_name, $required_name );
+		$text = sprintf( __( 'Plugin "%3$s" has been deactivated. Please %1$s "%4$s" version %2$s or newer before activating "%3$s".' ), $link, $required_version, $item_name, $required_name );
 
 		aihr_notice_error( $text );
 	}
@@ -247,21 +247,21 @@ if ( ! function_exists( 'aihr_notice_license' ) ) {
 		else
 			$link = get_admin_url() . 'edit.php?post_type=' . $post_type . '&page=' . $settings_id;
 
-		$text = __( '<a href="%1$s">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry', 'custom-bulkquick-edit' );
+		$text = __( '<a href="%1$s">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry' );
 
 		$settings_link = sprintf( $text, $link, $free_name );
 
 		$link = esc_url( 'https://aihrus.zendesk.com/entries/28745227' );
-		$text = __( '<a href="%s">Where\'s my license key?</a>', 'custom-bulkquick-edit' );
+		$text = __( '<a href="%s">Where\'s my license key?</a>' );
 
 		$faq_link = sprintf( $text, $link );
 
 		$link = esc_url( $purchase_url );
-		$text = __( '<a href="%1$s">%2$s</a>', 'custom-bulkquick-edit' );
+		$text = __( '<a href="%1$s">%2$s</a>' );
 
 		$buy_link = sprintf( $text, $link, $item_name );
 
-		$text = sprintf( __( 'Plugin "%1$s" requires license activation before updating will work. Please activate the license key through %2$s. No license key? See "%3$s" or purchase "%4$s".', 'custom-bulkquick-edit' ), $item_name, $settings_link, $faq_link, $buy_link );
+		$text = sprintf( __( 'Plugin "%1$s" requires license activation before updating will work. Please activate the license key through %2$s. No license key? See "%3$s" or purchase "%4$s".' ), $item_name, $settings_link, $faq_link, $buy_link );
 
 		aihr_notice_error( $text );
 	}
