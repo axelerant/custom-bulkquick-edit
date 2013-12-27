@@ -59,6 +59,8 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 
 * Adds float, integer, and user inputs
 * Bulk edit post dates
+* Color input with color picker
+* Date and time input with datetime picker
 * Date input with date picker
 * Disable donate references
 * Flexible API

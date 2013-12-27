@@ -9,8 +9,8 @@ php:
 env:
     - WP_VERSION=master WP_MULTISITE=1
     - WP_VERSION=master WP_MULTISITE=0
-    - WP_VERSION=3.7.0 WP_MULTISITE=1
-    - WP_VERSION=3.7.0 WP_MULTISITE=0
+    - WP_VERSION=3.6.0 WP_MULTISITE=1
+    - WP_VERSION=3.6.0 WP_MULTISITE=0
 
 before_install:
     - sudo apt-get update
@@ -31,7 +31,7 @@ before_script:
 
 script:
     - find . \( -name '*.php' -o -name '*.inc' \) -exec php -lf {} \;
-    - phpcs -s -n --standard=ci/phpcs.travis.ruleset.xml .
+    - phpcs -s -n --standard=ci/phpcs.ruleset.xml .
     - phpcpd .
     - phpmd . --exclude ${PHPMD_EXCLUDE} text ci/phpmd.ruleset.xml
 #    - phpunit

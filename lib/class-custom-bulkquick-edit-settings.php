@@ -395,23 +395,23 @@ EOD;
 					$field = str_replace( Custom_Bulkquick_Edit_Settings::CONFIG, '', $id );
 					$type  = $input[ $field ];
 					switch ( $type ) {
-					case 'checkbox';
-						$default = '1|' . esc_html__( 'Enable', 'custom-bulkquick-edit' );
-						break;
+						case 'checkbox';
+							$default = '1|' . esc_html__( 'Enable', 'custom-bulkquick-edit' );
+							break;
 
-					case 'radio';
-					case 'select';
-						$default  = '';
-						$default .= esc_html__( 'Yes', 'custom-bulkquick-edit' );
-						$default .= "\n";
-						$default .= 'no|' . esc_html__( 'No', 'custom-bulkquick-edit' );
-						$default .= "\n";
-						$default .= 'where-beef|' . esc_html__( 'Where\'s the beef?', 'custom-bulkquick-edit' );
-						break;
+						case 'radio';
+						case 'select';
+							$default  = '';
+							$default .= esc_html__( 'Yes', 'custom-bulkquick-edit' );
+							$default .= "\n";
+							$default .= 'no|' . esc_html__( 'No', 'custom-bulkquick-edit' );
+							$default .= "\n";
+							$default .= 'where-beef|' . esc_html__( 'Where\'s the beef?', 'custom-bulkquick-edit' );
+							break;
 
-					default:
-						$default = apply_filters( 'cbqe_configuration_default', $default, $id, $type );
-						break;
+						default:
+							$default = apply_filters( 'cbqe_configuration_default', $default, $id, $type );
+							break;
 					}
 
 					$input[ $id ] = $default ;

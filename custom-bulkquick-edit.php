@@ -131,6 +131,11 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.LongVariable)
+	 */
 	public static function plugin_row_meta( $input, $file ) {
 		if ( self::BASE != $file )
 			return $input;
@@ -222,42 +227,42 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		$result = '';
 		switch ( $column ) {
-		case 'post_excerpt':
-			$result = $post->post_excerpt;
-			break;
-
-		case 'post_title':
-			$result = $post->post_title;
-			break;
-
-		default:
-			$current = get_post_meta( $post_id, $column, true );
-
-			switch ( $field_type ) {
-			case 'show_only':
-			case 'categories':
-			case 'taxonomy':
-				$result = self::column_taxonomies( $post_id, $column, $current, $options, $field_type );
+			case 'post_excerpt':
+				$result = $post->post_excerpt;
 				break;
 
-			case 'input':
-			case 'textarea':
-				$result = $current;
-				break;
-
-			case 'checkbox':
-			case 'radio':
-				$result = self::column_checkbox_radio( $column, $current, $options, $field_type );
-				break;
-
-			case 'select':
-				$result = self::column_select( $column, $current, $options, $field_type );
+			case 'post_title':
+				$result = $post->post_title;
 				break;
 
 			default:
-				$result = apply_filters( 'cbqe_manage_posts_custom_column_field_type', $current, $field_type, $column, $post_id );
-				break;
-			}
+				$current = get_post_meta( $post_id, $column, true );
+
+				switch ( $field_type ) {
+					case 'show_only':
+					case 'categories':
+					case 'taxonomy':
+						$result = self::column_taxonomies( $post_id, $column, $current, $options, $field_type );
+						break;
+
+					case 'input':
+					case 'textarea':
+						$result = $current;
+						break;
+
+					case 'checkbox':
+					case 'radio':
+						$result = self::column_checkbox_radio( $column, $current, $options, $field_type );
+						break;
+
+					case 'select':
+						$result = self::column_select( $column, $current, $options, $field_type );
+						break;
+
+					default:
+						$result = apply_filters( 'cbqe_manage_posts_custom_column_field_type', $current, $field_type, $column, $post_id );
+						break;
+				}
 		}
 
 		$result = apply_filters( 'cbqe_posts_custom_column', $result, $column, $post_id );
@@ -707,48 +712,48 @@ jQuery( document ).ready( function() {
 		$options = explode( "\n", $details );
 
 		switch ( $field_type ) {
-		case 'checkbox':
-			if ( ! $bulk_mode )
-				$result = self::custom_box_checkbox( $column_name, $field_name, $field_name_var, $options );
-			else
-				$result = self::custom_box_select_multiple( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
-			break;
+			case 'checkbox':
+				if ( ! $bulk_mode )
+					$result = self::custom_box_checkbox( $column_name, $field_name, $field_name_var, $options );
+				else
+					$result = self::custom_box_select_multiple( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
+				break;
 
-		case 'radio':
-			if ( ! $bulk_mode )
-				$result = self::custom_box_radio( $column_name, $field_name, $field_name_var, $options );
-			else
+			case 'radio':
+				if ( ! $bulk_mode )
+					$result = self::custom_box_radio( $column_name, $field_name, $field_name_var, $options );
+				else
+					$result = self::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
+
+				break;
+
+			case 'input':
+				$result = self::custom_box_input( $column_name, $field_name, $field_name_var );
+				break;
+
+			case 'select':
 				$result = self::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
+				break;
 
-			break;
+			case 'textarea':
+				$result = self::custom_box_textarea( $column_name, $field_name, $field_name_var );
+				break;
 
-		case 'input':
-			$result = self::custom_box_input( $column_name, $field_name, $field_name_var );
-			break;
+			case 'categories':
+				$result = self::custom_box_categories( $field_name );
+				break;
 
-		case 'select':
-			$result = self::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
-			break;
+			case 'taxonomy':
+				$result = self::custom_box_taxonomy( $column_name, $field_name, $field_name_var );
+				break;
 
-		case 'textarea':
-			$result = self::custom_box_textarea( $column_name, $field_name, $field_name_var );
-			break;
+			default:
+				$result = apply_filters( 'cbqe_quick_edit_custom_box_field', '', $field_type, $field_name, $options, $bulk_mode );
 
-		case 'categories':
-			$result = self::custom_box_categories( $field_name );
-			break;
-
-		case 'taxonomy':
-			$result = self::custom_box_taxonomy( $column_name, $field_name, $field_name_var );
-			break;
-
-		default:
-			$result = apply_filters( 'cbqe_quick_edit_custom_box_field', '', $field_type, $field_name, $options, $bulk_mode );
-
-			self::$scripts_bulk  = apply_filters( 'cbqe_quick_scripts_bulk', self::$scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var );
-			self::$scripts_quick = apply_filters( 'cbqe_quick_scripts_quick', self::$scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var );
-			self::$scripts_extra = apply_filters( 'cbqe_quick_scripts_extra', self::$scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var );
-			break;
+				self::$scripts_bulk  = apply_filters( 'cbqe_quick_scripts_bulk', self::$scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+				self::$scripts_quick = apply_filters( 'cbqe_quick_scripts_quick', self::$scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+				self::$scripts_extra = apply_filters( 'cbqe_quick_scripts_extra', self::$scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var );
+				break;
 		}
 
 		echo $result;
