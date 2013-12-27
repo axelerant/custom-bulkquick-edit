@@ -98,6 +98,10 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 	
 	Alter `get_post_types` arguments for loading post types. [example](https://gist.github.com/michael-cannon/6490357)
 
+* `cbqe_ignore_bulk_edit`
+
+	Ignore editing of these fields for the bulk edit panel.
+
 * `cbqe_ignore_quick_edit`
 
 	Ignore editing of these fields for the quick edit panel.

@@ -634,6 +634,10 @@ jQuery( document ).ready( function() {
 		$open_fieldset  = '<fieldset class="inline-edit-col-%1$s %2$s">';
 
 		if ( $bulk_mode ) {
+			$ignore_bulk_edit = apply_filters( 'cbqe_ignore_bulk_edit', array() );
+			if ( in_array( $column_name, $ignore_bulk_edit ) )
+				return;
+
 			if ( empty( self::$bulk_only_done ) ) {
 				$result   = '';
 				$row      = 1;
