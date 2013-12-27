@@ -1,6 +1,7 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+* Use strip_protocol to help prevent non-SSL path issues
 
 ## 1.4.0
 * Add filter cbqe_ignore_bulk_edit

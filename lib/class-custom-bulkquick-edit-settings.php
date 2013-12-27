@@ -37,15 +37,15 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 	private static $post_types = array();
 
-	public static $admin_page     = '';
+	public static $admin_page;
 	public static $class          = __CLASS__;
 	public static $config_counter = 0;
 	public static $defaults       = array();
-	public static $plugin_path    = array();
-	public static $plugin_url     = 'http://wordpress.org/plugins/custom-bulkquick-edit-settings/';
-	public static $scripts        = array();
-	public static $sections       = array();
-	public static $settings       = array();
+	public static $plugin_path;
+	public static $plugin_url = 'http://wordpress.org/plugins/custom-bulkquick-edit-settings/';
+	public static $scripts    = array();
+	public static $sections   = array();
+	public static $settings   = array();
 	public static $version;
 
 
@@ -64,7 +64,10 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	public static function init() {
 		load_plugin_textdomain( 'custom-bulkquick-edit', false, '/custom-bulkquick-edit/languages/' );
 
-		self::$plugin_path = plugins_url( '', dirname( __FILE__ ) );
+		$plugin_path = plugins_url( '', dirname( __FILE__ ) );
+		$plugin_path = Custom_Bulkquick_Edit::strip_protocol( $plugin_path );
+
+		self::$plugin_path = $plugin_path;
 	}
 
 
