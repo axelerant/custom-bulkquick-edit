@@ -2,6 +2,8 @@
 
 ## 1.0.1-alpha
 * Add strip_protocol
+* Add valid_hash check
+* Move relicensing to plugin level
 
 ## 1.0.0
 * Enable aihr_check_aihrus_framework
