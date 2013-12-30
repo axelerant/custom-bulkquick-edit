@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+
+## 1.4.1
 * Use strip_protocol to help prevent non-SSL path issues
 * Use Aihrus Framework 1.0.1
 
