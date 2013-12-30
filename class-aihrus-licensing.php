@@ -57,18 +57,18 @@ abstract class Aihrus_Licensing implements Aihrus_Licensing_Interface {
 		if ( $license === $value )
 			return $value;
 
-		if ( empty( $value ) ) {
+		if ( $this->valid_hash( $value ) ) {
+			$this->set_license( $value );
+			$value = $this->activate_license();
+			$this->set_license( $value );
+
+			return $value;
+		} else {
 			$this->deactivate_license();
 			$this->delete_license();
 
 			return '';
 		}
-
-		$this->set_license( $value );
-		$value = $this->activate_license();
-		$this->set_license( $value );
-
-		return $value;
 	}
 
 
@@ -84,16 +84,10 @@ abstract class Aihrus_Licensing implements Aihrus_Licensing_Interface {
 
 	public function valid_license() {
 		$license = $this->get_license();
-		if ( 32 === strlen( $license ) )
+		if ( $this->valid_hash( $license ) )
 			return true;
-
-		$license_data = $this->get_license_data();
-		if ( false !== $license_data ) {
-			if ( $license_data->license == 'valid' )
-				return true;
-		}
-
-		return false;
+		else
+			return false;
 	}
 
 
@@ -130,7 +124,7 @@ abstract class Aihrus_Licensing implements Aihrus_Licensing_Interface {
 	public function activate_license() {
 		$license_data = $this->get_license_data( 'activate_license' );
 		if ( false !== $license_data ) {
-			if ( $license_data->license == 'valid' ) {
+			if ( 'valid' == $license_data->license ) {
 				$license = $this->get_license();
 
 				return $license;
@@ -158,7 +152,7 @@ abstract class Aihrus_Licensing implements Aihrus_Licensing_Interface {
 	public function deactivate_license() {
 		$license_data = $this->get_license_data( 'deactivate_license' );
 		if ( false !== $license_data ) {
-			if ( $license_data->license == 'deactivated' )
+			if ( 'deactivated' == $license_data->license )
 				return true;
 
 			return $license_data->license;
@@ -177,6 +171,14 @@ abstract class Aihrus_Licensing implements Aihrus_Licensing_Interface {
 		$result = '<p><em>' . esc_html( 'Premium features require licensing to function.' ) . '</em></p>';
 
 		return $result;
+	}
+
+
+	public function valid_hash( $value = null ) {
+		if ( is_string( $value ) && preg_match( '#^[0-9a-f]{32}$#i', $value ) )
+			return true;
+
+		return false;
 	}
 
 
