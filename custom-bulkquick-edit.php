@@ -7,6 +7,8 @@
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
+ * Text Domain: custom-bulkquick-edit
+ * Domain Path: /languages
  */
 
 

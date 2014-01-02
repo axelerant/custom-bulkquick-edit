@@ -1,6 +1,7 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+* Specify a “Text Domain” and “Domain Path”
 
 ## 1.4.1
 * Use strip_protocol to help prevent non-SSL path issues
