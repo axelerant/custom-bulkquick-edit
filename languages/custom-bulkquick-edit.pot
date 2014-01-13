@@ -1,30 +1,30 @@
-# Copyright (C) 2013 Custom Bulk/Quick Edit by Aihrus
+# Copyright (C) 2014 Custom Bulk/Quick Edit by Aihrus
 # This file is distributed under the same license as the Custom Bulk/Quick Edit by Aihrus package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom Bulk/Quick Edit by Aihrus 1.4.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2013-12-30 07:04:18+00:00\n"
+"POT-Creation-Date: 2014-01-13 19:10:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: custom-bulkquick-edit.php:79
+#: custom-bulkquick-edit.php:81
 msgid "Settings"
 msgstr ""
 
-#: custom-bulkquick-edit.php:162
+#: custom-bulkquick-edit.php:164
 msgid "If your Custom Bulk/Quick Edit display has gone to funky town, please <a href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: custom-bulkquick-edit.php:806 custom-bulkquick-edit.php:851
+#: custom-bulkquick-edit.php:808 custom-bulkquick-edit.php:853
 msgid "&mdash; Unset &mdash;"
 msgstr ""
 
-#: custom-bulkquick-edit.php:855
+#: custom-bulkquick-edit.php:857
 msgid "&mdash; No Change &mdash;"
 msgstr ""
 
