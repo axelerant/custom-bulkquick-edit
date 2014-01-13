@@ -1,6 +1,7 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+* Move ci to tests
 * Specify a “Text Domain” and “Domain Path”
 
 ## 1.4.1
