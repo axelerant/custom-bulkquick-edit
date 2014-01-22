@@ -208,6 +208,7 @@ This plugin grew out of the frustration of having to custom write this code for 
 
 == Localization ==
 
+* Spanish by [Andrew Kurtis](andrewk@webhostinghub.com)
 * Serbo-Croatian by [Borisa Djuraskovic](borisad@webhostinghub.com)
 
 You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.

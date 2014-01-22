@@ -1,0 +1,361 @@
+# Copyright (C) 2014 Custom Bulk/Quick Edit Premium
+# This file is distributed under the same license as the Custom Bulk/Quick Edit Premium package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Bulk/Quick Edit Premium 1.4.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit-"
+"premium\n"
+"POT-Creation-Date: 2014-01-13 19:11:05+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-01-22 13:55+0100\n"
+"Last-Translator: jelena kovacevic <jecajeca260@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: custom-bulkquick-edit-premium.php:130
+msgid "Premium"
+msgstr "Premium"
+
+#: custom-bulkquick-edit-premium.php:137
+msgid "Enable editing of %1$s' date."
+msgstr "Habilitar la edición de la fecha. %1$s"
+
+#: custom-bulkquick-edit-premium.php:138
+msgid "Date"
+msgstr "Fecha"
+
+#: custom-bulkquick-edit-premium.php:139
+msgid "Enable \"%s\"?"
+msgstr "¿Activar \"%s\"?"
+
+#: custom-bulkquick-edit-premium.php:153
+msgid "Disable Donate Text?"
+msgstr "¿Desactivar Texto Donar?"
+
+#: custom-bulkquick-edit-premium.php:154
+msgid ""
+"Remove \"If you like…\" text with the donate and premium purchase links from "
+"the settings screen."
+msgstr ""
+"Elimine el texto \"Si le gusta ...\" con los enlaces de donar y compra "
+"premium de la pantalla de configuración."
+
+#: custom-bulkquick-edit-premium.php:443 custom-bulkquick-edit-premium.php:451
+msgid "Y/m/d g:i:s A"
+msgstr "A/M/d g:i:s Un"
+
+#: custom-bulkquick-edit-premium.php:444 custom-bulkquick-edit-premium.php:453
+msgid "Y/m/d"
+msgstr "A/m/d"
+
+#: custom-bulkquick-edit-premium.php:480
+msgid "<a href=\"%s\">Date formats</a>."
+msgstr "<a href=\"%s\"> Formatos Fecha </a>"
+
+#: custom-bulkquick-edit-premium.php:503
+msgid "Yes"
+msgstr "Si"
+
+#: custom-bulkquick-edit-premium.php:505
+msgid "No"
+msgstr "No"
+
+#: custom-bulkquick-edit-premium.php:507
+msgid "Where's the beef?"
+msgstr "¿Dónde está la carne?"
+
+#: custom-bulkquick-edit-premium.php:516
+msgid "As color"
+msgstr "Como color"
+
+#: custom-bulkquick-edit-premium.php:517
+msgid "As date"
+msgstr "Como fecha"
+
+#: custom-bulkquick-edit-premium.php:518
+msgid "As datetime"
+msgstr "Como datetime"
+
+#: custom-bulkquick-edit-premium.php:519
+msgid "As float"
+msgstr "Como float"
+
+#: custom-bulkquick-edit-premium.php:520
+msgid "As integer"
+msgstr "Como entero"
+
+#: custom-bulkquick-edit-premium.php:521
+msgid "As multiple select"
+msgstr "como selección múltiple"
+
+#: custom-bulkquick-edit-premium.php:522
+msgid "As user"
+msgstr "Como usuario"
+
+#: custom-bulkquick-edit-premium.php:576
+msgid "&mdash; No Change &mdash;"
+msgstr "&mdash; Sin Cambio &mdash;"
+
+#: custom-bulkquick-edit-premium.php:578
+msgid "&mdash; Unset &mdash;"
+msgstr "&mdash; Desactivar &mdash;"
+
+#: lib/aihrus/class-aihrus-common.php:156
+msgid ""
+"Please donate $5 towards ongoing free support and development of the \"%1$s"
+"\" plugin. %2$s"
+msgstr ""
+"Por favor, dona $5 hacia el apoyo continuo gratuito y el desarrollo del "
+"plugin \"%1$s\". %2$s"
+
+#: lib/aihrus/class-aihrus-settings.php:61
+msgid "Reset"
+msgstr "Restablecer"
+
+#: lib/aihrus/class-aihrus-settings.php:62
+msgid "About"
+msgstr "Acerca  de"
+
+#: lib/aihrus/class-aihrus-settings.php:80
+msgid "Export Settings"
+msgstr "Configuración de exportación"
+
+#: lib/aihrus/class-aihrus-settings.php:82
+msgid ""
+"These are your current settings in a serialized format. Copy the contents to "
+"make a backup of your settings."
+msgstr ""
+"Estos son los ajustes actuales en un formato serializado. Copie el contenido "
+"para hacer una copia de seguridad de la configuración."
+
+#: lib/aihrus/class-aihrus-settings.php:90
+msgid "Import Settings"
+msgstr "Configuración de importación"
+
+#: lib/aihrus/class-aihrus-settings.php:92
+msgid ""
+"Paste new serialized settings here to overwrite your current configuration."
+msgstr ""
+"Pegue nuevos ajustes serializados aquí para sobrescribir la configuración "
+"actual."
+
+#: lib/aihrus/class-aihrus-settings.php:96
+msgid "Delete all %s data and options from database on plugin deletion"
+msgstr ""
+"Eliminar todos los datos %s y opciones de base de datos al eliminar el plugin"
+
+#: lib/aihrus/class-aihrus-settings.php:100
+msgid "Remove Plugin Data on Deletion?"
+msgstr "¿Eliminar datos del Plugin al eliminarlo?"
+
+#: lib/aihrus/class-aihrus-settings.php:109
+msgid "Reset to Defaults?"
+msgstr "¿Restablecer los valores predeterminados?"
+
+#: lib/aihrus/class-aihrus-settings.php:112
+msgid "Check this box to reset options to their defaults"
+msgstr ""
+"Marque esta casilla para restablecer las opciones a sus valores "
+"predeterminados"
+
+#: lib/aihrus/class-aihrus-settings.php:236
+msgid ""
+"<img class=\"alignright size-medium\" src=\"%1$s/media/michael-cannon-red-"
+"square-300x2251.jpg\" alt=\"Michael in Red Square, Moscow, Russia\" width="
+"\"300\" height=\"225\" /><a href=\"%2$s\">%3$s</a> is by <a href=\"%4$s"
+"\">Michael Cannon</a>. He's <a href=\"%5$s\">Peichi’s</a> smiling man, an "
+"adventurous <a href=\"%6$s\" target=\"_blank\">water-rat</a>, <a href=\"%7$s"
+"\">chief people officer</a>, <a href=\"%8$s\">cyclist</a>, <a href=\"%9$s"
+"\">full stack developer</a>, <a href=\"%10$s\">poet</a>, <a href=\"%11$s"
+"\">WWOOF’er</a> and <a href=\"%12$s\">world traveler</a>."
+msgstr ""
+"<img class=\"alignright size-medium\" src=\"%1$s/media/michael-cannon-red-"
+"square-300x2251.jpg\" alt=\"Michael en la Plaza Roja, Moscú, Rusia\" width="
+"\"300\" height=\"225\" /><a href=\"%2$s\">%3$s</a> is by <a href=\"%4$s"
+"\">Michael Cannon</a>. El es <a href=\"%5$s\">Peichi’s</a> hombre sonriente, "
+"una aventurera <a href=\"%6$s\" target=\"_blank\">rata de agua</a>, <a href="
+"\"%7$s\">jefe de personas </a>, <a href=\"%8$s\">ciclista</a>, <a href=\"%9$s"
+"\">desarroñlador completo </a>, <a href=\"%10$s\">poet</a>, <a href=\"%11$s"
+"\">WWOOF’er</a> and <a href=\"%12$s\">viajero mundial</a>."
+
+#: lib/aihrus/class-aihrus-settings.php:278
+msgid "Save Changes"
+msgstr "Guardar los cambios"
+
+#: lib/aihrus/class-aihrus-settings.php:286
+msgid ""
+"If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good "
+"Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> "
+"or <a href=\"%3$s\" title=\"purchase premium WordPress plugins from Aihrus "
+"\">purchase the Premium version</a> to help fund further development and <a "
+"href=\"%4$s\" title=\"Support forums\">support</a>."
+msgstr ""
+"Si te gusta este plugin, por favor, <a href=\"%1$s\" title=\"Donate for Good "
+"Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> "
+"o <a href=\"%3$s\" title=\"purchase premium WordPress plugins from Aihrus "
+"\">purchase the Premium version</a> para ayudar a financiar el desarrollo y "
+"la <a href=\"%4$s\" title=\"Support forums\">support</a>."
+
+#: lib/aihrus/class-aihrus-settings.php:297
+msgid "Copyright &copy;%1$s <a href=\"%2$s\">Aihrus</a>."
+msgstr "Derechos Reservados &copy;%1$s<a href=\"%2$s\">Aihrus</a>."
+
+#: lib/aihrus/class-aihrus-settings.php:598
+msgid "Required"
+msgstr "Necesario"
+
+#: lib/aihrus/class-aihrus-widget.php:140
+msgid "Expand/Collapse All Options"
+msgstr "Expandir / Contraer todas las Opciones"
+
+#: lib/aihrus/class-aihrus-widget.php:149
+msgid "Expand/Collapse"
+msgstr "Expandir / Contraer"
+
+#: lib/aihrus/requirements.php:30
+msgid "`aihr_check_aihrus_framework` requires $file argument"
+msgstr "`aihr_check_aihrus_framework` requiere argumento de archivo $"
+
+#: lib/aihrus/requirements.php:75 lib/requirements.php:59
+msgid ""
+"<a href=\"%1$s\">Update plugins</a>. <a href=\"%2$s\">More information</a>."
+msgstr ""
+"< a href=\"%1$s\"> Actualizar plugins</a>.<a href=\"%2$s\"> Más información "
+"</a>."
+
+#: lib/aihrus/requirements.php:86
+msgid "Plugin \"%1$s\" is causing the out of date issue."
+msgstr "El Plugin \"%1$s\" está causando el problema de la fecha."
+
+#: lib/aihrus/requirements.php:91
+msgid ""
+"Plugin \"%1$s\" has been deactivated as it requires Aihrus Framework %2$s or "
+"newer. You're running Aihrus Framework %4$s. Once corrected, \"%1$s\" can be "
+"activated. %5$s %3$s"
+msgstr ""
+"Plugin \"%1$s\" se ha desactivado pues requiere Aihrus Framework %2$s o más "
+"nuevos. Usted está ejecutando Aihrus Framework %4$s. Una vez corregidos, "
+"\"%1$s\" se pueden activar. %5$s %3$s"
+
+#: lib/aihrus/requirements.php:100
+msgid "`aihr_check_php` requires $file argument"
+msgstr "`aihr_check_php` requiere argumento de archivo $"
+
+#: lib/aihrus/requirements.php:141
+msgid ""
+"Plugin \"%1$s\" has been deactivated as it requires PHP %2$s or newer. "
+"You're running PHP %4$s. Once corrected, \"%1$s\" can be activated. <a href="
+"\"%3$s\">More information</a>."
+msgstr ""
+"El Plugin \"%1$s\" ha sido desactivado, ya que requiere PHP %2$s o más "
+"reciente. Usted está ejecutando PHP %4$s. Una vez corregidos, \"%1$s\" se "
+"pueden activar. <a href=\"%3$s\"> Más información </a>.`aihr_check_php` "
+"requiere argumento de archivo $"
+
+#: lib/aihrus/requirements.php:150
+msgid "`aihr_check_wp` requires $file argument"
+msgstr "`aihr_check_php` requiere argumento de archivo $"
+
+#: lib/aihrus/requirements.php:195
+msgid ""
+"Plugin \"%1$s\" has been deactivated as it requires WordPress %2$s or newer. "
+"You're running WordPress %4$s. Once corrected, \"%1$s\" can be activated. <a "
+"href=\"%3$s\">Update WordPress</a>."
+msgstr ""
+"El Plugin \"%1$s\" ha sido desactivado, ya que requiere WordPress %2$s o más "
+"reciente. Usted está ejecutando WordPress %4$s. Una vez corregidos, \"%1$s\" "
+"se pueden activar. <a href=\"%3$s\"> Actualizar WordPress </a>."
+
+#: lib/aihrus/requirements.php:225
+msgid "<a href=\"%1$s\">update to</a>"
+msgstr "<a href=\"%1$s\">actualizar a</a>"
+
+#: lib/aihrus/requirements.php:230
+msgid "<a href=\"%1$s\">install</a>"
+msgstr "<a href = \"%1$s\">instalar</a>"
+
+#: lib/aihrus/requirements.php:233
+msgid "<a href=\"%1$s\">activate</a>"
+msgstr "<a href=\"%1$s\"> Activar </a>"
+
+#: lib/aihrus/requirements.php:237
+msgid ""
+"Plugin \"%3$s\" has been deactivated. Please %1$s \"%4$s\" version %2$s or "
+"newer before activating \"%3$s\"."
+msgstr ""
+"El Plugin \"%3$s\"ha sido desactivado. Por favor %1$s\"%4$s\" versión %2$s o "
+"más reciente antes de activar \"%3$s\"."
+
+#: lib/aihrus/requirements.php:250
+msgid ""
+"<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License "
+"Key</em> entry"
+msgstr ""
+"<a Href=\"%1$s\">%2$s> Configuración </a>, <em> premium </em> de la ficha, "
+"<em> Clave de Licencia </em> entrada"
+
+#: lib/aihrus/requirements.php:255
+msgid "<a href=\"%s\">Where's my license key?</a>"
+msgstr "<a href=\"%s\"> ¿Dónde está mi clave de licencia? </a>"
+
+#: lib/aihrus/requirements.php:260
+msgid "<a href=\"%1$s\">%2$s</a>"
+msgstr "<a href =\"%1$s\">%2$s</a>"
+
+#: lib/aihrus/requirements.php:264
+msgid ""
+"Plugin \"%1$s\" requires license activation before updating will work. "
+"Please activate the license key through %2$s. No license key? See \"%3$s\" "
+"or purchase \"%4$s\"."
+msgstr ""
+"El Plugin \"%1$s\" requiere activación de la licencia antes de que la "
+"actualización funcione. Por favor, active la clave de licencia a través de "
+"%2$s. ¿Sin clave de licencia? Ver \"%3$s\" o compre \"%4$s\"."
+
+#: lib/class-custom-bulkquick-edit-premium-licensing.php:36
+msgid "License Key"
+msgstr "Clave de licencia"
+
+#: lib/class-custom-bulkquick-edit-premium-licensing.php:37
+msgid ""
+"Required to enable premium plugin updating. Activation is automatic. Use `0` "
+"to deactivate."
+msgstr ""
+"Requerida para activar la actualización del plugin premium. La activación es "
+"automática. Use `0` para desactivar."
+
+#: lib/requirements.php:61
+msgid ""
+"Plugin \"%1$s\" has been deactivated as it requires a current Aihrus "
+"Framework. Once corrected, \"%1$s\" can be activated. %2$s"
+msgstr ""
+"El Plugin \"%1$s\" ha sido desactivado, ya que requiere de un Aihrus "
+"Framework actual. Una vez corregidos, \"%1$s\" se pueden activar. %2$s"
+
+#. Plugin Name of the plugin/theme
+msgid "Custom Bulk/Quick Edit Premium"
+msgstr "Custom Bulk/Quick Edit Premium"
+
+#. Plugin URI of the plugin/theme
+msgid "http://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/"
+msgstr ""
+"http://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/"
+
+#. Description of the plugin/theme
+msgid ""
+"Custom Bulk/Quick Edit Premium plugin extends Custom Bulk/Quick Edit by "
+"Aihrus with custom post types handling and other helpful features."
+msgstr ""
+"El Plugin Custom Bulk/Quick Edit Premium exteinde Custom Bulk/Quick Edit de "
+"Aihrus con tipos de publicación personalizados y otras características "
+"útiles."
+
+#. Author of the plugin/theme
+msgid "Michael Cannon"
+msgstr "Michael Cannon"
+
+#. Author URI of the plugin/theme
+msgid "http://aihr.us/resume/"
+msgstr "http://aihr.us/resume/"

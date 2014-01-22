@@ -2,6 +2,7 @@
 
 ## master
 * Move ci to tests
+* Spanish by [Andrew Kurtis](andrewk@webhostinghub.com)
 * Specify a “Text Domain” and “Domain Path”
 
 ## 1.4.1
