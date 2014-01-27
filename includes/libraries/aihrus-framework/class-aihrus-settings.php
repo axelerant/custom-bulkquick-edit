@@ -550,12 +550,12 @@ abstract class Aihrus_Settings {
 		unset( $input['export'] );
 		unset( $input['import'] );
 
-		$hide_settings_updated = false;
-		if ( isset( static::$hide_settings_updated ) && ! empty( static::$hide_settings_updated ) ) {
-			$hide_settings_updated = true;
+		$hide_update_notice = false;
+		if ( isset( static::$hide_update_notice ) && ! empty( static::$hide_update_notice ) ) {
+			$hide_update_notice = true;
 		}
 
-		if ( $null_options && empty( $errors ) && ! $hide_settings_updated ) {
+		if ( $null_options && empty( $errors ) && ! $hide_update_notice ) {
 			add_settings_error( static::ID, 'settings_updated', esc_html__( 'Settings saved.' ), 'updated' );
 		    set_transient( 'settings_errors', get_settings_errors(), 30 );
 		}
