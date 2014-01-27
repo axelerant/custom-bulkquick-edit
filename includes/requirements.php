@@ -16,7 +16,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-require_once CBQE_DIR_LIB . '/aihrus/requirements.php';
+require_once CBQE_DIR_LIB . 'aihrus-framework/requirements.php';
 
 
 function cbqe_requirements_check() {

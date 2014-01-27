@@ -2,6 +2,11 @@
 
 ## master
 * Move ci to tests
+* Move CSS to assets
+* Move files to assets
+* Move lib to includes/libraries
+* Move main class to own class file
+* Settings plugin_path to plugin_assets
 * Spanish by [Andrew Kurtis](andrewk@webhostinghub.com)
 * Specify a “Text Domain” and “Domain Path”
 

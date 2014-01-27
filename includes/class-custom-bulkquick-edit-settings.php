@@ -22,7 +22,7 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
-require_once CBQE_DIR_LIB . '/aihrus/class-aihrus-settings.php';
+require_once CBQE_DIR_LIB . 'aihrus-framework/class-aihrus-settings.php';
 
 if ( class_exists( 'Custom_Bulkquick_Edit_Settings' ) )
 	return;
@@ -41,7 +41,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	public static $class          = __CLASS__;
 	public static $config_counter = 0;
 	public static $defaults       = array();
-	public static $plugin_path;
+	public static $plugin_assets;
 	public static $plugin_url = 'http://wordpress.org/plugins/custom-bulkquick-edit-settings/';
 	public static $scripts    = array();
 	public static $sections   = array();
@@ -64,10 +64,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	public static function init() {
 		load_plugin_textdomain( 'custom-bulkquick-edit', false, '/custom-bulkquick-edit/languages/' );
 
-		$plugin_path = plugins_url( '', dirname( __FILE__ ) );
-		$plugin_path = Custom_Bulkquick_Edit::strip_protocol( $plugin_path );
-
-		self::$plugin_path = $plugin_path;
+		self::$plugin_assets = Custom_Bulkquick_Edit::$plugin_assets;
 	}
 
 
