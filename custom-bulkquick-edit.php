@@ -26,7 +26,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-define( 'CBQE_AIHR_VERSION', '1.0.1' );
+define( 'CBQE_AIHR_VERSION', '1.0.2' );
 define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
 define( 'CBQE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CBQE_DIR_INC', CBQE_DIR . 'includes/' );

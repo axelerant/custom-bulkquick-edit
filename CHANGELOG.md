@@ -6,6 +6,7 @@
 * Move files to assets
 * Move lib to includes/libraries
 * Move main class to own class file
+* Require Aihrus Framework 1.0.2
 * Settings plugin_path to plugin_assets
 * Spanish by [Andrew Kurtis](andrewk@webhostinghub.com)
 * Specify a “Text Domain” and “Domain Path”
