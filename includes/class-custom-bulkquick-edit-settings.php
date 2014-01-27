@@ -38,10 +38,10 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	private static $post_types = array();
 
 	public static $admin_page;
-	public static $class                 = __CLASS__;
-	public static $config_counter        = 0;
-	public static $defaults              = array();
-	public static $hide_settings_updated = true;
+	public static $class              = __CLASS__;
+	public static $config_counter     = 0;
+	public static $defaults           = array();
+	public static $hide_update_notice = true;
 	public static $plugin_assets;
 	public static $plugin_url = 'http://wordpress.org/plugins/custom-bulkquick-edit-settings/';
 	public static $scripts    = array();
