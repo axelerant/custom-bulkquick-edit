@@ -153,7 +153,7 @@ EOD;
 		if ( $disable_donate )
 			return;
 
-		$text = sprintf( esc_html__( 'Please donate $5 towards ongoing free support and development of the "%1$s" plugin. %2$s', 'custom-bulkquick-edit' ), $item_name, self::$donate_button );
+		$text = sprintf( esc_html__( 'Please donate $5 towards ongoing free support and development of the "%1$s" plugin. %2$s' ), $item_name, self::$donate_button );
 
 		aihr_notice_updated( $text );
 	}
@@ -446,11 +446,11 @@ EOD;
 
 
 	public static function strip_protocol( $link ) {
-			if ( ! empty( $link ) ) {
-				$link = preg_replace( '#https?:#', '', $link );
-			}
+		if ( ! empty( $link ) ) {
+			$link = preg_replace( '#https?:#', '', $link );
+		}
 
-			return $link;
+		return $link;
 	}
 
 

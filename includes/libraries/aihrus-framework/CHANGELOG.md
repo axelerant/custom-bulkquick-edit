@@ -1,6 +1,17 @@
 # CHANGELOG Aihrus Framework
 
-## 1.0.1-alpha
+## master
+* Add phpunit.xml
+* Add `display_settings_updated` for settings saved notice
+* Add `slash_sanitize_title` verification helper
+* Coding standards
+* Move ci to tests
+* Remove Travis configuration
+* RESOLVE michael-cannon/testimonials-widget#48 Activation on WP 3.6 not working
+* Update usage instructions
+* Use $plugin_assets than $plugin_path
+
+## 1.0.1
 * Add strip_protocol
 * Add valid_hash check
 * Move relicensing to plugin level
@@ -8,7 +19,7 @@
 ## 1.0.0
 * Enable aihr_check_aihrus_framework
 
-## master
+## 0.0.0
 * Abstract notice helper methods as functions
 * Add TODO
 * Add `add_media` post attachment helper

@@ -20,7 +20,7 @@ A helper library for WordPress plugins by Aihrus.
 
 ```
 git remote add aihrus https://github.com/michael-cannon/aihrus-framework.git
-git subtree add -P lib/aihrus aihrus master
+git subtree add -P include/libraries/aihrus-framework aihrus master
 git commit -a -m "Readd aihrus framework"
 git push origin master
 ```
@@ -28,7 +28,7 @@ git push origin master
 * Link plugin to libary
 
 ```
-require WPSP_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require WPS_DIR_LIB . '/aihrus-framework/class-aihrus-common.php';
 ```
 
 * Extend plugin class to library
@@ -40,32 +40,31 @@ class Wordpress_Starter extends Aihrus_Common {
 * Add class static members
 
 ```
-public static $class;
+public static $class = __CLASS__;
 public static $notice_key;
 ```
 
-* Set notices… (fixme)
+* Set notices…
 
 ```
 …
 if ( $bad_version )
-	self::set_notice( 'notice_version' );
+	add_action( 'admin_notices', 'wps_notice_aihrus' );
 …
-public static function notice_version( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
-	$free_base    = self::FREE_PLUGIN_BASE;
-	$free_name    = 'Testimonials';
-	$free_slug    = 'testimonials-widget';
-	$free_version = self::FREE_VERSION;
-	$item_name    = self::NAME;
+function wps_notice_aihrus() {
+	$help_url  = esc_url( 'https://aihrus.zendesk.com/entries/35689458' );
+	$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.' ), self_admin_url( 'update-core.php' ), $help_url );
 
-	parent::notice_version( $free_base, $free_name, $free_slug, $free_version, $item_name );
+	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires a current Aihrus Framework. Once corrected, "%1$s" can be activated. %2$s' ), WPS_NAME, $help_link );
+
+	aihr_notice_error( $text );
 }
 ```
 
 * Update the external library
 
 ```
-git subtree pull -P lib/aihrus aihrus master
+git subtree pull -P include/libraries/aihrus-framework aihrus master
 ```
 
 * Update the plugin repository
