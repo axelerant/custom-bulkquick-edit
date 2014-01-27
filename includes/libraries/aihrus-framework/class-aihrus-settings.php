@@ -255,18 +255,6 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function display_settings_updated() {
-		$text = __( 'Settings saved.' );
-
-		aihr_notice_updated( $text );
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
 	public static function display_page( $disable_donate = false ) {
 		echo '<div class="wrap">
 			<div class="icon32" id="icon-options-general"></div>
@@ -274,9 +262,7 @@ abstract class Aihrus_Settings {
 
 		echo '<form action="options.php" method="post">';
 
-		if ( ! empty( $_GET['settings-updated'] ) )
-			self::display_settings_updated();
-
+		settings_errors( static::ID );
 		settings_fields( static::ID );
 
 		echo '<div id="' . static::ID . '">
@@ -493,7 +479,10 @@ abstract class Aihrus_Settings {
 	public static function validate_settings( $input, $options = null, $do_errors = false ) {
 		$errors = array();
 
+		$null_options = false;
 		if ( is_null( $options ) ) {
+			$null_options = true;
+
 			$options  = self::get_settings();
 			$defaults = static::get_defaults();
 
@@ -560,6 +549,16 @@ abstract class Aihrus_Settings {
 
 		unset( $input['export'] );
 		unset( $input['import'] );
+
+		$hide_settings_updated = false;
+		if ( isset( static::$hide_settings_updated ) && ! empty( static::$hide_settings_updated ) ) {
+			$hide_settings_updated = true;
+		}
+
+		if ( $null_options && empty( $errors ) && ! $hide_settings_updated ) {
+			add_settings_error( static::ID, 'settings_updated', esc_html__( 'Settings saved.' ), 'updated' );
+		    set_transient( 'settings_errors', get_settings_errors(), 30 );
+		}
 
 		if ( empty( $do_errors ) ) {
 			$validated = $input;

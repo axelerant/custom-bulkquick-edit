@@ -1,13 +1,16 @@
 # CHANGELOG Aihrus Framework
 
 ## master
+
+## 1.0.2
 * Add phpunit.xml
-* Add `display_settings_updated` for settings saved notice
 * Add `slash_sanitize_title` verification helper
 * Coding standards
+* Display "Settings saved."
 * Move ci to tests
 * Remove Travis configuration
 * RESOLVE michael-cannon/testimonials-widget#48 Activation on WP 3.6 not working
+* RESOLVE michael-cannon/wootheme-testimonials-to-testimonials#2 No settings saved notice upon saving settings
 * Update usage instructions
 * Use $plugin_assets than $plugin_path
 
