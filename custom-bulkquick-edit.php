@@ -67,13 +67,13 @@ require_once CBQE_DIR_INC . 'class-custom-bulkquick-edit.php';
 add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
 
 
+/**
+ *
+ *
+ * @SuppressWarnings(PHPMD.LongVariable)
+ * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+ */
 if ( ! function_exists( 'custom_bulkquick_edit_init' ) ) {
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.LongVariable)
-	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-	 */
 	function custom_bulkquick_edit_init() {
 		if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) )
 			return;

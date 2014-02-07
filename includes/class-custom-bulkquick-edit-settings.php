@@ -425,10 +425,10 @@ EOD;
 
 		$validated = parent::validate_settings( $input, $options, $do_errors );
 
-		if ( empty( $do_errors ) )
-			$input = $validated;
+		if ( empty( $do_errors ) ) {
+			$input  = $validated;
 			$errors = array();
-		else {
+		} else {
 			$input  = $validated['input'];
 			$errors = $validated['errors'];
 		}
