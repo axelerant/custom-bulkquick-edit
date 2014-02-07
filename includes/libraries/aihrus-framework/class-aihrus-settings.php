@@ -22,6 +22,7 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
+require_once ABSPATH . 'wp-admin/includes/template.php';
 
 if ( class_exists( 'Aihrus_Settings' ) )
 	return;
@@ -93,7 +94,7 @@ abstract class Aihrus_Settings {
 			'widget' => 0,
 		);
 
-		$desc = esc_html__( 'Delete all %s data and options from database on plugin deletion' );
+		$desc = esc_html__( 'Delete all %s data and options from database on plugin deletion. Even if this option isn\'t checked, WordPress will still give a data deletion warning.' );
 
 		static::$settings['delete_data'] = array(
 			'section' => 'reset',
