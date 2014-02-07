@@ -3,6 +3,7 @@
 ## master
 
 ## 1.5.0-alpha
+* Check for definitions before defining
 * Move ci to tests
 * Move CSS to assets
 * Move files to assets
@@ -13,6 +14,7 @@
 * Settings plugin_path to plugin_assets
 * Spanish by [Andrew Kurtis](andrewk@webhostinghub.com)
 * Specify a “Text Domain” and “Domain Path”
+* Use Codeship.io for CI
 
 ## 1.4.1
 * Use strip_protocol to help prevent non-SSL path issues

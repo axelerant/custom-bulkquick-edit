@@ -26,18 +26,38 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-define( 'CBQE_AIHR_VERSION', '1.0.2' );
-define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
-define( 'CBQE_DIR', plugin_dir_path( __FILE__ ) );
-define( 'CBQE_DIR_INC', CBQE_DIR . 'includes/' );
-define( 'CBQE_DIR_LIB', CBQE_DIR_INC . 'libraries/' );
-define( 'CBQE_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
-define( 'CBQE_PREMIUM_LINK', '<a href="https://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>' );
-define( 'CBQE_VERSION', '1.5.0-alpha' );
+if ( ! defined( 'CBQE_AIHR_VERSION' ) )
+	define( 'CBQE_AIHR_VERSION', '1.0.2' );
+
+if ( ! defined( 'CBQE_BASE' ) )
+	define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
+
+if ( ! defined( 'CBQE_DIR' ) )
+	define( 'CBQE_DIR', plugin_dir_path( __FILE__ ) );
+
+if ( ! defined( 'CBQE_DIR_INC' ) )
+	define( 'CBQE_DIR_INC', CBQE_DIR . 'includes/' );
+
+if ( ! defined( 'CBQE_DIR_LIB' ) )
+	define( 'CBQE_DIR_LIB', CBQE_DIR_INC . 'libraries/' );
+
+if ( ! defined( 'CBQE_NAME' ) )
+	define( 'CBQE_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
+
+if ( ! defined( 'CBQE_PREMIUM_LINK' ) )
+	define( 'CBQE_PREMIUM_LINK', '<a href="https://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>' );
+
+if ( ! defined( 'CBQE_VERSION' ) )
+	define( 'CBQE_VERSION', '1.5.0-alpha' );
 
 require_once CBQE_DIR_INC . 'requirements.php';
 
+global $cbqe_activated;
+
+$cbqe_activated = true;
 if ( ! cbqe_requirements_check() ) {
+	$cbqe_activated = false;
+
 	return false;
 }
 
