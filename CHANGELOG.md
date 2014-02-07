@@ -11,6 +11,7 @@
 * Move main class to own class file
 * Require Aihrus Framework 1.0.2
 * RESOLVE Incorrect About tab plugin URL
+* RESOLVE PHP Notice:  Undefined variable: errors
 * Settings plugin_path to plugin_assets
 * Spanish by [Andrew Kurtis](andrewk@webhostinghub.com)
 * Specify a “Text Domain” and “Domain Path”

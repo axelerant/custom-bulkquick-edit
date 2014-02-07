@@ -427,6 +427,7 @@ EOD;
 
 		if ( empty( $do_errors ) )
 			$input = $validated;
+			$errors = array();
 		else {
 			$input  = $validated['input'];
 			$errors = $validated['errors'];
