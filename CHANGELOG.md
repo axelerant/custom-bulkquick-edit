@@ -1,6 +1,8 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+
+## 1.5.0-alpha
 * Move ci to tests
 * Move CSS to assets
 * Move files to assets
