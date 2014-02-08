@@ -1,8 +1,10 @@
 # CHANGELOG Aihrus Framework
 
 ## master
+
+## 1.0.3-alpha
 * Revise data deletion description - Thank you Mark
-* RESOLVE Fatal error: Call to undefined function add_settings_error() in …/includes/libraries/aihrus-framework/class-aihrus-settings.php on line 559
+* RESOLVE Fatal error: Call to undefined function add_settings_error() in class-aihrus-settings.php on line 559
 
 ## 1.0.2
 * Add phpunit.xml
