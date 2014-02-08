@@ -1115,6 +1115,9 @@ jQuery( document ).ready( function() {
 		if ( ! is_array( $plugins ) )
 			return $plugins;
 
+		if ( defined( 'CBQEP_BASE' ) )
+			return $plugins;
+
 		$index = array_search( self::BASE, $plugins );
 		if ( false !== $index && ! empty( $index ) ) {
 			unset( $plugins[ $index ] );

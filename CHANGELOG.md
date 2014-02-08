@@ -3,7 +3,7 @@
 ## master
 
 ## 1.5.0RC1
-* Alters option `active_plugins` so that this plugin is among first loaded.
+* Alters option `active_plugins` so that this plugin is among first loaded unless premium is active
 * Check for definitions before defining
 * Move CSS to assets
 * Move ci to tests
