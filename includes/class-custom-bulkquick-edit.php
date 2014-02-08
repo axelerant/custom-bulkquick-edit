@@ -1115,10 +1115,10 @@ jQuery( document ).ready( function() {
 		if ( ! is_array( $plugins ) )
 			return $plugins;
 
-		$index = array_search( CBQE_BASE, $plugins );
+		$index = array_search( self::BASE, $plugins );
 		if ( false !== $index && ! empty( $index ) ) {
 			unset( $plugins[ $index ] );
-			array_unshift( $plugins, CBQE_BASE );
+			array_unshift( $plugins, self::BASE );
 		}
 
 		return $plugins;
