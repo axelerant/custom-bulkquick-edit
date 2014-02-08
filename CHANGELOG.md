@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.5.0-alpha
+## 1.5.0RC1
 * Alters option `active_plugins` so that this plugin is among first loaded.
 * Check for definitions before defining
 * Move CSS to assets
