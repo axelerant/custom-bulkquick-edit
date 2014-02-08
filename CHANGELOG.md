@@ -5,18 +5,15 @@
 ## 1.5.0RC1
 * Alters option `active_plugins` so that this plugin is among first loaded unless premium is active
 * Check for definitions before defining
-* Move CSS to assets
-* Move ci to tests
-* Move files to assets
-* Move lib to includes/libraries
 * Move main class to own class file
+* Require Aihrus Framework 1.0.3
 * RESOLVE Incorrect About tab plugin URL
 * RESOLVE PHP Notice:  Undefined variable: errors
-* Require Aihrus Framework 1.0.2
 * Settings plugin_path to plugin_assets
 * Spanish by [Andrew Kurtis](andrewk@webhostinghub.com)
 * Specify a “Text Domain” and “Domain Path”
-* Use Codeship.io for CI
+* Update file structure
+* Use Codeship.io than Travis CI
 
 ## 1.4.1
 * Use strip_protocol to help prevent non-SSL path issues
