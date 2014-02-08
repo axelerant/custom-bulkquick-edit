@@ -182,6 +182,10 @@ See [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/ma
 
 == Upgrade Notice ==
 
+= 1.5.0 =
+
+* Alters option `active_plugins` so that this plugin is among first loaded.
+
 = 1.3.0 =
 
 * Requires PHP 5.3+ [notice](https://aihrus.zendesk.com/entries/30678006)

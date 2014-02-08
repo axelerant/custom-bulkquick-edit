@@ -69,6 +69,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulkquick_Edit', 'save_post_bulk_edit' ) );
 		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
+		add_filter( 'pre_update_option_active_plugins', array( __CLASS__, 'pre_update_option_active_plugins' ), 10, 2 );
 	}
 
 
@@ -1105,6 +1106,23 @@ jQuery( document ).ready( function() {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function pre_update_option_active_plugins( $plugins, $old_value ) {
+		if ( ! is_array( $plugins ) )
+			return $plugins;
+
+		$index = array_search( CBQE_BASE, $plugins );
+		if ( false !== $index && ! empty( $index ) ) {
+			unset( $plugins[ $index ] );
+			array_unshift( $plugins, CBQE_BASE );
+		}
+
+		return $plugins;
+	}
 }
 
 ?>
