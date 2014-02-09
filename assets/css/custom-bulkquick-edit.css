@@ -2,8 +2,8 @@ fieldset.cbqe {
 	clear: both;
 }
 fieldset.cbqe label span.title {
-	width: 8em;
+	width: 10em;
 }
-fieldset.cbqe .inline-edit-group label {
-	clear: both
+.inline-edit-group.cbqe label {
+	clear: both;
 }

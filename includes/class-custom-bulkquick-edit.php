@@ -751,7 +751,7 @@ jQuery( document ).ready( function() {
 
 
 	public static function custom_box_checkbox( $column_name, $field_name, $field_name_var, $options ) {
-		$result = '<div class="inline-edit-group">';
+		$result = '<div class="inline-edit-group cbqe">';
 
 		$multiple     = '';
 		$do_pre_title = true;
@@ -788,7 +788,7 @@ jQuery( document ).ready( function() {
 
 
 	public static function custom_box_radio( $column_name, $field_name, $field_name_var, $options ) {
-		$result = '<div class="inline-edit-group">';
+		$result = '<div class="inline-edit-group cbqe">';
 
 		$unset_option = Custom_Bulkquick_Edit_Settings::RESET . '|' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' );
 		array_unshift( $options, $unset_option );
