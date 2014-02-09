@@ -70,6 +70,10 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
 		add_filter( 'pre_update_option_active_plugins', array( __CLASS__, 'pre_update_option_active_plugins' ), 10, 2 );
+
+		if ( self::do_load() ) {
+			self::styles();
+		}
 	}
 
 
@@ -619,7 +623,7 @@ jQuery( document ).ready( function() {
 		$close_div      = '</div>';
 		$close_fieldset = '</fieldset>';
 		$open_div       = '<div class="inline-edit-col">';
-		$open_fieldset  = '<fieldset class="inline-edit-col-%1$s %2$s">';
+		$open_fieldset  = '<fieldset class="inline-edit-col-%1$s cbqe">';
 
 		if ( $bulk_mode ) {
 			$ignore_bulk_edit = apply_filters( 'cbqe_ignore_bulk_edit', array() );
@@ -646,7 +650,7 @@ jQuery( document ).ready( function() {
 				}
 
 				if ( ! empty( $result ) ) {
-					echo sprintf( $open_fieldset, 'right', '' );
+					echo sprintf( $open_fieldset, 'right' );
 					echo $open_div;
 					echo '<div class="inline-edit-group">';
 					echo $result;
@@ -678,7 +682,7 @@ jQuery( document ).ready( function() {
 		$field_name_var = str_replace( '-', '_', $field_name );
 		$title          = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 
-		echo sprintf( $open_fieldset, 'left', '' );
+		echo sprintf( $open_fieldset, 'left' );
 		echo $open_div;
 
 		$class = '';
@@ -1125,6 +1129,17 @@ jQuery( document ).ready( function() {
 		}
 
 		return $plugins;
+	}
+
+
+	public static function styles() {
+		if ( is_admin() ) {
+			wp_register_style( __CLASS__, self::$plugin_assets . 'css/custom-bulkquick-edit.css' );
+		}
+
+		wp_enqueue_style( __CLASS__ );
+
+		do_action( 'cbqe_styles' );
 	}
 }
 

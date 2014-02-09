@@ -7,6 +7,7 @@
 * Check for definitions before defining
 * Move main class to own class file
 * Require Aihrus Framework 1.0.3
+* RESOLVE #2 Abstract bulk/quick edit panel layout
 * RESOLVE Incorrect About tab plugin URL
 * RESOLVE PHP Notice:  Undefined variable: errors
 * Settings plugin_path to plugin_assets

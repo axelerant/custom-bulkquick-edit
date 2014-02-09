@@ -1,1 +1,9 @@
-.custom-bulk-quick-edit {}
+fieldset.cbqe {
+	clear: both;
+}
+fieldset.cbqe label span.title {
+	width: 8em;
+}
+fieldset.cbqe .inline-edit-group label {
+	clear: both
+}
