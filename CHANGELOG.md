@@ -14,6 +14,7 @@
 * Specify a “Text Domain” and “Domain Path”
 * Update file structure
 * Use Codeship.io than Travis CI
+* Use http product URL
 
 ## 1.4.1
 * Use strip_protocol to help prevent non-SSL path issues
