@@ -115,7 +115,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
 		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
-		$desc_title   = esc_html__( 'Enable editing of %1$s\' title.', 'custom-bulkquick-edit' );
+		$desc_title   = esc_html__( 'Enable bulk editing of %1$s\' title.', 'custom-bulkquick-edit' );
 
 		$title_conf    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 		$title_edit    = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );

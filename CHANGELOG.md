@@ -16,6 +16,7 @@
 * Update file structure
 * Use Codeship.io than Travis CI
 * Use http product URL
+* Verbiage tweaks
 
 ## 1.4.1
 * Use strip_protocol to help prevent non-SSL path issues

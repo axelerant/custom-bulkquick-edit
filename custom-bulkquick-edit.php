@@ -45,7 +45,7 @@ if ( ! defined( 'CBQE_NAME' ) )
 	define( 'CBQE_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
 
 if ( ! defined( 'CBQE_PREMIUM_LINK' ) )
-	define( 'CBQE_PREMIUM_LINK', '<a href="http://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>' );
+	define( 'CBQE_PREMIUM_LINK', '<a href="http://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/">Buy Premium</a>' );
 
 if ( ! defined( 'CBQE_VERSION' ) )
 	define( 'CBQE_VERSION', '1.5.0RC1' );
