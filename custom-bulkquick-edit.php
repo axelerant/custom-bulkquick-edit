@@ -27,7 +27,7 @@
  */
 
 if ( ! defined( 'CBQE_AIHR_VERSION' ) )
-	define( 'CBQE_AIHR_VERSION', '1.0.3RC1' );
+	define( 'CBQE_AIHR_VERSION', '1.0.3RC2' );
 
 if ( ! defined( 'CBQE_BASE' ) )
 	define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
