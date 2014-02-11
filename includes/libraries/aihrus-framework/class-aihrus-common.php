@@ -308,12 +308,14 @@ EOD;
 	}
 
 
-	public static function get_image_src( $image ) {
+	public static function get_image_src( $image, $strip_protocol = true ) {
 		$doc = new DOMDocument();
 		$doc->loadHTML( $image );
 		$xpath = new DOMXPath( $doc );
 		$src   = $xpath->evaluate( 'string(//img/@src)' );
-		$src   = self::strip_protocol( $src );
+
+		if ( $strip_protocol )
+			$src = self::strip_protocol( $src );
 
 		return $src;
 	}
