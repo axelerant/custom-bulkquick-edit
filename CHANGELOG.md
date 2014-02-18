@@ -16,6 +16,7 @@
 * Update file structure
 * Use Codeship.io than Travis CI
 * Use http product URL
+* Use YouTube https
 * Verbiage tweaks
 
 ## 1.4.1

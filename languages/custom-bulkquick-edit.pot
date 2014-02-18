@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit by Aihrus package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit by Aihrus 1.4.1\n"
+"Project-Id-Version: Custom Bulk/Quick Edit by Aihrus 1.5.0RC1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2014-01-13 19:10:08+00:00\n"
+"POT-Creation-Date: 2014-02-17 05:25:47+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,265 +12,271 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: custom-bulkquick-edit.php:81
-msgid "Settings"
-msgstr ""
-
-#: custom-bulkquick-edit.php:164
-msgid "If your Custom Bulk/Quick Edit display has gone to funky town, please <a href=\"%s\">read the FAQ</a> about possible CSS fixes."
-msgstr ""
-
-#: custom-bulkquick-edit.php:808 custom-bulkquick-edit.php:853
-msgid "&mdash; Unset &mdash;"
-msgstr ""
-
-#: custom-bulkquick-edit.php:857
-msgid "&mdash; No Change &mdash;"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-common.php:156
-msgid "Please donate $5 towards ongoing free support and development of the \"%1$s\" plugin. %2$s"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:61
-msgid "Reset"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:62
-msgid "About"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:80
-msgid "Export Settings"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:82
-msgid "These are your current settings in a serialized format. Copy the contents to make a backup of your settings."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:90
-msgid "Import Settings"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:92
-msgid "Paste new serialized settings here to overwrite your current configuration."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:96
-msgid "Delete all %s data and options from database on plugin deletion"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:100
-msgid "Remove Plugin Data on Deletion?"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:109
-msgid "Reset to Defaults?"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:112
-msgid "Check this box to reset options to their defaults"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:236
-msgid "<img class=\"alignright size-medium\" src=\"%1$s/media/michael-cannon-red-square-300x2251.jpg\" alt=\"Michael in Red Square, Moscow, Russia\" width=\"300\" height=\"225\" /><a href=\"%2$s\">%3$s</a> is by <a href=\"%4$s\">Michael Cannon</a>. He's <a href=\"%5$s\">Peichi’s</a> smiling man, an adventurous <a href=\"%6$s\" target=\"_blank\">water-rat</a>, <a href=\"%7$s\">chief people officer</a>, <a href=\"%8$s\">cyclist</a>, <a href=\"%9$s\">full stack developer</a>, <a href=\"%10$s\">poet</a>, <a href=\"%11$s\">WWOOF’er</a> and <a href=\"%12$s\">world traveler</a>."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:278
-msgid "Save Changes"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:286
-msgid "If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> or <a href=\"%3$s\" title=\"purchase premium WordPress plugins from Aihrus \">purchase the Premium version</a> to help fund further development and <a href=\"%4$s\" title=\"Support forums\">support</a>."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:297
-msgid "Copyright &copy;%1$s <a href=\"%2$s\">Aihrus</a>."
-msgstr ""
-
-#: lib/aihrus/class-aihrus-settings.php:598
-msgid "Required"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-widget.php:140
-msgid "Expand/Collapse All Options"
-msgstr ""
-
-#: lib/aihrus/class-aihrus-widget.php:149
-msgid "Expand/Collapse"
-msgstr ""
-
-#: lib/aihrus/requirements.php:30
-msgid "`aihr_check_aihrus_framework` requires $file argument"
-msgstr ""
-
-#: lib/aihrus/requirements.php:75 lib/requirements.php:49
-msgid "<a href=\"%1$s\">Update plugins</a>. <a href=\"%2$s\">More information</a>."
-msgstr ""
-
-#: lib/aihrus/requirements.php:86
-msgid "Plugin \"%1$s\" is causing the out of date issue."
-msgstr ""
-
-#: lib/aihrus/requirements.php:91
-msgid "Plugin \"%1$s\" has been deactivated as it requires Aihrus Framework %2$s or newer. You're running Aihrus Framework %4$s. Once corrected, \"%1$s\" can be activated. %5$s %3$s"
-msgstr ""
-
-#: lib/aihrus/requirements.php:100
-msgid "`aihr_check_php` requires $file argument"
-msgstr ""
-
-#: lib/aihrus/requirements.php:141
-msgid "Plugin \"%1$s\" has been deactivated as it requires PHP %2$s or newer. You're running PHP %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">More information</a>."
-msgstr ""
-
-#: lib/aihrus/requirements.php:150
-msgid "`aihr_check_wp` requires $file argument"
-msgstr ""
-
-#: lib/aihrus/requirements.php:195
-msgid "Plugin \"%1$s\" has been deactivated as it requires WordPress %2$s or newer. You're running WordPress %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">Update WordPress</a>."
-msgstr ""
-
-#: lib/aihrus/requirements.php:225
-msgid "<a href=\"%1$s\">update to</a>"
-msgstr ""
-
-#: lib/aihrus/requirements.php:230
-msgid "<a href=\"%1$s\">install</a>"
-msgstr ""
-
-#: lib/aihrus/requirements.php:233
-msgid "<a href=\"%1$s\">activate</a>"
-msgstr ""
-
-#: lib/aihrus/requirements.php:237
-msgid "Plugin \"%3$s\" has been deactivated. Please %1$s \"%4$s\" version %2$s or newer before activating \"%3$s\"."
-msgstr ""
-
-#: lib/aihrus/requirements.php:250
-msgid "<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry"
-msgstr ""
-
-#: lib/aihrus/requirements.php:255
-msgid "<a href=\"%s\">Where's my license key?</a>"
-msgstr ""
-
-#: lib/aihrus/requirements.php:260
-msgid "<a href=\"%1$s\">%2$s</a>"
-msgstr ""
-
-#: lib/aihrus/requirements.php:264
-msgid "Plugin \"%1$s\" requires license activation before updating will work. Please activate the license key through %2$s. No license key? See \"%3$s\" or purchase \"%4$s\"."
-msgstr ""
-
-#: lib/class-custom-bulkquick-edit-settings.php:94
+#: includes/class-custom-bulkquick-edit-settings.php:92
 msgid "TBD"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:99
-#: lib/class-custom-bulkquick-edit-settings.php:109
-#: lib/class-custom-bulkquick-edit-settings.php:410
+#: includes/class-custom-bulkquick-edit-settings.php:97
+#: includes/class-custom-bulkquick-edit-settings.php:107
+#: includes/class-custom-bulkquick-edit-settings.php:408
 msgid "No"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:100
+#: includes/class-custom-bulkquick-edit-settings.php:98
 msgid "As checkbox"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:101
+#: includes/class-custom-bulkquick-edit-settings.php:99
 msgid "As input field"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:102
+#: includes/class-custom-bulkquick-edit-settings.php:100
 msgid "As radio"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:103
+#: includes/class-custom-bulkquick-edit-settings.php:101
 msgid "As select"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:104
+#: includes/class-custom-bulkquick-edit-settings.php:102
 msgid "As textarea"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:110
+#: includes/class-custom-bulkquick-edit-settings.php:108
 msgid "No, but enable column view"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:111
+#: includes/class-custom-bulkquick-edit-settings.php:109
 msgid "Like categories"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:112
+#: includes/class-custom-bulkquick-edit-settings.php:110
 msgid "Like tags"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:116
+#: includes/class-custom-bulkquick-edit-settings.php:114
 msgid "You may create options formatted like \"the-key|Supremely, Pretty Values\" seperated by newlines."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:117
+#: includes/class-custom-bulkquick-edit-settings.php:115
 msgid "Force making %1$s an editable taxonomy field like checked categories or free-text tags."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:118
+#: includes/class-custom-bulkquick-edit-settings.php:116
 msgid "Enable editing of %1$s' excerpt."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:119
+#: includes/class-custom-bulkquick-edit-settings.php:117
 msgid "During bulk editing, easily remove all of the %1$s' prior relationships and add new."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:120
-msgid "Enable editing of %1$s' title."
+#: includes/class-custom-bulkquick-edit-settings.php:118
+msgid "Enable bulk editing of %1$s' title."
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:122
+#: includes/class-custom-bulkquick-edit-settings.php:120
 msgid "%s Configuration"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:123
+#: includes/class-custom-bulkquick-edit-settings.php:121
 msgid "Edit \"%s\" taxonomy?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:124
+#: includes/class-custom-bulkquick-edit-settings.php:122
 msgid "Enable \"%s\"?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:125
+#: includes/class-custom-bulkquick-edit-settings.php:123
 msgid "Excerpt"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:126
+#: includes/class-custom-bulkquick-edit-settings.php:124
 msgid "Title"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:127
+#: includes/class-custom-bulkquick-edit-settings.php:125
 msgid "Reset \"%s\" Relations?"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:301
+#: includes/class-custom-bulkquick-edit-settings.php:299
 msgid "Custom Bulk/Quick Settings"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:301
+#: includes/class-custom-bulkquick-edit-settings.php:299
 msgid "Custom Bulk/Quick"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:402
+#: includes/class-custom-bulkquick-edit-settings.php:400
 msgid "Enable"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:408
+#: includes/class-custom-bulkquick-edit-settings.php:406
 msgid "Yes"
 msgstr ""
 
-#: lib/class-custom-bulkquick-edit-settings.php:412
+#: includes/class-custom-bulkquick-edit-settings.php:410
 msgid "Where's the beef?"
 msgstr ""
 
-#: lib/requirements.php:51
+#: includes/class-custom-bulkquick-edit.php:61
+msgid "Settings"
+msgstr ""
+
+#: includes/class-custom-bulkquick-edit.php:149
+msgid "If your Custom Bulk/Quick Edit display has gone to funky town, please <a href=\"%s\">read the FAQ</a> about possible CSS fixes."
+msgstr ""
+
+#: includes/class-custom-bulkquick-edit.php:793
+#: includes/class-custom-bulkquick-edit.php:838
+msgid "&mdash; Unset &mdash;"
+msgstr ""
+
+#: includes/class-custom-bulkquick-edit.php:842
+msgid "&mdash; No Change &mdash;"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-common.php:156
+msgid "Please donate $5 towards ongoing free support and development of the \"%1$s\" plugin. %2$s"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:62
+msgid "Reset"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:63
+msgid "About"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:81
+msgid "Export Settings"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:83
+msgid "These are your current settings in a serialized format. Copy the contents to make a backup of your settings."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:91
+msgid "Import Settings"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:93
+msgid "Paste new serialized settings here to overwrite your current configuration."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:97
+msgid "Delete all %s data and options from database on plugin deletion. Even if this option isn't checked, WordPress will still give a data deletion warning."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:101
+msgid "Remove Plugin Data on Deletion?"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:110
+msgid "Reset to Defaults?"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:113
+msgid "Check this box to reset options to their defaults"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:237
+msgid "<img class=\"alignright size-medium\" src=\"%1$simages/michael-cannon-red-square-300x2251.jpg\" alt=\"Michael in Red Square, Moscow, Russia\" width=\"300\" height=\"225\" /><a href=\"%2$s\">%3$s</a> is by <a href=\"%4$s\">Michael Cannon</a>. He's <a href=\"%5$s\">Peichi’s</a> smiling man, an adventurous <a href=\"%6$s\" target=\"_blank\">water-rat</a>, <a href=\"%7$s\">chief people officer</a>, <a href=\"%8$s\">cyclist</a>, <a href=\"%9$s\">full stack developer</a>, <a href=\"%10$s\">poet</a>, <a href=\"%11$s\">WWOOF’er</a> and <a href=\"%12$s\">world traveler</a>."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:280
+msgid "Save Changes"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:288
+msgid "If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> or <a href=\"%3$s\" title=\"purchase premium WordPress plugins from Aihrus \">purchase the Premium version</a> to help fund further development and <a href=\"%4$s\" title=\"Support forums\">support</a>."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:299
+msgid "Copyright &copy;%1$s <a href=\"%2$s\">Aihrus</a>."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:560
+msgid "Settings saved."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-settings.php:613
+msgid "Required"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-widget.php:140
+msgid "Expand/Collapse All Options"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/class-aihrus-widget.php:149
+msgid "Expand/Collapse"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:30
+msgid "`aihr_check_aihrus_framework` requires $file argument"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:75
+#: includes/requirements.php:49
+msgid "<a href=\"%1$s\">Update plugins</a>. <a href=\"%2$s\">More information</a>."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:86
+msgid "Plugin \"%1$s\" is causing the out of date issue."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:91
+msgid "Plugin \"%1$s\" has been deactivated as it requires Aihrus Framework %2$s or newer. You're running Aihrus Framework %4$s. Once corrected, \"%1$s\" can be activated. %5$s %3$s"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:100
+msgid "`aihr_check_php` requires $file argument"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:141
+msgid "Plugin \"%1$s\" has been deactivated as it requires PHP %2$s or newer. You're running PHP %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">More information</a>."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:150
+msgid "`aihr_check_wp` requires $file argument"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:195
+msgid "Plugin \"%1$s\" has been deactivated as it requires WordPress %2$s or newer. You're running WordPress %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">Update WordPress</a>."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:225
+msgid "<a href=\"%1$s\">update to</a>"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:230
+msgid "<a href=\"%1$s\">install</a>"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:233
+msgid "<a href=\"%1$s\">activate</a>"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:237
+msgid "Plugin \"%3$s\" has been deactivated. Please %1$s \"%4$s\" version %2$s or newer before activating \"%3$s\"."
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:250
+msgid "<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:255
+msgid "<a href=\"%s\">Where's my license key?</a>"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:260
+msgid "<a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: includes/libraries/aihrus-framework/requirements.php:264
+msgid "Plugin \"%1$s\" requires license activation before updating will work. Please activate the license key through %2$s. No license key? See \"%3$s\" or purchase \"%4$s\"."
+msgstr ""
+
+#: includes/requirements.php:51
 msgid "Plugin \"%1$s\" has been deactivated as it requires a current Aihrus Framework. Once corrected, \"%1$s\" can be activated. %2$s"
 msgstr ""
 #. Plugin Name of the plugin/theme

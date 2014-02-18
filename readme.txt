@@ -18,7 +18,7 @@ Through Custom Bulk/Quick Edit [by Aihrus](http://aihr.us/about-aihrus/), you ha
 
 To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
 
-[youtube http://www.youtube.com/watch?v=wd6munNz0gI]
+[youtube https://www.youtube.com/watch?v=wd6munNz0gI]
 
 **[Video introduction](http://youtu.be/UXvzdlvIPtk)**
 
