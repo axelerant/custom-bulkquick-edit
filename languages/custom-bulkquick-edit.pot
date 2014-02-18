@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit by Aihrus package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit by Aihrus 1.5.0RC1\n"
+"Project-Id-Version: Custom Bulk/Quick Edit by Aihrus 1.5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2014-02-17 05:25:47+00:00\n"
+"POT-Creation-Date: 2014-02-18 02:28:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
