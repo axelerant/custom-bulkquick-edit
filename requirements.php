@@ -20,7 +20,7 @@ if ( ! defined( 'AIHR_BASE' ) )
 	define( 'AIHR_BASE', __FILE__ );
 
 if ( ! defined( 'AIHR_VERSION' ) )
-	define( 'AIHR_VERSION', '1.0.3RC2' );
+	define( 'AIHR_VERSION', '1.0.3' );
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
