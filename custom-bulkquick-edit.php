@@ -13,7 +13,7 @@
 
 
 /**
- * Copyright 2013 Michael Cannon (email: mc@aihr.us)
+ * Copyright 2014 Michael Cannon (email: mc@aihr.us)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -25,6 +25,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) )
+	exit;
 
 if ( ! defined( 'CBQE_AIHR_VERSION' ) )
 	define( 'CBQE_AIHR_VERSION', '1.0.3' );
