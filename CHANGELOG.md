@@ -1,6 +1,7 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+* Update copyright
 
 ## 1.5.0
 * Alters option `active_plugins` so that this plugin is among first loaded unless premium is active
