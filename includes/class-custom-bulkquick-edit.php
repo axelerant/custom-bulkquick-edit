@@ -237,6 +237,10 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 					case 'input':
 					case 'textarea':
 						$result = $current;
+
+						if ( is_numeric( $result ) && 0 == $result && 1 == strlen( $result ) ) {
+							$result = '&Oslash;';
+						}
 						break;
 
 					case 'checkbox':
@@ -945,7 +949,8 @@ jQuery( document ).ready( function() {
 		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]' ).val()";
 
 		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
-		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+		self::$scripts_quick[ $column_name . '2' ] = "if ( '&Oslash;' == {$field_name_var} || 'Ø' == {$field_name_var} ) {$field_name_var} = 0;";
+		self::$scripts_quick[ $column_name . '3' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 
 		return $result;
 	}

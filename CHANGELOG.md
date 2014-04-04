@@ -3,6 +3,7 @@
 ## master
 
 ## 1.5.1RC1
+* RESOLVES #39 Custom field value of "0" isn't displayed in the columns
 * Update Aihrus Framework 1.1.0RC5
 * Update copyright
 
