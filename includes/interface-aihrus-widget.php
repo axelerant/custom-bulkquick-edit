@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2013 Michael Cannon (email: mc@aihr.us)
+	Copyright 2014 Michael Cannon (email: mc@aihr.us)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -16,11 +16,17 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-if ( class_exists( 'Aihrus_Common_Interface' ) )
+if ( class_exists( 'Aihrus_Widget_Interface' ) )
 	return;
 
 
-interface Aihrus_Common_Interface {
+interface Aihrus_Widget_Interface {
+	public static function form_instance( $instance );
+	public static function form_parts( $instance, $number );
+	public static function get_content( $instance, $widget_number );
+	public static function get_defaults();
+	public static function get_suggest( $id, $suggest_id );
+	public static function validate_settings( $instance );
 }
 
 

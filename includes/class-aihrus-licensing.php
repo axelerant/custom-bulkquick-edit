@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2013 Michael Cannon (email: mc@aihr.us)
+	Copyright 2014 Michael Cannon (email: mc@aihr.us)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -78,7 +78,7 @@ abstract class Aihrus_Licensing implements Aihrus_Licensing_Interface {
 		delete_transient( $key );
 
 		if ( ! is_null( $value ) )
-			set_transient( $key, $value, WEEK_IN_SECONDS );
+			set_transient( $key, $value, 2 * YEAR_IN_SECONDS );
 	}
 
 
