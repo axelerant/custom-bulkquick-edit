@@ -2,6 +2,28 @@
 
 ## master
 
+## 1.1.0RC5
+* Abstract deactivate_plugins actual to aihr_deactivate_plugin_do
+* Add class redrokk_metabox_class
+* Add class wp_custom_post_status
+* Add date, time, and datetime types to redrokk_metabox_class
+* Add rich_editor type
+* Add validate_email
+* Consolidate deactivate_plugins activity into aihr_deactivate_plugin
+* Don't esc_attr rich editor value
+* Limit wp_custom_post_status to post type
+* Move classes/interfaces to includes
+* Register `jquery-style`
+* Rename requirements.php to aihrus-framework.php
+* RESOLVE michael-cannon/testimonials-widget#63 Unable to activate premium license
+* RESOLVE michael-cannon/testimonials-widget#65 Widget blank options aren't saving correctly
+* RESOLVE michael-cannon/testimonials-widget#76 Undefined index: hide_image_single
+* RESOLVE redrokk_metabox_class prepare warning
+* Set AIHR_DIR* helpers
+* Set defaults for validators
+* Set premium license key for 2 years though it expires at 1
+* Update copyright year
+
 ## 1.0.3
 * RESOLVE Fatal error: Call to undefined function add_settings_error() in class-aihrus-settings.php on line 559
 * RESOLVE Featured image via Gravatar not saving correctly

@@ -396,7 +396,26 @@ abstract class Aihrus_Settings {
 
 				if ( ! empty( $desc ) )
 					$content .= '<br /><span class="description">' . $desc . '</span>';
+				break;
 
+			case 'rich_editor':
+				global $wp_version;
+				
+				$field_value = $options[$id];
+
+				if ( $wp_version >= 3.3 && function_exists( 'wp_editor' ) ) {
+					ob_start();
+					wp_editor( $field_value, static::ID . '[' . $id . ']', array( 'textarea_name' => static::ID . '[' . $id . ']' ) );
+					$content = ob_get_clean();
+				} else {
+					$content = '<textarea class="large-text" rows="10" id="' . static::ID . '[' . $id . ']" name="' . static::ID . '[' . $id . ']">' . esc_textarea( $field_value ) . '</textarea>';
+				}
+
+				if ( ! empty( $desc ) )
+					$content .= '<br /><span class="description">' . $desc . '</span>';
+
+				if ( $show_code )
+					$content .= '<br /><code>' . $id . '</code>';
 				break;
 
 			case 'select':
@@ -468,7 +487,8 @@ abstract class Aihrus_Settings {
 
 
 	public static function styles() {
-		wp_enqueue_style( 'jquery-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+		wp_register_style( 'jquery-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+		wp_enqueue_style( 'jquery-style' );
 	}
 
 
@@ -484,8 +504,8 @@ abstract class Aihrus_Settings {
 		if ( is_null( $options ) ) {
 			$null_options = true;
 
-			$options  = self::get_settings();
 			$defaults = static::get_defaults();
+			$options  = self::get_settings();
 
 			if ( is_admin() ) {
 				if ( ! empty( $input['reset_defaults'] ) ) {
@@ -516,10 +536,11 @@ abstract class Aihrus_Settings {
 				$validations = explode( ',', $validations );
 
 			if ( ! isset( $input[ $id ] ) ) {
-				if ( 'checkbox' != $type )
+				if ( 'checkbox' != $type ) {
 					$input[ $id ] = $default;
-				else
+				} else {
 					$input[ $id ] = 0;
+				}
 			}
 
 			if ( $default == $input[ $id ] && ! in_array( 'required', $validations ) )
@@ -582,6 +603,10 @@ abstract class Aihrus_Settings {
 					$input[ $id ] = $validate( $input[ $id ] );
 				else
 					$input[ $id ] = $default;
+				break;
+
+			case 'email':
+				$input[ $id ] = self::validate_email( $input[ $id ], $default );
 				break;
 
 			case 'ids':
@@ -659,7 +684,7 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function validate_ids( $input, $default ) {
+	public static function validate_ids( $input, $default = false ) {
 		if ( preg_match( '#^\d+(,\s?\d+)*$#', $input ) )
 			return preg_replace( '#\s#', '', $input );
 
@@ -667,7 +692,7 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function validate_order( $input, $default ) {
+	public static function validate_order( $input, $default = false ) {
 		if ( preg_match( '#^desc|asc$#i', $input ) )
 			return $input;
 
@@ -675,7 +700,7 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function validate_slugs( $input, $default ) {
+	public static function validate_slugs( $input, $default = false ) {
 		if ( preg_match( '#^[\w-]+(,\s?[\w-]+)*$#', $input ) )
 			return preg_replace( '#\s#', '', $input );
 
@@ -683,7 +708,7 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function validate_slug( $input, $default ) {
+	public static function validate_slug( $input, $default = false ) {
 		if ( preg_match( '#^[\w-]+$#', $input ) )
 			return $input;
 
@@ -691,7 +716,7 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function validate_term( $input, $default ) {
+	public static function validate_term( $input, $default = false ) {
 		if ( preg_match( '#^\w+$#', $input ) )
 			return $input;
 
@@ -717,7 +742,15 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function validate_terms( $input, $default ) {
+	public static function validate_email( $input, $default = false ) {
+		if ( filter_var( $input, FILTER_VALIDATE_EMAIL ) )
+			return $input;
+
+		return $default;
+	}
+
+
+	public static function validate_terms( $input, $default = false ) {
 		if ( preg_match( '#^(([\w- ]+)(,\s?)?)+$#', $input ) )
 			return preg_replace( '#,\s*$#', '', $input );
 
@@ -725,7 +758,7 @@ abstract class Aihrus_Settings {
 	}
 
 
-	public static function validate_url( $input, $default ) {
+	public static function validate_url( $input, $default = false ) {
 		if ( filter_var( $input, FILTER_VALIDATE_URL ) )
 			return $input;
 

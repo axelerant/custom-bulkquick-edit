@@ -19,10 +19,20 @@
 if ( ! defined( 'AIHR_BASE' ) )
 	define( 'AIHR_BASE', __FILE__ );
 
+if ( ! defined( 'AIHR_DIR' ) )
+	define( 'AIHR_DIR', plugin_dir_path( __FILE__ ) );
+
+if ( ! defined( 'AIHR_DIR_INC' ) )
+	define( 'AIHR_DIR_INC', AIHR_DIR . 'includes/' );
+
+if ( ! defined( 'AIHR_DIR_LIB' ) )
+	define( 'AIHR_DIR_LIB', AIHR_DIR_INC . 'libraries/' );
+
 if ( ! defined( 'AIHR_VERSION' ) )
-	define( 'AIHR_VERSION', '1.0.3' );
+	define( 'AIHR_VERSION', '1.1.0RC5' );
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
 
 if ( ! function_exists( 'aihr_check_aihrus_framework' ) ) {
 	function aihr_check_aihrus_framework( $file = null, $name = null, $aihr_min = '1.0.0' ) {
@@ -40,8 +50,6 @@ if ( ! function_exists( 'aihr_check_aihrus_framework' ) ) {
 
 		$file = plugin_basename( $file );
 		if ( ! $check_okay && __FILE__ != $file ) {
-			deactivate_plugins( $file );
-
 			if ( ! defined( 'AIHR_VERSION_FILE' ) ) {
 				define( 'AIHR_VERSION_FILE', $file );
 			}
@@ -105,8 +113,6 @@ if ( ! function_exists( 'aihr_check_php' ) ) {
 		$check_okay = version_compare( PHP_VERSION, $php_min, '>=' );
 		$file       = plugin_basename( $file );
 		if ( ! $check_okay && __FILE__ != $file ) {
-			deactivate_plugins( $file );
-
 			if ( ! defined( 'AIHR_PHP_VERSION_FILE' ) ) {
 				define( 'AIHR_PHP_VERSION_FILE', $file );
 			}
@@ -157,8 +163,6 @@ if ( ! function_exists( 'aihr_check_wp' ) ) {
 		$check_okay = version_compare( $wp_version, $wp_min, '>=' );
 		$file       = plugin_basename( $file );
 		if ( ! $check_okay && __FILE__ != $file ) {
-			deactivate_plugins( $file );
-
 			if ( ! defined( 'AIHR_WP_VERSION_FILE' ) ) {
 				define( 'AIHR_WP_VERSION_FILE', $file );
 			}
@@ -264,6 +268,73 @@ if ( ! function_exists( 'aihr_notice_license' ) ) {
 		$text = sprintf( __( 'Plugin "%1$s" requires license activation before updating will work. Please activate the license key through %2$s. No license key? See "%3$s" or purchase "%4$s".' ), $item_name, $settings_link, $faq_link, $buy_link );
 
 		aihr_notice_error( $text );
+	}
+}
+
+if ( ! function_exists( 'aihr_deactivate_plugin' ) ) {
+	function aihr_deactivate_plugin( $file = null, $name = null, $reason = '' ) {
+		error_log( print_r( debug_backtrace(), true ) );
+
+		if ( is_null( $file ) ) {
+			aihr_notice_error( __( '`aihr_deactivate_plugin` requires $file argument' ) );
+
+			return false;
+		}
+
+		if ( is_null( $name ) && empty( $reason ) ) {
+			aihr_deactivate_plugin_do( $file );
+			return false;
+		}
+
+		if ( ! defined( 'AIHR_DEACTIVATE_REASON' ) ) {
+			define( 'AIHR_DEACTIVATE_REASON', $reason );
+		}
+
+		if ( ! defined( 'AIHR_DEACTIVATE_FILE' ) ) {
+			define( 'AIHR_DEACTIVATE_FILE', $file );
+		}
+
+		if ( ! is_null( $name ) && ! defined( 'AIHR_DEACTIVATE_NAME' ) ) {
+			define( 'AIHR_DEACTIVATE_NAME', $name );
+		}
+
+		add_action( 'admin_notices', 'aihr_notice_deactivate' );
+	}
+}
+
+if ( ! function_exists( 'aihr_notice_deactivate' ) ) {
+	function aihr_notice_deactivate() {
+		if ( defined( 'AIHR_DEACTIVATE_NAME' ) ) {
+			$name = AIHR_DEACTIVATE_NAME;
+		} else {
+			$name = basename( dirname( AIHR_DEACTIVATE_FILE ) );
+			$name = str_replace( '-', ' ', $name );
+			$name = ucwords( $name );
+		}
+
+		if ( defined( 'AIHR_DEACTIVATE_REASON' ) ) {
+			$reason = AIHR_DEACTIVATE_REASON;
+		} else {
+			$reason = esc_html__( 'Unknown' );
+		}
+
+		$text = sprintf( __( 'Plugin "%1$s" has been deactivated due to "%2$s". Once corrected, "%1$s" can be activated.' ), $name, $reason );
+
+		aihr_notice_error( $text );
+
+		aihr_deactivate_plugin_do( AIHR_DEACTIVATE_FILE );
+	}
+}
+
+if ( ! function_exists( 'aihr_deactivate_plugin_do' ) ) {
+	function aihr_deactivate_plugin_do( $file = null ) {
+		if ( is_null( $file ) ) {
+			aihr_notice_error( __( '`aihr_deactivate_plugin_do` requires $file argument' ) );
+
+			return false;
+		}
+
+		deactivate_plugins( $file );
 	}
 }
 
