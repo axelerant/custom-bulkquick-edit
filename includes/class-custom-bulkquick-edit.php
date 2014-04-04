@@ -237,7 +237,6 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 					case 'input':
 					case 'textarea':
 						$result = $current;
-
 						if ( is_numeric( $result ) && 0 == $result && 1 == strlen( $result ) ) {
 							$result = '&Oslash;';
 						}
