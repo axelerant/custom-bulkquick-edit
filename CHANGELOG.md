@@ -1,6 +1,9 @@
 # CHANGELOG Custom Bulk/Quick Edit by Aihrus
 
 ## master
+
+## 1.5.1RC1
+* Update Aihrus Framework 1.1.0RC5
 * Update copyright
 
 ## 1.5.0

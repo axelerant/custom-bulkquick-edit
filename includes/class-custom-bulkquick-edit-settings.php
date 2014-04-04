@@ -22,7 +22,7 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
-require_once CBQE_DIR_LIB . 'aihrus-framework/class-aihrus-settings.php';
+require_once AIHR_DIR_INC . 'class-aihrus-settings.php';
 
 if ( class_exists( 'Custom_Bulkquick_Edit_Settings' ) )
 	return;

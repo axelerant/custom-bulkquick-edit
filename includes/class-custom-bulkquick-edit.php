@@ -13,7 +13,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-require_once CBQE_DIR_LIB . 'aihrus-framework/class-aihrus-common.php';
+require_once AIHR_DIR_INC . 'class-aihrus-common.php';
 require_once CBQE_DIR_INC . 'class-custom-bulkquick-edit-settings.php';
 
 if ( class_exists( 'Custom_Bulkquick_Edit' ) )
@@ -165,8 +165,10 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 			if ( $prior_version < '0.0.1' )
 				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
 
-			if ( $prior_version < self::VERSION )
+			if ( $prior_version < self::VERSION ) {
+				cbqe_requirements_check( true );
 				do_action( 'custom_bulkquick_edit_update' );
+			}
 
 			cbqe_set_option( 'admin_notices' );
 		}
