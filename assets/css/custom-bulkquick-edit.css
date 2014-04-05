@@ -4,7 +4,8 @@ fieldset.cbqe {
 fieldset.cbqe label .title {
 	width: 10em;
 }
-fieldset.cbqe label .warning {
+fieldset.cbqe label .warning,
+label.inline-edit-tags .warning {
 	color: red;
 	display: block;
 	float: left;
