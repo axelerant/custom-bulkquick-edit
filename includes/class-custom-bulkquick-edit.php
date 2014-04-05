@@ -296,6 +296,9 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) )
 				continue;
 
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::REMOVE ) )
+				continue;
+
 			$field_name = str_replace( $post_type . Custom_Bulkquick_Edit_Settings::ENABLE, '', $key );
 			$field_type = self::is_field_enabled( $post_type, $field_name );
 			if ( $field_type )
@@ -423,7 +426,7 @@ jQuery( document ).ready( function() {
 		}
 
 		foreach ( $_POST as $field => $value ) {
-			if ( false === strpos( $field, self::SLUG ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET ) )
+			if ( false === strpos( $field, self::SLUG ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::REMOVE ) )
 				continue;
 
 			if ( '' == $value && 'bulk_edit' == $mode )
@@ -453,6 +456,15 @@ jQuery( document ).ready( function() {
 		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
 			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
 			wp_delete_object_term_relationships( $post_id, $taxonomy );
+			return;
+		}
+
+		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
+			$terms = $value;
+			error_log( print_r( $terms, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+
+			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::REMOVE, '', $field_name );
+			wp_remove_object_terms( $post_id, $terms, $taxonomy );
 			return;
 		}
 
@@ -652,6 +664,21 @@ jQuery( document ).ready( function() {
 							$row++;
 						}
 					}
+
+					$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
+					if ( $valid_type && $valid_remove ) {
+						$enable = cbqe_get_option( $setting );
+						if ( $enable ) {
+							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::REMOVE . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+							$orig_column = self::SLUG . $orig_field;
+
+							$field_name_var = str_replace( '-', '_', $orig_field );
+
+							// fixme switch taxnomy/category selector
+							$result .= self::custom_box_taxonomy( $orig_column, $orig_field, $field_name_var );
+							$row++;
+						}
+					}
 				}
 
 				if ( ! empty( $result ) ) {
@@ -736,7 +763,7 @@ jQuery( document ).ready( function() {
 				break;
 
 			case 'taxonomy':
-				$warning = esc_html__( 'Use commas to separate your values' );
+				$warning = esc_html__( 'Use commas to separate your values. Ex: "1,two,Three"' );
 				echo '<span class="warning">' . $warning . '</span>';
 
 				$result = self::custom_box_taxonomy( $column_name, $field_name, $field_name_var );

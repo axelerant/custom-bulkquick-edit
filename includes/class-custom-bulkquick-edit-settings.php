@@ -33,6 +33,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	const ENABLE = '__enable__';
 	const ID     = 'custom-bulkquick-edit-settings';
 	const NAME   = 'Custom Bulk/Quick Edit Settings';
+	const REMOVE = '__remove__';
 	const RESET  = '__reset__';
 
 	private static $post_types = array();
@@ -111,18 +112,25 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
-		$desc_conf    = esc_html__( 'You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.', 'custom-bulkquick-edit' );
-		$desc_edit    = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
-		$desc_excerpt = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
-		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
-		$desc_title   = esc_html__( 'Enable bulk editing of %1$s\' title.', 'custom-bulkquick-edit' );
+		$title_conf = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
+		$desc_conf  = esc_html__( 'You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.', 'custom-bulkquick-edit' );
 
-		$title_conf    = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
-		$title_edit    = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
-		$title_enable  = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
+		$title_edit = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
+		$desc_edit  = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
+
+		$title_enable = esc_html__( 'Enable "%s"?', 'custom-bulkquick-edit' );
+
 		$title_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
-		$title_title   = esc_html__( 'Title', 'custom-bulkquick-edit' );
-		$title_remove  = esc_html__( 'Reset "%s" Relations?', 'custom-bulkquick-edit' );
+		$desc_excerpt  = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
+
+		$title_remove = esc_html__( 'Reset "%s" Relations?', 'custom-bulkquick-edit' );
+		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
+
+		$title_selective_rm = esc_html__( 'Remove Selected "%s" Relations?', 'custom-bulkquick-edit' );
+		$desc_selective_rm  = esc_html__( 'During bulk editing, easily remove seelcted %1$s\' relationships.', 'custom-bulkquick-edit' );
+
+		$title_title = esc_html__( 'Title', 'custom-bulkquick-edit' );
+		$desc_title  = esc_html__( 'Enable bulk editing of %1$s\' title.', 'custom-bulkquick-edit' );
 
 		foreach ( self::$post_types as $post_type => $label ) {
 			self::$settings[ $post_type . self::ENABLE . 'post_title' ] = array(
@@ -169,6 +177,14 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 					'title' => sprintf( $title_remove, $tax_label ),
 					'label' => sprintf( $title_remove, $tax_label ),
 					'desc' => sprintf( $desc_remove, $tax_label ),
+					'type' => 'checkbox',
+				);
+
+				self::$settings[ $post_type . self::ENABLE . $name . self::REMOVE ] = array(
+					'section' => $post_type,
+					'title' => sprintf( $title_selective_rm, $tax_label ),
+					'label' => sprintf( $title_selective_rm, $tax_label ),
+					'desc' => sprintf( $desc_selective_rm, $tax_label ),
 					'type' => 'checkbox',
 				);
 			}
