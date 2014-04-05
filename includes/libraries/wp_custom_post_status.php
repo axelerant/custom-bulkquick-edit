@@ -77,8 +77,6 @@ class wp_custom_post_status
 	 */
 	public function add_post_status()
 	{
-		global $wp_post_statuses;
-
 		$defaults = array(
 			 'label_count'               => false
 			// defaults to FALSE

@@ -579,7 +579,7 @@ abstract class Aihrus_Settings {
 
 		if ( $null_options && empty( $errors ) && ! $hide_update_notice ) {
 			add_settings_error( static::ID, 'settings_updated', esc_html__( 'Settings saved.' ), 'updated' );
-		    set_transient( 'settings_errors', get_settings_errors(), 30 );
+			set_transient( 'settings_errors', get_settings_errors(), 30 );
 		}
 
 		if ( empty( $do_errors ) ) {
