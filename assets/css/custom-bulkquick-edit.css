@@ -4,6 +4,12 @@ fieldset.cbqe {
 fieldset.cbqe label span.title {
 	width: 10em;
 }
+fieldset.cbqe label span.warning {
+	color: red;
+	display: block;
+	float: left;
+	margin: 0.2em 1em;
+}
 .inline-edit-group.cbqe label {
 	clear: both;
 }

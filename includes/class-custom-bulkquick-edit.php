@@ -736,6 +736,9 @@ jQuery( document ).ready( function() {
 				break;
 
 			case 'taxonomy':
+				$warning = esc_html__( 'Use commas to separate your values' );
+				echo '<span class="warning">' . $warning . '</span>';
+
 				$result = self::custom_box_taxonomy( $column_name, $field_name, $field_name_var );
 				break;
 
