@@ -1,10 +1,10 @@
 fieldset.cbqe {
 	clear: both;
 }
-fieldset.cbqe label span.title {
+fieldset.cbqe label .title {
 	width: 10em;
 }
-fieldset.cbqe label span.warning {
+fieldset.cbqe label .warning {
 	color: red;
 	display: block;
 	float: left;
