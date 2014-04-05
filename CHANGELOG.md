@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.5.1RC1
+## 1.5.1RC2
 * RESOLVES #35 make a small comment line above the attributes quick edit boxes to prevent people using ","
 * RESOLVES #39 Custom field value of "0" isn't displayed in the columns
 * Update Aihrus Framework 1.1.0RC5
