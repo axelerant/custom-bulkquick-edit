@@ -637,10 +637,11 @@ jQuery( document ).ready( function() {
 		$key        = self::get_field_key( $post_type, $column_name );
 		$field_name = self::SLUG . $column_name;
 
-		$close_div      = '</div>';
-		$close_fieldset = '</fieldset>';
-		$open_div       = '<div class="inline-edit-col">';
 		$open_fieldset  = '<fieldset class="inline-edit-col-%1$s cbqe">';
+		$close_fieldset = '</fieldset>';
+
+		$open_div  = '<div class="inline-edit-col">';
+		$close_div = '</div>';
 
 		if ( $bulk_mode ) {
 			$ignore_bulk_edit = apply_filters( 'cbqe_ignore_bulk_edit', array() );
@@ -666,7 +667,7 @@ jQuery( document ).ready( function() {
 					}
 
 					$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
-					if ( $valid_type && $valid_remove ) {
+					if ( false && $valid_type && $valid_remove ) {
 						$enable = cbqe_get_option( $setting );
 						if ( $enable ) {
 							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::REMOVE . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
