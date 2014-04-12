@@ -153,16 +153,16 @@ five-five|55`
 * [How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)
 * [How do you configure options?](https://aihrus.zendesk.com/entries/24911342)
 * [Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)
-* Got `Parse error: syntax error, unexpected T_STATIC, expecting ')'`? Read [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006) for the fixes.
-* [Debug common theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
+* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006)
+* [Debug theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546) - read and comment upon frequently asked questions
-1. [Open Custom Bulk/Quick Edit Issues](https://github.com/michael-cannon/custom-bulkquick-edit/issues) - review and submit bug reports and enhancement requests
-1. [Custom Bulk/Quick Edit Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
-1. [Contribute Code to Custom Bulk/Quick Edit](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
-1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - get the latest Custom Bulk/Quick Edit version
+1. [Knowledge Base](https://aihrus.zendesk.com/categories/20112546) - read and comment upon frequently asked questions
+1. [Open Issues](https://github.com/michael-cannon/custom-bulkquick-edit/issues) - review and submit bug reports and enhancement requests
+1. [Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
+1. [Contribute Code](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
+1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - provide feedback and direction to plugin development
 
 
 == Screenshots ==

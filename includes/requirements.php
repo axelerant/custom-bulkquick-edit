@@ -46,8 +46,10 @@ function cbqe_requirements_check( $force_check = false ) {
 	}
 
 	$check_okay = empty( $deactivate_reason );
-	delete_transient( 'cbqe_requirements_check' );
-	set_transient( 'cbqe_requirements_check', $check_okay, WEEK_IN_SECONDS );
+	if ( $check_okay ) {
+		delete_transient( 'cbqe_requirements_check' );
+		set_transient( 'cbqe_requirements_check', $check_okay, HOUR_IN_SECONDS );
+	}
 
 	return $check_okay;
 }

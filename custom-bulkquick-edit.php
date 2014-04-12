@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) )
 	exit;
 
 if ( ! defined( 'CBQE_AIHR_VERSION' ) )
-	define( 'CBQE_AIHR_VERSION', '1.1.0RC5' );
+	define( 'CBQE_AIHR_VERSION', '1.1.0' );
 
 if ( ! defined( 'CBQE_BASE' ) )
 	define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
