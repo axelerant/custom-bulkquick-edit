@@ -290,14 +290,20 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 				continue;
 
 			// the following are ignored potential columns
-			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) )
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) ) {
 				continue;
+			}
 
-			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) )
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) ) {
 				continue;
+			}
 
-			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::REMOVE ) )
-				continue;
+			// fixme
+			if ( false ) {
+				if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
+					continue;
+				}
+			}
 
 			$field_name = str_replace( $post_type . Custom_Bulkquick_Edit_Settings::ENABLE, '', $key );
 			$field_type = self::is_field_enabled( $post_type, $field_name );
@@ -426,7 +432,11 @@ jQuery( document ).ready( function() {
 		}
 
 		foreach ( $_POST as $field => $value ) {
-			if ( false === strpos( $field, self::SLUG ) && ! in_array( $field, array( 'tax_input', 'post_category' ) ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET ) && false === strstr( $field, Custom_Bulkquick_Edit_Settings::REMOVE ) )
+			if ( false === strpos( $field, self::SLUG )
+				&& ! in_array( $field, array( 'tax_input', 'post_category' ) )
+				&& false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET )
+				// fixme && false === strstr( $field, Custom_Bulkquick_Edit_Settings::REMOVE )
+			)
 				continue;
 
 			if ( '' == $value && 'bulk_edit' == $mode )
@@ -459,13 +469,16 @@ jQuery( document ).ready( function() {
 			return;
 		}
 
-		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
-			$terms = $value;
-			error_log( print_r( $terms, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+		// fixme
+		if ( false ) {
+			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
+				$terms = $value;
+				error_log( print_r( $terms, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
 
-			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::REMOVE, '', $field_name );
-			wp_remove_object_terms( $post_id, $terms, $taxonomy );
-			return;
+				$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::REMOVE, '', $field_name );
+				wp_remove_object_terms( $post_id, $terms, $taxonomy );
+				return;
+			}
 		}
 
 		$value = stripslashes_deep( $value );
@@ -666,18 +679,21 @@ jQuery( document ).ready( function() {
 						}
 					}
 
-					$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
-					if ( false && $valid_type && $valid_remove ) {
-						$enable = cbqe_get_option( $setting );
-						if ( $enable ) {
-							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::REMOVE . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
-							$orig_column = self::SLUG . $orig_field;
+					// fixme
+					if ( false ) {
+						$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
+						if ( $valid_type && $valid_remove ) {
+							$enable = cbqe_get_option( $setting );
+							if ( $enable ) {
+								$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::REMOVE . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+								$orig_column = self::SLUG . $orig_field;
 
-							$field_name_var = str_replace( '-', '_', $orig_field );
+								$field_name_var = str_replace( '-', '_', $orig_field );
 
-							// fixme switch taxnomy/category selector
-							$result .= self::custom_box_taxonomy( $orig_column, $orig_field, $field_name_var );
-							$row++;
+								// fixme switch taxnomy/category selector
+								$result .= self::custom_box_taxonomy( $orig_column, $orig_field, $field_name_var );
+								$row++;
+							}
 						}
 					}
 				}
