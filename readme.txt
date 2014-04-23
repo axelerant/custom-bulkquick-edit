@@ -29,7 +29,6 @@ Read [**Installation**](http://wordpress.org/plugins/custom-bulkquick-edit/insta
 = Primary Features =
 
 * API of actions and filters
-* Auto detects most post custom fields
 * Auto-suggest for bulk and quick edit taxonomy entries
 * Easily remove or replace `category` and `taxonomy` relations
 * Edit excerpts and titles
