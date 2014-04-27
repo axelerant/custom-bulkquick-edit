@@ -1,4 +1,8 @@
 <?php
+if ( class_exists ( 'wp_custom_post_status' ) ) {
+	return;
+}
+
 // No, Thanks. Direct file access forbidden.
 ! defined( 'ABSPATH' ) AND exit;
 /*

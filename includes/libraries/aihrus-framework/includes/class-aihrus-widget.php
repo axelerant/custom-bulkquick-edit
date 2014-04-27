@@ -105,17 +105,6 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 	}
 
 
-	public static function widget_options( $options ) {
-		foreach ( $options as $id => $parts ) {
-			// remove non-widget parts
-			if ( empty( $parts['widget'] ) )
-				unset( $options[ $id ] );
-		}
-
-		return $options;
-	}
-
-
 	/**
 	 *
 	 *
@@ -123,6 +112,10 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 	 */
 	public function display_setting( $args = array(), $options ) {
 		extract( $args );
+
+		if ( empty( $widget ) ) {
+			echo '<div style="display:none;">';
+		}
 
 		$do_return = false;
 		switch ( $type ) {
@@ -162,8 +155,13 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 				break;
 		}
 
-		if ( $do_return )
+		if ( $do_return ) {
+			if ( empty( $widget ) ) {
+				echo '</div>';
+			}
+
 			return;
+		}
 
 		if ( ! isset( $options[$id] ) && $type != 'checkbox' )
 			$options[$id] = $std;
@@ -243,6 +241,10 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 			echo '<br /><span class="setting-description"><small>' . $desc . '</small></span>';
 
 		echo '</p>';
+
+		if ( empty( $widget ) ) {
+			echo '</div>';
+		}
 	}
 
 
