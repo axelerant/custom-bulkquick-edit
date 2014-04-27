@@ -29,7 +29,7 @@ if ( ! defined( 'AIHR_DIR_LIB' ) )
 	define( 'AIHR_DIR_LIB', AIHR_DIR_INC . 'libraries/' );
 
 if ( ! defined( 'AIHR_VERSION' ) )
-	define( 'AIHR_VERSION', '1.1.3' );
+	define( 'AIHR_VERSION', '1.1.4RC1' );
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 

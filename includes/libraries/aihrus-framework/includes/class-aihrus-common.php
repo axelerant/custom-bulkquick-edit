@@ -494,6 +494,34 @@ EOD;
 	}
 
 
+	public static function activation() {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+	}
+
+
+	public static function deactivation() {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+	}
+
+
+	public static function uninstall() {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+	}
+
+
+	public static function version_check() {
+		$good_version = true;
+
+		return $good_version;
+	}
+
+
 }
 
 

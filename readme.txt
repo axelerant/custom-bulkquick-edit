@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.6
 Tested up to: 3.9.0
-Stable tag: 1.5.1RC3
+Stable tag: 1.5.1RC4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,7 @@ Read [**Installation**](http://wordpress.org/plugins/custom-bulkquick-edit/insta
 * Edit excerpts and titles
 * Performance minded – Plugin automatically loads when needed
 * Prevents editing of common and static fields like cb, id, author, etc.
+* Remove specific category and tag entries
 * Sample configurations provided as needed
 * Save post handler can be customized for your needs.
 * Setting options export/import
@@ -41,16 +42,16 @@ Read [**Installation**](http://wordpress.org/plugins/custom-bulkquick-edit/insta
 * Supports WordPress's own taxonomy handlers for category and tag relations
 * Unset checkbox, radio, and select values during bulk edit
 * View category and tag relations on edit screen columns
-* Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
 * Works with posts and pages
+* Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
 
 = Add Ons =
 * [Edit Flow](http://wordpress.org/plugins/cbqe-edit-flow/) - Date (Premium required), number, and user types
-* [WordPress SEO](https://aihr.us/products/wordpress-seo-custom-bulkquick-edit-premium/) - Modify WordPress SEO options via bulk and quick edit panels
+* [WordPress SEO](http://aihr.us/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
 
 = Custom Bulk/Quick Edit Premium =
 
-Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin there is, [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/). Custom Bulk/Quick Edit Premium supports [custom post types and WooCommerce](https://aihr.us/custom-bulkquick-edit-premium/). Plus, it offers additional inputs options like date and multiple selects for use during bulk/quick edit operations.
+Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin there is, [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/). Custom Bulk/Quick Edit Premium supports [custom post types](https://aihr.us/custom-bulkquick-edit-premium/). Plus, it offers additional inputs options like date and multiple selects for use during bulk/quick edit operations.
 
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
 
@@ -59,17 +60,17 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 * Adds float, integer, and user inputs
 * Bulk edit post dates
 * Color input with color picker
+* Coming Soon! [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
 * Date and time input with datetime picker
 * Date input with date picker
 * Disable donate references
 * Flexible API
 * Multiple select selector
 * Works with Custom Post Types
-* Works with [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
 
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
 
-= Settings Options =
+= Settings =
 
 **Post**
 
@@ -80,7 +81,8 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 	* No, but enable column view (view the column on the admin edit screen)
 	* Like categories
 	* Like tags
-* Reset "taxonomy" Relations? – During bulk editing, easily remove all of the taxonomy's prior relationships and add new.
+* Reset "TBD" Relations? – During bulk editing, easily remove all of the TBD's prior relationships and add new.
+* Enable "Date"? – Enable bulk editing of post_type' date
 * Enable "Custom Field"? - As checkbox, radio, select, input, or textarea
 * "Custom Field" Configuration - You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.
 	* Example configuration
@@ -90,7 +92,11 @@ Two
 four|Four, and forty five
 five-five|55`
 
-**Compatibility & Reset**
+**Pages**
+
+See Post.
+
+**Reset**
 
 * Export Settings – These are your current settings in a serialized format. Copy the contents to make a backup of your settings.
 * Import Settings – Paste new serialized settings here to overwrite your current configuration.

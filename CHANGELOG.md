@@ -2,13 +2,15 @@
 
 ## master
 
-## 1.5.1RC3
+## 1.5.1RC4
 * Link to old plugin versions in FAQ
-* Require Aihrus Framework 1.1.3
+* Require Aihrus Framework 1.1.4RC1
 * RESOLVES #35 make a small comment line above the attributes quick edit boxes to prevent people using ","
 * RESOLVES #39 Custom field value of "0" isn't displayed in the columns
+* RESOLVES #41 Add option to remove specific category and tag entries
 * RESOLVES #42 Taxonomy reset options not showing in bulk edit
 * Revise FAQ section
+* Revise readme layout
 * Update copyright
 
 ## 1.5.0

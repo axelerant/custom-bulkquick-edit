@@ -83,28 +83,18 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function plugin_action_links( $links, $file ) {
-		if ( self::BASE == $file )
+		if ( self::BASE == $file ) {
 			array_unshift( $links, self::$settings_link );
+		}
 
 		return $links;
 	}
 
 
-	public static function activation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
-			return;
-	}
-
-
-	public static function deactivation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
-			return;
-	}
-
-
 	public static function uninstall() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 
 		global $wpdb;
 
@@ -124,20 +114,23 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 */
 	public static function plugin_row_meta( $input, $file ) {
-		if ( self::BASE != $file )
+		if ( self::BASE != $file ) {
 			return $input;
+		}
 
 		$disable_donate = cbqe_get_option( 'disable_donate' );
-		if ( $disable_donate )
+		if ( $disable_donate ) {
 			return $input;
+		}
 
 		$links = array(
 			self::$donate_link,
 		);
 
 		global $Custom_Bulkquick_Edit_Premium;
-		if ( ! isset( $Custom_Bulkquick_Edit_Premium ) )
+		if ( ! isset( $Custom_Bulkquick_Edit_Premium ) ) {
 			$links[] = CBQE_PREMIUM_LINK;
+		}
 
 		$input = array_merge( $input, $links );
 
@@ -162,8 +155,9 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	public static function update() {
 		$prior_version = cbqe_get_option( 'admin_notices' );
 		if ( $prior_version ) {
-			if ( $prior_version < '0.0.1' )
+			if ( $prior_version < '0.0.1' ) {
 				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
+			}
 
 			if ( $prior_version < self::VERSION ) {
 				cbqe_requirements_check( true );
@@ -259,16 +253,18 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		$result = apply_filters( 'cbqe_posts_custom_column', $result, $column, $post_id );
 
-		if ( $result )
+		if ( $result ) {
 			echo $result;
+		}
 	}
 
 
 	public static function manage_columns( $columns ) {
 		global $post;
 
-		if ( is_null( $post ) )
+		if ( is_null( $post ) ) {
 			return $columns;
+		}
 
 		$fields = self::get_enabled_fields( $post->post_type );
 		foreach ( $fields as $key => $field_name ) {
@@ -296,8 +292,9 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 			$field_name = str_replace( $post_type . Custom_Bulkquick_Edit_Settings::ENABLE, '', $key );
 			$field_type = self::is_field_enabled( $post_type, $field_name );
-			if ( $field_type )
+			if ( $field_type ) {
 				$fields[ $key ] = $field_name;
+			}
 		}
 
 		return $fields;
@@ -426,14 +423,6 @@ jQuery( document ).ready( function() {
 		}
 
 		foreach ( $_POST as $field => $value ) {
-			if ( false === strpos( $field, self::SLUG )
-				&& ! in_array( $field, array( 'tax_input', 'post_category' ) )
-				&& false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET )
-				// fixme false === strstr( $field, Custom_Bulkquick_Edit_Settings::REMOVE )
-			) {
-				continue;
-			}
-
 			if ( '' == $value && 'bulk_edit' == $mode ) {
 				continue;
 			}
@@ -470,15 +459,13 @@ jQuery( document ).ready( function() {
 			return;
 		}
 
-		// fixme
-		if ( false ) {
-			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
-				$terms = $value;
+		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
+			$terms = array_map( 'intval', $value );
 
-				$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::REMOVE, '', $field_name );
-				wp_remove_object_terms( $post_id, $terms, $taxonomy );
-				return;
-			}
+			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::REMOVE, '', $field_name );
+			wp_remove_object_terms( $post_id, $terms, $taxonomy );
+
+			return;
 		}
 
 		$value = stripslashes_deep( $value );
@@ -486,6 +473,7 @@ jQuery( document ).ready( function() {
 			// WordPress doesn't keep " enclosed CSV terms together, so don't worry about it here then by using `str_getcsv`
 			$values = explode( ',', $value );
 			wp_set_object_terms( $post_id, $values, $field_name );
+
 			return;
 		} elseif ( 'categories' == $field_type ) {
 			$value = array_map( 'intval', $value );
@@ -519,8 +507,9 @@ jQuery( document ).ready( function() {
 			}
 
 			$value = apply_filters( 'cbqe_post_save_value', $value, $post_id, $field_name );
-			if ( is_null( $value ) )
+			if ( is_null( $value ) ) {
 				return;
+			}
 
 			$data = array(
 				'ID' => $post_id,
@@ -537,8 +526,9 @@ jQuery( document ).ready( function() {
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
 	public static function get_post_types() {
-		if ( ! empty( self::$post_types ) )
+		if ( ! empty( self::$post_types ) ) {
 			return self::$post_types;
+		}
 
 		if ( isset( $_GET['post_type'] ) ) {
 			$post_type                      = esc_attr( $_GET['post_type'] );
@@ -558,8 +548,9 @@ jQuery( document ).ready( function() {
 
 			$post_types = get_post_types( $args, 'objects' );
 			foreach ( $post_types as $post_type ) {
-				if ( in_array( $post_type->name, self::$post_types_ignore ) )
+				if ( in_array( $post_type->name, self::$post_types_ignore ) ) {
 					continue;
+				}
 
 				self::$post_types[ $post_type->name ] = $post_type->label;
 				self::$post_types_keys[]              = $post_type->name;
@@ -573,8 +564,9 @@ jQuery( document ).ready( function() {
 	public static function get_field_config( $post_type = null, $field_name = null ) {
 		$key = self::get_field_key( $post_type, $field_name );
 
-		if ( empty( $key ) )
+		if ( empty( $key ) ) {
 			return false;
+		}
 
 		$key    .= Custom_Bulkquick_Edit_Settings::CONFIG;
 		$details = cbqe_get_option( $key );
@@ -587,14 +579,16 @@ jQuery( document ).ready( function() {
 		if ( is_null( $post_type ) ) {
 			global $post;
 
-			if ( is_null( $post ) )
+			if ( is_null( $post ) ) {
 				return false;
+			}
 
 			$post_type = $post->post_type;
 		}
 
-		if ( false !== strstr( $field_name, self::SLUG ) )
+		if ( false !== strstr( $field_name, self::SLUG ) ) {
 			$field_name = preg_replace( '#^' . self::SLUG . '#', '', $field_name );
+		}
 
 		$key = $post_type . Custom_Bulkquick_Edit_Settings::ENABLE . $field_name;
 
@@ -603,28 +597,33 @@ jQuery( document ).ready( function() {
 
 
 	public static function is_field_enabled( $post_type = null, $field_name = null ) {
-		if ( is_null( $field_name ) )
+		if ( is_null( $field_name ) ) {
 			return false;
+		}
 
 		if ( is_null( $post_type ) ) {
 			global $post;
 
-			if ( is_null( $post ) )
+			if ( is_null( $post ) ) {
 				return false;
+			}
 
 			$post_type = $post->post_type;
 		}
 
 		$key = self::get_field_key( $post_type, $field_name );
-		if ( isset( self::$fields_enabled[ $key ] ) )
+		if ( isset( self::$fields_enabled[ $key ] ) ) {
 			return self::$fields_enabled[ $key ];
+		}
 
 		$enable = cbqe_get_option( $key );
 		if ( ! empty( $enable )  ) {
 			self::$fields_enabled[ $key ] = $enable;
+
 			return $enable;
 		} else {
 			self::$fields_enabled[ $key ] = false;
+
 			return false;
 		}
 	}
@@ -696,23 +695,16 @@ jQuery( document ).ready( function() {
 					}
 				}
 
-				// fixme
-				if ( false ) {
-					$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
-					if ( $valid_type && $valid_remove ) {
-						$enable = cbqe_get_option( $setting );
-						if ( $enable ) {
-							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::REMOVE . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
-							$orig_column = self::SLUG . $orig_field;
+				$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
+				if ( $valid_type && $valid_remove ) {
+					$enable = cbqe_get_option( $setting );
+					if ( $enable ) {
+						$field = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
 
-							$field_name_var = str_replace( '-', '_', $orig_field );
-
-							// fixme switch taxnomy/category selector
-							$result .= self::custom_box_taxonomy( $orig_column, $orig_field, $field_name_var );
-							$row++;
-
-							$return_now = true;
-						}
+						$result .= self::custom_box_remove( $field, $setting );
+						$row++;
+						
+						$return_now = true;
 					}
 				}
 			}
@@ -733,6 +725,10 @@ jQuery( document ).ready( function() {
 			}
 		} else {
 			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) ) {
+				return;
+			}
+
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
 				return;
 			}
 
@@ -766,17 +762,19 @@ jQuery( document ).ready( function() {
 
 		switch ( $field_type ) {
 			case 'checkbox':
-				if ( ! $bulk_mode )
+				if ( ! $bulk_mode ) {
 					$result = self::custom_box_checkbox( $column_name, $field_name, $field_name_var, $options );
-				else
+				} else {
 					$result = self::custom_box_select_multiple( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
+				}
 				break;
 
 			case 'radio':
-				if ( ! $bulk_mode )
+				if ( ! $bulk_mode ) {
 					$result = self::custom_box_radio( $column_name, $field_name, $field_name_var, $options );
-				else
+				} else {
 					$result = self::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
+				}
 
 				break;
 
@@ -824,27 +822,31 @@ jQuery( document ).ready( function() {
 
 		$multiple     = '';
 		$do_pre_title = true;
-		if ( 1 < count( $options ) )
+		if ( 1 < count( $options ) ) {
 			$multiple = '[]';
-		else
+		} else {
 			$do_pre_title = false;
+		}
 
 		foreach ( $options as $option ) {
-			if ( $do_pre_title )
+			if ( $do_pre_title ) {
 				$result .= '<label class="alignleft">';
+			}
 
 			$parts = explode( '|', $option );
 			$value = array_shift( $parts );
-			if ( empty( $parts ) )
+			if ( empty( $parts ) ) {
 				$name = $value;
-			else
+			} else {
 				$name = array_shift( $parts );
+			}
 
 			$result .= '<input type="checkbox" name="' . $field_name . $multiple . '" value="' . $value . '" />';
 			$result .= ' ' . $name . '&nbsp;';
 
-			if ( $do_pre_title )
+			if ( $do_pre_title ) {
 				$result .= '</label>';
+			}
 		}
 
 		$result .= '</div>';
@@ -867,10 +869,11 @@ jQuery( document ).ready( function() {
 
 			$parts = explode( '|', $option );
 			$value = array_shift( $parts );
-			if ( empty( $parts ) )
+			if ( empty( $parts ) ) {
 				$name = $value;
-			else
+			} else {
 				$name = array_shift( $parts );
+			}
 
 			$result .= '<input type="radio" name="' . $field_name . '" value="' . $value . '" />';
 			$result .= ' ' . $name . '&nbsp;';
@@ -896,8 +899,9 @@ jQuery( document ).ready( function() {
 	public static function custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode = false, $multiple = false ) {
 		$result = '<select name="' . $field_name;
 		if ( $multiple ) {
-			if ( ! $bulk_mode )
+			if ( ! $bulk_mode ) {
 				$result .= '[]';
+			}
 
 			$result .= '" multiple="multiple';
 		}
@@ -915,10 +919,11 @@ jQuery( document ).ready( function() {
 		foreach ( $options as $option ) {
 			$parts = explode( '|', $option );
 			$value = array_shift( $parts );
-			if ( empty( $parts ) )
+			if ( empty( $parts ) ) {
 				$name = $value;
-			else
+			} else {
 				$name = array_shift( $parts );
+			}
 
 			$result .= '<option value="' . $value . '">' . $name . '</option>';
 		}
@@ -982,14 +987,44 @@ jQuery( document ).ready( function() {
 		ob_end_clean();
 
 		$result = '';
-		if ( 'category' != $taxonomy )
+		if ( 'category' != $taxonomy ) {
 			$result .= '<input type="hidden" name="tax_input[' . $taxonomy . '][]" value="0" />';
-		else
+		} else {
 			$result .= '<input type="hidden" name="post_category[]" value="0" />';
+		}
 
 		$result .= '<ul class="cat-checklist ' . esc_attr( $taxonomy ) . '-checklist">';
 		$result .= $terms;
 		$result .= '</ul>';
+
+		return $result;
+	}
+
+
+	public static function custom_box_remove( $field_name, $key_reset = null ) {
+		$field_name = str_replace( self::SLUG, '', $field_name );
+		$taxonomy   = str_replace( Custom_Bulkquick_Edit_Settings::REMOVE, '', $field_name );
+
+		$title_reset = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
+
+		$result  = '';
+		$result .= '<label class="alignright">';
+		$result .= '<span class="checkbox-title">' . $title_reset . '</span>';
+
+		ob_start();
+		wp_terms_checklist( null, array( 'taxonomy' => $taxonomy ) );
+		$terms = ob_get_contents();
+		ob_end_clean();
+
+		$terms = preg_replace( "#(post_category|tax_input\[{$taxonomy}\])#", $field_name, $terms );
+
+		$result .= '<input type="hidden" name="' . $field_name . '[]" value="0" />';
+		$result .= '<ul class="cat-checklist ' . esc_attr( $field_name ) . '-checklist">';
+		$result .= $terms;
+		$result .= '</ul>';
+		$result .= '</label>';
+
+		self::$scripts_bulk[ $field_name ] = "'{$field_name}': bulk_row.find( 'input[name^={$field_name}]:checked:checked' ).map( function(){ return jQuery( this ).val(); } ).get()";
 
 		return $result;
 	}
@@ -1078,19 +1113,22 @@ jQuery( document ).ready( function() {
 	public static function column_checkbox_radio( $column, $current, $options, $field_type ) {
 		$result = '';
 
-		if ( ! is_array( $current ) )
+		if ( ! is_array( $current ) ) {
 			$current = array( $current );
+		}
 
 		foreach ( $options as $option ) {
 			$parts = explode( '|', $option );
 			$value = array_shift( $parts );
-			if ( empty( $parts ) )
+			if ( empty( $parts ) ) {
 				$name = $value;
-			else
+			} else {
 				$name = array_shift( $parts );
+			}
 
-			if ( in_array( $value, $current ) )
+			if ( in_array( $value, $current ) ) {
 				$result .= '<input type="' . $field_type . '" name="' . $column . '" value="' . $value . '" checked="checked" disabled="disabled" /> ' . $name . '<br />';
+			}
 		}
 
 		return $result;
@@ -1100,25 +1138,29 @@ jQuery( document ).ready( function() {
 	public static function column_select( $column, $current, $options, $field_type ) {
 		$result = '';
 
-		if ( ! is_array( $current ) )
+		if ( ! is_array( $current ) ) {
 			$current = array( $current );
+		}
 
 		$select_options = '';
 		foreach ( $options as $option ) {
 			$parts = explode( '|', $option );
 			$value = array_shift( $parts );
-			if ( empty( $parts ) )
+			if ( empty( $parts ) ) {
 				$name = $value;
-			else
+			} else {
 				$name = array_shift( $parts );
+			}
 
-			if ( in_array( $value, $current  ) )
+			if ( in_array( $value, $current  ) ) {
 				$select_options .= '<option value="' . $value . '" selected="selected">' . $name . '</option>';
+			}
 		}
 
 		$multiple = '';
-		if ( 'multiple' == $field_type )
+		if ( 'multiple' == $field_type ) {
 			$multiple = '" multiple="multiple';
+		}
 
 		if ( $select_options ) {
 			$result  = '<select name="' . $column . $multiple . '" disabled="disabled">';
@@ -1153,13 +1195,6 @@ jQuery( document ).ready( function() {
 	}
 
 
-	public static function version_check() {
-		$good_version = true;
-
-		return $good_version;
-	}
-
-
 	/**
 	 *
 	 *
@@ -1180,8 +1215,9 @@ jQuery( document ).ready( function() {
 
 
 	public static function check_field_type( $field_type, $column_name ) {
-		if ( in_array( $column_name, array( 'post_excerpt', 'post_title' ) ) )
+		if ( in_array( $column_name, array( 'post_excerpt', 'post_title' ) ) ) {
 			$field_type = 'textarea';
+		}
 
 		$field_type = apply_filters( 'cbqe_check_field_type', $field_type, $column_name );
 
@@ -1195,11 +1231,13 @@ jQuery( document ).ready( function() {
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public static function pre_update_option_active_plugins( $plugins, $old_value ) {
-		if ( ! is_array( $plugins ) )
+		if ( ! is_array( $plugins ) ) {
 			return $plugins;
+		}
 
-		if ( defined( 'CBQEP_BASE' ) )
+		if ( defined( 'CBQEP_BASE' ) ) {
 			return $plugins;
+		}
 
 		$index = array_search( self::BASE, $plugins );
 		if ( false !== $index && ! empty( $index ) ) {

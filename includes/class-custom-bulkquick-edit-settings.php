@@ -127,7 +127,8 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
 
 		$title_selective_rm = esc_html__( 'Remove Selected "%s" Relations?', 'custom-bulkquick-edit' );
-		$desc_selective_rm  = esc_html__( 'During bulk editing, easily remove seelcted %1$s\' relationships.', 'custom-bulkquick-edit' );
+		$label_selective_rm = esc_html__( 'Remove Selected "%s" Relations', 'custom-bulkquick-edit' );
+		$desc_selective_rm  = esc_html__( 'During bulk editing, easily remove selected %1$s\' relationships.', 'custom-bulkquick-edit' );
 
 		$title_title = esc_html__( 'Title', 'custom-bulkquick-edit' );
 		$desc_title  = esc_html__( 'Enable bulk editing of %1$s\' title.', 'custom-bulkquick-edit' );
@@ -157,8 +158,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 			$taxonomies    = apply_filters( 'cbqe_settings_taxonomies', $taxonomies );
 			foreach ( $taxonomies as $taxonomy ) {
 				$name = $taxonomy->name;
-				if ( 'post_format' == $name || empty( $taxonomy->label ) )
+				if ( 'post_format' == $name || empty( $taxonomy->label ) ) {
 					continue;
+				}
 
 				$tax_label       = $taxonomy->label;
 				$taxonomy_name[] = $name;
@@ -180,23 +182,21 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 					'type' => 'checkbox',
 				);
 
-				// fixme
-				if ( false ) {
-					self::$settings[ $post_type . self::ENABLE . $name . self::REMOVE ] = array(
-						'section' => $post_type,
-						'title' => sprintf( $title_selective_rm, $tax_label ),
-						'label' => sprintf( $title_selective_rm, $tax_label ),
-						'desc' => sprintf( $desc_selective_rm, $tax_label ),
-						'type' => 'checkbox',
-					);
-				}
+				self::$settings[ $post_type . self::ENABLE . $name . self::REMOVE ] = array(
+					'section' => $post_type,
+					'title' => sprintf( $title_selective_rm, $tax_label ),
+					'label' => sprintf( $label_selective_rm, $tax_label ),
+					'desc' => sprintf( $desc_selective_rm, $tax_label ),
+					'type' => 'checkbox',
+				);
 			}
 
 			$fields = array();
-			if ( 'page' != $post_type )
+			if ( 'page' != $post_type ) {
 				$filter = 'manage_posts_columns';
-			else
+			} else {
 				$filter = 'manage_pages_columns';
+			}
 
 			$fields      = apply_filters( $filter, $fields );
 			$filter      = 'manage_' . $post_type . '_posts_columns';
@@ -229,13 +229,15 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 						if ( empty( $alt ) ) {
 							$results = $xpath->query( '//*[@title]' );
-							foreach ( $results as $node )
+							foreach ( $results as $node ) {
 								$title = $node->getAttribute( 'title' );
+							}
 
-							if ( empty( $title ) )
+							if ( empty( $title ) ) {
 								unset( $fields[ $field ] );
-							else
+							} else {
 								$fields[ $field ] = $title;
+							}
 						} else {
 							$fields[ $field ] = $alt;
 						}
@@ -245,8 +247,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 			if ( ! empty( $fields ) ) {
 				foreach ( $fields as $field => $label ) {
-					if ( in_array( $field, $taxonomy_name ) )
+					if ( in_array( $field, $taxonomy_name ) ) {
 						continue;
+					}
 
 					self::$settings[ $post_type . self::ENABLE . $field ] = array(
 						'section' => $post_type,
@@ -286,8 +289,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		parent::settings();
 
 		self::$settings = apply_filters( 'cbqe_settings', self::$settings );
-		foreach ( self::$settings as $id => $parts )
+		foreach ( self::$settings as $id => $parts ) {
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
+		}
 	}
 
 
