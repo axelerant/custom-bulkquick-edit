@@ -2,11 +2,12 @@
 
 ## master
 
-## 1.5.1RC2
+## 1.5.1RC3
 * Link to old plugin versions in FAQ
-* Require Aihrus Framework 1.1.0
+* Require Aihrus Framework 1.1.3
 * RESOLVES #35 make a small comment line above the attributes quick edit boxes to prevent people using ","
 * RESOLVES #39 Custom field value of "0" isn't displayed in the columns
+* RESOLVES #42 Taxonomy reset options not showing in bulk edit
 * Revise FAQ section
 * Update copyright
 

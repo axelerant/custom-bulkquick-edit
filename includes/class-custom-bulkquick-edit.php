@@ -286,23 +286,12 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		$fields   = array();
 		$settings = Custom_Bulkquick_Edit_Settings::$settings;
 		foreach ( $settings as $key => $value ) {
-			if ( $post_type != $value['section'] )
+			if ( $post_type != $value['section'] ) {
 				continue;
+			}
 
-			// the following are ignored potential columns
 			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) ) {
 				continue;
-			}
-
-			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) ) {
-				continue;
-			}
-
-			// fixme
-			if ( false ) {
-				if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
-					continue;
-				}
 			}
 
 			$field_name = str_replace( $post_type . Custom_Bulkquick_Edit_Settings::ENABLE, '', $key );
@@ -316,8 +305,9 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function get_scripts() {
-		if ( self::$scripts_called )
+		if ( self::$scripts_called ) {
 			return;
+		}
 
 		echo '
 			<script type="text/javascript">
@@ -392,8 +382,9 @@ jQuery( document ).ready( function() {
 
 		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
 		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
-			foreach ( $post_ids as $post_id )
+			foreach ( $post_ids as $post_id ) {
 				self::save_post_items( $post_id, 'bulk_edit' );
+			}
 		}
 
 		die();
@@ -406,27 +397,30 @@ jQuery( document ).ready( function() {
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
 	public static function save_post_items( $post_id, $mode = '' ) {
-		if ( ! preg_match( '#^\d+$#', $post_id ) )
+		if ( ! preg_match( '#^\d+$#', $post_id ) ) {
 			return;
+		}
 
 		unset( $_POST['action'] );
 		unset( $_POST['post_ids'] );
 
-		if ( empty( $_POST ) )
+		if ( empty( $_POST ) ) {
 			return;
+		}
 
 		$post      = get_post( $post_id );
 		$post_type = $post->post_type;
 
 		if ( empty( $mode ) ) {
-			// unset unchecked checkboxs from quick edit
+			// unset unchecked checkboxes from quick edit
 			$fields = self::get_enabled_fields( $post_type );
 			foreach ( $fields as $key => $field ) {
 				$field_type = self::is_field_enabled( $post_type, $field );
 				if ( 'checkbox' == $field_type ) {
 					$field_name = self::SLUG . $field;
-					if ( ! isset( $_POST[ $field_name ] ) )
+					if ( ! isset( $_POST[ $field_name ] ) ) {
 						$_POST[ $field_name ] = Custom_Bulkquick_Edit_Settings::RESET;
+					}
 				}
 			}
 		}
@@ -435,18 +429,22 @@ jQuery( document ).ready( function() {
 			if ( false === strpos( $field, self::SLUG )
 				&& ! in_array( $field, array( 'tax_input', 'post_category' ) )
 				&& false === strstr( $field, Custom_Bulkquick_Edit_Settings::RESET )
-				// fixme && false === strstr( $field, Custom_Bulkquick_Edit_Settings::REMOVE )
-			)
+				// fixme false === strstr( $field, Custom_Bulkquick_Edit_Settings::REMOVE )
+			) {
 				continue;
+			}
 
-			if ( '' == $value && 'bulk_edit' == $mode )
+			if ( '' == $value && 'bulk_edit' == $mode ) {
 				continue;
+			}
 
-			if ( 'tax_input' != $field )
+			if ( 'tax_input' != $field ) {
 				self::save_post_item( $post_id, $post_type, $field, $value );
-			else
-				foreach ( $value as $key => $val )
+			} else {
+				foreach ( $value as $key => $val ) {
 					self::save_post_item( $post_id, $post_type, $key, $val );
+				}
+			}
 		}
 
 		do_action( 'cbqe_save_post', $post_id );
@@ -455,17 +453,20 @@ jQuery( document ).ready( function() {
 
 	public static function save_post_item( $post_id, $post_type, $field, $value ) {
 		$field_name = str_replace( self::SLUG, '', $field );
-		if ( 'post_category' != $field_name )
+		if ( 'post_category' != $field_name ) {
 			$field_type = self::is_field_enabled( $post_type, $field_name );
-		else
+		} else {
 			$field_type = $field_name;
+		}
 
-		if ( ! $field_type )
+		if ( ! $field_type ) {
 			return;
+		}
 
 		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
 			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
 			wp_delete_object_term_relationships( $post_id, $taxonomy );
+
 			return;
 		}
 
@@ -473,7 +474,6 @@ jQuery( document ).ready( function() {
 		if ( false ) {
 			if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::REMOVE ) ) {
 				$terms = $value;
-				error_log( print_r( $terms, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
 
 				$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::REMOVE, '', $field_name );
 				wp_remove_object_terms( $post_id, $terms, $taxonomy );
@@ -490,10 +490,12 @@ jQuery( document ).ready( function() {
 		} elseif ( 'categories' == $field_type ) {
 			$value = array_map( 'intval', $value );
 			$value = array_unique( $value );
-			if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] )
+			if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] ) {
 				unset( $value[ 0 ] );
+			}
 
 			wp_set_object_terms( $post_id, $value, $field_name );
+
 			return;
 		}
 
@@ -502,16 +504,18 @@ jQuery( document ).ready( function() {
 		if ( ! in_array( $field_name, $post_save_fields ) ) {
 			$reset_string = ! is_array( $value ) ? strstr( $value, Custom_Bulkquick_Edit_Settings::RESET ) : false;
 			$reset_array  = is_array( $value ) ? in_array( Custom_Bulkquick_Edit_Settings::RESET, $value ) : false;
-			if ( ! $reset_string && ! $reset_array )
+			if ( ! $reset_string && ! $reset_array ) {
 				update_post_meta( $post_id, $field_name, $value );
-			else
+			} else {
 				delete_post_meta( $post_id, $field_name );
+			}
 		} else {
 			if ( 'post_category' == $field_name ) {
 				$value = array_map( 'intval', $value );
 				$value = array_unique( $value );
-				if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] )
+				if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] ) {
 					unset( $value[ 0 ] );
+				}
 			}
 
 			$value = apply_filters( 'cbqe_post_save_value', $value, $post_id, $field_name );
@@ -628,6 +632,7 @@ jQuery( document ).ready( function() {
 
 	public static function bulk_edit_custom_box( $column_name, $post_type ) {
 		self::quick_edit_custom_box( $column_name, $post_type, true );
+		self::$bulk_only_done = true;
 	}
 
 
@@ -637,15 +642,23 @@ jQuery( document ).ready( function() {
 	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 */
 	public static function quick_edit_custom_box( $column_name, $post_type, $bulk_mode = false ) {
-		if ( ! in_array( $post_type, self::$post_types_keys ) )
+		if ( ! in_array( $post_type, self::$post_types_keys ) ) {
 			return;
+		}
 
 		$field_type = self::is_field_enabled( $post_type, $column_name );
-		if ( empty( $field_type ) )
+		if ( empty( $field_type ) ) {
 			return;
+		}
 
-		if ( 'show_only' == $field_type )
+		if ( 'show_only' == $field_type ) {
 			return;
+		}
+
+		if ( self::$no_instance ) {
+			self::$no_instance = false;
+			wp_nonce_field( self::BASE, self::ID );
+		}
 
 		$key        = self::get_field_key( $post_type, $column_name );
 		$field_name = self::SLUG . $column_name;
@@ -656,78 +669,81 @@ jQuery( document ).ready( function() {
 		$open_div  = '<div class="inline-edit-col">';
 		$close_div = '</div>';
 
-		if ( $bulk_mode ) {
-			$ignore_bulk_edit = apply_filters( 'cbqe_ignore_bulk_edit', array() );
-			if ( in_array( $column_name, $ignore_bulk_edit ) )
-				return;
+		if ( $bulk_mode && empty( self::$bulk_only_done ) ) {
+			$return_now = false;
 
-			if ( empty( self::$bulk_only_done ) ) {
-				$result   = '';
-				$row      = 1;
-				$settings = cbqe_get_options();
-				foreach ( $settings as $setting => $value ) {
-					$valid_type  = preg_match( '#^' . $post_type . '#', $setting );
-					$valid_reset = strstr( $setting, Custom_Bulkquick_Edit_Settings::RESET );
-					if ( $valid_type && $valid_reset ) {
+			$ignore_bulk_edit = apply_filters( 'cbqe_ignore_bulk_edit', array() );
+			if ( in_array( $column_name, $ignore_bulk_edit ) ) {
+				return;
+			}
+
+			$result   = '';
+			$row      = 1;
+			$settings = cbqe_get_options();
+			foreach ( $settings as $setting => $value ) {
+				$valid_type  = preg_match( '#^' . $post_type . '#', $setting );
+				$valid_reset = strstr( $setting, Custom_Bulkquick_Edit_Settings::RESET );
+				if ( $valid_type && $valid_reset ) {
+					$enable = cbqe_get_option( $setting );
+					if ( $enable ) {
+						$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::RESET . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+						$orig_column = self::SLUG . $orig_field;
+
+						$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row );
+						$row++;
+						
+						$return_now = true;
+					}
+				}
+
+				// fixme
+				if ( false ) {
+					$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
+					if ( $valid_type && $valid_remove ) {
 						$enable = cbqe_get_option( $setting );
 						if ( $enable ) {
-							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::RESET . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+							$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::REMOVE . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
 							$orig_column = self::SLUG . $orig_field;
 
-							$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row );
+							$field_name_var = str_replace( '-', '_', $orig_field );
+
+							// fixme switch taxnomy/category selector
+							$result .= self::custom_box_taxonomy( $orig_column, $orig_field, $field_name_var );
 							$row++;
-						}
-					}
 
-					// fixme
-					if ( false ) {
-						$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
-						if ( $valid_type && $valid_remove ) {
-							$enable = cbqe_get_option( $setting );
-							if ( $enable ) {
-								$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::REMOVE . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
-								$orig_column = self::SLUG . $orig_field;
-
-								$field_name_var = str_replace( '-', '_', $orig_field );
-
-								// fixme switch taxnomy/category selector
-								$result .= self::custom_box_taxonomy( $orig_column, $orig_field, $field_name_var );
-								$row++;
-							}
+							$return_now = true;
 						}
 					}
 				}
+			}
 
-				if ( ! empty( $result ) ) {
-					echo sprintf( $open_fieldset, 'right' );
-					echo $open_div;
-					echo '<div class="inline-edit-group">';
-					echo $result;
-					echo $close_div;
-					echo $close_div;
-					echo $close_fieldset;
-				}
-
-				self::$bulk_only_done = true;
+			if ( ! empty( $result ) ) {
+				echo sprintf( $open_fieldset, 'right' );
+				echo $open_div;
+				echo '<div class="inline-edit-group">';
+				echo $result;
+				echo $close_div;
+				echo $close_div;
+				echo $close_fieldset;
 			}
 
 			// return now otherwise taxonomy entries are duplicated
-			if ( in_array( $field_type, array( 'categories', 'taxonomy' ) ) )
+			if ( $return_now || in_array( $field_type, array( 'categories', 'taxonomy' ) ) ) {
 				return;
+			}
 		} else {
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) ) {
+				return;
+			}
+
 			$ignore_quick_edit = array( 'post_title' );
 			$ignore_quick_edit = apply_filters( 'cbqe_ignore_quick_edit', $ignore_quick_edit );
-			if ( in_array( $column_name, $ignore_quick_edit ) )
+			if ( in_array( $column_name, $ignore_quick_edit ) ) {
 				return;
+			}
 		}
 
-		$field_type = self::check_field_type( $field_type, $column_name );
-
-		if ( self::$no_instance ) {
-			self::$no_instance = false;
-			wp_nonce_field( self::BASE, self::ID );
-		}
-
+		$field_type     = self::check_field_type( $field_type, $column_name );
 		$field_name_var = str_replace( '-', '_', $field_name );
 		$title          = Custom_Bulkquick_Edit_Settings::$settings[ $key ]['label'];
 
@@ -735,12 +751,13 @@ jQuery( document ).ready( function() {
 		echo $open_div;
 
 		$class = '';
-		if ( 'categories' == $field_type )
+		if ( 'categories' == $field_type ) {
 			$class = 'inline-edit-categories-label';
-		elseif ( 'taxonomy' != $field_type )
+		} elseif ( 'taxonomy' != $field_type ) {
 			echo '<label class="alignleft">';
-		else
+		} else {
 			echo '<label class="inline-edit-tags">';
+		}
 
 		echo '<span class="title ' . $class . '">' . $title . '</span>';
 
@@ -923,10 +940,11 @@ jQuery( document ).ready( function() {
 		$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
 
 		$result = '';
-		if ( 0 != $row % 2 )
+		if ( 0 != $row % 2 ) {
 			$result .= '<label class="alignleft">';
-		else
+		} else {
 			$result .= '<label class="alignright">';
+		}
 
 		$result .= '<input type="checkbox" name="' . $field_reset . '" />';
 		$result .= ' ';
@@ -1010,20 +1028,25 @@ jQuery( document ).ready( function() {
 	public static function save_post( $post_id ) {
 		$post_type = get_post_type( $post_id );
 
-		if ( ! in_array( $post_type, self::$post_types_keys ) )
+		if ( ! in_array( $post_type, self::$post_types_keys ) ) {
 			return;
+		}
 
-		if ( ! current_user_can( 'edit_post', $post_id ) )
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
+		}
 
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
+		}
 
-		if ( 'revision' == $post_type )
+		if ( 'revision' == $post_type ) {
 			return;
+		}
 
-		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::BASE ) )
+		if ( isset( $_POST[ self::ID ] ) && ! wp_verify_nonce( $_POST[ self::ID ], self::BASE ) ) {
 			return;
+		}
 
 		remove_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
 		self::save_post_items( $post_id );
@@ -1036,16 +1059,19 @@ jQuery( document ).ready( function() {
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
 	public static function admin_footer() {
-		if ( self::$no_instance )
+		if ( self::$no_instance ) {
 			return;
+		}
 
 		if ( empty( $_GET['post_type'] ) ) {
 			global $post;
+
 			$_GET['post_type'] = ! empty( $post->post_type ) ? $post->post_type : false;
 		}
 
-		if ( in_array( $_GET['post_type'], self::$post_types_keys ) )
+		if ( in_array( $_GET['post_type'], self::$post_types_keys ) ) {
 			self::get_scripts();
+		}
 	}
 
 
