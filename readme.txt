@@ -162,6 +162,7 @@ five-five|55`
 1. [Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
 1. [Contribute Code](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
 1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - provide feedback and direction to plugin development
+1. [Old Plugin Versions](http://wordpress.org/plugins/custom-bulkquick-edit/developers/)
 
 
 == Screenshots ==
