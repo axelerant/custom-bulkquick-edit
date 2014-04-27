@@ -2,7 +2,25 @@
 
 ## master
 
-## 1.1.0RC5
+## 1.1.3
+* Add check_user_role method
+* RESOLVE michael-cannon/testimonials-widget#85 New testimonial rating field is blank
+* RESOLVE Undefined index notice
+
+## 1.1.2
+* Add licensing status notices
+* Code formatting
+* Don't remove license from settings
+* RESOLVE Undefined index
+* Restore default wp_remote_get timeout
+* Return if library class exists already
+* Update settings page detection
+
+## 1.1.1
+* Remove unused `widget_options`
+* RESOLVE michael-cannon/testimonials-widget#65 Widget blank options aren't saving correctly
+
+## 1.1.0
 * Abstract deactivate_plugins actual to aihr_deactivate_plugin_do
 * Add class redrokk_metabox_class
 * Add class wp_custom_post_status
@@ -19,6 +37,7 @@
 * RESOLVE michael-cannon/testimonials-widget#65 Widget blank options aren't saving correctly
 * RESOLVE michael-cannon/testimonials-widget#76 Undefined index: hide_image_single
 * RESOLVE redrokk_metabox_class prepare warning
+* Revise get_styles handling
 * Set AIHR_DIR* helpers
 * Set defaults for validators
 * Set premium license key for 2 years though it expires at 1

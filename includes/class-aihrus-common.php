@@ -171,13 +171,19 @@ EOD;
 
 
 	public static function get_styles() {
-		if ( static::$styles_called )
+		if ( empty( self::$styles ) )
 			return;
 
-		foreach ( static::$styles as $style )
-			echo $style;
+		if ( empty( self::$styles_called ) ) {
+			echo '<style>';
 
-		static::$styles_called = true;
+			foreach ( self::$styles as $style )
+				echo $style;
+
+			echo '</style>';
+
+			self::$styles_called = true;
+		}
 	}
 
 
@@ -453,6 +459,38 @@ EOD;
 		}
 
 		return $link;
+	}
+
+
+	/**
+	 * @ref http://wpbandit.com/code/check-a-users-role-in-wordpress/
+	 */
+	public static function check_user_role( $roles = array(), $user_id = null ) {
+		// Get user by ID, else get current user
+		if ( $user_id ) {
+			$user = get_userdata( $user_id );
+		} else {
+			$user = wp_get_current_user();
+		}
+
+		// No user found, return
+		if ( empty( $user ) )
+			return false;
+
+		// Append administrator to roles, if necessary
+		if ( !in_array( 'administrator', $roles ) )
+			$roles[] = 'administrator';
+
+		// Loop through user roles
+		foreach ( $user->roles as $role ) {
+			// Does user have role
+			if ( in_array( $role, $roles ) ) {
+				return true;
+			}
+		}
+
+		// User not in roles
+		return false;
 	}
 
 
