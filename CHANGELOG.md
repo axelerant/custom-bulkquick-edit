@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.1.4RC1
+* Carry over core baseline methods
+
 ## 1.1.3
 * Add check_user_role method
 * RESOLVE michael-cannon/testimonials-widget#85 New testimonial rating field is blank
