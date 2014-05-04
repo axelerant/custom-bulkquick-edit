@@ -944,13 +944,7 @@ jQuery( document ).ready( function() {
 		$title_reset  = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
 		$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
 
-		$result = '';
-		if ( 0 != $row % 2 ) {
-			$result .= '<label class="alignleft">';
-		} else {
-			$result .= '<label class="alignright">';
-		}
-
+		$result  = '<label>';
 		$result .= '<input type="checkbox" name="' . $field_reset . '" />';
 		$result .= ' ';
 		$result .= '<span class="checkbox-title">' . $title_reset . '</span>';
@@ -1007,8 +1001,7 @@ jQuery( document ).ready( function() {
 
 		$title_reset = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
 
-		$result  = '';
-		$result .= '<label class="alignright">';
+		$result  = '<label>';
 		$result .= '<span class="checkbox-title">' . $title_reset . '</span>';
 
 		ob_start();

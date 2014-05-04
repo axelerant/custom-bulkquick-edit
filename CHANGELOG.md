@@ -4,6 +4,7 @@
 
 ## 1.5.1RC4
 * Link to old plugin versions in FAQ
+* Remove remove/reset field alignment
 * Require Aihrus Framework 1.1.4RC1
 * RESOLVES #35 make a small comment line above the attributes quick edit boxes to prevent people using ","
 * RESOLVES #39 Custom field value of "0" isn't displayed in the columns
