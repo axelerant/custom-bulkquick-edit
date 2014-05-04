@@ -11,6 +11,7 @@
 * RESOLVES #42 Taxonomy reset options not showing in bulk edit
 * Revise FAQ section
 * Revise readme layout
+* Swap remove and reset setting locations
 * Update copyright
 
 ## 1.5.0

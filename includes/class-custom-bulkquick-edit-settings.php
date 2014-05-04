@@ -174,19 +174,19 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 					'choices' => $as_taxonomy,
 				);
 
-				self::$settings[ $post_type . self::ENABLE . $name . self::RESET ] = array(
-					'section' => $post_type,
-					'title' => sprintf( $title_remove, $tax_label ),
-					'label' => sprintf( $title_remove, $tax_label ),
-					'desc' => sprintf( $desc_remove, $tax_label ),
-					'type' => 'checkbox',
-				);
-
 				self::$settings[ $post_type . self::ENABLE . $name . self::REMOVE ] = array(
 					'section' => $post_type,
 					'title' => sprintf( $title_selective_rm, $tax_label ),
 					'label' => sprintf( $label_selective_rm, $tax_label ),
 					'desc' => sprintf( $desc_selective_rm, $tax_label ),
+					'type' => 'checkbox',
+				);
+
+				self::$settings[ $post_type . self::ENABLE . $name . self::RESET ] = array(
+					'section' => $post_type,
+					'title' => sprintf( $title_remove, $tax_label ),
+					'label' => sprintf( $title_remove, $tax_label ),
+					'desc' => sprintf( $desc_remove, $tax_label ),
 					'type' => 'checkbox',
 				);
 			}
