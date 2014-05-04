@@ -958,7 +958,7 @@ jQuery( document ).ready( function() {
 
 		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( '.{$tax_class}' ).val()";
 
-		if ( false !== strstr( $field_name, '-' ) ) {
+		if ( false === strstr( $field_name, '-' ) ) {
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
 			self::$scripts_quick[ $column_name . '2' ] = "jQuery( '.{$tax_class}', edit_row ).val( {$field_name_var} );";
 		}
