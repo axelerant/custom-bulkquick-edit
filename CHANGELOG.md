@@ -7,6 +7,7 @@
 * Remove remove/reset field alignment
 * Require Aihrus Framework 1.1.4RC1
 * RESOLVES #35 make a small comment line above the attributes quick edit boxes to prevent people using ","
+* RESOLVES #37 Support attributes (and also customs)
 * RESOLVES #39 Custom field value of "0" isn't displayed in the columns
 * RESOLVES #41 Add option to remove specific category and tag entries
 * RESOLVES #42 Taxonomy reset options not showing in bulk edit
