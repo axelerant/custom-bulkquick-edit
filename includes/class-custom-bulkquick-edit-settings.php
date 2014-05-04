@@ -30,6 +30,7 @@ if ( class_exists( 'Custom_Bulkquick_Edit_Settings' ) )
 
 class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	const CONFIG = '__config__';
+	const DELETE = '__delete__';
 	const ENABLE = '__enable__';
 	const ID     = 'custom-bulkquick-edit-settings';
 	const NAME   = 'Custom Bulk/Quick Edit Settings';
@@ -123,6 +124,10 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		$title_excerpt = esc_html__( 'Excerpt', 'custom-bulkquick-edit' );
 		$desc_excerpt  = esc_html__( 'Enable editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 
+		$title_excerpt_rm = esc_html__( 'Delete "%s"?', 'custom-bulkquick-edit' );
+		$label_excerpt_rm = esc_html__( 'Delete "%s"', 'custom-bulkquick-edit' );
+		$desc_excerpt_rm  = esc_html__( 'During bulk editing, easily delete %1$s\' contents.', 'custom-bulkquick-edit' );
+
 		$title_remove = esc_html__( 'Reset "%s" Relations?', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
 
@@ -144,11 +149,21 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 			$supports_excerpt = post_type_supports( $post_type, 'excerpt' );
 			if ( $supports_excerpt ) {
-				self::$settings[ $post_type . self::ENABLE . 'post_excerpt' ] = array(
+				$name = 'post_excerpt';
+
+				self::$settings[ $post_type . self::ENABLE . $name ] = array(
 					'section' => $post_type,
 					'title' => sprintf( $title_enable, $title_excerpt ),
 					'label' => $title_excerpt,
 					'desc' => sprintf( $desc_excerpt, $label ),
+					'type' => 'checkbox',
+				);
+
+				self::$settings[ $post_type . self::ENABLE . $name . self::DELETE ] = array(
+					'section' => $post_type,
+					'title' => sprintf( $title_excerpt_rm, $title_excerpt ),
+					'label' => sprintf( $label_excerpt_rm, $title_excerpt ),
+					'desc' => sprintf( $desc_excerpt_rm, $title_excerpt ),
 					'type' => 'checkbox',
 				);
 			}
