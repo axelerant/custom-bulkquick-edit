@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.1.4RC1
+## 1.1.4
 * Carry over core baseline methods
 
 ## 1.1.3
