@@ -790,7 +790,7 @@ jQuery( document ).ready( function() {
 				break;
 
 			case 'taxonomy':
-				$warning = esc_html__( 'Use commas to separate your values. Ex: "1,two,Three"' );
+				$warning = esc_html__( 'Use commas to separate your values. Ex: "1,two,Three"', 'custom-bulkquick-edit' );
 				echo '<span class="warning">' . $warning . '</span>';
 
 				$result = self::custom_box_taxonomy( $column_name, $field_name, $field_name_var );

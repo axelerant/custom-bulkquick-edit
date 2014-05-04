@@ -27,18 +27,18 @@ function cbqe_requirements_check( $force_check = false ) {
 
 	$deactivate_reason = false;
 	if ( ! function_exists( 'aihr_check_aihrus_framework' ) ) {
-		$deactivate_reason = esc_html__( 'Missing Aihrus Framework' );
+		$deactivate_reason = esc_html__( 'Missing Aihrus Framework', 'custom-bulkquick-edit' );
 		add_action( 'admin_notices', 'cbqe_notice_aihrus' );
 	} elseif ( ! aihr_check_aihrus_framework( CBQE_BASE, CBQE_NAME, CBQE_AIHR_VERSION ) ) {
-		$deactivate_reason = esc_html__( 'Old Aihrus Framework version detected' );
+		$deactivate_reason = esc_html__( 'Old Aihrus Framework version detected', 'custom-bulkquick-edit' );
 	}
 
 	if ( ! aihr_check_php( CBQE_BASE, CBQE_NAME ) ) {
-		$deactivate_reason = esc_html__( 'Old PHP version detected' );
+		$deactivate_reason = esc_html__( 'Old PHP version detected', 'custom-bulkquick-edit' );
 	}
 
 	if ( ! aihr_check_wp( CBQE_BASE, CBQE_NAME ) ) {
-		$deactivate_reason = esc_html__( 'Old WordPress version detected' );
+		$deactivate_reason = esc_html__( 'Old WordPress version detected', 'custom-bulkquick-edit' );
 	}
 
 	if ( ! empty( $deactivate_reason ) ) {
