@@ -33,7 +33,6 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	);
 
 	public static $bulk_edit_save = false;
-	public static $bulk_only_done = false;
 	public static $class          = __CLASS__;
 	public static $notice_key;
 	public static $plugin_assets;
@@ -631,7 +630,6 @@ jQuery( document ).ready( function() {
 
 	public static function bulk_edit_custom_box( $column_name, $post_type ) {
 		self::quick_edit_custom_box( $column_name, $post_type, true );
-		self::$bulk_only_done = true;
 	}
 
 
@@ -668,7 +666,7 @@ jQuery( document ).ready( function() {
 		$open_div  = '<div class="inline-edit-col">';
 		$close_div = '</div>';
 
-		if ( $bulk_mode && empty( self::$bulk_only_done ) ) {
+		if ( $bulk_mode ) {
 			$return_now = false;
 
 			$ignore_bulk_edit = apply_filters( 'cbqe_ignore_bulk_edit', array() );
@@ -676,37 +674,34 @@ jQuery( document ).ready( function() {
 				return;
 			}
 
-			$result   = '';
-			$row      = 1;
-			$settings = cbqe_get_options();
-			foreach ( $settings as $setting => $value ) {
-				$valid_type  = preg_match( '#^' . $post_type . '#', $setting );
-				$valid_reset = strstr( $setting, Custom_Bulkquick_Edit_Settings::RESET );
-				if ( $valid_type && $valid_reset ) {
-					$enable = cbqe_get_option( $setting );
-					if ( $enable ) {
-						$orig_field  = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::RESET . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
-						$orig_column = self::SLUG . $orig_field;
+			$setting = $post_type . Custom_Bulkquick_Edit_Settings::ENABLE . $column_name;
+			$enable  = cbqe_get_option( $setting );
+			if ( empty( $enable ) ) {
+				return;
+			}
 
-						$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row );
-						$row++;
-						
-						$return_now = true;
-					}
-				}
+			$result = '';
+			$row    = 1;
 
-				$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
-				if ( $valid_type && $valid_remove ) {
-					$enable = cbqe_get_option( $setting );
-					if ( $enable ) {
-						$field = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+			$valid_reset = strstr( $setting, Custom_Bulkquick_Edit_Settings::RESET );
+			if ( $valid_reset ) {
+				$orig_field  = preg_replace( '#(^|' . Custom_Bulkquick_Edit_Settings::ENABLE . '|' . Custom_Bulkquick_Edit_Settings::RESET . ')#', '', $column_name );
+				$orig_column = self::SLUG . $orig_field;
 
-						$result .= self::custom_box_remove( $field, $setting );
-						$row++;
-						
-						$return_now = true;
-					}
-				}
+				$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row );
+				$row++;
+
+				$return_now = true;
+			}
+
+			$valid_remove = strstr( $setting, Custom_Bulkquick_Edit_Settings::REMOVE );
+			if ( $valid_remove ) {
+				$field = preg_replace( '#(^' . $post_type . '|' . Custom_Bulkquick_Edit_Settings::ENABLE . ')#', '', $setting );
+
+				$result = self::custom_box_remove( $field, $setting );
+				$row++;
+
+				$return_now = true;
 			}
 
 			if ( ! empty( $result ) ) {
