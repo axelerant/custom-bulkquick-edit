@@ -17,6 +17,7 @@
 * Revise readme layout
 * Swap remove and reset setting locations
 * Update copyright
+* Update readme for premium features
 
 ## 1.5.0
 * Alters option `active_plugins` so that this plugin is among first loaded unless premium is active

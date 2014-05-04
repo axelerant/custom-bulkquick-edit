@@ -67,6 +67,7 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 * Flexible API
 * Multiple select selector
 * Works with Custom Post Types
+* Works with [WooCommerce custom attributes and product types](http://www.woothemes.com/woocommerce/)
 
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
 
