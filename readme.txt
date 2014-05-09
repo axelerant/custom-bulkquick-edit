@@ -18,9 +18,9 @@ Through Custom Bulk/Quick Edit [by Aihrus](http://aihr.us/about-aihrus/), you ha
 
 To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
 
-[youtube https://www.youtube.com/watch?v=wd6munNz0gI]
+**Video Introduction**
 
-**[Video introduction](http://youtu.be/UXvzdlvIPtk)**
+[youtube https://www.youtube.com/watch?v=wd6munNz0gI]
 
 Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. **Therefore, unless it's already configured, your theme's `functions.php` file will have to modified to add custom field columns.**
 
