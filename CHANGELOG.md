@@ -2,6 +2,10 @@
 
 ## master
 
+## 1.5.2RC1
+
+* RELATES #49 Add option to clear post_excerpt in bulk
+
 ## 1.5.1
 * Link to old plugin versions in FAQ
 * Remove remove/reset field alignment
