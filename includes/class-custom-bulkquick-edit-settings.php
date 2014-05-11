@@ -126,7 +126,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 		$title_excerpt_rm = esc_html__( 'Delete "%s"?', 'custom-bulkquick-edit' );
 		$label_excerpt_rm = esc_html__( 'Delete "%s"', 'custom-bulkquick-edit' );
-		$desc_excerpt_rm  = esc_html__( 'During bulk editing, easily delete %1$s\' contents.', 'custom-bulkquick-edit' );
+		$desc_excerpt_rm  = esc_html__( 'During bulk editing, easily delete %1$s\' excerpt.', 'custom-bulkquick-edit' );
 
 		$title_remove = esc_html__( 'Reset "%s" Relations?', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
@@ -163,7 +163,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 					'section' => $post_type,
 					'title' => sprintf( $title_excerpt_rm, $title_excerpt ),
 					'label' => sprintf( $label_excerpt_rm, $title_excerpt ),
-					'desc' => sprintf( $desc_excerpt_rm, $title_excerpt ),
+					'desc' => sprintf( $desc_excerpt_rm, $label ),
 					'type' => 'checkbox',
 				);
 			}
@@ -359,8 +359,8 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 			$content = parent::display_setting( $args, false, $input );
 
 		$id = $args['id'];
-		if ( strstr( $id, Custom_Bulkquick_Edit_Settings::CONFIG ) ) {
-			$field = str_replace( Custom_Bulkquick_Edit_Settings::CONFIG, '', $id );
+		if ( strstr( $id, self::CONFIG ) ) {
+			$field = str_replace( self::CONFIG, '', $id );
 			$f     = 'f' . ++self::$config_counter;
 			$c     = 'c' . self::$config_counter;
 			$hide  = "'' === val || 'input' == val || 'textarea' == val";
@@ -428,10 +428,10 @@ EOD;
 			$default = $parts['std'];
 
 			// ensure default config
-			if ( strstr( $id, Custom_Bulkquick_Edit_Settings::CONFIG ) ) {
+			if ( strstr( $id, self::CONFIG ) ) {
 				$config = $input[ $id ];
 				if ( empty( $config ) ) {
-					$field = str_replace( Custom_Bulkquick_Edit_Settings::CONFIG, '', $id );
+					$field = str_replace( self::CONFIG, '', $id );
 					$type  = $input[ $field ];
 					switch ( $type ) {
 						case 'checkbox';

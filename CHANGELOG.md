@@ -4,7 +4,9 @@
 
 ## 1.5.2RC1
 
-* RELATES #49 Add option to clear post_excerpt in bulk
+* Ignore saving post record fields
+* RESOLVES #49 Add option to delete post_excerpt in bulk
+* RESOLVES Double saving during bulk editings
 
 ## 1.5.1
 * Link to old plugin versions in FAQ

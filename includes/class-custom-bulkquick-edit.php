@@ -26,9 +26,35 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	const SLUG    = 'cbqe_';
 	const VERSION = CBQE_VERSION;
 
-	private static $fields_enabled    = array();
-	private static $no_instance       = true;
-	private static $post_types_ignore = array(
+	private static $fields_enabled     = array();
+	private static $no_instance        = true;
+	private static $post_fields_ignore = array(
+		'ID',
+		'comment_count',
+		'comment_status',
+		'guid',
+		'menu_order',
+		'ping_status',
+		'pinged',
+		'post_author',
+		'post_category',
+		'post_content',
+		'post_content_filtered',
+		'post_date',
+		'post_date_gmt',
+		'post_excerpt',
+		'post_mime_type',
+		'post_modified',
+		'post_modified_gmt',
+		'post_name',
+		'post_parent',
+		'post_password',
+		'post_status',
+		'post_title',
+		'post_type',
+		'to_ping',
+	);
+	private static $post_types_ignore  = array(
 		'attachment',
 	);
 
@@ -65,7 +91,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		add_action( 'bulk_edit_custom_box', array( __CLASS__, 'bulk_edit_custom_box' ), 10, 2 );
 		add_action( 'quick_edit_custom_box', array( __CLASS__, 'quick_edit_custom_box' ), 10, 2 );
 		add_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
-		add_action( 'wp_ajax_save_post_bulk_edit', array( 'Custom_Bulkquick_Edit', 'save_post_bulk_edit' ) );
+		add_action( 'wp_ajax_save_post_bulk_edit', array( __CLASS__, 'save_post_bulk_edit' ) );
 		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
 		add_filter( 'pre_update_option_active_plugins', array( __CLASS__, 'pre_update_option_active_plugins' ), 10, 2 );
@@ -378,6 +404,8 @@ jQuery( document ).ready( function() {
 
 		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
 		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
+			remove_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
+
 			foreach ( $post_ids as $post_id ) {
 				self::save_post_items( $post_id, 'bulk_edit' );
 			}
@@ -422,7 +450,9 @@ jQuery( document ).ready( function() {
 		}
 
 		foreach ( $_POST as $field => $value ) {
-			if ( '' == $value && 'bulk_edit' == $mode ) {
+			if ( in_array( $field, self::$post_fields_ignore ) ) {
+				continue;
+			} elseif ( '' == $value && 'bulk_edit' == $mode ) {
 				continue;
 			}
 
@@ -441,20 +471,8 @@ jQuery( document ).ready( function() {
 
 	public static function save_post_item( $post_id, $post_type, $field, $value ) {
 		$field_name = str_replace( self::SLUG, '', $field );
-		if ( 'post_category' != $field_name ) {
-			$field_type = self::is_field_enabled( $post_type, $field_name );
-		} else {
-			$field_type = $field_name;
-		}
-
-		if ( ! $field_type ) {
-			return;
-		}
-
-		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
-			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
-			wp_delete_object_term_relationships( $post_id, $taxonomy );
-
+		$field_type = self::is_field_enabled( $post_type, $field_name );
+		if ( empty( $field_type ) ) {
 			return;
 		}
 
@@ -467,42 +485,53 @@ jQuery( document ).ready( function() {
 			return;
 		}
 
-		$value = stripslashes_deep( $value );
-		if ( 'taxonomy' == $field_type ) {
-			// WordPress doesn't keep " enclosed CSV terms together, so don't worry about it here then by using `str_getcsv`
-			$values = explode( ',', $value );
-			wp_set_object_terms( $post_id, $values, $field_name );
-
-			return;
-		} elseif ( 'categories' == $field_type ) {
-			$value = array_map( 'intval', $value );
-			$value = array_unique( $value );
-			if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] ) {
-				unset( $value[ 0 ] );
-			}
-
-			wp_set_object_terms( $post_id, $value, $field_name );
+		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::RESET ) ) {
+			$taxonomy = str_replace( Custom_Bulkquick_Edit_Settings::RESET, '', $field_name );
+			wp_delete_object_term_relationships( $post_id, $taxonomy );
 
 			return;
 		}
 
-		$post_save_fields = array( 'post_category', 'post_excerpt', 'post_title' );
-		$post_save_fields = apply_filters( 'cbqe_post_save_fields', $post_save_fields );
-		if ( ! in_array( $field_name, $post_save_fields ) ) {
-			$reset_string = ! is_array( $value ) ? strstr( $value, Custom_Bulkquick_Edit_Settings::RESET ) : false;
-			$reset_array  = is_array( $value ) ? in_array( Custom_Bulkquick_Edit_Settings::RESET, $value ) : false;
-			if ( ! $reset_string && ! $reset_array ) {
-				update_post_meta( $post_id, $field_name, $value );
+		if ( in_array( $field_type, array( 'categories', 'taxonomy' ) ) ) {
+			$value = stripslashes_deep( $value );
+			if ( 'taxonomy' == $field_type ) {
+				// WordPress doesn't keep " enclosed CSV terms together, so don't worry about it here then by using `str_getcsv`
+				$values = explode( ',', $value );
+				wp_set_object_terms( $post_id, $values, $field_name );
 			} else {
-				delete_post_meta( $post_id, $field_name );
-			}
-		} else {
-			if ( 'post_category' == $field_name ) {
 				$value = array_map( 'intval', $value );
 				$value = array_unique( $value );
 				if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] ) {
 					unset( $value[ 0 ] );
 				}
+
+				wp_set_object_terms( $post_id, $value, $field_name );
+			}
+
+			return;
+		}
+
+		if ( ! is_array( $value ) ) {
+			$delete = strstr( $value, Custom_Bulkquick_Edit_Settings::DELETE );
+		} else {
+			$delete = in_array( Custom_Bulkquick_Edit_Settings::DELETE, $value );
+		}
+
+		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::DELETE ) ) {
+			$field_name = str_replace( Custom_Bulkquick_Edit_Settings::DELETE, '', $field_name );
+			$delete      = true;
+		}
+
+		$post_save_fields = apply_filters( 'cbqe_post_save_fields', self::$post_fields_ignore );
+		if ( ! in_array( $field_name, $post_save_fields ) ) {
+			if ( ! $delete ) {
+				update_post_meta( $post_id, $field_name, $value );
+			} else {
+				delete_post_meta( $post_id, $field_name );
+			}
+		} else {
+			if ( $delete ) {
+				$value = '';
 			}
 
 			$value = apply_filters( 'cbqe_post_save_value', $value, $post_id, $field_name );
@@ -683,6 +712,17 @@ jQuery( document ).ready( function() {
 			$result = '';
 			$row    = 1;
 
+			$valid_delete = strstr( $setting, Custom_Bulkquick_Edit_Settings::DELETE );
+			if ( $valid_delete ) {
+				$orig_field  = preg_replace( '#(^|' . Custom_Bulkquick_Edit_Settings::ENABLE . '|' . Custom_Bulkquick_Edit_Settings::DELETE . ')#', '', $column_name );
+				$orig_column = self::SLUG . $orig_field;
+
+				$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row, true );
+				$row++;
+
+				$return_now = true;
+			}
+
 			$valid_reset = strstr( $setting, Custom_Bulkquick_Edit_Settings::RESET );
 			if ( $valid_reset ) {
 				$orig_field  = preg_replace( '#(^|' . Custom_Bulkquick_Edit_Settings::ENABLE . '|' . Custom_Bulkquick_Edit_Settings::RESET . ')#', '', $column_name );
@@ -719,6 +759,10 @@ jQuery( document ).ready( function() {
 				return;
 			}
 		} else {
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::DELETE ) ) {
+				return;
+			}
+
 			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::RESET ) ) {
 				return;
 			}
@@ -934,11 +978,16 @@ jQuery( document ).ready( function() {
 	}
 
 
-	public static function custom_box_reset( $column_name, $field_name, $key_reset, $row ) {
-		$field_reset  = $field_name . Custom_Bulkquick_Edit_Settings::RESET;
-		$title_reset  = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
-		$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
+	public static function custom_box_reset( $column_name, $field_name, $key_reset, $row, $delete = false ) {
+		if ( empty( $delete ) ) {
+			$field_reset  = $field_name . Custom_Bulkquick_Edit_Settings::RESET;
+			$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
+		} else {
+			$field_reset  = $field_name . Custom_Bulkquick_Edit_Settings::DELETE;
+			$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::DELETE;
+		}
 
+		$title_reset = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
 		$result  = '<label>';
 		$result .= '<input type="checkbox" name="' . $field_reset . '" />';
 		$result .= ' ';
@@ -1072,6 +1121,7 @@ jQuery( document ).ready( function() {
 		}
 
 		remove_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
+
 		self::save_post_items( $post_id );
 	}
 
