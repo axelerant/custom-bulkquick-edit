@@ -170,6 +170,11 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public static function notice_donate( $disable_donate = null, $item_name = null ) {
 		$disable_donate = cbqe_get_option( 'disable_donate' );
 
@@ -519,7 +524,7 @@ jQuery( document ).ready( function() {
 
 		if ( false !== strstr( $field_name, Custom_Bulkquick_Edit_Settings::DELETE ) ) {
 			$field_name = str_replace( Custom_Bulkquick_Edit_Settings::DELETE, '', $field_name );
-			$delete      = true;
+			$delete     = true;
 		}
 
 		$post_save_fields = apply_filters( 'cbqe_post_save_fields', self::$post_fields_ignore );
@@ -717,8 +722,7 @@ jQuery( document ).ready( function() {
 				$orig_field  = preg_replace( '#(^|' . Custom_Bulkquick_Edit_Settings::ENABLE . '|' . Custom_Bulkquick_Edit_Settings::DELETE . ')#', '', $column_name );
 				$orig_column = self::SLUG . $orig_field;
 
-				$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row, true );
-				$row++;
+				$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, true );
 
 				$return_now = true;
 			}
@@ -728,8 +732,7 @@ jQuery( document ).ready( function() {
 				$orig_field  = preg_replace( '#(^|' . Custom_Bulkquick_Edit_Settings::ENABLE . '|' . Custom_Bulkquick_Edit_Settings::RESET . ')#', '', $column_name );
 				$orig_column = self::SLUG . $orig_field;
 
-				$result .= self::custom_box_reset( $orig_column, $orig_field, $setting, $row );
-				$row++;
+				$result .= self::custom_box_reset( $orig_column, $orig_field, $setting );
 
 				$return_now = true;
 			}
@@ -978,7 +981,7 @@ jQuery( document ).ready( function() {
 	}
 
 
-	public static function custom_box_reset( $column_name, $field_name, $key_reset, $row, $delete = false ) {
+	public static function custom_box_reset( $column_name, $field_name, $key_reset, $delete = false ) {
 		if ( empty( $delete ) ) {
 			$field_reset  = $field_name . Custom_Bulkquick_Edit_Settings::RESET;
 			$column_reset = $column_name . Custom_Bulkquick_Edit_Settings::RESET;
@@ -988,6 +991,7 @@ jQuery( document ).ready( function() {
 		}
 
 		$title_reset = Custom_Bulkquick_Edit_Settings::$settings[ $key_reset ]['label'];
+
 		$result  = '<label>';
 		$result .= '<input type="checkbox" name="' . $field_reset . '" />';
 		$result .= ' ';
