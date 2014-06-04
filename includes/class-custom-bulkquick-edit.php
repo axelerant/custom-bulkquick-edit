@@ -968,10 +968,11 @@ jQuery( document ).ready( function() {
 
 
 	public static function custom_box_categories( $field_name ) {
+		global $post;
 		$taxonomy = str_replace( self::SLUG, '', $field_name );
 
 		ob_start();
-		wp_terms_checklist( null, array( 'taxonomy' => $taxonomy ) );
+		wp_terms_checklist( $post->ID, array( 'taxonomy' => $taxonomy ) );
 		$terms = ob_get_contents();
 		ob_end_clean();
 
