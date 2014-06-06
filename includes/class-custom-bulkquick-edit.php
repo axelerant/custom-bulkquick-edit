@@ -969,10 +969,12 @@ jQuery( document ).ready( function() {
 
 	public static function custom_box_categories( $field_name ) {
 		global $post;
+		$post_id = isset($post->ID) ? $post->ID : null;
+
 		$taxonomy = str_replace( self::SLUG, '', $field_name );
 
 		ob_start();
-		wp_terms_checklist( $post->ID, array( 'taxonomy' => $taxonomy ) );
+		wp_terms_checklist($post_id, array( 'taxonomy' => $taxonomy ) );
 		$terms = ob_get_contents();
 		ob_end_clean();
 
