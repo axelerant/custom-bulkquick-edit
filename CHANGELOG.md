@@ -3,6 +3,7 @@
 ## master
 
 ## 1.5.2RC2
+* Add column view FAQ entry
 * Disable WordPress.WhiteSpace.ControlStructureSpacing coding standard
 * Ignore saving post record fields
 * RESOLVES #49 Add option to delete post_excerpt in bulk
