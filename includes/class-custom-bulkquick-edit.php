@@ -974,8 +974,9 @@ jQuery( document ).ready( function() {
 		if ( ! $bulk_mode ) {
 			self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name} option:selected', post_row ).map( function(){ return jQuery( this ).val(); } ).get();";
 			self::$scripts_quick[ $column_name . '2' ] = "jQuery.each( {$field_name_var}, function( key, value ){ jQuery( ':input[name^={$field_name}] option[value=\"' + value + '\"]', edit_row ).prop('selected', true); } );";
-		} else
+		} else {
 			self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'select[name={$field_name}]' ).val()";
+		}
 
 		return $result;
 	}
@@ -1031,16 +1032,22 @@ jQuery( document ).ready( function() {
 		$terms = ob_get_contents();
 		ob_end_clean();
 
-		$result = '';
+		$result     = '';
+		$input_name = 'tax_input';
 		if ( 'category' != $taxonomy ) {
-			$result .= '<input type="hidden" name="tax_input[' . $taxonomy . '][]" value="0" />';
+			$result .= '<input type="hidden" name="' . $input_name . '[' . $taxonomy . '][]" value="0" />';
 		} else {
-			$result .= '<input type="hidden" name="post_category[]" value="0" />';
+			$input_name = 'post_category';
+			$result    .= '<input type="hidden" name="' . $input_name . '[]" value="0" />';
 		}
 
 		$result .= '<ul class="cat-checklist ' . esc_attr( $taxonomy ) . '-checklist">';
 		$result .= $terms;
 		$result .= '</ul>';
+
+		// fixme
+		// self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
+		// self::$scripts_quick[ $column_name . '2' ] = "jQuery( '.{$tax_class}', edit_row ).val( {$field_name_var} );";
 
 		return $result;
 	}
