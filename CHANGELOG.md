@@ -7,8 +7,8 @@
 * Disable WordPress.WhiteSpace.ControlStructureSpacing coding standard
 * Ignore saving post record fields
 * Prevent pre-selected categories in bulk edit
-* RELATES #51 Checkboxes in a checklist of terms are not preselected when loading quickedit panel
 * RESOLVES #49 Add option to delete post_excerpt in bulk
+* RESOLVES #51 Checkboxes in a checklist of terms are not preselected when loading quickedit panel
 * RESOLVES Double saving during bulk editings
 * RESOLVES WooCommerce attributes not showing in bulk edit
 

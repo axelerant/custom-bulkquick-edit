@@ -252,8 +252,11 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 				$current = get_post_meta( $post_id, $column, true );
 
 				switch ( $field_type ) {
-					case 'show_only':
 					case 'categories':
+						$result = self::column_categories( $post_id, $column, $current, $options, $field_type );
+						break;
+
+					case 'show_only':
 					case 'taxonomy':
 						$result = self::column_taxonomies( $post_id, $column, $current, $options, $field_type );
 						break;
@@ -836,7 +839,7 @@ jQuery( document ).ready( function() {
 				break;
 
 			case 'categories':
-				$result = self::custom_box_categories( $field_name, $bulk_mode );
+				$result = self::custom_box_categories( $field_name, $field_name_var, $bulk_mode );
 				break;
 
 			case 'taxonomy':
@@ -1024,10 +1027,11 @@ jQuery( document ).ready( function() {
 	}
 
 
-	public static function custom_box_categories( $field_name, $bulk_mode = false ) {
+	public static function custom_box_categories( $field_name, $field_name_var, $bulk_mode = false ) {
 		global $post;
 
 		$post_id  = isset( $post->ID ) && empty( $bulk_mode ) ? $post->ID : null;
+		$post_id  = null;
 		$taxonomy = str_replace( self::SLUG, '', $field_name );
 
 		ob_start();
@@ -1039,6 +1043,12 @@ jQuery( document ).ready( function() {
 		$input_name = 'tax_input';
 		if ( 'category' != $taxonomy ) {
 			$result .= '<input type="hidden" name="' . $input_name . '[' . $taxonomy . '][]" value="0" />';
+
+			self::$scripts_quick[ $field_name . '1' ] = "var {$taxonomy}_terms = jQuery( '#{$taxonomy}_' + post_id ).text();";
+			self::$scripts_quick[ $field_name . '2' ] = "if ( {$taxonomy}_terms ) {
+				jQuery( 'ul.{$taxonomy}-checklist :checkbox', edit_row ).val( {$taxonomy}_terms.split(',') );
+		}
+			";
 		} else {
 			$input_name = 'post_category';
 			$result    .= '<input type="hidden" name="' . $input_name . '[]" value="0" />';
@@ -1047,10 +1057,6 @@ jQuery( document ).ready( function() {
 		$result .= '<ul class="cat-checklist ' . esc_attr( $taxonomy ) . '-checklist">';
 		$result .= $terms;
 		$result .= '</ul>';
-
-		// fixme
-		// self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
-		// self::$scripts_quick[ $column_name . '2' ] = "jQuery( '.{$tax_class}', edit_row ).val( {$field_name_var} );";
 
 		return $result;
 	}
@@ -1312,6 +1318,33 @@ jQuery( document ).ready( function() {
 		wp_enqueue_style( __CLASS__ );
 
 		do_action( 'cbqe_styles' );
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function column_categories( $post_id, $column, $current, $options, $field_type ) {
+		$post_terms = array();
+		$post_type  = get_post_type( $post_id );
+		$taxonomy   = $column;
+		$term_ids   = array();
+
+		$terms = get_the_terms( $post_id, $taxonomy );
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$post_terms[] = '<a href="edit.php?post_type=' . $post_type . '&' . $taxonomy . '=' . $term->slug . '">' . esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, $taxonomy, 'edit' ) ) . '</a>';
+			}
+
+			$term_ids = wp_list_pluck( $terms, 'term_id' );
+		}
+
+		$result  = implode( ', ', $post_terms );
+		$result .= '<div class="hidden" id="' . $taxonomy . '_' . $post_id . '">' . implode( ',', $term_ids ) . '</div>';
+
+		return $result;
 	}
 }
 
