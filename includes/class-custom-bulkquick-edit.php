@@ -836,7 +836,7 @@ jQuery( document ).ready( function() {
 				break;
 
 			case 'categories':
-				$result = self::custom_box_categories( $field_name );
+				$result = self::custom_box_categories( $field_name, $bulk_mode );
 				break;
 
 			case 'taxonomy':
@@ -1024,10 +1024,10 @@ jQuery( document ).ready( function() {
 	}
 
 
-	public static function custom_box_categories( $field_name ) {
+	public static function custom_box_categories( $field_name, $bulk_mode = false ) {
 		global $post;
 
-		$post_id  = isset( $post->ID ) ? $post->ID : null;
+		$post_id  = isset( $post->ID ) && empty( $bulk_mode ) ? $post->ID : null;
 		$taxonomy = str_replace( self::SLUG, '', $field_name );
 
 		ob_start();
