@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.5.2RC3
+## 1.5.2RC4
 * Add column view FAQ entry
 * Disable WordPress.WhiteSpace.ControlStructureSpacing coding standard
 * Ignore saving post record fields
