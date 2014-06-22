@@ -9,6 +9,7 @@
 * RELATES #51 Checkboxes in a checklist of terms are not preselected when loading quickedit panel
 * RESOLVES #49 Add option to delete post_excerpt in bulk
 * RESOLVES Double saving during bulk editings
+* RESOLVES WooCommerce attributes not showing in bulk edit
 
 ## 1.5.1
 * Link to old plugin versions in FAQ

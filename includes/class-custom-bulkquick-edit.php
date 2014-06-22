@@ -759,7 +759,10 @@ jQuery( document ).ready( function() {
 
 			// return now otherwise taxonomy entries are duplicated
 			if ( $return_now || in_array( $field_type, array( 'categories', 'taxonomy' ) ) ) {
-				return;
+				$bulk_edit_taxonomy = apply_filters( 'cbqe_bulk_edit_taxonomy', array() );
+				if ( ! in_array( $column_name, $bulk_edit_taxonomy ) ) {
+					return;
+				}
 			}
 		} else {
 			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::DELETE ) ) {
