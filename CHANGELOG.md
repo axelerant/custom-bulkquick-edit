@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.5.3RC1
+* RESOLVE Avoid unused parameters such as '$field_name_var'.
+
 ## 1.5.2
 * Add column view FAQ entry
 * Disable WordPress.WhiteSpace.ControlStructureSpacing coding standard
