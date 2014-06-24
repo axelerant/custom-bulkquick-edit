@@ -131,7 +131,7 @@ See Post.
 
 = Usage =
 
-1. Read "[How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)"
+1. Read "[How do I add custom fields to my bulk/quick edit page?](https://aihrus.zendesk.com/entries/24800411)"
 1. Read "[How do you configure options?](https://aihrus.zendesk.com/entries/24911342)"
 1. Read "[Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)"
 1. Select the post and page attributes to enable through WordPress Admin > Settings > Custom Bulk/Quick
@@ -156,9 +156,9 @@ See Post.
 
 = Most Common Issues =
 
-* [How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)
+* [How do I add custom fields to my bulk/quick edit page?](https://aihrus.zendesk.com/entries/24800411)
 * [How do you configure options?](https://aihrus.zendesk.com/entries/24911342)
-* [Extra columns on edit page](https://aihrus.zendesk.com/entries/23711542)
+* [Extra vertical columns on edit page](https://aihrus.zendesk.com/entries/23711542)
 * [Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)
 * Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006)
 * [Debug theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)

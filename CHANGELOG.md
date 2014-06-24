@@ -4,6 +4,7 @@
 
 ## 1.5.3RC1
 * RESOLVE Avoid unused parameters such as '$field_name_var'.
+* Revise How do I add custom fields to my bulk/quick edit page? title
 
 ## 1.5.2
 * Add column view FAQ entry
