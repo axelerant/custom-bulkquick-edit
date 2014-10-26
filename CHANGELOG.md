@@ -5,7 +5,7 @@
 ## 2.0.0RC1
 * Add UPGRADING.md
 * Remove "by Aihrus" labeling
-* Require Aihrus Framework 1.1.6RC2
+* Require Aihrus Framework 1.2.0RC1
 * RESOLVE Avoid unused parameters such as '$field_name_var'.
 * Revise How do I add custom fields to my bulk/quick edit page? title
 * Update PHPCS to WordPress-Core
