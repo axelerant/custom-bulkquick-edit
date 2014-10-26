@@ -267,7 +267,7 @@ if ( !class_exists( 'redrokk_metabox_class' ) ):
 				array(
 					'name' => '_videocat',
 					'id' => $this->_id.'_videocat',
-					'default'=>$this->getCategory(),
+					'std'=> $this->getCategory(),
 					'type' => 'hidden',
 				),
 				array(
@@ -797,7 +797,7 @@ jQuery('#edit_<?php echo $this->_category_name; ?>_<?php echo $meta_id; ?>').cli
 			'id' => '',
 			'type' => 'text',
 			'options' => array(),
-			'default' => '',
+			'std' => '',
 			'value' => '',
 			'class' => '',
 			'multiple' => '',
@@ -896,7 +896,7 @@ jQuery('#edit_<?php echo $this->_category_name; ?>_<?php echo $meta_id; ?>').cli
 				else
 					$meta = esc_attr( $custom[$id] );
 			} else {
-				$meta = $default;
+				$meta = $std;
 			}
 
 			$id = sanitize_title( $id );
@@ -1101,7 +1101,7 @@ jQuery('#edit_<?php echo $this->_category_name; ?>_<?php echo $meta_id; ?>').cli
 				<td colspan="2">
 					<input  <?php echo $attributes ?>
 						id="<?php echo $id; ?>"
-						value="<?php echo $meta ?$meta :$default; ?>"
+						value="<?php echo $meta ?$meta :$std; ?>"
 						type="<?php echo $type; ?>"
 						name="<?php echo $id; ?>"
 						style="visibility:hidden;" />
@@ -1111,7 +1111,7 @@ jQuery('#edit_<?php echo $this->_category_name; ?>_<?php echo $meta_id; ?>').cli
 			<?php case 'custom': ?>
 			<tr>
 				<td colspan="2">
-					<?php echo $desc.$default; ?>
+					<?php echo $desc.$std; ?>
 				</td>
 			</tr>
 			<?php case 'date': ?>

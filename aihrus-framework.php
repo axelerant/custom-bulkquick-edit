@@ -1,35 +1,42 @@
 <?php
-/*
-	Copyright 2014 Michael Cannon (email: mc@aihr.us)
+/**
+Aihrus Framework
+Copyright (C) 2014  Michael Cannon
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as
-	published by the Free Software Foundation.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-if ( ! defined( 'AIHR_BASE' ) )
+if ( ! defined( 'AIHR_BASE' ) ) {
 	define( 'AIHR_BASE', __FILE__ );
+}
 
-if ( ! defined( 'AIHR_DIR' ) )
+if ( ! defined( 'AIHR_DIR' ) ) {
 	define( 'AIHR_DIR', plugin_dir_path( __FILE__ ) );
+}
 
-if ( ! defined( 'AIHR_DIR_INC' ) )
+if ( ! defined( 'AIHR_DIR_INC' ) ) {
 	define( 'AIHR_DIR_INC', AIHR_DIR . 'includes/' );
+}
 
-if ( ! defined( 'AIHR_DIR_LIB' ) )
+if ( ! defined( 'AIHR_DIR_LIB' ) ) {
 	define( 'AIHR_DIR_LIB', AIHR_DIR_INC . 'libraries/' );
+}
 
-if ( ! defined( 'AIHR_VERSION' ) )
-	define( 'AIHR_VERSION', '1.1.4' );
+if ( ! defined( 'AIHR_VERSION' ) ) {
+	define( 'AIHR_VERSION', '1.1.6RC1' );
+}
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
@@ -205,13 +212,15 @@ if ( ! function_exists( 'aihr_notice_wp' ) ) {
 if ( ! function_exists( 'aihr_notice_error' ) ) {
 	function aihr_notice_error( $text ) {
 		aihr_notice_updated( $text, 'error' );
+		error_log( $text );
 	}
 }
 
 if ( ! function_exists( 'aihr_notice_updated' ) ) {
 	function aihr_notice_updated( $text, $class = 'updated' ) {
-		if ( 'updated' == $class )
+		if ( 'updated' == $class ) {
 			$class .= ' fade';
+		}
 
 		$content  = '';
 		$content .= '<div class="' . $class . '"><p>';
@@ -225,9 +234,9 @@ if ( ! function_exists( 'aihr_notice_updated' ) ) {
 if ( ! function_exists( 'aihr_notice_version' ) ) {
 	function aihr_notice_version( $required_base, $required_name, $required_slug, $required_version, $item_name ) {
 		$is_active = is_plugin_active( $required_base );
-		if ( $is_active )
+		if ( $is_active ) {
 			$link = sprintf( __( '<a href="%1$s">update to</a>' ), self_admin_url( 'update-core.php' ) );
-		else {
+		} else {
 			$plugins = get_plugins();
 			if ( empty( $plugins[ $required_base ] ) ) {
 				$install = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $required_slug ), 'install-plugin_' . $required_slug ) );
@@ -245,13 +254,14 @@ if ( ! function_exists( 'aihr_notice_version' ) ) {
 }
 
 if ( ! function_exists( 'aihr_notice_license' ) ) {
-	function aihr_notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name ) {
-		if ( empty( $post_type ) )
+	function aihr_notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name, $product_id = null, $license = null ) {
+		if ( empty( $post_type ) ) {
 			$link = get_admin_url() . 'options-general.php?page=' . $settings_id;
-		else
+		} else {
 			$link = get_admin_url() . 'edit.php?post_type=' . $post_type . '&page=' . $settings_id;
+		}
 
-		$text = __( '<a href="%1$s">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em> entry' );
+		$text = __( '<a href="%1$s">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em>' );
 
 		$settings_link = sprintf( $text, $link, $free_name );
 
@@ -261,11 +271,25 @@ if ( ! function_exists( 'aihr_notice_license' ) ) {
 		$faq_link = sprintf( $text, $link );
 
 		$link = esc_url( $purchase_url );
-		$text = __( '<a href="%1$s">%2$s</a>' );
+		$text = __( '<a href="%1$s">Purchase</a>' );
 
 		$buy_link = sprintf( $text, $link, $item_name );
 
-		$text = sprintf( __( 'Plugin "%1$s" requires license activation before updating will work. Please activate the license key through %2$s. No license key? See "%3$s" or purchase "%4$s".' ), $item_name, $settings_link, $faq_link, $buy_link );
+		$renew_link = '';
+		if ( ! empty( $license ) ) {
+			$link = parse_url( $purchase_url );
+			$link = $link['host'];
+			$text = __( '%1$s/checkout/?edd_license_key=%2$s&download_id=%3$s' );
+			$renew_url = sprintf( $text, $link, $license, $product_id );
+
+			$link = esc_url( $renew_url );
+			$text = __( '<a href="%1$s">Renew</a> or ' );
+
+			$renew_link = sprintf( $text, $link, $item_name );
+		}
+
+		$text = sprintf( __( 'Plugin "%1$s" requires license activation for software updates and support. Please activate the license via %2$s. See %3$s for help. Alternately, %5$s%4$s a %1$s license.' ), $item_name, $settings_link, $faq_link, $buy_link, $renew_link );
+		$text = links_add_target( $text, '_blank' );
 
 		aihr_notice_error( $text );
 	}
@@ -273,8 +297,6 @@ if ( ! function_exists( 'aihr_notice_license' ) ) {
 
 if ( ! function_exists( 'aihr_deactivate_plugin' ) ) {
 	function aihr_deactivate_plugin( $file = null, $name = null, $reason = '' ) {
-		error_log( print_r( debug_backtrace(), true ) );
-
 		if ( is_null( $file ) ) {
 			aihr_notice_error( __( '`aihr_deactivate_plugin` requires $file argument' ) );
 
@@ -318,11 +340,15 @@ if ( ! function_exists( 'aihr_notice_deactivate' ) ) {
 			$reason = esc_html__( 'Unknown' );
 		}
 
-		$text = sprintf( __( 'Plugin "%1$s" has been deactivated due to "%2$s". Once corrected, "%1$s" can be activated.' ), $name, $reason );
+		$file        = AIHR_DEACTIVATE_FILE;
+		$plugin_slug = dirname( plugin_basename( $file ) );
+		$url         = 'https://wordpress.org/plugins/' . $plugin_slug . '/developers/';
+
+		$text = sprintf( __( 'Plugin "%1$s" has been deactivated due to "%2$s". Once corrected, "%1$s" can be activated.</p><p>If you want to revert "%1$s", look for <a href="%3$s">older versions on WordPress</a> or <a href="mailto:support@aihr.us?subject=Old+Plugin+Version+Request">email Aihrus support</a> if this is a premium plugin.' ), $name, $reason, $url );
 
 		aihr_notice_error( $text );
 
-		aihr_deactivate_plugin_do( AIHR_DEACTIVATE_FILE );
+		aihr_deactivate_plugin_do( $file );
 	}
 }
 

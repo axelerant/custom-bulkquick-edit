@@ -9,30 +9,13 @@
 	<exclude-pattern>jquery-ui-1.10.3.custom.min.css</exclude-pattern>
 	<exclude-pattern>tests/</exclude-pattern>
 
-	<rule ref="Generic">
-		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found" />
-		<exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
-		<exclude name="Generic.Files.EndFileNoNewline.Found" />
-		<exclude name="Generic.Files.LineLength.MaxExceeded" />
-		<exclude name="Generic.Files.LineLength.TooLong" />
-		<exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
-		<exclude name="Generic.Formatting.NoSpaceAfterCast.SpaceFound" />
-		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine" />
-		<exclude name="Generic.Metrics.CyclomaticComplexity.MaxExceeded" />
-		<exclude name="Generic.NamingConventions.CamelCapsFunctionName.NotCamelCaps" />
-		<exclude name="Generic.NamingConventions.CamelCapsFunctionName.ScopeNotCamelCaps" />
-		<exclude name="Generic.PHP.CharacterBeforePHPOpeningTag.Found" />
-		<exclude name="Generic.PHP.UpperCaseConstant.Found" />
-		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
-		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
-	</rule>
+	<rule ref="WordPress-Core"/>
 
-	<rule ref="Squiz.PHP.CommentedOutCode"/>
-	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
-		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
-	</rule>
+	<!-- Extras -->
+	<rule ref="WordPress.PHP.DiscouragedFunctions"/>
 
-	<rule ref="WordPress">
-		<exclude name="WordPress.XSS.EscapeOutput" />
-	</rule>
+	<!-- VIP -->
+	<rule ref="WordPress.Arrays.ArrayAssignmentRestrictions"/>
+	<rule ref="WordPress.Functions.FunctionRestrictions"/>
+	<rule ref="WordPress.Variables.VariableRestrictions"/>
 </ruleset>

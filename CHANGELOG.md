@@ -1,6 +1,36 @@
-# CHANGELOG Aihrus Framework
+# CHANGELOG - Aihrus Framework
 
 ## master
+
+## 1.1.6RC1
+
+## 1.1.5
+* Abstract do_validate_settings for easier reuse
+* Add 'content' option to settings display
+* Add CPT date archives helper
+* Add markdown2html helper
+* Add suggest ability to text filed
+* Add widget's form_parts method
+* Auto-detect file_get_contents or curl availability
+* Coding standards update
+* Don't shortcode attribute for reset options
+* Move get_suggest to widget abstract class from interface
+* On aihr_notice_error usage, push to server error log
+* Remove interface class usage
+* RESOLVE #4 Enable std default for metabox class
+* RESOLVE #5 Check for file_get_contents and curl_init before file grabbing
+* RESOLVE Add widget option defaults
+* RESOLVE form_parts not allowing no arguments
+* RESOLVE michael-cannon/testimonials-widget#6 On widget options, switch labels expand/collapse when using them
+* RESOLVE michael-cannon/testimonials-widget#78 Show revert link in deactivation admin notice
+* RESOLVE Move form_instance to abstract class Aihrus_Widget
+* RESOLVE Move get_suggest to abstract class Aihrus_Widget
+* RESOLVE Remove tw- reference
+* RESOLVE Space missing before Collapse
+* RESOLVE Use widget args than globals
+* Revise widget class for easier reuse
+* Update licensing GPL 2.0
+* Use parsedown for Markdown to HTML conversion
 
 ## 1.1.4
 * Carry over core baseline methods
