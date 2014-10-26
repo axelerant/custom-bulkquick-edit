@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.6
 Tested up to: 4.1.0
-Stable tag: 1.5.3RC1
+Stable tag: 2.0.0RC1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -194,17 +194,14 @@ See [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/ma
 
 == Upgrade Notice ==
 
-= 1.5.0 =
+= 2.0.0 =
 
-* Alters option `active_plugins` so that this plugin is among first loaded.
+This is a major overhaul *without* backwards compliance of over 80 changes. Please read the [Custom Bulk/Quick Edit 2.0 and Custom Bulk/Quick Edit Premium 2.0 Upgrade Notice](TBD) for more help. 
 
-= 1.3.0 =
+= Older Versions =
 
-* Requires PHP 5.3+ [notice](https://aihrus.zendesk.com/entries/30678006)
+Read [UPGRADING](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/UPGRADING.md).
 
-= 1.1.0 =
-
-* Please review your settings as some option keys have changed. There's no auto-upgrade at this time.
 
 == Notes ==
 

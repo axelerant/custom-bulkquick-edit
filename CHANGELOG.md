@@ -2,7 +2,8 @@
 
 ## master
 
-## 1.5.3RC1
+## 2.0.0RC1
+* Add UPGRADING.md
 * Remove "by Aihrus" labeling
 * Require Aihrus Framework 1.1.6RC2
 * RESOLVE Avoid unused parameters such as '$field_name_var'.
