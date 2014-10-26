@@ -1,4 +1,4 @@
-# API Custom Bulk/Quick Edit
+# API - Custom Bulk/Quick Edit
 
 The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquick-edit/) comes with its own set of actions and filters, as described below.
 

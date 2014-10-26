@@ -1,4 +1,4 @@
-# CHANGELOG Custom Bulk/Quick Edit
+# CHANGELOG - Custom Bulk/Quick Edit
 
 ## master
 
