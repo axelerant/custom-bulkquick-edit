@@ -3,8 +3,10 @@
 ## master
 
 ## 1.5.3RC1
+* Require Aihrus Framework 1.1.6RC1
 * RESOLVE Avoid unused parameters such as '$field_name_var'.
 * Revise How do I add custom fields to my bulk/quick edit page? title
+* Update PHPCS to WordPress-Core
 
 ## 1.5.2
 * Add column view FAQ entry

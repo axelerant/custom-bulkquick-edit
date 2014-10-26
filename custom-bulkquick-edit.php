@@ -27,32 +27,41 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'CBQE_AIHR_VERSION' ) )
-	define( 'CBQE_AIHR_VERSION', '1.1.4' );
+if ( ! defined( 'CBQE_AIHR_VERSION' ) ) {
+	define( 'CBQE_AIHR_VERSION', '1.1.6RC1' );
+}
 
-if ( ! defined( 'CBQE_BASE' ) )
+if ( ! defined( 'CBQE_BASE' ) ) {
 	define( 'CBQE_BASE', plugin_basename( __FILE__ ) );
+}
 
-if ( ! defined( 'CBQE_DIR' ) )
+if ( ! defined( 'CBQE_DIR' ) ) {
 	define( 'CBQE_DIR', plugin_dir_path( __FILE__ ) );
+}
 
-if ( ! defined( 'CBQE_DIR_INC' ) )
+if ( ! defined( 'CBQE_DIR_INC' ) ) {
 	define( 'CBQE_DIR_INC', CBQE_DIR . 'includes/' );
+}
 
-if ( ! defined( 'CBQE_DIR_LIB' ) )
+if ( ! defined( 'CBQE_DIR_LIB' ) ) {
 	define( 'CBQE_DIR_LIB', CBQE_DIR_INC . 'libraries/' );
+}
 
-if ( ! defined( 'CBQE_NAME' ) )
+if ( ! defined( 'CBQE_NAME' ) ) {
 	define( 'CBQE_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
+}
 
-if ( ! defined( 'CBQE_PREMIUM_LINK' ) )
+if ( ! defined( 'CBQE_PREMIUM_LINK' ) ) {
 	define( 'CBQE_PREMIUM_LINK', '<a href="http://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/">Buy Premium</a>' );
+}
 
-if ( ! defined( 'CBQE_VERSION' ) )
+if ( ! defined( 'CBQE_VERSION' ) ) {
 	define( 'CBQE_VERSION', '1.5.3RC1' );
+}
 
 require_once CBQE_DIR_INC . 'requirements.php';
 
@@ -79,17 +88,20 @@ add_action( 'after_setup_theme', 'custom_bulkquick_edit_init', 999 );
  */
 if ( ! function_exists( 'custom_bulkquick_edit_init' ) ) {
 	function custom_bulkquick_edit_init() {
-		if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) )
+		if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 			return;
+		}
 
 		if ( Custom_Bulkquick_Edit::version_check() ) {
 			global $Custom_Bulkquick_Edit;
-			if ( is_null( $Custom_Bulkquick_Edit ) )
+			if ( is_null( $Custom_Bulkquick_Edit ) ) {
 				$Custom_Bulkquick_Edit = new Custom_Bulkquick_Edit();
+			}
 
 			global $Custom_Bulkquick_Edit_Settings;
-			if ( is_null( $Custom_Bulkquick_Edit_Settings ) )
+			if ( is_null( $Custom_Bulkquick_Edit_Settings ) ) {
 				$Custom_Bulkquick_Edit_Settings = new Custom_Bulkquick_Edit_Settings();
+			}
 		}
 	}
 }
