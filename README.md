@@ -75,5 +75,4 @@ git push origin master
 
 ## Included Libraries
 
-* [CMB2](https://github.com/WebDevStudios/CMB2)
 * [Parsedown](http://parsedown.org/)
