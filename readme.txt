@@ -1,15 +1,15 @@
-=== Custom Bulk/Quick Edit by Aihrus ===
+=== Custom Bulk/Quick Edit ===
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.6
-Tested up to: 4.0.0
+Tested up to: 4.1.0
 Stable tag: 1.5.3RC1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Custom Bulk/Quick Edit by Aihrus allows you to easily add custom fields to the edit screen bulk and quick edit panels.
+Custom Bulk/Quick Edit allows you to easily add custom fields to the edit screen bulk and quick edit panels.
 
 
 == Description ==
@@ -118,8 +118,8 @@ See Post.
 = Install Methods =
 
 * Through WordPress Admin > Plugins > Add New, Search for "Custom Bulk Quick Edit"
-	* Find "Custom Bulk/Quick Edit by Aihrus"
-	* Click "Install Now" of "Custom Bulk/Quick Edit by Aihrus"
+	* Find "Custom Bulk/Quick Edit"
+	* Click "Install Now" of "Custom Bulk/Quick Edit"
 * Download [`custom-bulkquick-edit.zip`](http://downloads.wordpress.org/plugin/custom-bulkquick-edit.zip) locally
 	* Through WordPress Admin > Plugins > Add New
 	* Click Upload
