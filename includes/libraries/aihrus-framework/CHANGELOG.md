@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.1.6RC1
+## 1.1.6RC2
 * Denote included libraries
 * RELATES #6 Replace metabox and options handling with CMB2
 
