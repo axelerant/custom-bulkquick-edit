@@ -71,6 +71,10 @@ Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin the
 
 [Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
 
+= Custom Bulk/Quick Edit Premium Doesn't Work For You? =
+
+No problem, it has a 30-day, money back guarantee. Also, you can keep the software, sans support and updates.
+
 = Settings =
 
 **Post**
@@ -232,3 +236,5 @@ You can translate this plugin into your own language if it's not done so already
 A big, special thank you to [Joe Weber](https://plus.google.com/100063271269277312276/posts) of [12 Star Creative](http://www.12starcreative.com/) for creating the Custom Bulk/Quick Edit banner.
 
 Kudos to [Alex Stone](http://eoionline.org) for documentation revisions.
+
+Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Aihrus](http://aihr.us/about-aihrus/).
