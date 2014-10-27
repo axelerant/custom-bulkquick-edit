@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.6
 Tested up to: 4.1.0
-Stable tag: 2.0.0RC1
+Stable tag: 1.5.3RC1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,23 +16,48 @@ Custom Bulk/Quick Edit allows you to easily add custom fields to the edit screen
 
 Through Custom Bulk/Quick Edit [by Aihrus](http://aihr.us/about-aihrus/), you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
 
-To use this Custom Bulk/Quick Edit plugin with custom post types, please purchase [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/). Read more of the premium features below.
-
 **Video Introduction**
 
 [youtube https://www.youtube.com/watch?v=wd6munNz0gI]
 
 Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. **Therefore, unless it's already configured, your theme's `functions.php` file will have to modified to add custom field columns.**
 
-Read [**Installation**](http://wordpress.org/plugins/custom-bulkquick-edit/installation/) and [**FAQ**](http://wordpress.org/plugins/custom-bulkquick-edit/faq/) to get started.
+Read the **Usage** section of [Installation](http://wordpress.org/plugins/custom-bulkquick-edit/installation/) and the **[FAQ](http://wordpress.org/plugins/custom-bulkquick-edit/faq/)** to get started.
 
-= Primary Features =
+= Custom Bulk/Quick Edit Premium =
+
+Custom Bulk/Quick Edit Premium extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) to work with [custom post types](https://aihr.us/custom-bulkquick-edit-premium/) and adds additional inputs options. Read on for details…
+
+* **Free, comprehensive support**
+* Adds float, integer, and user inputs
+* Bulk edit post dates
+* Color input with color picker
+* Date and time input with datetime picker
+* Date input with date picker
+* Disable donate references
+* Flexible API
+* Multiple select selector
+* Works with Custom Post Types
+* Works with [WooCommerce 2.1.0+ custom attributes and product types](http://www.woothemes.com/woocommerce/)
+
+**[Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/)** plugin for WordPress.
+
+= Custom Bulk/Quick Edit Premium Doesn't Work For You? =
+
+No problem, it has a 30-day, money back guarantee. Also, you can keep the software, sans support and updates.
+
+= Custom Bulk/Quick Edit Add Ons =
+
+* [Edit Flow](http://wordpress.org/plugins/cbqe-edit-flow/) - Date (Premium required), number, and user types
+* [WordPress SEO](http://aihr.us/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
+
+== Loads of Benefits and Features ==
 
 * API of actions and filters
 * Auto-suggest for bulk and quick edit taxonomy entries
 * Easily remove or replace `category` and `taxonomy` relations
 * Edit excerpts and titles
-* Performance minded – Plugin automatically loads when needed
+* Performance minded – Plugin automatically only loads when needed
 * Prevents editing of common and static fields like cb, id, author, etc.
 * Remove specific category and tag entries
 * Sample configurations provided as needed
@@ -45,75 +70,14 @@ Read [**Installation**](http://wordpress.org/plugins/custom-bulkquick-edit/insta
 * Works with posts and pages
 * Works with [Edit Flow](http://wordpress.org/plugins/edit-flow/)'s checkbox, location, paragraph, and text types
 
-= Add Ons =
-* [Edit Flow](http://wordpress.org/plugins/cbqe-edit-flow/) - Date (Premium required), number, and user types
-* [WordPress SEO](http://aihr.us/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
-
-= Custom Bulk/Quick Edit Premium =
-
-Custom Bulk/Quick Edit Premium adds onto the best WordPress bulk edit plugin there is, [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/). Custom Bulk/Quick Edit Premium supports [custom post types](https://aihr.us/custom-bulkquick-edit-premium/). Plus, it offers additional inputs options like date and multiple selects for use during bulk/quick edit operations.
-
-[Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
-
-= Primary Premium Features =
-
-* Adds float, integer, and user inputs
-* Bulk edit post dates
-* Color input with color picker
-* Coming Soon! [WooCommerce product attributes](http://www.woothemes.com/woocommerce/)
-* Date and time input with datetime picker
-* Date input with date picker
-* Disable donate references
-* Flexible API
-* Multiple select selector
-* Works with Custom Post Types
-* Works with [WooCommerce custom attributes and product types](http://www.woothemes.com/woocommerce/)
-
-[Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) plugin for WordPress.
-
-= Custom Bulk/Quick Edit Premium Doesn't Work For You? =
-
-No problem, it has a 30-day, money back guarantee. Also, you can keep the software, sans support and updates.
-
-= Settings =
-
-**Post**
-
-* Enable "Title"? – Enable editing of post_type' title.
-* Enable "Excerpt"? – Enable editing of post_type' excerpt.
-* Edit "TBD" taxonomy? – Force making TBD an editable taxonomy field like checked categories or free-text tags.
-	* No
-	* No, but enable column view (view the column on the admin edit screen)
-	* Like categories
-	* Like tags
-* Reset "TBD" Relations? – During bulk editing, easily remove all of the TBD's prior relationships and add new.
-* Enable "Date"? – Enable bulk editing of post_type' date
-* Enable "Custom Field"? - As checkbox, radio, select, input, or textarea
-* "Custom Field" Configuration - You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.
-	* Example configuration
-`1
-Two
-3|Three
-four|Four, and forty five
-five-five|55`
-
-**Pages**
-
-See Post.
-
-**Reset**
-
-* Export Settings – These are your current settings in a serialized format. Copy the contents to make a backup of your settings.
-* Import Settings – Paste new serialized settings here to overwrite your current configuration.
-* Remove Plugin Data on Deletion? - Delete all Custom Bulk/Quick Edit data and options from database on plugin deletion
-* Reset to Defaults? – Check this box to reset options to their defaults
-
 
 == Installation ==
 
 = Requirements =
 
 * PHP 5.3+ [Read notice](https://aihrus.zendesk.com/entries/30678006) – Since 1.3.0
+* WordPress 3.6+
+* [jQuery 1.10+](https://aihrus.zendesk.com/entries/23693363)
 
 = Install Methods =
 
@@ -155,6 +119,15 @@ See Post.
 	* Upload directory `custom-bulkquick-edit` to your website's `/wp-content/plugins/` directory
 	* Be sure to overwrite your existing `custom-bulkquick-edit` folder contents
 
+= Deactivation =
+
+* Click the "Deactivate" link for "Custom Bulk/Quick Edit Premium" at WordPress Admin > Plugins
+
+= Deletion =
+
+* Click the "Delete" link for "Custom Bulk/Quick Edit Premium" at WordPress Admin > Plugins
+* Click the "Yes, Delete these files and data" button to confirm "Custom Bulk/Quick Edit Premium" plugin removal
+
 
 == Frequently Asked Questions ==
 
@@ -189,16 +162,12 @@ See Post.
 
 == Changelog ==
 
-See [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/master/CHANGELOG.md)
+Read [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/master/CHANGELOG.md)
+
+Read [UPGRADING](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/UPGRADING.md).
 
 
 == Upgrade Notice ==
-
-= 2.0.0 =
-
-This is a major overhaul *without* backwards compliance of over 80 changes. Please read the [Custom Bulk/Quick Edit 2.0 and Custom Bulk/Quick Edit Premium 2.0 Upgrade Notice](TBD) for more help. 
-
-= Older Versions =
 
 Read [UPGRADING](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/UPGRADING.md).
 
