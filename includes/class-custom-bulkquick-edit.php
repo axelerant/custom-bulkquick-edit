@@ -944,7 +944,7 @@ jQuery( document ).ready( function() {
 	}
 
 
-	public static function custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode = false, $multiple = false ) {
+	public static function custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode = false, $multiple = false, $bypass_no_change = false ) {
 		$result = '<select name="' . $field_name;
 		if ( $multiple ) {
 			if ( ! $bulk_mode ) {
@@ -956,12 +956,14 @@ jQuery( document ).ready( function() {
 
 		$result .= '">';
 
-		$unset_option = Custom_Bulkquick_Edit_Settings::RESET . '|' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' );
-		array_unshift( $options, $unset_option );
+		if ( empty( $bypass_no_change ) ) {
+			$unset_option = Custom_Bulkquick_Edit_Settings::RESET . '|' . esc_html__( '&mdash; Unset &mdash;', 'custom-bulkquick-edit' );
+			array_unshift( $options, $unset_option );
 
-		if ( $bulk_mode && ! $multiple ) {
-			$no_change_option = '|' . esc_html__( '&mdash; No Change &mdash;', 'custom-bulkquick-edit' );
-			array_unshift( $options, $no_change_option );
+			if ( $bulk_mode && ! $multiple ) {
+				$no_change_option = '|' . esc_html__( '&mdash; No Change &mdash;', 'custom-bulkquick-edit' );
+				array_unshift( $options, $no_change_option );
+			}
 		}
 
 		foreach ( $options as $option ) {
