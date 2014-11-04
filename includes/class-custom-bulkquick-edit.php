@@ -232,8 +232,9 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 			return;
 		}
 
-		if ( 1 == $field_type )
+		if ( 1 == $field_type ) {
 			$field_type = self::check_field_type( $field_type, $column );
+		}
 
 		$details = self::get_field_config( $post->post_type, $column );
 		$options = explode( "\n", $details );
