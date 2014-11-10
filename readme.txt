@@ -62,6 +62,7 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 * Remove specific category and tag entries
 * Sample configurations provided as needed
 * Save post handler can be customized for your needs.
+* Save values normally (serialized), as CSV, or multiple post meta entries
 * Setting options export/import
 * Settings screen
 * Supports WordPress's own taxonomy handlers for category and tag relations

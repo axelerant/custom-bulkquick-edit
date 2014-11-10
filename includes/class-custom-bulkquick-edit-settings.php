@@ -36,6 +36,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	const NAME   = 'Custom Bulk/Quick Edit Settings';
 	const REMOVE = '__remove__';
 	const RESET  = '__reset__';
+	const SAVE   = '__save__';
 
 	private static $post_types = array();
 
@@ -105,6 +106,13 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		);
 		$as_types = apply_filters( 'cbqe_settings_as_types', $as_types );
 
+		$save_as_types = array(
+			'' => esc_html__( 'Normal', 'custom-bulkquick-edit' ),
+			'csv' => esc_html__( 'As CSV', 'custom-bulkquick-edit' ),
+			'post_meta' => esc_html__( 'As post meta', 'custom-bulkquick-edit' ),
+		);
+		$save_as_types = apply_filters( 'cbqe_settings_save_as_types', $save_as_types );
+
 		$as_taxonomy = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
 			'show_only' => esc_html__( 'No, but enable column view', 'custom-bulkquick-edit' ),
@@ -115,6 +123,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 		$title_conf = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 		$desc_conf  = esc_html__( 'You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.', 'custom-bulkquick-edit' );
+
+		$title_save_as = esc_html__( '%s Save Type', 'custom-bulkquick-edit' );
+		$desc_save_as  = esc_html__( 'Alternative means of saving values.', 'custom-bulkquick-edit' );
 
 		$title_edit = esc_html__( 'Edit "%s" taxonomy?', 'custom-bulkquick-edit' );
 		$desc_edit  = esc_html__( 'Force making %1$s an editable taxonomy field like checked categories or free-text tags.', 'custom-bulkquick-edit' );
@@ -285,6 +296,18 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 						'type' => 'textarea',
 						'validate' => 'trim',
 					);
+
+					$desc_save_as_tmp = apply_filters( 'cbqe_settings_save_as_desc', $desc_save_as, $post_type, $field );
+
+					self::$settings[ $post_type . self::ENABLE . $field . self::SAVE ] = array(
+						'section' => $post_type,
+						'title' => sprintf( $title_save_as, $label ),
+						'label' => $label,
+						'desc' => $desc_save_as_tmp,
+						'type' => 'select',
+						'choices' => $save_as_types,
+						'validate' => 'trim',
+					);
 				}
 			}
 
@@ -355,13 +378,16 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 	 */
 	public static function display_setting( $args = array(), $do_echo = true, $input = null ) {
 		$content = apply_filters( 'cbqe_settings_display_setting', '', $args, $input );
-		if ( empty( $content ) )
+		if ( empty( $content ) ) {
 			$content = parent::display_setting( $args, false, $input );
+		}
 
 		$id = $args['id'];
 		if ( strstr( $id, self::CONFIG ) ) {
 			$field = str_replace( self::CONFIG, '', $id );
+			$save  = str_replace( self::CONFIG, self::SAVE, $id );
 			$f     = 'f' . ++self::$config_counter;
+			$s     = 's' . self::$config_counter;
 			$c     = 'c' . self::$config_counter;
 			$hide  = "'' === val || 'input' == val || 'textarea' == val";
 
@@ -369,20 +395,26 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 <script type="text/javascript">
 	jQuery(document).ready( function() {
 		{$f} = jQuery( '#{$field}' );
+		{$s} = jQuery( '#{$save}' );
 		{$c} = jQuery( '#{$id}' );
 
 		val = {$f}.val();
-		if ( {$hide} )
+		if ( {$hide} ) {
 			{$c}.parent().parent().hide();
+			{$s}.parent().parent().hide();
+		}
 
 		{$f}.change( function() {
 			val = {$f}.val();
-			if ( {$hide} )
+			if ( {$hide} ) {
 				{$c}.parent().parent().hide();
-			else
+				{$s}.parent().parent().hide();
+			} else {
 				{$c}.parent().parent().show();
-		});
-	});
+				{$s}.parent().parent().show();
+			}
+		} );
+	} );
 </script>
 EOD;
 

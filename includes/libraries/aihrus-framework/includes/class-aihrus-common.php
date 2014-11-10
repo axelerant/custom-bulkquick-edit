@@ -772,8 +772,6 @@ EOD;
 
 		return $value;
 	}
-
-
 }
 
 

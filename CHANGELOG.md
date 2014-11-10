@@ -3,9 +3,12 @@
 ## master
 
 ## 1.5.3RC1
+* Add filter cbqe_settings_save_as_desc
+* Add filter cbqe_settings_save_as_types
 * Add UPGRADING.md
 * Remove "by Aihrus" labeling
 * Require Aihrus Framework 1.1.6RC2
+* RESOLVE #53 Save as string than array option needed
 * RESOLVE Avoid unused parameters such as '$field_name_var'.
 * Revise How do I add custom fields to my bulk/quick edit page? title
 * Revise readme layout

@@ -250,7 +250,13 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 				break;
 
 			default:
+				$save_as = self::get_field_save_as( $post->post_type, $column );
 				$current = get_post_meta( $post_id, $column, true );
+				if ( 'post_meta' == $save_as ) {
+					$current = get_post_meta( $post_id, $column );
+				} elseif ( 'csv' == $save_as ) {
+					$current = explode( ',', $current );
+				}
 
 				switch ( $field_type ) {
 					case 'categories':
@@ -321,6 +327,10 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 			}
 
 			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::CONFIG ) ) {
+				continue;
+			}
+
+			if ( false !== strstr( $key, Custom_Bulkquick_Edit_Settings::SAVE ) ) {
 				continue;
 			}
 
@@ -534,7 +544,22 @@ jQuery( document ).ready( function() {
 		$post_save_fields = apply_filters( 'cbqe_post_save_fields', self::$post_fields_ignore );
 		if ( ! in_array( $field_name, $post_save_fields ) ) {
 			if ( ! $delete ) {
-				update_post_meta( $post_id, $field_name, $value );
+				$save_as = self::get_field_save_as( $post_type, $field_name );
+				$updated = false;
+				if ( 'post_meta' == $save_as ) {
+					delete_post_meta( $post_id, $field_name );
+					foreach( $value as $key => $val ) {
+						add_post_meta( $post_id, $field_name, $val );
+					}
+					
+					$updated = true;
+				} elseif ( 'csv' == $save_as && is_array( $value ) ) {
+					$value = implode( ',', $value );
+				}
+				
+				if ( ! $updated ) {
+					update_post_meta( $post_id, $field_name, $value );
+				}
 			} else {
 				delete_post_meta( $post_id, $field_name );
 			}
@@ -1348,6 +1373,20 @@ jQuery( document ).ready( function() {
 		$result .= '<div class="hidden" id="' . $taxonomy . '_' . $post_id . '">' . implode( ',', $term_ids ) . '</div>';
 
 		return $result;
+	}
+
+
+	public static function get_field_save_as( $post_type = null, $field_name = null ) {
+		$key = self::get_field_key( $post_type, $field_name );
+
+		if ( empty( $key ) ) {
+			return false;
+		}
+
+		$key    .= Custom_Bulkquick_Edit_Settings::SAVE;
+		$details = cbqe_get_option( $key );
+
+		return $details;
 	}
 }
 
