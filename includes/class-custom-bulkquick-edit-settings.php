@@ -520,6 +520,19 @@ EOD;
 	}
 
 
+	public static function array_to_configuration( $array ) {
+		$default = array();
+		foreach ( $array as $key => $value ) {
+			$default = $key . '|' . $value;
+		}
+
+		$default = implode( "\n", $default );
+
+		return $default;
+	}
+
+
+
 }
 
 

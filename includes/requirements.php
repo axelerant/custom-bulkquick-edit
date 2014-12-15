@@ -21,7 +21,7 @@ require_once CBQE_DIR_LIB . 'aihrus-framework/aihrus-framework.php';
 
 function cbqe_requirements_check( $force_check = false ) {
 	$check_okay = get_transient( 'cbqe_requirements_check' );
-	if ( empty( $force_check ) && $check_okay !== false ) {
+	if ( empty( $force_check ) && false !== $check_okay ) {
 		return $check_okay;
 	}
 
