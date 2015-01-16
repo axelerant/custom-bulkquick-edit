@@ -3,6 +3,7 @@
 ## master
 
 ## 1.5.3RC1
+* Add documentation links
 * Add filter cbqe_settings_save_as_desc
 * Add filter cbqe_settings_save_as_types
 * Add UPGRADING.md

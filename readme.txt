@@ -51,7 +51,7 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 * [Edit Flow](http://wordpress.org/plugins/cbqe-edit-flow/) - Date (Premium required), number, and user types
 * [WordPress SEO](http://aihr.us/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
 
-== Loads of Benefits and Features ==
+= Loads of Benefits and Features =
 
 * API of actions and filters
 * Auto-suggest for bulk and quick edit taxonomy entries
@@ -129,6 +129,14 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 * Click the "Delete" link for "Custom Bulk/Quick Edit Premium" at WordPress Admin > Plugins
 * Click the "Yes, Delete these files and data" button to confirm "Custom Bulk/Quick Edit Premium" plugin removal
 
+= Documentation =
+
+* [Installation Guide](https://aihr.us/wordpress-bulk-edit-plugin/installation/)
+* [Frequently Asked Questions](https://aihr.us/wordpress-bulk-edit-plugin/faq/)
+* [API](https://aihr.us/wordpress-bulk-edit-plugin/api/)
+* [Benefits and Features](https://aihr.us/wordpress-bulk-edit-plugin/)
+* [CHANGELOG](https://aihr.us/wordpress-bulk-edit-plugin/changelog/)
+
 
 == Frequently Asked Questions ==
 
@@ -165,12 +173,10 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 Read [Changelog](https://github.com/michael-cannon/custom-bulk-quick-edit/blob/master/CHANGELOG.md)
 
-Read [UPGRADING](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/UPGRADING.md).
-
 
 == Upgrade Notice ==
 
-Read [UPGRADING](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/UPGRADING.md).
+TBD
 
 
 == Notes ==
