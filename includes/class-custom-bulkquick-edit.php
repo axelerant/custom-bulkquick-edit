@@ -459,7 +459,7 @@ jQuery( document ).ready( function() {
 			$fields = self::get_enabled_fields( $post_type );
 			foreach ( $fields as $key => $field ) {
 				$field_type = self::is_field_enabled( $post_type, $field );
-				if ( 'checkbox' == $field_type ) {
+				if ( self::is_field_checkbox( $field_type ) ) {
 					$field_name = self::SLUG . $field;
 					if ( ! isset( $_POST[ $field_name ] ) ) {
 						$_POST[ $field_name ] = Custom_Bulkquick_Edit_Settings::RESET;
@@ -1391,6 +1391,16 @@ jQuery( document ).ready( function() {
 		$details = cbqe_get_option( $key );
 
 		return $details;
+	}
+
+
+	public static function is_field_checkbox( $field_type ) {
+		$field_type = apply_filters( 'cbqe_field_type_core', $field_type );
+		if ( 'checkbox' == $field_type ) {
+			return true;
+		}
+
+		return false;
 	}
 }
 

@@ -126,6 +126,10 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 	Compute post value to be saved based upon given field_name.
 
+* `cbqe_field_type_core`
+	
+	Useful for when the given `field_type` is custom, but the base field type is essentially `checkbox` or the like for RESET and similar operations.
+
 ## Need More?
 
 Further examples and more can be found by reading and searching the [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546-Custom-Bulk-Quick-Edit) and [source code](https://github.com/michael-cannon/custom-bulkquick-edit).
