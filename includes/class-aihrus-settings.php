@@ -344,7 +344,7 @@ abstract class Aihrus_Settings {
 			$options[ $id ] = $input;
 		}
 
-		if ( ! isset( $options[ $id ] ) && $type != 'checkbox' ) {
+		if ( ! isset( $options[ $id ] ) && 'checkbox' != $type ) {
 			$options[ $id ] = $std;
 		} elseif ( ! isset( $options[ $id ] ) ) {
 			$options[ $id ] = 0;
@@ -491,7 +491,7 @@ abstract class Aihrus_Settings {
 		register_setting( static::ID, static::ID, array( static::$class, 'validate_settings' ) );
 
 		foreach ( static::$sections as $slug => $title ) {
-			if ( $slug == 'about' ) {
+			if ( 'about' == $slug ) {
 				add_settings_section( $slug, $title, array( static::$class, 'display_about' ), static::ID );
 			} else {
 				add_settings_section( $slug, $title, array( static::$class, 'display_section' ), static::ID );

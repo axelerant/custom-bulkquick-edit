@@ -568,7 +568,7 @@ EOD;
 	public static function get_archive_slug( $cpt ) {
 		$post_type    = get_post_type_object( $cpt );
 		$archive_slug = $post_type->has_archive;
-		if ( $archive_slug === true ) {
+		if ( true === $archive_slug ) {
 			$archive_slug = $post_type->name;
 		}
 
@@ -585,7 +585,7 @@ EOD;
 	public static function rewrite_rules_date_archives( $cpt, $wp_rewrite ) {
 		$rules        = array();
 		$slug_archive = self::get_archive_slug( $cpt );
-		if ( $slug_archive === false ) {
+		if ( false === $slug_archive ) {
 			return $rules;
 		}
 
@@ -640,10 +640,10 @@ EOD;
 	}
 
 
-	public static function rewrite_rules_feed( $wp_rewrite ) {
+	public static function rewrite_rules_feed( $wp_rewrite, $slug ) {
 		$rules = array(
-			'feed/(.+)' => 'index.php?feed=' . $wp_rewrite->preg_index( 1 ),
-			'(.+).xml' => 'index.php?feed=' . $wp_rewrite->preg_index( 1 ),
+			"feed/({$slug})" => 'index.php?feed=' . $wp_rewrite->preg_index( 1 ),
+			"({$slug}).xml" => 'index.php?feed=' . $wp_rewrite->preg_index( 1 ),
 		);
 
 		return $rules;

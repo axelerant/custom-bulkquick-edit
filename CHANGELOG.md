@@ -2,8 +2,13 @@
 
 ## master
 
-## 1.1.6RC2
+## 1.1.7
+* RESOLVE michael-cannon/testimonials-widget#156 License not saving
+
+## 1.1.6
 * Denote included libraries
+* RESOLVE michael-cannon/testimonials-widget#162 Error: This is not a valid feed template with WordPress SEO sitemap
+* Use https for Aihrus store
 
 ## 1.1.5
 * Abstract do_validate_settings for easier reuse
