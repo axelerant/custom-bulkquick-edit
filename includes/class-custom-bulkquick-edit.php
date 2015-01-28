@@ -541,6 +541,10 @@ jQuery( document ).ready( function() {
 			$delete     = true;
 		}
 
+		if ( $value == Custom_Bulkquick_Edit_Settings::RESET ) {
+			$delete = true;
+		}
+
 		$post_save_fields = apply_filters( 'cbqe_post_save_fields', self::$post_fields_ignore );
 		if ( ! in_array( $field_name, $post_save_fields ) ) {
 			if ( ! $delete ) {

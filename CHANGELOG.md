@@ -12,6 +12,7 @@
 * RESOLVE #53 Save as string than array option needed
 * RESOLVE #60 Create array to configuration helper method
 * RESOLVE Avoid unused parameters such as '$field_name_var'.
+* RESOLVE Reset values not deleted from postmeta
 * Revise How do I add custom fields to my bulk/quick edit page? title
 * Revise readme layout
 * Update PHPCS to WordPress-Core
