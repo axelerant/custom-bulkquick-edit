@@ -9,7 +9,7 @@
 * Add filter cbqe_settings_save_as_types
 * Add UPGRADING.md
 * Remove "by Aihrus" labeling
-* Require Aihrus Framework 1.1.6RC2
+* Require Aihrus Framework 1.1.7
 * RESOLVE #53 Save as string than array option needed
 * RESOLVE #60 Create array to configuration helper method
 * RESOLVE Avoid unused parameters such as '$field_name_var'.
