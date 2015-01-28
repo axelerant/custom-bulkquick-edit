@@ -128,7 +128,7 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 * `cbqe_field_type_core`
 	
-	Useful for when the given `field_type` is custom, but the base field type is essentially `checkbox` or the like for RESET and similar operations.
+	Useful for when the given `field_type` is custom, but the base field type is essentially `checkbox` or the like for RESET and similar operations. Since 1.5.3.
 
 ## Need More?
 
