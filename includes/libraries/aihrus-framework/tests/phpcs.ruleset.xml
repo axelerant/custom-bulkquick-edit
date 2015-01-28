@@ -5,11 +5,12 @@
 	</description>
 
 	<exclude-pattern>includes/libraries/</exclude-pattern>
-	<exclude-pattern>jquery-ui-1.10.3.custom.css</exclude-pattern>
-	<exclude-pattern>jquery-ui-1.10.3.custom.min.css</exclude-pattern>
 	<exclude-pattern>tests/</exclude-pattern>
 
-	<rule ref="WordPress-Core"/>
+	<rule ref="WordPress-Core">
+		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+	</rule>
 
 	<!-- Extras -->
 	<rule ref="WordPress.PHP.DiscouragedFunctions"/>
