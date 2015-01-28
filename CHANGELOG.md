@@ -4,6 +4,7 @@
 
 ## 1.5.3RC2
 * Add documentation links
+* Add filter cbqe_field_type_core
 * Add filter cbqe_settings_save_as_desc
 * Add filter cbqe_settings_save_as_types
 * Add UPGRADING.md
