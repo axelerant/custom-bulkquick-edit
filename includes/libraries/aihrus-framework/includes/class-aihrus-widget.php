@@ -201,7 +201,7 @@ abstract class Aihrus_Widget extends WP_Widget {
 			return;
 		}
 
-		if ( ! isset( $options[ $id ] ) && $type != 'checkbox' ) {
+		if ( ! isset( $options[ $id ] ) && 'checkbox' != $type ) {
 			$options[ $id ] = $std;
 		} elseif ( ! isset( $options[ $id ] ) ) {
 			$options[ $id ] = 0;
