@@ -15,6 +15,7 @@
 * RESOLVE Reset values not deleted from postmeta
 * Revise How do I add custom fields to my bulk/quick edit page? title
 * Revise readme layout
+* Update copyright to 2015
 * Update PHPCS to WordPress-Core
 
 ## 1.5.2
