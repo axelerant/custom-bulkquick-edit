@@ -4,6 +4,7 @@
 
 ## 1.1.7
 * RESOLVE michael-cannon/testimonials-widget#156 License not saving
+* Update copyright year
 
 ## 1.1.6
 * Denote included libraries
