@@ -3,6 +3,7 @@
 ## master
 
 ## 1.2.0
+* Add Axelerant careers link
 * Update about Axelerant data
 * Update Axelerant support URLs
 * Update branding from Aihrus to Axelerant
