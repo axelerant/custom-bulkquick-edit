@@ -257,8 +257,8 @@ abstract class Aihrus_Settings {
 			esc_url( '//www.axelerant.com/drupalgive' ),
 			esc_url( '//axelerant.com/about-axelerant/how-we-work/' ),
 			esc_url( '//axelerant.com/about-axelerant/testimonials/' ),
-			esc_url( '//axelerant.com/wp-content/uploads/2015/02/IGP7228-2015-01-22-at-05-18-02.jpg' )
-			esc_url( '//axelerant.com/careers/' ),
+			esc_url( '//axelerant.com/wp-content/uploads/2015/02/IGP7228-2015-01-22-at-05-18-02.jpg' ),
+			esc_url( '//axelerant.com/careers/' )
 		);
 		echo '</p></div>';
 	}
