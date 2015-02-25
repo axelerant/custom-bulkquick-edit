@@ -1,7 +1,7 @@
 <?php
 /**
 Aihrus Framework
-Copyright (C) 2015 Michael Cannon
+Copyright (C) 2015 Axelerant
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ abstract class Aihrus_Licensing {
 	public static $settings_saved = false;
 
 
-	public function __construct( $slug, $item_name, $author = 'Michael Cannon', $store_url = 'https://aihr.us' ) {
+	public function __construct( $slug, $item_name, $author = 'Axelerant', $store_url = 'https://axelerant.com' ) {
 		$this->author            = $author;
 		$this->item_name_encoded = urlencode( $item_name );
 		$this->item_name         = $item_name;

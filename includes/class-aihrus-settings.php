@@ -1,7 +1,7 @@
 <?php
 /**
  * Aihrus Framework
- * Copyright (C) 2015 Michael Cannon
+ * Copyright (C) 2015 Axelerant
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -248,24 +248,17 @@ abstract class Aihrus_Settings {
 
 
 	public static function display_about() {
-		$name = str_replace( ' Settings', '', static::NAME );
-		$text = __( '<img class="alignright size-medium" src="%1$simages/michael-cannon-red-square-300x2251.jpg" alt="Michael in Red Square, Moscow, Russia" width="300" height="225" /><a href="%2$s">%3$s</a> is by <a href="%4$s">Michael Cannon</a>. He\'s <a href="%5$s">Peichi’s</a> smiling man, an adventurous <a href="%6$s" target="_blank">water-rat</a>, <a href="%7$s">chief people officer</a>, <a href="%8$s">cyclist</a>, <a href="%9$s">full stack developer</a>, <a href="%10$s">poet</a>, <a href="%11$s">WWOOF’er</a> and <a href="%12$s">world traveler</a>.' );
+		$text  = __( '<p><img class="alignleft size-medium" src="%5$s" alt="Axelerant 2015 Retreat in Goa" width="600" height="250" /></p>' );
+		$text .= __( '<p>We at Axelerant have transformed ourselves from being a simple Drupal development company into a thriving incubator for products and services related to DevOps, Drupal, ecommerce, project development, release management, WordPress, and 24/7 support. Inside Axelerant, we focus on talent that’s giving, open, passionate, process oriented, and self­directed. Our clients tend to be design agencies, media publishers, and other IT organizations.</p><h2>Vision</h2><p>Axelerant, making happiness possible</p><h2>Mission</h2><p>We’re an incubator for innovative products and services created to make the world a happier place.</p><h2>Core Values</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><p>Read more about…p><ul><li><a href="%1$s">Axelerant Team Members</a></li><li><a href="%2$s">Drupal Give</a></li><li><a href="%3$s">How We Work</a></li><li><a href="%4$s">Testimonials</a></li></ul>' );
 
 		echo '<div id="about" style="width: 70%; min-height: 225px;"><p>';
 		echo sprintf(
 			$text,
-			static::$plugin_assets,
-			esc_url( static::$plugin_url ),
-			$name,
-			esc_url( 'http://aihr.us/resume/' ),
-			esc_url( 'http://peimic.com/t/peichi-liu/' ),
-			esc_url( 'http://www.chinesehoroscope.org/chinese_zodiac/rat/' ),
-			esc_url( 'http://axelerant.com/who-we-are' ),
-			esc_url( 'http://peimic.com/c/biking/' ),
-			esc_url( 'http://aihr.us/about-aihrus/' ),
-			esc_url( 'http://peimic.com/t/poetry/' ),
-			esc_url( 'http://peimic.com/t/WWOOF/' ),
-			esc_url( 'http://peimic.com/c/travel/' )
+			esc_url( 'http://axelerant.com/about-axelerant/axelerant-team-members/' ),
+			esc_url( 'http://www.axelerant.com/drupalgive' ),
+			esc_url( 'http://axelerant.com/about-axelerant/how-we-work/' ),
+			esc_url( 'http://axelerant.com/about-axelerant/testimonials/' ),
+			esc_url( 'https://lh4.googleusercontent.com/VEqoopuNLTwlUVkUo3oU2V_EZCBX0fq8djf9j4bv01vjRMui-yV85typKz6ykaRmskkz9ZtQEHY=w1200-h549' )
 		);
 		echo '</p></div>';
 	}
@@ -301,20 +294,20 @@ abstract class Aihrus_Settings {
 		if ( ! $disable_donate ) {
 			echo '<p>' .
 				sprintf(
-				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase premium WordPress plugins from Aihrus ">purchase the Premium version</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.' ),
-				esc_url( 'http://aihr.us/about-aihrus/donate/' ),
+				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase premium WordPress plugins from Axelerant ">purchase the Premium version</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.' ),
+				esc_url( '//axelerant.com/about-axelerant/donate/' ),
 				esc_url( 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' ),
-				esc_url( 'http://aihr.us/store/' ),
-				esc_url( 'https://aihrus.zendesk.com/home' )
+				esc_url( '//axelerant.com/store/' ),
+				esc_url( 'https://nodedesk.zendesk.com' )
 			) .
 				'</p>';
 		}
 
 		echo '<p class="copyright">' .
 			sprintf(
-			__( 'Copyright &copy;%1$s <a href="%2$s">Aihrus</a>.' ),
+			__( 'Copyright &copy;%1$s <a href="%2$s">Axlerant</a>.' ),
 			date( 'Y' ),
-			esc_url( 'http://aihr.us' )
+			esc_url( '//axelerant.com' )
 		) .
 			'</p>';
 
