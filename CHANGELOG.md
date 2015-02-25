@@ -2,6 +2,8 @@
 
 ## master
 
+## 1.6.0RC1
+
 ## 1.5.3
 * Add documentation links
 * Add filter cbqe_field_type_core
