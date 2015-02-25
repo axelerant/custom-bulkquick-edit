@@ -86,7 +86,7 @@ if ( ! function_exists( 'aihr_notice_aihrus_framework' ) ) {
 			$name = ucwords( $name );
 		}
 
-		$help_url  = esc_url( 'https://nodedesk.zendesk.com/hc/en-us/articles/202381391' );
+		$help_url  = esc_url( '//nodedesk.zendesk.com/hc/en-us/articles/202381391' );
 		$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.' ), self_admin_url( 'update-core.php' ), $help_url );
 
 		$note = '';
