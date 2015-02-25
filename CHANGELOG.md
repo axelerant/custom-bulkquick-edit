@@ -3,6 +3,7 @@
 ## master
 
 ## 1.6.0RC1
+* Require Aihrus Framework 1.2.0
 
 ## 1.5.3
 * Add documentation links

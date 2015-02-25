@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'CBQE_AIHR_VERSION' ) ) {
-	define( 'CBQE_AIHR_VERSION', '1.1.7' );
+	define( 'CBQE_AIHR_VERSION', '1.2.0' );
 }
 
 if ( ! defined( 'CBQE_BASE' ) ) {
