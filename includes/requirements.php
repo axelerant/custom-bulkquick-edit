@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2015 Michael Cannon (email: mc@aihr.us)
+	Copyright 2015 Axelerant (email: info@axelerant.com)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -56,7 +56,7 @@ function cbqe_requirements_check( $force_check = false ) {
 
 
 function cbqe_notice_aihrus() {
-	$help_url  = esc_url( 'https://aihrus.zendesk.com/entries/35689458' );
+	$help_url  = esc_url( 'https://nodedesk.zendesk.com/hc/en-us/articles/202381391' );
 	$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.', 'custom-bulkquick-edit' ), self_admin_url( 'update-core.php' ), $help_url );
 
 	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires a current Aihrus Framework. Once corrected, "%1$s" can be activated. %2$s', 'custom-bulkquick-edit' ), CBQE_NAME, $help_link );

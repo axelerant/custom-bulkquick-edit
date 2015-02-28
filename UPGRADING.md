@@ -6,7 +6,7 @@
 
 ## 1.3.0
 
-* Requires PHP 5.3+ [notice](https://aihrus.zendesk.com/entries/30678006)
+* Requires PHP 5.3+ [notice](https://nodedesk.zendesk.com/hc/en-us/articles/202331041)
 
 ## 1.1.0
 

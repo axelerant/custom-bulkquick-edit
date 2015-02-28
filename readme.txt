@@ -1,7 +1,6 @@
 === Custom Bulk/Quick Edit ===
 
-Contributors: comprock
-Donate link: http://aihr.us/about-aihrus/donate/
+Contributors: comprock,saurabhd
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.6
 Tested up to: 4.1.0
@@ -14,7 +13,7 @@ Custom Bulk/Quick Edit allows you to easily add custom fields to the edit screen
 
 == Description ==
 
-Through Custom Bulk/Quick Edit [by Aihrus](http://aihr.us/about-aihrus/), you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
+Through Custom Bulk/Quick Edit [by Axelerant](http://axelerant.com/about-axelerant/), you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
 
 **Video Introduction**
 
@@ -26,7 +25,7 @@ Read the **Usage** section of [Installation](http://wordpress.org/plugins/custom
 
 = Custom Bulk/Quick Edit Premium =
 
-Custom Bulk/Quick Edit Premium extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) to work with [custom post types](https://aihr.us/custom-bulkquick-edit-premium/) and adds additional inputs options. Read on for details…
+Custom Bulk/Quick Edit Premium extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) to work with [custom post types](http://axelerant.com/custom-bulkquick-edit-premium/) and adds additional inputs options. Read on for details…
 
 * **Free, comprehensive support**
 * Adds float, integer, and user inputs
@@ -40,7 +39,7 @@ Custom Bulk/Quick Edit Premium extends [Custom Bulk/Quick Edit](http://wordpress
 * Works with Custom Post Types
 * Works with [WooCommerce 2.1.0+ custom attributes and product types](http://www.woothemes.com/woocommerce/)
 
-**[Buy Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/)** plugin for WordPress.
+**[Buy Custom Bulk/Quick Edit Premium](http://axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/)** plugin for WordPress.
 
 = Custom Bulk/Quick Edit Premium Doesn't Work For You? =
 
@@ -49,7 +48,7 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 = Custom Bulk/Quick Edit Add Ons =
 
 * [Edit Flow](http://wordpress.org/plugins/cbqe-edit-flow/) - Date (Premium required), number, and user types
-* [WordPress SEO](http://aihr.us/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
+* [WordPress SEO](http://axelerant.com/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
 
 = Loads of Benefits and Features =
 
@@ -76,9 +75,9 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Requirements =
 
-* PHP 5.3+ [Read notice](https://aihrus.zendesk.com/entries/30678006) – Since 1.3.0
+* PHP 5.3+ [Read notice](https://nodedesk.zendesk.com/hc/en-us/articles/202331041) – Since 1.3.0
 * WordPress 3.6+
-* [jQuery 1.10+](https://aihrus.zendesk.com/entries/23693363)
+* [jQuery 1.10+](https://nodedesk.zendesk.com/hc/en-us/articles/202244022)
 
 = Install Methods =
 
@@ -100,9 +99,9 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Usage =
 
-1. Read "[How do I add custom fields to my bulk/quick edit page?](https://aihrus.zendesk.com/entries/24800411)"
-1. Read "[How do you configure options?](https://aihrus.zendesk.com/entries/24911342)"
-1. Read "[Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)"
+1. Read "[How do I add custom fields to my bulk/quick edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)"
+1. Read "[How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)"
+1. Read "[Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)"
 1. Select the post and page attributes to enable through WordPress Admin > Settings > Custom Bulk/Quick
 1. Once you select 'Show' a configuration panel will open. Leave this blank as upon save, the proper configuration will be loaded.
 1. Click "Save Changes"
@@ -131,31 +130,31 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Documentation =
 
-* [Installation Guide](https://aihr.us/wordpress-bulk-edit-plugin/installation/)
-* [Frequently Asked Questions](https://aihr.us/wordpress-bulk-edit-plugin/faq/)
-* [API](https://aihr.us/wordpress-bulk-edit-plugin/api/)
-* [Benefits and Features](https://aihr.us/wordpress-bulk-edit-plugin/)
-* [CHANGELOG](https://aihr.us/wordpress-bulk-edit-plugin/changelog/)
+* [Installation Guide](https://axelerant.com/wordpress-bulk-edit-plugin/installation/)
+* [Frequently Asked Questions](https://axelerant.com/wordpress-bulk-edit-plugin/faq/)
+* [API](https://axelerant.com/wordpress-bulk-edit-plugin/api/)
+* [Benefits and Features](https://axelerant.com/wordpress-bulk-edit-plugin/)
+* [CHANGELOG](https://axelerant.com/wordpress-bulk-edit-plugin/changelog/)
 
 
 == Frequently Asked Questions ==
 
 = Most Common Issues =
 
-* [How do I add custom fields to my bulk/quick edit page?](https://aihrus.zendesk.com/entries/24800411)
-* [How do you configure options?](https://aihrus.zendesk.com/entries/24911342)
-* [Extra vertical columns on edit page](https://aihrus.zendesk.com/entries/23711542)
-* [Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)
-* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006)
-* [Debug theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
+* [How do I add custom fields to my bulk/quick edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)
+* [How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)
+* [Extra vertical columns on edit page](https://nodedesk.zendesk.com/hc/en-us/articles/202379861)
+* [Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)
+* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Axelerant Plugins Require PHP 5.3+](https://nodedesk.zendesk.com/hc/en-us/articles/202331041)
+* [Debug theme and plugin conflicts](https://nodedesk.zendesk.com/hc/en-us/articles/202330781)
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [Knowledge Base](https://aihrus.zendesk.com/categories/20112546) - read and comment upon frequently asked questions
+1. [Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112) - read and comment upon frequently asked questions
 1. [Open Issues](https://github.com/michael-cannon/custom-bulkquick-edit/issues) - review and submit bug reports and enhancement requests
 1. [Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
 1. [Contribute Code](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
-1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - provide feedback and direction to plugin development
+1. [Beta Testers Needed](https://axelerant.com/become-beta-tester/) - provide feedback and direction to plugin development
 1. [Old Plugin Versions](http://wordpress.org/plugins/custom-bulkquick-edit/developers/)
 
 
@@ -200,9 +199,9 @@ This plugin grew out of the frustration of having to custom write this code for 
 * Spanish translation by [Andrew Kurtis from WebHostingHub](http://www.webhostinghub.com)
 * Serbo-Croatian translation by [Borisa Djuraskovic](borisad@webhostinghub.com)
 
-You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
+You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](https://axelerant.com/contact-axelerant/) for plugin inclusion.
 
-**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
+**[How do I localize?](https://nodedesk.zendesk.com/hc/en-us/articles/202294892)**
 
 
 == Thank You ==
@@ -210,4 +209,4 @@ A big, special thank you to [Joe Weber](https://plus.google.com/1000632712692773
 
 Kudos to [Alex Stone](http://eoionline.org) for documentation revisions.
 
-Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Aihrus](http://aihr.us/about-aihrus/).
+Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Axelerant](https://axelerant.com/about-axelerant/).

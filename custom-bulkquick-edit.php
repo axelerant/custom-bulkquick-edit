@@ -4,8 +4,8 @@
  * Plugin URI: http://wordpress.org/plugins/custom-bulkquick-edit/
  * Description: Custom Bulk/Quick Edit allows you to easily add custom fields to the edit screen bulk and quick edit panels.
  * Version: 1.6.0RC1
- * Author: Michael Cannon
- * Author URI: http://aihr.us/resume/
+ * Author: Axelerant
+ * Author URI: https://axelerant.com/
  * License: GPLv2 or later
  * Text Domain: custom-bulkquick-edit
  * Domain Path: /languages
@@ -13,7 +13,7 @@
 
 
 /**
- * Copyright 2015 Michael Cannon (email: mc@aihr.us)
+ * Copyright 2015 Axelerant (email: info@axelerant.com)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -56,7 +56,7 @@ if ( ! defined( 'CBQE_NAME' ) ) {
 }
 
 if ( ! defined( 'CBQE_PREMIUM_LINK' ) ) {
-	define( 'CBQE_PREMIUM_LINK', '<a href="http://aihr.us/products/custom-bulkquick-edit-premium-wordpress-plugin/">Buy Premium</a>' );
+	define( 'CBQE_PREMIUM_LINK', '<a href="https://axelerant.com/products/custom-bulkquick-edit-premium-wordpress-plugin/">Buy Premium</a>' );
 }
 
 if ( ! defined( 'CBQE_VERSION' ) ) {
