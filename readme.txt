@@ -13,7 +13,7 @@ Custom Bulk/Quick Edit allows you to easily add custom fields to the edit screen
 
 == Description ==
 
-Through Custom Bulk/Quick Edit [by Axelerant](http://axelerant.com/about-axelerant/), you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
+Through Custom Bulk/Quick Edit, you have the option to edit post meta via text, checkbox, radio, select, and textarea inputs within Bulk Edit and Quick Edit screens. Further, you can enable editing of category and tag taxonomies that don't show up already. Next, taxnomony, checkbox, radio, and select fields have an option to be reset, as in remove current options during Bulk Editing. This is very helpful when you want to mass reset or remove information.
 
 **Video Introduction**
 
@@ -209,4 +209,4 @@ A big, special thank you to [Joe Weber](https://plus.google.com/1000632712692773
 
 Kudos to [Alex Stone](http://eoionline.org) for documentation revisions.
 
-Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Axelerant](https://axelerant.com/about-axelerant/).
+Current development by [Axelerant](https://axelerant.com/about-axelerant/).

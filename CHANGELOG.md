@@ -4,6 +4,7 @@
 
 ## 1.6.0RC1
 * Require Aihrus Framework 1.2.0
+* Update branding to Axelerant
 
 ## 1.5.3
 * Add documentation links
