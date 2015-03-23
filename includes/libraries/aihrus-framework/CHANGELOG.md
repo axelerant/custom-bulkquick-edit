@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.2.1
+* RESOLVE PHP Fatal error: Access to undeclared static property: CLASS::$scripts_called
+
 ## 1.2.0
 * Add Axelerant careers link
 * Update about Axelerant data
