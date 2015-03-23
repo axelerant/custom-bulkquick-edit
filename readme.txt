@@ -1,6 +1,7 @@
 === Custom Bulk/Quick Edit ===
 
 Contributors: comprock,saurabhd
+Donate link: http://axelerant.com/about-axelerant/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.6
 Tested up to: 4.1.0
