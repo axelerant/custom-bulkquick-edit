@@ -65,7 +65,6 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	public static $post_types      = array();
 	public static $post_types_keys = array();
 	public static $scripts_bulk    = array();
-	public static $scripts_called  = false;
 	public static $scripts_extra   = array();
 	public static $scripts_quick   = array();
 	public static $settings_link   = '';

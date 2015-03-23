@@ -3,7 +3,7 @@
 ## master
 
 ## 1.6.0RC1
-* Require Aihrus Framework 1.2.0
+* Require Aihrus Framework 1.2.1
 * Update branding to Axelerant
 
 ## 1.5.3
