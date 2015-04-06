@@ -142,12 +142,13 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Most Common Issues =
 
+* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Axelerant Plugins Require PHP 5.3+](https://nodedesk.zendesk.com/hc/en-us/articles/202331041)
+* I can't bulk edit my hundreds or thousands of posts. Some user and server systems are limited to about 250 records at a time. Try limiting bulk editing to 200 records and work upward to find your maximum.
+* [Debug theme and plugin conflicts](https://nodedesk.zendesk.com/hc/en-us/articles/202330781)
+* [Extra vertical columns on edit page](https://nodedesk.zendesk.com/hc/en-us/articles/202379861)
 * [How do I add custom fields to my bulk/quick edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)
 * [How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)
-* [Extra vertical columns on edit page](https://nodedesk.zendesk.com/hc/en-us/articles/202379861)
 * [Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)
-* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Axelerant Plugins Require PHP 5.3+](https://nodedesk.zendesk.com/hc/en-us/articles/202331041)
-* [Debug theme and plugin conflicts](https://nodedesk.zendesk.com/hc/en-us/articles/202330781)
 
 = Still Stuck or Want Something Done? Get Support! =
 
