@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.6.0RC1
+## 1.6.0
 * Add FAQ maximum bulk edit limit
 * Require Aihrus Framework 1.2.1
 * Update branding to Axelerant
