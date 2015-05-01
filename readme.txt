@@ -20,7 +20,7 @@ Through Custom Bulk/Quick Edit, you have the option to edit post meta via text, 
 
 [youtube https://www.youtube.com/watch?v=wd6munNz0gI]
 
-Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. **Therefore, unless it's already configured, your theme's `functions.php` file will have to modified to add custom field columns.**
+Custom Bulk/Quick Edit automatically detects custom fields that use the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) filter to display additional columns on the edit screen. **Therefore, unless it's already configured, your theme's `functions.php` file will have to be modified to add custom field columns.**
 
 Read the **Usage** section of [Installation](http://wordpress.org/plugins/custom-bulkquick-edit/installation/) and the **[FAQ](http://wordpress.org/plugins/custom-bulkquick-edit/faq/)** to get started.
 
@@ -183,7 +183,7 @@ TBD
 == Notes ==
 
 * This plugin ties into the [bulk_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/bulk_edit_custom_box) and [quick_edit_custom_box](http://codex.wordpress.org/Plugin_API/Action_Reference/quick_edit_custom_box) actions.
-* Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) is already configured, your theme's `functions.php` file will have to modified to add custom field columns.
+* Unless the [manage_{$post_type}_posts_columns](http://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns) is already configured, your theme's `functions.php` file will have to be modified to add custom field columns.
 
 
 == API ==
