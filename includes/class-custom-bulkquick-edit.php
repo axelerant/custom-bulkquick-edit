@@ -809,7 +809,7 @@ jQuery( document ).ready( function() {
 				return;
 			}
 
-			$ignore_quick_edit = array( 'post_title' );
+			$ignore_quick_edit = array( 'post_title', 'post_parent' );
 			$ignore_quick_edit = apply_filters( 'cbqe_ignore_quick_edit', $ignore_quick_edit );
 			if ( in_array( $column_name, $ignore_quick_edit ) ) {
 				return;
