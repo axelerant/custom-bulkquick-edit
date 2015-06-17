@@ -33,7 +33,7 @@ abstract class Aihrus_Licensing {
 	public static $settings_saved = false;
 
 
-	public function __construct( $slug, $item_name, $author = 'Axelerant', $store_url = 'https://axelerant.com' ) {
+	public function __construct( $slug, $item_name, $author = 'Axelerant', $store_url = 'https://store.axelerant.com' ) {
 		$this->author            = $author;
 		$this->item_name_encoded = urlencode( $item_name );
 		$this->item_name         = $item_name;

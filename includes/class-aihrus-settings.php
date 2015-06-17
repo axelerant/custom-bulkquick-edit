@@ -248,17 +248,18 @@ abstract class Aihrus_Settings {
 
 
 	public static function display_about() {
-		$text  = __( '<img class="size-medium" src="%5$s" alt="Axelerant 2015 Retreat in Goa" width="640" height="327" /><p>We at Axelerant have transformed ourselves from being a simple Drupal development company into a thriving incubator for products and services related to DevOps, Drupal, ecommerce, project development, release management, WordPress, and 24/7 support. Inside Axelerant, we focus on talent that’s giving, open, passionate, process oriented, and self­directed. Our clients tend to be design agencies, media publishers, and other IT organizations.</p><h2>Vision</h2><p>Axelerant, making happiness possible</p><h2>Mission</h2><p>We’re an incubator for innovative products and services created to make the world a happier place.</p><h2>Core Values</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><p>Read more about…</p><ul><li><a href="%1$s">Axelerant Team Members</a></li><li><a href="%2$s">Drupal Give</a></li><li><a href="%3$s">How We Work</a></li><li><a href="%4$s">Testimonials</a></li><li><a href="%6$s">Careers</a></li></ul>' );
+		$text  = __( '<img class="size-medium" src="%5$s" alt="Axelerant 2015 Retreat in Goa" width="640" height="327" /><p>Axelerant is a full-service software development company that focuses on open-source technologies. Top technical talent who are passionate, giving, and communicative demonstrates our backbone. We provide high-end Strategy, Implementation, and Support services for our clients and agencies with whom we partner.</p><p>Our team members span the world, and we follow agile delivery and working processes. Further, we’re actively giving back to many open-source communities and have fostered an innovative, incubator culture to give ideas a chance to succeed.</p><h2>Foundations of Axelerant</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><h3>Learn More About Axelerant</h3><ul><li><a href="%1$s">Axelerant Team</a></li><li><a href="%2$s">Giving Back</a></li><li><a href="%7$s">Inside Axelerant</a></li><li><a href="%3$s">Our Services</a></li><li><a href="%4$s">Testimonials</a></li><li><a href="%6$s">Careers</a></li></ul>' );
 
 		echo '<div id="about" style="width: 70%; min-height: 225px;"><p>';
 		echo sprintf(
 			$text,
-			esc_url( '//axelerant.com/about-axelerant/axelerant-team-members/' ),
-			esc_url( '//www.axelerant.com/drupalgive' ),
-			esc_url( '//axelerant.com/about-axelerant/how-we-work/' ),
-			esc_url( '//axelerant.com/about-axelerant/testimonials/' ),
-			esc_url( '//axelerant.com/wp-content/uploads/2015/02/IGP7228-2015-01-22-at-05-18-02.jpg' ),
-			esc_url( '//axelerant.com/careers/' )
+			esc_url( 'https://axelerant.com/about-axelerant/' ),
+			esc_url( 'https://axelerant.com/drupalgive/' ),
+			esc_url( 'https://axelerant.com/services/' ),
+			esc_url( 'https://axelerant.com/about-axelerant/testimonials/' ),
+			esc_url( 'https://axelerant.com/wp-content/uploads/2015/02/IGP7228-2015-01-22-at-05-18-02.jpg' ),
+			esc_url( 'https://axelerant.com/careers/' ),
+			esc_url( 'https://axelerant.com/open-policies-open-discussion/' )
 		);
 		echo '</p></div>';
 	}
@@ -295,9 +296,9 @@ abstract class Aihrus_Settings {
 			echo '<p>' .
 				sprintf(
 				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase premium WordPress plugins from Axelerant ">purchase the Premium version</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.' ),
-				esc_url( '//axelerant.com/about-axelerant/donate/' ),
+				esc_url( 'https://axelerant.com/about-axelerant/donate/' ),
 				esc_url( 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' ),
-				esc_url( '//axelerant.com/store/' ),
+				esc_url( 'https://store.axelerant.com/' ),
 				esc_url( 'https://nodedesk.zendesk.com' )
 			) .
 				'</p>';
@@ -307,7 +308,7 @@ abstract class Aihrus_Settings {
 			sprintf(
 			__( 'Copyright &copy;%1$s <a href="%2$s">Axlerant</a>.' ),
 			date( 'Y' ),
-			esc_url( '//axelerant.com' )
+			esc_url( 'https://axelerant.com' )
 		) .
 			'</p>';
 
