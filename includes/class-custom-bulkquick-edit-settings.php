@@ -24,8 +24,9 @@
 
 require_once AIHR_DIR_INC . 'class-aihrus-settings.php';
 
-if ( class_exists( 'Custom_Bulkquick_Edit_Settings' ) )
+if ( class_exists( 'Custom_Bulkquick_Edit_Settings' ) ) {
 	return;
+}
 
 
 class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
@@ -60,8 +61,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		add_action( 'init', array( __CLASS__, 'init' ) );
 
 		// restrict settings page to admins only
-		if ( current_user_can( 'activate_plugins' ) )
+		if ( current_user_can( 'activate_plugins' ) ) {
 			add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
+		}
 	}
 
 
@@ -74,8 +76,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 	public static function sections() {
 		self::$post_types = Custom_Bulkquick_Edit::get_post_types();
-		foreach ( self::$post_types as $post_type => $label )
+		foreach ( self::$post_types as $post_type => $label ) {
 			self::$sections[ $post_type ] = $label;
+		}
 
 		parent::sections();
 
@@ -250,8 +253,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 						$xpath   = new DOMXPath( $doc );
 						$results = $xpath->query( '//*[@alt]' );
-						foreach ( $results as $node )
+						foreach ( $results as $node ) {
 							$alt = $node->getAttribute( 'alt' );
+						}
 
 						if ( empty( $alt ) ) {
 							$results = $xpath->query( '//*[@title]' );
@@ -345,11 +349,13 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		self::$version = Custom_Bulkquick_Edit::VERSION;
 		self::$version = apply_filters( 'cbqe_version', self::$version );
 
-		if ( $version != self::$version )
+		if ( $version != self::$version ) {
 			self::initialize_settings();
+		}
 
-		if ( ! Custom_Bulkquick_Edit::do_load() )
+		if ( ! Custom_Bulkquick_Edit::do_load() ) {
 			return;
+		}
 
 		self::load_options();
 		self::register_settings();
@@ -423,8 +429,9 @@ EOD;
 			self::$scripts[] = $script;
 		}
 
-		if ( ! $do_echo )
+		if ( ! $do_echo ) {
 			return $content;
+		}
 
 		echo $content;
 	}
@@ -453,8 +460,9 @@ EOD;
 		if ( is_null( $options ) ) {
 			$options      = self::get_settings();
 			$null_options = true;
-		} else
+		} else {
 			$null_options = false;
+		}
 
 		foreach ( $options as $id => $parts ) {
 			$default = $parts['std'];
@@ -490,8 +498,9 @@ EOD;
 			}
 		}
 
-		if ( $null_options )
+		if ( $null_options ) {
 			$options = null;
+		}
 
 		$validated = parent::validate_settings( $input, $options, $do_errors );
 
@@ -507,9 +516,9 @@ EOD;
 		$input['donate_version'] = Custom_Bulkquick_Edit::VERSION;
 
 		$input = apply_filters( 'cbqe_validate_settings', $input, $errors );
-		if ( empty( $do_errors ) )
+		if ( empty( $do_errors ) ) {
 			$validated = $input;
-		else {
+		} else {
 			$validated = array(
 				'input' => $input,
 				'errors' => $errors,
@@ -551,20 +560,22 @@ function cbqe_get_options() {
 function cbqe_get_option( $option, $default = null ) {
 	$options = get_option( Custom_Bulkquick_Edit_Settings::ID );
 
-	if ( isset( $options[$option] ) )
-		return $options[$option];
-	else
+	if ( isset( $options[ $option ] ) ) {
+		return $options[ $option ];
+	} else {
 		return $default;
+	}
 }
 
 
 function cbqe_set_option( $option, $value = null ) {
 	$options = get_option( Custom_Bulkquick_Edit_Settings::ID );
 
-	if ( ! is_array( $options ) )
+	if ( ! is_array( $options ) ) {
 		$options = array();
+	}
 
-	$options[$option] = $value;
+	$options[ $option ] = $value;
 	update_option( Custom_Bulkquick_Edit_Settings::ID, $options );
 }
 

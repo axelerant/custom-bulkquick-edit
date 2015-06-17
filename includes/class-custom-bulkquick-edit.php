@@ -16,8 +16,9 @@
 require_once AIHR_DIR_INC . 'class-aihrus-common.php';
 require_once CBQE_DIR_INC . 'class-custom-bulkquick-edit-settings.php';
 
-if ( class_exists( 'Custom_Bulkquick_Edit' ) )
+if ( class_exists( 'Custom_Bulkquick_Edit' ) ) {
 	return;
+}
 
 
 class Custom_Bulkquick_Edit extends Aihrus_Common {
@@ -420,7 +421,7 @@ jQuery( document ).ready( function() {
 	public static function save_post_bulk_edit() {
 		self::$bulk_edit_save = true;
 
-		$post_ids = ! empty( $_POST[ 'post_ids' ] ) ? $_POST[ 'post_ids' ] : array();
+		$post_ids = ! empty( $_POST['post_ids'] ) ? $_POST['post_ids'] : array();
 		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
 			remove_action( 'save_post', array( __CLASS__, 'save_post' ), 25 );
 
@@ -487,6 +488,9 @@ jQuery( document ).ready( function() {
 	}
 
 
+	/**
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
 	public static function save_post_item( $post_id, $post_type, $field, $value ) {
 		$field_name = str_replace( self::SLUG, '', $field );
 		$field_type = self::is_field_enabled( $post_type, $field_name );
@@ -519,8 +523,8 @@ jQuery( document ).ready( function() {
 			} else {
 				$value = array_map( 'intval', $value );
 				$value = array_unique( $value );
-				if ( isset( $value[ 0 ] ) && 0 === $value[ 0 ] ) {
-					unset( $value[ 0 ] );
+				if ( isset( $value[0] ) && 0 === $value[0] ) {
+					unset( $value[0] );
 				}
 
 				wp_set_object_terms( $post_id, $value, $field_name );
@@ -551,15 +555,15 @@ jQuery( document ).ready( function() {
 				$updated = false;
 				if ( 'post_meta' == $save_as ) {
 					delete_post_meta( $post_id, $field_name );
-					foreach( $value as $key => $val ) {
+					foreach ( $value as $key => $val ) {
 						add_post_meta( $post_id, $field_name, $val );
 					}
-					
+
 					$updated = true;
 				} elseif ( 'csv' == $save_as && is_array( $value ) ) {
 					$value = implode( ',', $value );
 				}
-				
+
 				if ( ! $updated ) {
 					update_post_meta( $post_id, $field_name, $value );
 				}
@@ -1244,7 +1248,7 @@ jQuery( document ).ready( function() {
 				$name = array_shift( $parts );
 			}
 
-			if ( in_array( $value, $current  ) ) {
+			if ( in_array( $value, $current ) ) {
 				$select_options .= '<option value="' . $value . '" selected="selected">' . $name . '</option>';
 			}
 		}
