@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.6.1RC1
+* Require Aihrus Framework 1.2.2
+
 ## 1.6.0
 * Add FAQ maximum bulk edit limit
 * Require Aihrus Framework 1.2.1
