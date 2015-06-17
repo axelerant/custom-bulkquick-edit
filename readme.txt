@@ -1,7 +1,7 @@
 === Custom Bulk/Quick Edit ===
 
-Contributors: comprock,saurabhd
-Donate link: http://axelerant.com/about-axelerant/donate/
+Contributors: comprock,saurabhd,subharanjan
+Donate link: https://axelerant.com/about-axelerant/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.9.2
 Tested up to: 4.2.0
@@ -26,7 +26,7 @@ Read the **Usage** section of [Installation](http://wordpress.org/plugins/custom
 
 = Custom Bulk/Quick Edit Premium =
 
-Custom Bulk/Quick Edit Premium extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) to work with [custom post types](http://axelerant.com/custom-bulkquick-edit-premium/) and adds additional inputs options. Read on for details…
+Custom Bulk/Quick Edit Premium extends [Custom Bulk/Quick Edit](http://wordpress.org/extend/plugins/custom-bulkquick-edit/) to work with [custom post types](https://store.axelerant.com/custom-bulkquick-edit-premium/) and adds additional inputs options. Read on for details…
 
 * **Free, comprehensive support**
 * Adds float, integer, and user inputs
@@ -40,7 +40,7 @@ Custom Bulk/Quick Edit Premium extends [Custom Bulk/Quick Edit](http://wordpress
 * Works with Custom Post Types
 * Works with [WooCommerce 2.1.0+ custom attributes and product types](http://www.woothemes.com/woocommerce/)
 
-**[Buy Custom Bulk/Quick Edit Premium](http://axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/)** plugin for WordPress.
+**[Buy Custom Bulk/Quick Edit Premium](http://store.axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/)** plugin for WordPress.
 
 = Custom Bulk/Quick Edit Premium Doesn't Work For You? =
 
@@ -49,7 +49,7 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 = Custom Bulk/Quick Edit Add Ons =
 
 * [Edit Flow](http://wordpress.org/plugins/cbqe-edit-flow/) - Date (Premium required), number, and user types
-* [WordPress SEO](http://axelerant.com/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
+* [WordPress SEO](http://store.axelerant.com/downloads/wordpress-seo-custom-bulkquick-edit/) - Modify WordPress SEO options via bulk and quick edit panels
 
 = Loads of Benefits and Features =
 
@@ -131,11 +131,11 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Documentation =
 
-* [Installation Guide](https://axelerant.com/wordpress-bulk-edit-plugin/installation/)
-* [Frequently Asked Questions](https://axelerant.com/wordpress-bulk-edit-plugin/faq/)
-* [API](https://axelerant.com/wordpress-bulk-edit-plugin/api/)
-* [Benefits and Features](https://axelerant.com/wordpress-bulk-edit-plugin/)
-* [CHANGELOG](https://axelerant.com/wordpress-bulk-edit-plugin/changelog/)
+* [Installation Guide](https://store.axelerant.com/wordpress-bulk-edit-plugin/installation/)
+* [Frequently Asked Questions](https://store.axelerant.com/wordpress-bulk-edit-plugin/faq/)
+* [API](https://store.axelerant.com/wordpress-bulk-edit-plugin/api/)
+* [Benefits and Features](https://store.axelerant.com/wordpress-bulk-edit-plugin/)
+* [CHANGELOG](https://store.axelerant.com/wordpress-bulk-edit-plugin/changelog/)
 
 
 == Frequently Asked Questions ==
@@ -156,7 +156,7 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 1. [Open Issues](https://github.com/michael-cannon/custom-bulkquick-edit/issues) - review and submit bug reports and enhancement requests
 1. [Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
 1. [Contribute Code](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
-1. [Beta Testers Needed](https://axelerant.com/become-beta-tester/) - provide feedback and direction to plugin development
+1. [Beta Testers Needed](https://store.axelerant.com/become-beta-tester/) - provide feedback and direction to plugin development
 1. [Old Plugin Versions](http://wordpress.org/plugins/custom-bulkquick-edit/developers/)
 
 

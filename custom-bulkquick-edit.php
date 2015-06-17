@@ -13,7 +13,7 @@
 
 
 /**
- * Copyright 2015 Axelerant (email: info@axelerant.com)
+ * Copyright 2015 Axelerant
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -56,7 +56,7 @@ if ( ! defined( 'CBQE_NAME' ) ) {
 }
 
 if ( ! defined( 'CBQE_PREMIUM_LINK' ) ) {
-	define( 'CBQE_PREMIUM_LINK', '<a href="https://axelerant.com/products/custom-bulkquick-edit-premium-wordpress-plugin/">Buy Premium</a>' );
+	define( 'CBQE_PREMIUM_LINK', '<a href="https://store.axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/">Buy Premium</a>' );
 }
 
 if ( ! defined( 'CBQE_VERSION' ) ) {
