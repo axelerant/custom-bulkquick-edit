@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.6.1RC1
+## 1.6.1
 * Require Aihrus Framework 1.2.2
 * RESOLVE #65 Page parent editing shows in Quick Edit
 * Update store branding
