@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 1.6.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2015-04-29 12:36:29+00:00\n"
+"Project-Id-Version: Custom Bulk/Quick Edit 1.6.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-bulkquick-edit\n"
+"POT-Creation-Date: 2015-06-26 07:27:17+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,175 +12,175 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: includes/class-custom-bulkquick-edit-settings.php:95
+#: includes/class-custom-bulkquick-edit-settings.php:98
 msgid "TBD"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:100
-#: includes/class-custom-bulkquick-edit-settings.php:117
-#: includes/class-custom-bulkquick-edit-settings.php:478
+#: includes/class-custom-bulkquick-edit-settings.php:103
+#: includes/class-custom-bulkquick-edit-settings.php:120
+#: includes/class-custom-bulkquick-edit-settings.php:486
 msgid "No"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:101
+#: includes/class-custom-bulkquick-edit-settings.php:104
 msgid "As checkbox"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:102
+#: includes/class-custom-bulkquick-edit-settings.php:105
 msgid "As input field"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:103
+#: includes/class-custom-bulkquick-edit-settings.php:106
 msgid "As radio"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:104
+#: includes/class-custom-bulkquick-edit-settings.php:107
 msgid "As select"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:105
+#: includes/class-custom-bulkquick-edit-settings.php:108
 msgid "As textarea"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:110
+#: includes/class-custom-bulkquick-edit-settings.php:113
 msgid "Normal"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:111
+#: includes/class-custom-bulkquick-edit-settings.php:114
 msgid "As CSV"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:112
+#: includes/class-custom-bulkquick-edit-settings.php:115
 msgid "As post meta"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:118
+#: includes/class-custom-bulkquick-edit-settings.php:121
 msgid "No, but enable column view"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:119
+#: includes/class-custom-bulkquick-edit-settings.php:122
 msgid "Like categories"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:120
+#: includes/class-custom-bulkquick-edit-settings.php:123
 msgid "Like tags"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:124
+#: includes/class-custom-bulkquick-edit-settings.php:127
 msgid "%s Configuration"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:125
+#: includes/class-custom-bulkquick-edit-settings.php:128
 msgid "You may create options formatted like \"the-key|Supremely, Pretty Values\" seperated by newlines."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:127
+#: includes/class-custom-bulkquick-edit-settings.php:130
 msgid "%s Save Type"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:128
+#: includes/class-custom-bulkquick-edit-settings.php:131
 msgid "Alternative means of saving values."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:130
+#: includes/class-custom-bulkquick-edit-settings.php:133
 msgid "Edit \"%s\" taxonomy?"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:131
+#: includes/class-custom-bulkquick-edit-settings.php:134
 msgid "Force making %1$s an editable taxonomy field like checked categories or free-text tags."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:133
+#: includes/class-custom-bulkquick-edit-settings.php:136
 msgid "Enable \"%s\"?"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:135
+#: includes/class-custom-bulkquick-edit-settings.php:138
 msgid "Excerpt"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:136
+#: includes/class-custom-bulkquick-edit-settings.php:139
 msgid "Enable editing of %1$s' excerpt."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:138
+#: includes/class-custom-bulkquick-edit-settings.php:141
 msgid "Delete \"%s\"?"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:139
+#: includes/class-custom-bulkquick-edit-settings.php:142
 msgid "Delete \"%s\""
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:140
+#: includes/class-custom-bulkquick-edit-settings.php:143
 msgid "During bulk editing, easily delete %1$s' excerpt."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:142
+#: includes/class-custom-bulkquick-edit-settings.php:145
 msgid "Reset \"%s\" Relations?"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:143
+#: includes/class-custom-bulkquick-edit-settings.php:146
 msgid "During bulk editing, easily remove all of the %1$s' prior relationships and add new."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:145
+#: includes/class-custom-bulkquick-edit-settings.php:148
 msgid "Remove Selected \"%s\" Relations?"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:146
+#: includes/class-custom-bulkquick-edit-settings.php:149
 msgid "Remove Selected \"%s\" Relations"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:147
+#: includes/class-custom-bulkquick-edit-settings.php:150
 msgid "During bulk editing, easily remove selected %1$s' relationships."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:149
+#: includes/class-custom-bulkquick-edit-settings.php:152
 #: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:336
 msgid "Title"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:150
+#: includes/class-custom-bulkquick-edit-settings.php:153
 msgid "Enable bulk editing of %1$s' title."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:360
+#: includes/class-custom-bulkquick-edit-settings.php:366
 msgid "Custom Bulk/Quick Settings"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:360
+#: includes/class-custom-bulkquick-edit-settings.php:366
 msgid "Custom Bulk/Quick"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:470
+#: includes/class-custom-bulkquick-edit-settings.php:478
 msgid "Enable"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:476
+#: includes/class-custom-bulkquick-edit-settings.php:484
 msgid "Yes"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit-settings.php:480
+#: includes/class-custom-bulkquick-edit-settings.php:488
 msgid "Where's the beef?"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit.php:85
+#: includes/class-custom-bulkquick-edit.php:86
 msgid "Settings"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit.php:166
+#: includes/class-custom-bulkquick-edit.php:167
 msgid "If your Custom Bulk/Quick Edit display has gone to funky town, please <a href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit.php:875
+#: includes/class-custom-bulkquick-edit.php:879
 msgid "Use commas to separate your values. Ex: \"1,two,Three\""
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit.php:941
-#: includes/class-custom-bulkquick-edit.php:989
+#: includes/class-custom-bulkquick-edit.php:945
+#: includes/class-custom-bulkquick-edit.php:993
 msgid "&mdash; Unset &mdash;"
 msgstr ""
 
-#: includes/class-custom-bulkquick-edit.php:993
+#: includes/class-custom-bulkquick-edit.php:997
 msgid "&mdash; No Change &mdash;"
 msgstr ""
 
@@ -266,7 +266,7 @@ msgid "Unknown"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:347
-msgid "Plugin \"%1$s\" has been deactivated due to \"%2$s\". Once corrected, \"%1$s\" can be activated.</p><p>If you want to revert \"%1$s\", look for <a href=\"%3$s\">older versions on WordPress</a> or <a href=\"mailto:support@axelerant.com?subject=Old+Plugin+Version+Request\">email Axelerant support</a> if this is a premium plugin."
+msgid "Plugin \"%1$s\" has been deactivated due to \"%2$s\". Once corrected, \"%1$s\" can be activated.</p><p>If you want to revert \"%1$s\", look for <a href=\"%3$s\">older versions on WordPress</a> or <a href=\"mailto:support@nodedesk.com?subject=Old+Plugin+Version+Request\">email Axelerant support</a> if this is a premium plugin."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:358
@@ -418,26 +418,26 @@ msgid "Check this box to reset options to their defaults."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:251
-msgid "<img class=\"size-medium\" src=\"%5$s\" alt=\"Axelerant 2015 Retreat in Goa\" width=\"640\" height=\"327\" /><p>We at Axelerant have transformed ourselves from being a simple Drupal development company into a thriving incubator for products and services related to DevOps, Drupal, ecommerce, project development, release management, WordPress, and 24/7 support. Inside Axelerant, we focus on talent that’s giving, open, passionate, process oriented, and self­directed. Our clients tend to be design agencies, media publishers, and other IT organizations.</p><h2>Vision</h2><p>Axelerant, making happiness possible</p><h2>Mission</h2><p>We’re an incubator for innovative products and services created to make the world a happier place.</p><h2>Core Values</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><p>Read more about…</p><ul><li><a href=\"%1$s\">Axelerant Team Members</a></li><li><a href=\"%2$s\">Drupal Give</a></li><li><a href=\"%3$s\">How We Work</a></li><li><a href=\"%4$s\">Testimonials</a></li><li><a href=\"%6$s\">Careers</a></li></ul>"
+msgid "<img class=\"size-medium\" src=\"%5$s\" alt=\"Axelerant 2015 Retreat in Goa\" width=\"640\" height=\"327\" /><p>Axelerant is a full-service software development company that focuses on open-source technologies. Top technical talent who are passionate, giving, and communicative demonstrates our backbone. We provide high-end Strategy, Implementation, and Support services for our clients and agencies with whom we partner.</p><p>Our team members span the world, and we follow agile delivery and working processes. Further, we’re actively giving back to many open-source communities and have fostered an innovative, incubator culture to give ideas a chance to succeed.</p><h2>Foundations of Axelerant</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><h3>Learn More About Axelerant</h3><ul><li><a href=\"%1$s\">Axelerant Team</a></li><li><a href=\"%2$s\">Giving Back</a></li><li><a href=\"%7$s\">Inside Axelerant</a></li><li><a href=\"%3$s\">Our Services</a></li><li><a href=\"%4$s\">Testimonials</a></li><li><a href=\"%6$s\">Careers</a></li></ul>"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:289
+#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:290
 msgid "Save Changes"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:297
+#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:298
 msgid "If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> or <a href=\"%3$s\" title=\"purchase premium WordPress plugins from Axelerant \">purchase the Premium version</a> to help fund further development and <a href=\"%4$s\" title=\"Support forums\">support</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:308
+#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:309
 msgid "Copyright &copy;%1$s <a href=\"%2$s\">Axlerant</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:615
+#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:616
 msgid "Settings saved."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:679
+#: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:680
 msgid "Required"
 msgstr ""
 
