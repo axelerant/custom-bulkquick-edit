@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.2.2RC2
+## 1.2.2
 * Add Inside Axelerant link
 * Store branding updates
 * Update about Axelerant verbiage
