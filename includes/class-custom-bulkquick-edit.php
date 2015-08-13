@@ -871,6 +871,10 @@ jQuery( document ).ready( function() {
 				$result = self::custom_box_textarea( $column_name, $field_name, $field_name_var );
 				break;
 
+			case 'richtext':
+				$result = self::custom_box_richtext( $column_name, $field_name, $field_name_var );
+				break;
+
 			case 'categories':
 				$result = self::custom_box_categories( $field_name, $bulk_mode );
 				break;
@@ -1137,6 +1141,28 @@ jQuery( document ).ready( function() {
 	}
 
 
+	public static function custom_box_richtext( $column_name, $field_name, $field_name_var ) {
+		global $post;
+		$result = wp_editor(
+            self::unescape_string( $post->$column_name ),
+            $field_name,
+            array (
+            'textarea_rows' => 25
+        ,   'media_buttons' => FALSE
+        ,   'teeny'         => TRUE
+        ,   'tinymce'       => TRUE
+            )
+        );
+
+		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
+
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
+		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+		
+		return $result;
+	}
+
+
 	public static function custom_box_input( $column_name, $field_name, $field_name_var ) {
 		$result = '<input type="text" name="' . $field_name . '" autocomplete="off" />';
 
@@ -1149,6 +1175,19 @@ jQuery( document ).ready( function() {
 		return $result;
 	}
 
+	/**
+     * The excerpt is escaped usually. This breaks the HTML editor.
+     *
+     * @param  string $str
+     * @return string
+     */
+	public static function unescape_string( $str ) {
+        return str_replace(
+            array ( '&lt;', '&gt;', '&quot;', '&amp;', '&nbsp;', '&amp;nbsp;' )
+        ,   array ( '<',    '>',    '"',      '&',     ' ', ' ' )
+        ,   $str
+        );
+    }
 
 	/**
 	 *
@@ -1311,9 +1350,18 @@ jQuery( document ).ready( function() {
 
 
 	public static function check_field_type( $field_type, $column_name ) {
-		if ( in_array( $column_name, array( 'post_excerpt', 'post_title' ) ) ) {
-			$field_type = 'textarea';
+		if ( in_array( $column_name, array( 'post_excerpt' ) ) ) {
+			if ( in_array( $field_type, array( 'richtext' ) ) ) {
+				$field_type = 'richtext';
+			} else {
+				$field_type = 'textarea';
+			}
+			
 		}
+
+		if ( in_array( $column_name, array( 'post_title' ) ) ) {
+			$field_type = 'textarea';
+		} 
 
 		$field_type = apply_filters( 'cbqe_check_field_type', $field_type, $column_name );
 
