@@ -124,6 +124,13 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		);
 		$as_taxonomy = apply_filters( 'cbqe_settings_as_taxonomy', $as_taxonomy );
 
+		$as_excerpt = array(
+			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
+			'textarea' => esc_html__( 'As Text Area', 'custom-bulkquick-edit' ),
+			'richtext' => esc_html__( 'Ax Rich Text', 'custom-bulkquick-edit' ),
+		);
+		$as_excerpt = apply_filters( 'cbqe_settings_as_taxonomy', $as_excerpt );
+
 		$title_conf = esc_html__( '%s Configuration', 'custom-bulkquick-edit' );
 		$desc_conf  = esc_html__( 'You may create options formatted like "the-key|Supremely, Pretty Values" seperated by newlines.', 'custom-bulkquick-edit' );
 
@@ -170,7 +177,8 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 					'title' => sprintf( $title_enable, $title_excerpt ),
 					'label' => $title_excerpt,
 					'desc' => sprintf( $desc_excerpt, $label ),
-					'type' => 'checkbox',
+					'type' => 'select',
+					'choices' => $as_excerpt,
 				);
 
 				self::$settings[ $post_type . self::ENABLE . $name . self::DELETE ] = array(
