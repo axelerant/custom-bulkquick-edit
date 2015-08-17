@@ -1143,14 +1143,16 @@ jQuery( document ).ready( function() {
 
 	public static function custom_box_richtext( $column_name, $field_name, $field_name_var ) {
 		global $post;
+
 		$result = wp_editor(
-            self::unescape_string( $post->$column_name ),
-            $field_name,
+            stripslashes( self::unescape_string( $post->$column_name ) ),
+            'excerpt',
             array (
-            'textarea_rows' => 25
-        ,   'media_buttons' => FALSE
-        ,   'teeny'         => TRUE
-        ,   'tinymce'       => TRUE
+	            'textarea_rows' => 25,
+	            'media_buttons' => FALSE,
+	            'teeny'         => TRUE,
+	            'tinymce'       => TRUE,
+	            'wpautop'		=> false,
             )
         );
 
