@@ -468,10 +468,9 @@ jQuery( document ).ready( function() {
 				}
 			}
 		}
-		
 		foreach ( $_POST as $field => $value ) {
 			if ( in_array( $field, self::$post_fields_ignore ) ) {
-				continue; 
+				continue;
 			} elseif ( '' == $value && 'bulk_edit' == $mode ) {
 				continue;
 			}
@@ -1135,7 +1134,7 @@ jQuery( document ).ready( function() {
 
 		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
 
-		echo self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
 		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 
 		return $result;
@@ -1147,13 +1146,13 @@ jQuery( document ).ready( function() {
 
 		$result = wp_editor(
             stripslashes( self::unescape_string( $post->$column_name ) ),
-           $field_name,
+        	$field_name,
             array (
 	            'textarea_rows' => 25,
-	            'media_buttons' => false,
+	            'media_buttons' => FALSE,
 	            'teeny'         => TRUE,
 	            'tinymce'       => TRUE,
-	            'wpautop'		=> true,
+	            'wpautop'		=> TRUE,
             )
         );
 
@@ -1162,7 +1161,7 @@ jQuery( document ).ready( function() {
 		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 		*/
 		return $result;
-	} 
+	}
 
 
 	public static function custom_box_input( $column_name, $field_name, $field_name_var ) {
