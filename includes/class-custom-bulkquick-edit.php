@@ -459,6 +459,7 @@ jQuery( document ).ready( function() {
 			$fields = self::get_enabled_fields( $post_type );
 			foreach ( $fields as $key => $field ) {
 				$field_type = self::is_field_enabled( $post_type, $field );
+			
 				if ( self::is_field_checkbox( $field_type ) ) {
 					$field_name = self::SLUG . $field;
 					if ( ! isset( $_POST[ $field_name ] ) ) {
@@ -467,10 +468,10 @@ jQuery( document ).ready( function() {
 				}
 			}
 		}
-
+		
 		foreach ( $_POST as $field => $value ) {
 			if ( in_array( $field, self::$post_fields_ignore ) ) {
-				continue;
+				continue; 
 			} elseif ( '' == $value && 'bulk_edit' == $mode ) {
 				continue;
 			}
@@ -1134,7 +1135,7 @@ jQuery( document ).ready( function() {
 
 		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
 
-		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
+		echo self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
 		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 
 		return $result;
@@ -1146,23 +1147,22 @@ jQuery( document ).ready( function() {
 
 		$result = wp_editor(
             stripslashes( self::unescape_string( $post->$column_name ) ),
-            'excerpt',
+           $field_name,
             array (
 	            'textarea_rows' => 25,
-	            'media_buttons' => FALSE,
+	            'media_buttons' => false,
 	            'teeny'         => TRUE,
 	            'tinymce'       => TRUE,
-	            'wpautop'		=> false,
+	            'wpautop'		=> true,
             )
         );
 
-		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
-
+		/*self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
 		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
 		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
-		
+		*/
 		return $result;
-	}
+	} 
 
 
 	public static function custom_box_input( $column_name, $field_name, $field_name_var ) {
