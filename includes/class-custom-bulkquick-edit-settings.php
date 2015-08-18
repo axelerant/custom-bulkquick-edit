@@ -127,7 +127,7 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		$as_excerpt = array(
 			'' => esc_html__( 'No', 'custom-bulkquick-edit' ),
 			'textarea' => esc_html__( 'As Text Area', 'custom-bulkquick-edit' ),
-			'richtext' => esc_html__( 'Ax Rich Text', 'custom-bulkquick-edit' ),
+			'richtext' => esc_html__( 'As Rich Text', 'custom-bulkquick-edit' ),
 		);
 		$as_excerpt = apply_filters( 'cbqe_settings_as_taxonomy', $as_excerpt );
 
