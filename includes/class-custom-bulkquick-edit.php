@@ -578,7 +578,7 @@ jQuery( document ).ready( function() {
 				$value = '';
 			}
 
-			if( $field_name == 'post_excerpt' ) {
+			if ( $field_name == 'post_excerpt' ) {
 				$value = wp_kses_post( $value );
 			}
 
@@ -875,8 +875,8 @@ jQuery( document ).ready( function() {
 				break;
 
 			case 'textarea':
-				$rich_textarea_enabled = self::is_field_enabled( $post_type, 'post_excerpt__rich_textarea__' );
-				if( ! empty( $column_name ) && $column_name == 'post_excerpt' && ! empty( $rich_textarea_enabled ) ) {
+				$rich_text_enabled = self::is_field_enabled( $post_type, 'post_excerpt__rich_textarea__' );
+				if ( ! empty( $column_name ) && $column_name == 'post_excerpt' && ! empty( $rich_text_enabled ) ) {
 					$result = self::custom_box_rich_textarea( $column_name, $field_name, $field_name_var );
 				} else {
 					$result = self::custom_box_textarea( $column_name, $field_name, $field_name_var );
@@ -1237,16 +1237,16 @@ jQuery( document ).ready( function() {
 	}
 
 
-	public static function custom_tinymce_enqueue($hook) {
-		$rich_textarea_enabled = false;
+	public static function custom_tinymce_enqueue() {
+		$rich_text_enabled = false;
 		$cbqe_options 		   = cbqe_get_options();
-		foreach($cbqe_options as $k => $v) {
-			if ( strpos($k, '__rich_textarea__') !== false && $v == 1 ) {
-				$rich_textarea_enabled = true;
+		foreach ( $cbqe_options as $k => $v ) {
+			if ( strpos( $k, '__rich_textarea__' ) !== false && $v == 1 ) {
+				$rich_text_enabled = true;
 			}
 		}
 
-	    if ( self::do_load() == true && $rich_textarea_enabled == true ) {
+	    if ( self::do_load() == true && $rich_text_enabled == true ) {
 			wp_enqueue_script( 'cbqe_tinymce', self::$plugin_assets . 'js/tinymce/tinymce.min.js' );
 		}
 	}

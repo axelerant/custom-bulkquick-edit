@@ -142,8 +142,8 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 		$label_excerpt_rm = esc_html__( 'Delete "%s"', 'custom-bulkquick-edit' );
 		$desc_excerpt_rm  = esc_html__( 'During bulk editing, easily delete %1$s\' excerpt.', 'custom-bulkquick-edit' );
 
-		$title_excerpt_rich_textarea = esc_html__( 'Enable Rich Text Editor for "Excerpt"?', 'custom-bulkquick-edit' );
-		$desc_excerpt_rich_textarea  = esc_html__( 'Enable using rich text editor for editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );		
+		$title_excerpt_tmce = esc_html__( 'Enable Rich Text Editor for "Excerpt"?', 'custom-bulkquick-edit' );
+		$desc_excerpt_tmce  = esc_html__( 'Enable using rich text editor for editing of %1$s\' excerpt.', 'custom-bulkquick-edit' );
 
 		$title_remove = esc_html__( 'Reset "%s" Relations?', 'custom-bulkquick-edit' );
 		$desc_remove  = esc_html__( 'During bulk editing, easily remove all of the %1$s\' prior relationships and add new.', 'custom-bulkquick-edit' );
@@ -186,9 +186,9 @@ class Custom_Bulkquick_Edit_Settings extends Aihrus_Settings {
 
 				self::$settings[ $post_type . self::ENABLE . $name . '__rich_textarea__' ] = array(
 					'section' => $post_type,
-					'title' => sprintf( $title_excerpt_rich_textarea, $title_excerpt ),
+					'title' => sprintf( $title_excerpt_tmce, $title_excerpt ),
 					'label' => $title_excerpt,
-					'desc' => sprintf( $desc_excerpt_rich_textarea, $label ),
+					'desc' => sprintf( $desc_excerpt_tmce, $label ),
 					'type' => 'checkbox',
 				);
 			}
