@@ -96,6 +96,8 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
 		add_filter( 'pre_update_option_active_plugins', array( __CLASS__, 'pre_update_option_active_plugins' ), 10, 2 );
 
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'custom_tinymce_enqueue' ) );
+
 		if ( self::do_load() ) {
 			self::styles();
 		}
@@ -549,6 +551,7 @@ jQuery( document ).ready( function() {
 		}
 
 		$post_save_fields = apply_filters( 'cbqe_post_save_fields', self::$post_fields_ignore );
+
 		if ( ! in_array( $field_name, $post_save_fields ) ) {
 			if ( ! $delete ) {
 				$save_as = self::get_field_save_as( $post_type, $field_name );
@@ -573,6 +576,10 @@ jQuery( document ).ready( function() {
 		} else {
 			if ( $delete ) {
 				$value = '';
+			}
+
+			if( $field_name == 'post_excerpt' ) {
+				$value = wp_kses_post( $value );
 			}
 
 			$value = apply_filters( 'cbqe_post_save_value', $value, $post_id, $field_name );
@@ -868,7 +875,12 @@ jQuery( document ).ready( function() {
 				break;
 
 			case 'textarea':
-				$result = self::custom_box_textarea( $column_name, $field_name, $field_name_var );
+				$rich_textarea_enabled = self::is_field_enabled( $post_type, 'post_excerpt__rich_textarea__' );
+				if( ! empty( $column_name ) && $column_name == 'post_excerpt' && ! empty( $rich_textarea_enabled ) ) {
+					$result = self::custom_box_rich_textarea( $column_name, $field_name, $field_name_var );
+				} else {
+					$result = self::custom_box_textarea( $column_name, $field_name, $field_name_var );
+				}
 				break;
 
 			case 'categories':
@@ -1134,6 +1146,109 @@ jQuery( document ).ready( function() {
 		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
 
 		return $result;
+	}
+
+
+	public static function custom_box_rich_textarea( $column_name, $field_name, $field_name_var ) {
+		$result = '<textarea cols="22" rows="1" name="' . $field_name . '" class="' . $field_name . '" autocomplete="off"></textarea>';
+
+		self::$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'textarea[name={$field_name}]' ).val()";
+
+		self::$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).html();";
+		self::$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+		self::$scripts_quick[ $column_name . '3' ] = "
+			tinyMCE.init({
+				mode : 'specific_textareas',
+				editor_selector : '{$field_name}',
+				theme: 'modern',
+				width: 450,
+				height: 250,
+				plugins: [
+					'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+					'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+					'save table contextmenu directionality emoticons template paste textcolor'
+				],
+				toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | code',
+				menubar: false,
+				setup: function (editor) {
+					editor.on('change', function () {
+						tinyMCE.triggerSave();
+					});
+				},
+				apply_source_formatting: true,
+				auto_focus: true			
+			});
+		";
+
+		self::$scripts_extra[ $column_name . '1' ] = "
+			jQuery( '#the-list' ).on( 'click', '.editinline', function(){
+				if( tinyMCE.editors != 'undefined' && tinyMCE.editors.length > 0 ) {
+					for (var i = tinymce.editors.length - 1 ; i > -1 ; i--) {
+						var ed_id = tinymce.editors[i].id;
+						tinyMCE.execCommand('mceRemoveEditor', true, ed_id);
+					}
+					tinyMCE.editors.length = 0;
+				}
+				// revert quick edit menu so that it refreshes properly
+				inlineEditPost.revert();
+			});
+		";
+		self::$scripts_extra[ $column_name . '2' ] = "
+			jQuery( '.bulkactions' ).on( 'click', '#doaction', function(){
+				var bulk_action_value = jQuery('#bulk-action-selector-top').val();
+				if( bulk_action_value != 'undefined' && bulk_action_value == 'edit' ){
+					tinyMCE.init({
+						mode : 'specific_textareas',
+						editor_selector : '{$field_name}',
+						theme: 'modern',
+						width: 450,
+						height: 250,
+						plugins: [
+							'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+							'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+							'save table contextmenu directionality emoticons template paste textcolor'
+						],
+						toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | code',
+						menubar: false,
+						setup: function (editor) {
+							editor.on('change', function () {
+								tinyMCE.triggerSave();
+							});
+						},
+						apply_source_formatting: true,
+						auto_focus: true			
+					});
+					return;
+				} else {
+					if( tinyMCE.editors != 'undefined' && tinyMCE.editors.length > 0 ) {
+						for (var i = tinyMCE.editors.length - 1 ; i > -1 ; i--) {
+							var ed_id = tinyMCE.editors[i].id;
+							tinyMCE.execCommand('mceRemoveEditor', true, ed_id);
+						}
+						tinyMCE.editors.length = 0;
+					}
+					return;
+				}
+				return;
+			});
+		";
+
+		return $result;
+	}
+
+
+	public static function custom_tinymce_enqueue($hook) {
+		$rich_textarea_enabled = false;
+		$cbqe_options 		   = cbqe_get_options();
+		foreach($cbqe_options as $k => $v) {
+			if ( strpos($k, '__rich_textarea__') !== false && $v == 1 ) {
+				$rich_textarea_enabled = true;
+			}
+		}
+
+	    if ( self::do_load() == true && $rich_textarea_enabled == true ) {
+			wp_enqueue_script( 'cbqe_tinymce', self::$plugin_assets . 'js/tinymce/tinymce.min.js' );
+		}
 	}
 
 

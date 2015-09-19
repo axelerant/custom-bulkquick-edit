@@ -11,6 +11,6 @@ label.inline-edit-tags .warning {
 	float: left;
 	margin: 0.2em 1em;
 }
-.inline-edit-group.cbqe label {
+.inline-edit-group.cbqe label, .mce-container {
 	clear: both;
 }
