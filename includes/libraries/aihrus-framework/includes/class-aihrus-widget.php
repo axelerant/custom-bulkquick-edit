@@ -52,7 +52,7 @@ abstract class Aihrus_Widget extends WP_Widget {
 		);
 
 		// Create the widget
-		$this->WP_Widget(
+		parent::__construct(
 			static::ID,
 			$title,
 			$widget_ops,
