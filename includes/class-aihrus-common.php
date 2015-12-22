@@ -440,14 +440,14 @@ EOD;
 			$output        .= $text;
 			$output_length += $func_strlen( $text );
 
-			if ( $tag[0] == '&' ) {
+			if ( '&' == $tag[0] ) {
 				// Handle HTML entity by copying straight through
 				$output .= $tag;
 				$output_length++; // only counted as one character
 			} else {
 				// Handle HTML tag
 				$tag_inner = $match[1][0];
-				if ( $tag[1] == '/' ) {
+				if ( '/' == $tag[1] ) {
 					// This is a closing tag.
 					$output .= $tag;
 					// If input tags aren't balanced, we leave the popped tag
@@ -593,13 +593,16 @@ EOD;
 		$dates = array(
 			array(
 				'rule' => '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})',
-				'vars' => array( 'year', 'monthnum', 'day' ) ),
+				'vars' => array( 'year', 'monthnum', 'day' ),
+			),
 			array(
 				'rule' => '([0-9]{4})/([0-9]{1,2})',
-				'vars' => array( 'year', 'monthnum' ) ),
+				'vars' => array( 'year', 'monthnum' ),
+			),
 			array(
 				'rule' => '([0-9]{4})',
-				'vars' => array( 'year' ) ),
+				'vars' => array( 'year' ),
+			),
 		);
 
 		foreach ( $dates as $data ) {
@@ -773,8 +776,6 @@ EOD;
 
 		return $value;
 	}
-
-
 }
 
 

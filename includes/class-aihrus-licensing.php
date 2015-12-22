@@ -158,7 +158,7 @@ abstract class Aihrus_Licensing {
 	public function get_license_data( $action = 'check_license' ) {
 		$api_call = $this->get_api_call( $action );
 		$response = $this->get_remote_get( $api_call );
-		if ( empty( $response) || is_wp_error( $response ) ) {
+		if ( empty( $response ) || is_wp_error( $response ) ) {
 			return false;
 		}
 

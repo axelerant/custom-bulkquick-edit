@@ -251,7 +251,11 @@ abstract class Aihrus_Widget extends WP_Widget {
 			case 'textarea':
 				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
 
-				echo '<textarea class="widefat' . $field_class . '" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" rows="5" cols="30">' . wp_htmledit_pre( $options[ $id ] ) . '</textarea>';
+				if ( function_exists( 'format_for_editor' ) ) {
+					echo '<textarea class="widefat' . $field_class . '" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" rows="5" cols="30">' . format_for_editor( $options[ $id ] ) . '</textarea>';
+				} else {
+					echo '<textarea class="widefat' . $field_class . '" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" rows="5" cols="30">' . wp_htmledit_pre( $options[ $id ] ) . '</textarea>';
+				}
 				break;
 
 			case 'password':
@@ -355,8 +359,6 @@ abstract class Aihrus_Widget extends WP_Widget {
 	public static function get_content( $instance = null, $widget_number = null ) {
 		return;
 	}
-
-
 }
 
 
