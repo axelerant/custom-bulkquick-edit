@@ -199,7 +199,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 		// display donate on major/minor version release
 		$donate_version = cbqe_get_option( 'donate_version', false );
-		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
+		if ( ! $donate_version || ( self::VERSION != $donate_version && preg_match( '#\.0$#', self::VERSION ) ) ) {
 			self::set_notice( 'notice_donate' );
 			cbqe_set_option( 'donate_version', self::VERSION );
 		}
@@ -544,7 +544,7 @@ jQuery( document ).ready( function() {
 			$delete     = true;
 		}
 
-		if ( $value == Custom_Bulkquick_Edit_Settings::RESET ) {
+		if ( Custom_Bulkquick_Edit_Settings::RESET == $value ) {
 			$delete = true;
 		}
 

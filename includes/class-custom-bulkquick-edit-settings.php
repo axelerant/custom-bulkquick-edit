@@ -539,9 +539,6 @@ EOD;
 
 		return $default;
 	}
-
-
-
 }
 
 
