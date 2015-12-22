@@ -1,7 +1,6 @@
 # README - Custom Bulk/Quick Edit
 
 [![Codeship status](https://www.codeship.io/projects/559d4810-7252-0131-4df5-1ed74a8380e9/status)](https://www.codeship.io/projects/13635)
-[![ProjectStatus](http://stillmaintained.com/michael-cannon/custom-bulkquick-edit.png)](http://stillmaintained.com/michael-cannon/custom-bulkquick-edit)
 
 ## Welcome to the Custom Bulk/Quick Edit Github repository
 
