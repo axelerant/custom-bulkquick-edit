@@ -889,8 +889,6 @@ EOD;
 
 		return static::$sections;
 	}
-
-
 }
 
 

@@ -2,6 +2,12 @@
 
 ## master
 
+## 1.2.4RC1
+* Remove option to disable the license not saved notice rather set sslverify to false.
+* Change support email address to support@axelerant.com
+* Remove the use of deprecated function `wp_htmledit_pre()` and use `format_for_editor()` instead.
+* Fix coding standards for CI.
+
 ## 1.2.3
 * RELATES #7 Add option to disable the license not saved notice
 * RESOLVE #8 Remove activation helpers
