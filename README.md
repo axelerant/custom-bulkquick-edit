@@ -1,7 +1,7 @@
 # Aihrus Framework
 
 Tested up to: 4.4.0
-Stable tag: 1.2.4RC1
+Stable tag: 1.2.4
 
 A helper library for WordPress plugins by Aihrus and maintained by [Axelerant](//axelerant.com).
 
