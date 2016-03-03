@@ -35,7 +35,7 @@ if ( ! defined( 'AIHR_DIR_LIB' ) ) {
 }
 
 if ( ! defined( 'AIHR_VERSION' ) ) {
-	define( 'AIHR_VERSION', '1.2.4RC1' );
+	define( 'AIHR_VERSION', '1.2.4' );
 }
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
