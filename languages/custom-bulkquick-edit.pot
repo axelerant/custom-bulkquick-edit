@@ -1,14 +1,14 @@
-# Copyright (C) 2015 Custom Bulk/Quick Edit
+# Copyright (C) 2016 Custom Bulk/Quick Edit
 # This file is distributed under the same license as the Custom Bulk/Quick Edit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 1.6.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2015-06-26 07:27:17+00:00\n"
+"Project-Id-Version: Custom Bulk/Quick Edit 1.6.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/custom-bulkquick-edit\n"
+"POT-Creation-Date: 2016-03-28 09:49:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -135,7 +135,7 @@ msgid "During bulk editing, easily remove selected %1$s' relationships."
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit-settings.php:152
-#: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:336
+#: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:340
 msgid "Title"
 msgstr ""
 
@@ -217,59 +217,47 @@ msgstr ""
 msgid "Plugin \"%1$s\" has been deactivated as it requires WordPress %2$s or newer. You're running WordPress %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">Update WordPress</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:238
-msgid "<a href=\"%1$s\">update to</a>"
-msgstr ""
-
-#: includes/libraries/aihrus-framework/aihrus-framework.php:243
-msgid "<a href=\"%1$s\">install</a>"
-msgstr ""
-
-#: includes/libraries/aihrus-framework/aihrus-framework.php:246
-msgid "<a href=\"%1$s\">activate</a>"
+#: includes/libraries/aihrus-framework/aihrus-framework.php:236
+msgid "Plugin \"%2$s\" has been deactivated. Please install and activate \"%3$s\" version %1$s or newer before activating \"%2$s\"."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:250
-msgid "Plugin \"%3$s\" has been deactivated. Please %1$s \"%4$s\" version %2$s or newer before activating \"%3$s\"."
-msgstr ""
-
-#: includes/libraries/aihrus-framework/aihrus-framework.php:264
 msgid "<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em>"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:269
+#: includes/libraries/aihrus-framework/aihrus-framework.php:255
 msgid "<a href=\"%s\">Where's my license key?</a>"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:274
+#: includes/libraries/aihrus-framework/aihrus-framework.php:260
 msgid "<a href=\"%1$s\">Purchase</a>"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:282
+#: includes/libraries/aihrus-framework/aihrus-framework.php:268
 msgid "%1$s/checkout/?edd_license_key=%2$s&download_id=%3$s"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:286
+#: includes/libraries/aihrus-framework/aihrus-framework.php:272
 msgid "<a href=\"%1$s\">Renew</a> or "
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:291
+#: includes/libraries/aihrus-framework/aihrus-framework.php:277
 msgid "Plugin \"%1$s\" requires license activation for software updates and support. Please activate the license via %2$s. See %3$s for help. Alternately, %5$s%4$s a %1$s license."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:301
+#: includes/libraries/aihrus-framework/aihrus-framework.php:287
 msgid "`aihr_deactivate_plugin` requires $file argument"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:340
+#: includes/libraries/aihrus-framework/aihrus-framework.php:326
 msgid "Unknown"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:347
+#: includes/libraries/aihrus-framework/aihrus-framework.php:333
 msgid "Plugin \"%1$s\" has been deactivated due to \"%2$s\". Once corrected, \"%1$s\" can be activated.</p><p>If you want to revert \"%1$s\", look for <a href=\"%3$s\">older versions on WordPress</a> or <a href=\"mailto:support@axelerant.com?subject=Old+Plugin+Version+Request\">email Axelerant support</a> if this is a premium plugin."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/aihrus-framework.php:358
+#: includes/libraries/aihrus-framework/aihrus-framework.php:344
 msgid "`aihr_deactivate_plugin_do` requires $file argument"
 msgstr ""
 
@@ -281,87 +269,87 @@ msgstr ""
 msgid "cURL is not installed and file_get_contents is not accessible. Unable to retrieve URL %1$s."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:661
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:664
 msgid "<a href=\"http://codex.wordpress.org/Function_Reference/absint\">absint</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:662
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:665
 msgid "Digit-only characters to make a multiple or single entries. Regex <code>#^\\d+(,\\s?\\d+)*$#</code>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:663
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:666
 msgid "<a href=\"php.net/manual/en/function.intval.php\">intval</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:664
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:667
 msgid "Values like true, 'true', 1, 'on', and 'yes' are <strong>true</strong>; otherwise <strong>false</strong>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:665
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:668
 msgid "An <a href=\"php.net/manual/en/function.intval.php\">intval</a> greater than zero."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:666
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:669
 msgid "A non-zero <a href=\"php.net/manual/en/function.intval.php\">intval</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:667
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:670
 msgid "SQL ordering \"ASC\" or \"DESC\". Regex <code>#^desc|asc$#i</code>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:668
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:671
 msgid "<a href=\"http://codex.wordpress.org/Function_Reference/sanitize_title\">sanitize_title</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:669
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:672
 msgid "Word-only characters including a hyphen to make a single term. Regex <code>#^[\\w-]+$#</code>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:670
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:673
 msgid "Word-only characters to make a single term. Regex <code>#^\\w+$#</code>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:671
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:674
 msgid "Word-only characters including hyphens and spaces to make a multiple or single terms. Regex <code>#^(([\\w- ]+)(,\\s?)?)+$#</code>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:672
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:675
 msgid "Current license."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:673
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:676
 msgid "<a href=\"http://php.net/manual/en/filter.filters.validate.php\">filter_var( $url, FILTER_VALIDATE_URL )</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:674
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:677
 msgid "<a href=\"http://codex.wordpress.org/Function_Reference/wp_kses_data\">wp_kses_data</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:675
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:678
 msgid "<a href=\"http://codex.wordpress.org/Function_Reference/wp_kses_post\">wp_kses_post</a>."
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:680
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:683
 msgid "Validatation: "
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:729
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:732
 msgid "TBD empty "
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:735
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:738
 msgid "Pick an option"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:758
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:761
 msgid "Category A, Another category, 123"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:760
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:763
 msgid "Tag A, Another tag, 123"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:763
+#: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:766
 msgid "You decide…"
 msgstr ""
 
@@ -457,11 +445,11 @@ msgstr ""
 msgid "Collapse"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:340
+#: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:344
 msgid "Title Link"
 msgstr ""
 
-#: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:341
+#: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:345
 msgid "URL, path, or post ID to link widget title to. Ex: http://example.com/stuff, /testimonials, or 123"
 msgstr ""
 
