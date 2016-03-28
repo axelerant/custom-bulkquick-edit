@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.6.2RC2
+## 1.6.2
 * Require Aihrus Framework 1.2.4
 * RESOLVE Replace deprecated 'wp_htmledit_pre' with 'format_for_editor'
 * Change support email address to 'support@axelerant.com'
