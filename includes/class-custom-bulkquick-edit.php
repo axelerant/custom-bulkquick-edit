@@ -713,6 +713,8 @@ jQuery( document ).ready( function() {
 			return;
 		}
 
+		$column_name = apply_filters( 'cbqe_quick_edit_custom_box_column', $column_name, $post_type, $bulk_mode );
+
 		$field_type = self::is_field_enabled( $post_type, $column_name );
 		if ( empty( $field_type ) ) {
 			return;
