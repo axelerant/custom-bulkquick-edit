@@ -98,6 +98,10 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 	Customize settings variable based upon `post_type`. [example]()
 	
+* `cbqe_quick_edit_custom_box_column`
+
+	Modify column key names. Useful in instances like Admin Columns's, one name for columns and another for meta data.
+
 * `cbqe_quick_edit_custom_box_field`
 
 	Edit field contents by `field_type`. Has parameters `$field_type`, `$field_name`, `$options`, and `$bulk_mode`. [example](https://gist.github.com/michael-cannon/6490341)
