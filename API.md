@@ -118,6 +118,10 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 	Ignore editing of these fields for the quick edit panel.
 
+* `cbqe_ignore_posts_custom_column`
+
+	Ignore applying the hook `manage_${post_type}_posts_columns` for these columns. Useful in plugins like Admin Columns.
+
 * `cbqe_edit_field_type`
 
 	Alter editing type of fields for the bulk and quick edit panels.

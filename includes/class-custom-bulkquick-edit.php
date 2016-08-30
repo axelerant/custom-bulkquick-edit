@@ -226,6 +226,12 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 	public static function manage_posts_custom_column( $column, $post_id, $buffer = null ) {
 		global $post;
 
+		$ignore_custom_column = apply_filters( 'cbqe_ignore_posts_custom_column', array(), $column, $post_id );
+		if ( in_array( $column, $ignore_custom_column ) ) {
+			echo $buffer;
+			return;
+		}
+
 		$field_type = self::is_field_enabled( $post->post_type, $column );
 		if ( ! $field_type ) {
 			echo $buffer;
