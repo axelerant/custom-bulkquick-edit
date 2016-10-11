@@ -2,9 +2,9 @@
 
 ## master
 
-## 1.6.3RC1
+## 1.6.3
 * Add filter `cbqe_quick_edit_custom_box_column`
-* Confirm WordPress 4.5.3 compatibility
+* Confirm WordPress 4.6 compatibility
 
 ## 1.6.2
 * Require Aihrus Framework 1.2.4
