@@ -2,6 +2,12 @@
 
 ## master
 
+## 1.2.6
+* Update Parsedown 1.6.1
+
+## 1.2.5
+* Use WP provided nonce functions
+
 ## 1.2.4
 * Change support email address to `support@axelerant.com`
 * Fix coding standards for CI
