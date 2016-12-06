@@ -2,10 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 1.6.3\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-bulkquick-"
-"edit\n"
-"POT-Creation-Date: 2016-10-11 09:11:41+00:00\n"
+"Project-Id-Version: Custom Bulk/Quick Edit 1.6.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-bulkquick-edit\n"
+"POT-Creation-Date: 2016-12-06 09:32:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -72,9 +71,7 @@ msgid "%s Configuration"
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit-settings.php:128
-msgid ""
-"You may create options formatted like \"the-key|Supremely, Pretty Values\" "
-"seperated by newlines."
+msgid "You may create options formatted like \"the-key|Supremely, Pretty Values\" seperated by newlines."
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit-settings.php:130
@@ -90,9 +87,7 @@ msgid "Edit \"%s\" taxonomy?"
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit-settings.php:134
-msgid ""
-"Force making %1$s an editable taxonomy field like checked categories or free-"
-"text tags."
+msgid "Force making %1$s an editable taxonomy field like checked categories or free-text tags."
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit-settings.php:136
@@ -124,9 +119,7 @@ msgid "Reset \"%s\" Relations?"
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit-settings.php:146
-msgid ""
-"During bulk editing, easily remove all of the %1$s' prior relationships and "
-"add new."
+msgid "During bulk editing, easily remove all of the %1$s' prior relationships and add new."
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit-settings.php:148
@@ -175,9 +168,7 @@ msgid "Settings"
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit.php:167
-msgid ""
-"If your Custom Bulk/Quick Edit display has gone to funky town, please <a "
-"href=\"%s\">read the FAQ</a> about possible CSS fixes."
+msgid "If your Custom Bulk/Quick Edit display has gone to funky town, please <a href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
 #: includes/class-custom-bulkquick-edit.php:887
@@ -199,8 +190,7 @@ msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:90
 #: includes/requirements.php:60
-msgid ""
-"<a href=\"%1$s\">Update plugins</a>. <a href=\"%2$s\">More information</a>."
+msgid "<a href=\"%1$s\">Update plugins</a>. <a href=\"%2$s\">More information</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:101
@@ -208,10 +198,7 @@ msgid "Plugin \"%1$s\" is causing the out of date issue."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:106
-msgid ""
-"Plugin \"%1$s\" has been deactivated as it requires Aihrus Framework %2$s or "
-"newer. You're running Aihrus Framework %4$s. Once corrected, \"%1$s\" can be "
-"activated. %5$s %3$s"
+msgid "Plugin \"%1$s\" has been deactivated as it requires Aihrus Framework %2$s or newer. You're running Aihrus Framework %4$s. Once corrected, \"%1$s\" can be activated. %5$s %3$s"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:115
@@ -219,10 +206,7 @@ msgid "`aihr_check_php` requires $file argument"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:154
-msgid ""
-"Plugin \"%1$s\" has been deactivated as it requires PHP %2$s or newer. "
-"You're running PHP %4$s. Once corrected, \"%1$s\" can be activated. <a href="
-"\"%3$s\">More information</a>."
+msgid "Plugin \"%1$s\" has been deactivated as it requires PHP %2$s or newer. You're running PHP %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">More information</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:163
@@ -230,22 +214,15 @@ msgid "`aihr_check_wp` requires $file argument"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:206
-msgid ""
-"Plugin \"%1$s\" has been deactivated as it requires WordPress %2$s or newer. "
-"You're running WordPress %4$s. Once corrected, \"%1$s\" can be activated. <a "
-"href=\"%3$s\">Update WordPress</a>."
+msgid "Plugin \"%1$s\" has been deactivated as it requires WordPress %2$s or newer. You're running WordPress %4$s. Once corrected, \"%1$s\" can be activated. <a href=\"%3$s\">Update WordPress</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:236
-msgid ""
-"Plugin \"%2$s\" has been deactivated. Please install and activate \"%3$s\" "
-"version %1$s or newer before activating \"%2$s\"."
+msgid "Plugin \"%2$s\" has been deactivated. Please install and activate \"%3$s\" version %1$s or newer before activating \"%2$s\"."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:250
-msgid ""
-"<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License "
-"Key</em>"
+msgid "<a href=\"%1$s\">%2$s &gt; Settings</a>, <em>Premium</em> tab, <em>License Key</em>"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:255
@@ -265,10 +242,7 @@ msgid "<a href=\"%1$s\">Renew</a> or "
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:277
-msgid ""
-"Plugin \"%1$s\" requires license activation for software updates and "
-"support. Please activate the license via %2$s. See %3$s for help. "
-"Alternately, %5$s%4$s a %1$s license."
+msgid "Plugin \"%1$s\" requires license activation for software updates and support. Please activate the license via %2$s. See %3$s for help. Alternately, %5$s%4$s a %1$s license."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:287
@@ -280,12 +254,7 @@ msgid "Unknown"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:333
-msgid ""
-"Plugin \"%1$s\" has been deactivated due to \"%2$s\". Once corrected, \"%1$s"
-"\" can be activated.</p><p>If you want to revert \"%1$s\", look for <a href="
-"\"%3$s\">older versions on WordPress</a> or <a href=\"mailto:"
-"support@axelerant.com?subject=Old+Plugin+Version+Request\">email Axelerant "
-"support</a> if this is a premium plugin."
+msgid "Plugin \"%1$s\" has been deactivated due to \"%2$s\". Once corrected, \"%1$s\" can be activated.</p><p>If you want to revert \"%1$s\", look for <a href=\"%3$s\">older versions on WordPress</a> or <a href=\"mailto:support@axelerant.com?subject=Old+Plugin+Version+Request\">email Axelerant support</a> if this is a premium plugin."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:344
@@ -293,26 +262,19 @@ msgid "`aihr_deactivate_plugin_do` requires $file argument"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:160
-msgid ""
-"Please donate $5 towards ongoing free support and development of the \"%1$s"
-"\" plugin. %2$s"
+msgid "Please donate $5 towards ongoing free support and development of the \"%1$s\" plugin. %2$s"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:341
-msgid ""
-"cURL is not installed and file_get_contents is not accessible. Unable to "
-"retrieve URL %1$s."
+msgid "cURL is not installed and file_get_contents is not accessible. Unable to retrieve URL %1$s."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:664
-msgid ""
-"<a href=\"http://codex.wordpress.org/Function_Reference/absint\">absint</a>."
+msgid "<a href=\"http://codex.wordpress.org/Function_Reference/absint\">absint</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:665
-msgid ""
-"Digit-only characters to make a multiple or single entries. Regex <code>#^\\d"
-"+(,\\s?\\d+)*$#</code>."
+msgid "Digit-only characters to make a multiple or single entries. Regex <code>#^\\d+(,\\s?\\d+)*$#</code>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:666
@@ -320,20 +282,15 @@ msgid "<a href=\"php.net/manual/en/function.intval.php\">intval</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:667
-msgid ""
-"Values like true, 'true', 1, 'on', and 'yes' are <strong>true</strong>; "
-"otherwise <strong>false</strong>."
+msgid "Values like true, 'true', 1, 'on', and 'yes' are <strong>true</strong>; otherwise <strong>false</strong>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:668
-msgid ""
-"An <a href=\"php.net/manual/en/function.intval.php\">intval</a> greater than "
-"zero."
+msgid "An <a href=\"php.net/manual/en/function.intval.php\">intval</a> greater than zero."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:669
-msgid ""
-"A non-zero <a href=\"php.net/manual/en/function.intval.php\">intval</a>."
+msgid "A non-zero <a href=\"php.net/manual/en/function.intval.php\">intval</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:670
@@ -341,26 +298,19 @@ msgid "SQL ordering \"ASC\" or \"DESC\". Regex <code>#^desc|asc$#i</code>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:671
-msgid ""
-"<a href=\"http://codex.wordpress.org/Function_Reference/sanitize_title"
-"\">sanitize_title</a>."
+msgid "<a href=\"http://codex.wordpress.org/Function_Reference/sanitize_title\">sanitize_title</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:672
-msgid ""
-"Word-only characters including a hyphen to make a single term. Regex <code>#^"
-"[\\w-]+$#</code>."
+msgid "Word-only characters including a hyphen to make a single term. Regex <code>#^[\\w-]+$#</code>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:673
-msgid ""
-"Word-only characters to make a single term. Regex <code>#^\\w+$#</code>."
+msgid "Word-only characters to make a single term. Regex <code>#^\\w+$#</code>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:674
-msgid ""
-"Word-only characters including hyphens and spaces to make a multiple or "
-"single terms. Regex <code>#^(([\\w- ]+)(,\\s?)?)+$#</code>."
+msgid "Word-only characters including hyphens and spaces to make a multiple or single terms. Regex <code>#^(([\\w- ]+)(,\\s?)?)+$#</code>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:675
@@ -368,21 +318,15 @@ msgid "Current license."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:676
-msgid ""
-"<a href=\"http://php.net/manual/en/filter.filters.validate.php\">filter_var"
-"( $url, FILTER_VALIDATE_URL )</a>."
+msgid "<a href=\"http://php.net/manual/en/filter.filters.validate.php\">filter_var( $url, FILTER_VALIDATE_URL )</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:677
-msgid ""
-"<a href=\"http://codex.wordpress.org/Function_Reference/wp_kses_data"
-"\">wp_kses_data</a>."
+msgid "<a href=\"http://codex.wordpress.org/Function_Reference/wp_kses_data\">wp_kses_data</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:678
-msgid ""
-"<a href=\"http://codex.wordpress.org/Function_Reference/wp_kses_post"
-"\">wp_kses_post</a>."
+msgid "<a href=\"http://codex.wordpress.org/Function_Reference/wp_kses_post\">wp_kses_post</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-common.php:683
@@ -434,9 +378,7 @@ msgid "Export Settings"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:86
-msgid ""
-"These are your current settings in a serialized format. Copy the contents to "
-"make a backup of your settings."
+msgid "These are your current settings in a serialized format. Copy the contents to make a backup of your settings."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:95
@@ -444,14 +386,11 @@ msgid "Import Settings"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:97
-msgid ""
-"Paste new serialized settings here to overwrite your current configuration."
+msgid "Paste new serialized settings here to overwrite your current configuration."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:102
-msgid ""
-"Delete all %s data and options from database on plugin deletion. Even if "
-"this option isn't checked, WordPress will still give a data deletion warning."
+msgid "Delete all %s data and options from database on plugin deletion. Even if this option isn't checked, WordPress will still give a data deletion warning."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:106
@@ -467,26 +406,7 @@ msgid "Check this box to reset options to their defaults."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:251
-msgid ""
-"<img class=\"size-medium\" src=\"%5$s\" alt=\"Axelerant 2015 Retreat in Goa"
-"\" width=\"640\" height=\"327\" /><p>Axelerant is a full-service software "
-"development company that focuses on open-source technologies. Top technical "
-"talent who are passionate, giving, and communicative demonstrates our "
-"backbone. We provide high-end Strategy, Implementation, and Support services "
-"for our clients and agencies with whom we partner.</p><p>Our team members "
-"span the world, and we follow agile delivery and working processes. Further, "
-"we’re actively giving back to many open-source communities and have fostered "
-"an innovative, incubator culture to give ideas a chance to succeed.</"
-"p><h2>Foundations of Axelerant</h2><ul><li><b>Passion</b> – Our passion is "
-"so strong, we’re self­directed to make the difficult easy.</"
-"li><li><b>Openness</b> – We’re so honest and painstaking in our discussions "
-"that there are no questions left, and standards are created.</"
-"li><li><b>Giving</b> – We’re excited to share our results to inspire all to "
-"surpass them.</li></ul><h3>Learn More About Axelerant</h3><ul><li><a href="
-"\"%1$s\">Axelerant Team</a></li><li><a href=\"%2$s\">Giving Back</a></"
-"li><li><a href=\"%7$s\">Inside Axelerant</a></li><li><a href=\"%3$s\">Our "
-"Services</a></li><li><a href=\"%4$s\">Testimonials</a></li><li><a href=\"%6$s"
-"\">Careers</a></li></ul>"
+msgid "<img class=\"size-medium\" src=\"%5$s\" alt=\"Axelerant 2015 Retreat in Goa\" width=\"640\" height=\"327\" /><p>Axelerant is a full-service software development company that focuses on open-source technologies. Top technical talent who are passionate, giving, and communicative demonstrates our backbone. We provide high-end Strategy, Implementation, and Support services for our clients and agencies with whom we partner.</p><p>Our team members span the world, and we follow agile delivery and working processes. Further, we’re actively giving back to many open-source communities and have fostered an innovative, incubator culture to give ideas a chance to succeed.</p><h2>Foundations of Axelerant</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><h3>Learn More About Axelerant</h3><ul><li><a href=\"%1$s\">Axelerant Team</a></li><li><a href=\"%2$s\">Giving Back</a></li><li><a href=\"%7$s\">Inside Axelerant</a></li><li><a href=\"%3$s\">Our Services</a></li><li><a href=\"%4$s\">Testimonials</a></li><li><a href=\"%6$s\">Careers</a></li></ul>"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:290
@@ -494,12 +414,7 @@ msgid "Save Changes"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:298
-msgid ""
-"If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good "
-"Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> "
-"or <a href=\"%3$s\" title=\"purchase premium WordPress plugins from "
-"Axelerant \">purchase the Premium version</a> to help fund further "
-"development and <a href=\"%4$s\" title=\"Support forums\">support</a>."
+msgid "If you like this plugin, please <a href=\"%1$s\" title=\"Donate for Good Karma\"><img src=\"%2$s\" border=\"0\" alt=\"Donate for Good Karma\" /></a> or <a href=\"%3$s\" title=\"purchase premium WordPress plugins from Axelerant \">purchase the Premium version</a> to help fund further development and <a href=\"%4$s\" title=\"Support forums\">support</a>."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-settings.php:309
@@ -535,9 +450,7 @@ msgid "Title Link"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/includes/class-aihrus-widget.php:345
-msgid ""
-"URL, path, or post ID to link widget title to. Ex: http://example.com/"
-"stuff, /testimonials, or 123"
+msgid "URL, path, or post ID to link widget title to. Ex: http://example.com/stuff, /testimonials, or 123"
 msgstr ""
 
 #: includes/requirements.php:30
@@ -557,11 +470,8 @@ msgid "Old WordPress version detected"
 msgstr ""
 
 #: includes/requirements.php:62
-msgid ""
-"Plugin \"%1$s\" has been deactivated as it requires a current Aihrus "
-"Framework. Once corrected, \"%1$s\" can be activated. %2$s"
+msgid "Plugin \"%1$s\" has been deactivated as it requires a current Aihrus Framework. Once corrected, \"%1$s\" can be activated. %2$s"
 msgstr ""
-
 #. Plugin Name of the plugin/theme
 msgid "Custom Bulk/Quick Edit"
 msgstr ""
@@ -571,9 +481,7 @@ msgid "http://wordpress.org/plugins/custom-bulkquick-edit/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid ""
-"Custom Bulk/Quick Edit allows you to easily add custom fields to the edit "
-"screen bulk and quick edit panels."
+msgid "Custom Bulk/Quick Edit allows you to easily add custom fields to the edit screen bulk and quick edit panels."
 msgstr ""
 
 #. Author of the plugin/theme
