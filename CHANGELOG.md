@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.6.4RC1
+## 1.6.4
 * Confirm WordPress 4.6.1 compatibility
 * Require Aihrus Framework 1.2.6
 * Update Coypright Year
