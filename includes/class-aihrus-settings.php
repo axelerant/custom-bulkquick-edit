@@ -299,7 +299,7 @@ abstract class Aihrus_Settings {
 				esc_url( 'https://axelerant.com/about-axelerant/donate/' ),
 				esc_url( 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' ),
 				esc_url( 'https://store.axelerant.com/' ),
-				esc_url( 'https://nodedesk.zendesk.com' )
+				esc_url( 'mailto:support@axelerant.atlassian.net' )
 			) .
 				'</p>';
 		}

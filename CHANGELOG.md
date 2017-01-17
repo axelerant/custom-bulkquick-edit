@@ -2,6 +2,10 @@
 
 ## master
 
+## 1.2.7
+* Change support email address to `support@axelerant.atlassian.net`
+* Update FAQ's link
+
 ## 1.2.6
 * Update Parsedown 1.6.1
 
