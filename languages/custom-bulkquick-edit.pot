@@ -1,14 +1,14 @@
-# Copyright (C) 2016 Custom Bulk/Quick Edit
+# Copyright (C) 2017 Custom Bulk/Quick Edit
 # This file is distributed under the same license as the Custom Bulk/Quick Edit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit 1.6.4\n"
+"Project-Id-Version: Custom Bulk/Quick Edit 1.6.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-bulkquick-edit\n"
-"POT-Creation-Date: 2016-12-06 09:32:14+00:00\n"
+"POT-Creation-Date: 2017-01-18 06:40:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -254,7 +254,7 @@ msgid "Unknown"
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:333
-msgid "Plugin \"%1$s\" has been deactivated due to \"%2$s\". Once corrected, \"%1$s\" can be activated.</p><p>If you want to revert \"%1$s\", look for <a href=\"%3$s\">older versions on WordPress</a> or <a href=\"mailto:support@axelerant.com?subject=Old+Plugin+Version+Request\">email Axelerant support</a> if this is a premium plugin."
+msgid "Plugin \"%1$s\" has been deactivated due to \"%2$s\". Once corrected, \"%1$s\" can be activated.</p><p>If you want to revert \"%1$s\", look for <a href=\"%3$s\">older versions on WordPress</a> or <a href=\"mailto:support@axelerant.atlassian.net?subject=Old+Plugin+Version+Request\">email Axelerant support</a> if this is a premium plugin."
 msgstr ""
 
 #: includes/libraries/aihrus-framework/aihrus-framework.php:344
