@@ -6,7 +6,7 @@
 
 ## 1.3.0
 
-* Requires PHP 5.3+ [notice](https://nodedesk.zendesk.com/hc/en-us/articles/202331041)
+* Requires PHP 5.3+ [notice](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845151)
 
 ## 1.1.0
 

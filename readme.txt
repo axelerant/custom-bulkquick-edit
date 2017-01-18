@@ -4,8 +4,8 @@ Contributors: comprock,saurabhd,subharanjan
 Donate link: https://axelerant.com/about-axelerant/donate/
 Tags: custom, bulk edit, quick edit, custom post types, woocommerce
 Requires at least: 3.9.2
-Tested up to: 4.6.1
-Stable tag: 1.6.4
+Tested up to: 4.7.1
+Stable tag: 1.6.5RC1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,9 +76,9 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Requirements =
 
-* PHP 5.3+ [Read notice](https://nodedesk.zendesk.com/hc/en-us/articles/202331041) – Since 1.3.0
+* PHP 5.3+ [Read notice](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845151) – Since 1.3.0
 * WordPress 3.6+
-* [jQuery 1.10+](https://nodedesk.zendesk.com/hc/en-us/articles/202244022)
+* [jQuery 1.10+](https://axelerant.atlassian.net/wiki/display/WPFAQ/Testimonials+widget+is+not+rotating)
 
 = Install Methods =
 
@@ -100,9 +100,9 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Usage =
 
-1. Read "[How do I add custom fields to my bulk/quick edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)"
-1. Read "[How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)"
-1. Read "[Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)"
+1. Read "[How do I add custom fields to my bulk/quick edit page?](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845124)"
+1. Read "[How do you configure options?](https://axelerant.atlassian.net/wiki/display/WPFAQ/How+do+you+configure+options)"
+1. Read "[Where can I find working samples?](https://axelerant.atlassian.net/wiki/display/WPFAQ/Where+can+I+find+working+samples)"
 1. Select the post and page attributes to enable through WordPress Admin > Settings > Custom Bulk/Quick
 1. Once you select 'Show' a configuration panel will open. Leave this blank as upon save, the proper configuration will be loaded.
 1. Click "Save Changes"
@@ -142,17 +142,17 @@ No problem, it has a 30-day, money back guarantee. Also, you can keep the softwa
 
 = Most Common Issues =
 
-* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Axelerant Plugins Require PHP 5.3+](https://nodedesk.zendesk.com/hc/en-us/articles/202331041)
+* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Axelerant Plugins Require PHP 5.3+](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845151)
 * I can't bulk edit my hundreds or thousands of posts. Some user and server systems are limited to about 250 records at a time. Try limiting bulk editing to 200 records and work upward to find your maximum.
-* [Debug theme and plugin conflicts](https://nodedesk.zendesk.com/hc/en-us/articles/202330781)
-* [Extra vertical columns on edit page](https://nodedesk.zendesk.com/hc/en-us/articles/202379861)
-* [How do I add custom fields to my bulk/quick edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)
-* [How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)
-* [Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)
+* [Debug theme and plugin conflicts](https://axelerant.atlassian.net/wiki/display/WPFAQ/How+to+Debug+common+issues)
+* [Extra vertical columns on edit page](https://axelerant.atlassian.net/wiki/display/WPFAQ/Why+is+my+backend+testimonial+listing+skewed)
+* [How do I add custom fields to my bulk/quick edit page?](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845124)
+* [How do you configure options?](https://axelerant.atlassian.net/wiki/display/WPFAQ/How+do+you+configure+options)
+* [Where can I find working samples?](https://axelerant.atlassian.net/wiki/display/WPFAQ/Where+can+I+find+working+samples)
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112) - read and comment upon frequently asked questions
+1. [Knowledge Base](https://axelerant.atlassian.net/wiki/display/WPFAQ) - read and comment upon frequently asked questions
 1. [Open Issues](https://github.com/michael-cannon/custom-bulkquick-edit/issues) - review and submit bug reports and enhancement requests
 1. [Support on WordPress](http://wordpress.org/support/plugin/custom-bulkquick-edit) - ask questions and review responses
 1. [Contribute Code](https://github.com/michael-cannon/custom-bulkquick-edit/blob/master/CONTRIBUTING.md)
@@ -203,7 +203,7 @@ This plugin grew out of the frustration of having to custom write this code for 
 
 You can translate this plugin into your own language if it's not done so already. The localization file `custom-bulkquick-edit.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](https://axelerant.com/contact-axelerant/) for plugin inclusion.
 
-**[How do I localize?](https://nodedesk.zendesk.com/hc/en-us/articles/202294892)**
+**[How do I localize?](https://axelerant.atlassian.net/wiki/display/WPFAQ/How+do+I+change+Testimonials+Widget+text+labels)**
 
 
 == Thank You ==

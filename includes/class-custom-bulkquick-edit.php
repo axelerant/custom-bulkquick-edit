@@ -164,7 +164,7 @@ class Custom_Bulkquick_Edit extends Aihrus_Common {
 
 
 	public static function notice_0_0_1() {
-		$text = sprintf( __( 'If your Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'custom-bulkquick-edit' ), 'https://nodedesk.zendesk.com/hc/en-us/articles/202244392-Major-Changes-Since-2-10-0' );
+		$text = sprintf( __( 'If your Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'custom-bulkquick-edit' ), 'https://axelerant.atlassian.net/wiki/display/WPFAQ/Major+Changes+Since+2.10.0' );
 
 		aihr_notice_updated( $text );
 	}

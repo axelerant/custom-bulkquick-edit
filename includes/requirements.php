@@ -56,7 +56,7 @@ function cbqe_requirements_check( $force_check = false ) {
 
 
 function cbqe_notice_aihrus() {
-	$help_url  = esc_url( 'https://nodedesk.zendesk.com/hc/en-us/articles/202381391' );
+	$help_url  = esc_url( 'https://axelerant.atlassian.net/wiki/display/WPFAQ/Axelerant+Framework+Out+of+Date' );
 	$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.', 'custom-bulkquick-edit' ), self_admin_url( 'update-core.php' ), $help_url );
 
 	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires a current Aihrus Framework. Once corrected, "%1$s" can be activated. %2$s', 'custom-bulkquick-edit' ), CBQE_NAME, $help_link );

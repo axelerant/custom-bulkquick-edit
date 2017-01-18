@@ -140,4 +140,4 @@ The [Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/custom-bulkquic
 
 ## Need More?
 
-Further examples and more can be found by reading and searching the [Custom Bulk/Quick Edit Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112-Custom-Bulk-Quick-Edit) and [source code](https://github.com/michael-cannon/custom-bulkquick-edit).
+Further examples and more can be found by reading and searching the [Custom Bulk/Quick Edit Knowledge Base](https://axelerant.atlassian.net/wiki/display/WPFAQ) and [source code](https://github.com/michael-cannon/custom-bulkquick-edit).

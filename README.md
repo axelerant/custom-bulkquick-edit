@@ -23,7 +23,7 @@ If you find an issue, [let us know here](https://github.com/michael-cannon/custo
 
 ## Support
 
-This is a developer's portal for Custom Bulk/Quick Edit and should not be used for support. Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112-Custom-Bulk-Quick-Edit) for frequently asked questions, offering ideas, or getting support.
+This is a developer's portal for Custom Bulk/Quick Edit and should not be used for support. Please visit the [Custom Bulk/Quick Edit Knowledge Base](https://axelerant.atlassian.net/wiki/display/WPFAQ) for frequently asked questions, offering ideas, or getting support.
 
 ## Contributions
 
@@ -33,7 +33,7 @@ There are various ways you can contribute:
 
 * [Raise an issue](https://github.com/michael-cannon/custom-bulkquick-edit/issues) on GitHub.
 * Send us a Pull Request with your bug fixes and/or new features.
-* [Translate Custom Bulk/Quick Edit into different languages](https://nodedesk.zendesk.com/hc/en-us/articles/202294892-How-do-I-change-Testimonials-Widget-text-labels-).
+* [Translate Custom Bulk/Quick Edit into different languages](https://axelerant.atlassian.net/wiki/display/WPFAQ/How+do+I+change+Testimonials+Widget+text+labels).
 * Provide feedback and [suggestions on enhancements](https://github.com/michael-cannon/custom-bulkquick-edit/issues?direction=desc&labels=Enhancement&page=1&sort=created&state=open).
 
 ## Thank You
