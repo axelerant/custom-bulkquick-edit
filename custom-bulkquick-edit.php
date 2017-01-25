@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'CBQE_AIHR_VERSION' ) ) {
-	define( 'CBQE_AIHR_VERSION', '1.2.7' );
+	define( 'CBQE_AIHR_VERSION', '1.2.9' );
 }
 
 if ( ! defined( 'CBQE_BASE' ) ) {
@@ -60,7 +60,7 @@ if ( ! defined( 'CBQE_PREMIUM_LINK' ) ) {
 }
 
 if ( ! defined( 'CBQE_VERSION' ) ) {
-	define( 'CBQE_VERSION', '1.6.5' );
+	define( 'CBQE_VERSION', '1.6.6RC1' );
 }
 
 require_once CBQE_DIR_INC . 'requirements.php';

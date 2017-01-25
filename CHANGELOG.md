@@ -2,6 +2,10 @@
 
 ## master
 
+## 1.6.6RC1
+* Change support email address to `support@axelerant.com`
+* Require Aihrus Framework 1.2.9
+
 ## 1.6.5
 * Change support email address to 'support@axelerant.atlassian.net'
 * Confirm WordPress 4.7.1 compatibility
