@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.6.7RC1
+## 1.6.7
 * Update plugin version
 
 ## 1.6.6
