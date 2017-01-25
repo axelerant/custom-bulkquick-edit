@@ -60,7 +60,7 @@ if ( ! defined( 'CBQE_PREMIUM_LINK' ) ) {
 }
 
 if ( ! defined( 'CBQE_VERSION' ) ) {
-	define( 'CBQE_VERSION', '1.6.6RC1' );
+	define( 'CBQE_VERSION', '1.6.6' );
 }
 
 require_once CBQE_DIR_INC . 'requirements.php';

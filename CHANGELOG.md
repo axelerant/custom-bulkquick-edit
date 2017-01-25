@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.6.6RC1
+## 1.6.6
 * Change support email address to `support@axelerant.com`
 * Require Aihrus Framework 1.2.9
 
