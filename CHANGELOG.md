@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.6.7RC1
+* Update plugin version
+
 ## 1.6.6
 * Change support email address to `support@axelerant.com`
 * Require Aihrus Framework 1.2.9
