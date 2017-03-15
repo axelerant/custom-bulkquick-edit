@@ -1,0 +1,19 @@
+{
+  "name": "axelerant/custom-bulkquick-edit",
+  "description": "Testimonials Widget plugin",
+  "keywords": ["wordpress", "plugin", "axelerant"],
+  "homepage": "https://store.axelerant.com",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name": "Axelerant",
+      "email": "support@axelerant.com",
+      "homepage": "https://store.axelerant.com/"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.6",
+    "composer/installers": "v1.0.6"
+  }
+}
