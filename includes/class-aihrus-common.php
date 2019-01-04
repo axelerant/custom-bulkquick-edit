@@ -1,6 +1,6 @@
 <?php
 /**
- * Aihrus Framework
+ * Axelerant Framework
  * Copyright (C) 2015 Axelerant
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ abstract class Aihrus_Common {
 </form>
 EOD;
 
-		self::$donate_link = '<a href="https://axelerant.com/about-axelerant/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>';
+		self::$donate_link = '<a href="https://store.axelerant.com/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>';
 
 		add_action( 'admin_init', array( static::$class, 'check_notices' ), 9999 );
 	}

@@ -1,6 +1,6 @@
 <?php
 /**
-Aihrus Framework
+Axelerant Framework
 Copyright (C) 2015 Axelerant
 
 This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,7 @@ if ( ! defined( 'AIHR_DIR_LIB' ) ) {
 }
 
 if ( ! defined( 'AIHR_VERSION' ) ) {
-	define( 'AIHR_VERSION', '1.2.9' );
+	define( 'AIHR_VERSION', '1.3.3' );
 }
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -103,7 +103,7 @@ if ( ! function_exists( 'aihr_notice_aihrus_framework' ) ) {
 
 		$aihr_version = defined( 'AIHR_VERSION' ) ? AIHR_VERSION : '0.0.0';
 
-		$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires Aihrus Framework %2$s or newer. You\'re running Aihrus Framework %4$s. Once corrected, "%1$s" can be activated. %5$s %3$s' ), $name, AIHR_VERSION_MIN, $help_link, $aihr_version, $note );
+		$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires Axelerant Framework %2$s or newer. You\'re running Axelerant Framework %4$s. Once corrected, "%1$s" can be activated. %5$s %3$s' ), $name, AIHR_VERSION_MIN, $help_link, $aihr_version, $note );
 
 		aihr_notice_error( $text );
 	}
