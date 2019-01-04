@@ -1291,10 +1291,10 @@ jQuery('#edit_<?php echo $this->_category_name; ?>_<?php echo $meta_id; ?>').cli
 			if ( !isset( $field['id'] ) ) continue;
 
 			//creating the callback for the admin page
-			$function = create_function( '$default', '
-				return redrokk_admin_class::getInstance("'.$this->_isAdminPage.'")
-					->getOption("'.$field['id'].'", $default, true);
-			' );
+			$function = function($default) {
+				return redrokk_admin_class::getInstance($this->_isAdminPage)
+					->getOption($field['id'], $default, true);
+			  };
 			add_filter( "pre_option_{$field['id']}", $function, 20, 2 );
 		}
 	}

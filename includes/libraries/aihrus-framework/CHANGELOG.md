@@ -2,6 +2,22 @@
 
 ## master
 
+## 1.3.3
+* Fix Axelerant website links
+
+## 1.3.2
+* Removed deprecated function "create_function"
+* Tested with WordPress 4.9.8
+
+## 1.3.1
+* Tested with WordPress 4.9.4
+* Fix copyright branding typo
+
+## 1.3.0
+* Tested with WordPress 4.8.1
+* Update branding from Aihrus Framework to Axelerant Framework
+* Update donate page link
+
 ## 1.2.9
 * Added target url to blank to open links in seperate tab
 

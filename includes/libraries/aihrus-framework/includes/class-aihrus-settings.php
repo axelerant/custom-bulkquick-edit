@@ -1,6 +1,6 @@
 <?php
 /**
- * Aihrus Framework
+ * Axelerant Framework
  * Copyright (C) 2015 Axelerant
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 
 
 /**
- * Aihrus Framework settings helper class
+ * Axelerant Framework settings helper class
  *
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
@@ -248,18 +248,18 @@ abstract class Aihrus_Settings {
 
 
 	public static function display_about() {
-		$text  = __( '<img class="size-medium" src="%5$s" alt="Axelerant 2015 Retreat in Goa" width="640" height="327" /><p>Axelerant is a full-service software development company that focuses on open-source technologies. Top technical talent who are passionate, giving, and communicative demonstrates our backbone. We provide high-end Strategy, Implementation, and Support services for our clients and agencies with whom we partner.</p><p>Our team members span the world, and we follow agile delivery and working processes. Further, we’re actively giving back to many open-source communities and have fostered an innovative, incubator culture to give ideas a chance to succeed.</p><h2>Foundations of Axelerant</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><h3>Learn More About Axelerant</h3><ul><li><a href="%1$s">Axelerant Team</a></li><li><a href="%2$s">Giving Back</a></li><li><a href="%7$s">Inside Axelerant</a></li><li><a href="%3$s">Our Services</a></li><li><a href="%4$s">Testimonials</a></li><li><a href="%6$s">Careers</a></li></ul>' );
+		$text  = __( '<img class="size-medium" src="%5$s" alt="Axelerant 2015 Retreat in Goa" width="640" height="327" /><p>Axelerant is a full-service software development company that focuses on open-source technologies. Top technical talent who are passionate, giving, and communicative demonstrates our backbone. We provide high-end Strategy, Implementation, and Support services for our clients and agencies with whom we partner.</p><p>Our team members span the world, and we follow agile delivery and working processes. Further, we’re actively giving back to many open-source communities and have fostered an innovative, incubator culture to give ideas a chance to succeed.</p><h2>Foundations of Axelerant</h2><ul><li><b>Passion</b> – Our passion is so strong, we’re self­directed to make the difficult easy.</li><li><b>Openness</b> – We’re so honest and painstaking in our discussions that there are no questions left, and standards are created.</li><li><b>Giving</b> – We’re excited to share our results to inspire all to surpass them.</li></ul><h3>Learn More About Axelerant</h3><ul><li><a href="%1$s">Axelerant Team</a></li><li><a href="%7$s">Inside Axelerant</a></li><li><a href="%3$s">Our Services</a></li><li><a href="%6$s">Careers</a></li></ul>' );
 
 		echo '<div id="about" style="width: 70%; min-height: 225px;"><p>';
 		echo sprintf(
 			$text,
-			esc_url( 'https://axelerant.com/about-axelerant/' ),
-			esc_url( 'https://axelerant.com/drupalgive/' ),
-			esc_url( 'https://axelerant.com/services/' ),
-			esc_url( 'https://axelerant.com/about-axelerant/testimonials/' ),
-			esc_url( 'https://axelerant.com/wp-content/uploads/2015/02/IGP7228-2015-01-22-at-05-18-02.jpg' ),
-			esc_url( 'https://axelerant.com/careers/' ),
-			esc_url( 'https://axelerant.com/open-policies-open-discussion/' )
+			esc_url( 'https://www.axelerant.com/about/' ),
+			esc_url( 'https://www.axelerant.com/drupalgive/' ),
+			esc_url( 'https://www.axelerant.com/services/' ),
+			esc_url( 'https://www.axelerant.com/about/testimonials/' ),
+			esc_url( 'https://store.axelerant.com/wp-content/uploads/2015/02/IGP7228-2015-01-22-at-05-18-02.jpg' ),
+			esc_url( 'https://www.axelerant.com/careers/' ),
+			esc_url( 'https://www.axelerant.com/open-policies-open-discussion/' )
 		);
 		echo '</p></div>';
 	}
@@ -296,7 +296,7 @@ abstract class Aihrus_Settings {
 			echo '<p>' .
 				sprintf(
 				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase premium WordPress plugins from Axelerant ">purchase the Premium version</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.' ),
-				esc_url( 'https://axelerant.com/about-axelerant/donate/' ),
+				esc_url( 'https://store.axelerant.com/donate/' ),
 				esc_url( 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' ),
 				esc_url( 'https://store.axelerant.com/' ),
 				esc_url( 'mailto:support@axelerant.com' )
@@ -306,7 +306,7 @@ abstract class Aihrus_Settings {
 
 		echo '<p class="copyright">' .
 			sprintf(
-			__( 'Copyright &copy;%1$s <a href="%2$s">Axlerant</a>.' ),
+			__( 'Copyright &copy;%1$s <a href="%2$s">Axelerant</a>.' ),
 			date( 'Y' ),
 			esc_url( 'https://axelerant.com' )
 		) .
