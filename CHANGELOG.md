@@ -5,7 +5,7 @@
 ## 1.6.8
 * Change Author uri url
 
-## 1.6.8
+## 1.6.9
 * Confirm WordPress 5.0 compatibility
 
 ## 1.6.7
