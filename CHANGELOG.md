@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.6.8RC1
+## 1.6.8
 * Confirm WordPress 5.0 compatibility
 
 ## 1.6.7
