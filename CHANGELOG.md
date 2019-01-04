@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.6.8RC1
+* Confirm WordPress 5.0 compatibility
+
 ## 1.6.7
 * Update plugin version
 
